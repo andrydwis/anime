@@ -1,10 +1,12 @@
 <x-layouts.app>
-    <div class="relative flex flex-col gap-8">
-        {{-- <img
-            src="{{ asset('images/cta/shrine.jpg') }}"
-            alt="shrine"
-            class="rounded-lg"
-        > --}}
+    <div class="flex flex-col gap-8">
+        <div class="relative">
+            <img
+                src="{{ asset('images/cta/shrine.jpg') }}"
+                alt="shrine"
+                class="aspect-[3/1] rounded-lg object-cover"
+            >
+        </div>
 
         <div class="grid gap-2 md:grid-cols-2 lg:grid-cols-4">
             <flux:button
@@ -42,26 +44,23 @@
 
         <div class="flex flex-col gap-4">
             <div
-                class="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
+                class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                 <div class="flex flex-col">
                     <flux:heading
                         size="xl"
                         level="h1"
-                        class="!text-accent !font-bold"
+                        class="!m-0"
                     >
                         Anime Sedang Berjalan
                     </flux:heading>
-                    <flux:subheading
-                        size="lg"
-                        level="h2"
-                        class="!font-semibold"
-                    >
+                    <flux:subheading level="h2">
                         Update terbaru anime season ini
                     </flux:subheading>
                 </div>
                 <flux:button
                     variant="filled"
                     icon="eye"
+                    class="!hidden lg:!flex"
                 >
                     Lihat Semua
                 </flux:button>
@@ -86,23 +85,23 @@
                             </flux:badge>
                             <flux:button
                                 variant="filled"
-                                class="pointer-events-none !absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 !text-white opacity-0 group-hover:opacity-100"
-                            >
-
-                                <flux:icon.play variant="solid" />
-                                Mulai
-                            </flux:button>
+                                icon="play"
+                                class="pointer-events-none !absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 !rounded-full !bg-white/50 !text-white opacity-0 group-hover:opacity-100"
+                            />
                             <div
-                                class="pointer-events-none absolute bottom-0 w-full bg-white/75 p-2 dark:bg-slate-800/75">
-                                <flux:heading
-                                    class="line-clamp-1 !font-semibold group-hover:underline"
-                                >
+                                class="pointer-events-none absolute bottom-0 w-full bg-white/75 p-2 dark:bg-zinc-900/50">
+                                <flux:heading class="line-clamp-1 group-hover:underline">
                                     {{ $anime['title'] }}
                                 </flux:heading>
                             </div>
                         </div>
                     </a>
                 @endforeach
+                <a href="/anime">
+                    <div
+                        class="group relative flex h-full flex-col overflow-hidden rounded-lg bg-zinc-200 dark:bg-zinc-800">
+                    </div>
+                </a>
             </div>
         </div>
     </div>

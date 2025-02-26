@@ -1,7 +1,7 @@
 <flux:sidebar
     stashable
     sticky
-    class="w-full bg-white lg:hidden dark:bg-slate-900/75 dark:backdrop-blur"
+    class="w-full bg-white lg:hidden dark:bg-zinc-900/50 dark:backdrop-blur"
 >
 
     <div class="flex flex-row items-center justify-between gap-2">
@@ -35,7 +35,9 @@
         >
             Wibunitas
         </flux:navlist.item>
+
         <flux:separator />
+
         <flux:navlist.item
             icon="list-bullet"
             href="/anime/list"
@@ -47,6 +49,27 @@
             href="/anime/ongoing"
         >
             Anime sedang Berjalan
+        </flux:navlist.item>
+        <flux:navlist.item
+            icon="bookmark"
+            href="/anime/ongoing"
+        >
+            Daftar Anime Saya
+        </flux:navlist.item>
+
+        <flux:separator />
+
+        <flux:navlist.item
+            icon="calendar-days"
+            href="/anime/list"
+        >
+            Event Wibu
+        </flux:navlist.item>
+        <flux:navlist.item
+            icon="sparkles"
+            href="/anime/ongoing"
+        >
+            Gachamon
         </flux:navlist.item>
     </flux:navlist>
 </flux:sidebar>
