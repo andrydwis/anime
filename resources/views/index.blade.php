@@ -1,6 +1,6 @@
 <x-layouts.app>
     <div class="flex flex-col gap-8">
-        <div class="relative">
+        <div class="hidden md:block">
             <img
                 src="{{ asset('images/cta/shrine.jpg') }}"
                 alt="shrine"
@@ -37,6 +37,7 @@
                 href="/gacha"
             >
                 Gachamon
+                <flux:badge color="emerald">Baru!</flux:badge>
             </flux:button>
         </div>
 
@@ -65,7 +66,7 @@
                     Lihat Semua
                 </flux:button>
             </div>
-            <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
+            <div class="grid gap-4 md:grid-cols-3 lg:grid-cols-5">
                 @foreach ($home['data']['ongoing']['animeList'] as $anime)
                     <a href="{{ $anime['href'] }}">
                         <div
@@ -97,11 +98,6 @@
                         </div>
                     </a>
                 @endforeach
-                <a href="/anime">
-                    <div
-                        class="group relative flex h-full flex-col overflow-hidden rounded-lg bg-zinc-200 dark:bg-zinc-800">
-                    </div>
-                </a>
             </div>
         </div>
     </div>

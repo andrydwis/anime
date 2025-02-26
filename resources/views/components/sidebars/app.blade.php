@@ -70,6 +70,7 @@
             href="/anime/ongoing"
         >
             Gachamon
+            <flux:badge color="emerald">Baru!</flux:badge>
         </flux:navlist.item>
     </flux:navlist>
 </flux:sidebar>

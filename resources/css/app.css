@@ -11,6 +11,7 @@
 
 /* Re-assign Flux's gray of choice... */
 @theme {
+    --font-sans: Inter, sans-serif;
     --color-zinc-50: var(--color-slate-50);
     --color-zinc-100: var(--color-slate-100);
     --color-zinc-200: var(--color-slate-200);

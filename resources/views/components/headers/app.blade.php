@@ -123,7 +123,7 @@
             <flux:button
                 variant="filled"
                 icon="arrow-right-end-on-rectangle"
-                href="/login"
+                href="{{ route('login') }}"
             >
                 Login
             </flux:button>
