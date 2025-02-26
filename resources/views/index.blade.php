@@ -1,12 +1,12 @@
 <x-layouts.app>
     <div class="flex flex-col gap-8">
-        <div class="hidden md:block">
+        {{-- <div class="hidden md:block">
             <img
                 src="{{ asset('images/cta/shrine.jpg') }}"
                 alt="shrine"
                 class="aspect-[3/1] rounded-lg object-cover"
             >
-        </div>
+        </div> --}}
 
         <div class="grid gap-2 md:grid-cols-2 lg:grid-cols-4">
             <flux:button
@@ -50,7 +50,7 @@
                     <flux:heading
                         size="xl"
                         level="h1"
-                        class="!m-0"
+                        class="from-accent !m-0 !bg-gradient-to-br to-cyan-600 bg-clip-text !font-semibold !text-transparent"
                     >
                         Anime Sedang Berjalan
                     </flux:heading>
@@ -72,6 +72,7 @@
                         <div
                             class="group relative flex flex-col overflow-hidden rounded-lg">
                             <img
+                                loading="lazy"
                                 src="{{ $anime['poster'] }}"
                                 alt="cover"
                                 class="aspect-video object-cover transition-all hover:scale-110 hover:brightness-50"
@@ -87,7 +88,7 @@
                             <flux:button
                                 variant="filled"
                                 icon="play"
-                                class="pointer-events-none !absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 !rounded-full !bg-white/50 !text-white opacity-0 group-hover:opacity-100"
+                                class="pointer-events-none !absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 !rounded-full !bg-white/50 !text-white opacity-0 transition-all group-hover:opacity-100"
                             />
                             <div
                                 class="pointer-events-none absolute bottom-0 w-full bg-white/75 p-2 dark:bg-zinc-900/50">

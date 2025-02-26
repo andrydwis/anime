@@ -4,7 +4,7 @@
             class="text-center"
             size="xl"
         >
-            Masuk ke {{ config('app.name') }}
+            Daftar ke {{ config('app.name') }}
         </flux:heading>
 
         <div class="space-y-4">
@@ -35,18 +35,25 @@
                         />
                     </svg>
                 </x-slot>
-                Login dengan Google
+                Daftar dengan Google
             </flux:button>
         </div>
 
         <flux:separator text="atau" />
 
         <form
-            action="{{ route('login') }}"
+            action="{{ route('register') }}"
             method="post"
         >
             @csrf
             <div class="flex flex-col gap-4">
+                <flux:input
+                    label="Nama"
+                    type="text"
+                    name="name"
+                    placeholder="Masukkan nama kamu"
+                />
+
                 <flux:input
                     label="Email"
                     type="email"
@@ -55,39 +62,35 @@
                     clearable
                 />
 
-                <flux:field>
-                    <div class="mb-3 flex flex-row justify-between">
-                        <flux:label>Password</flux:label>
-                        <flux:link
-                            href="#"
-                            variant="subtle"
-                            class="text-sm"
-                        >
-                            Lupa Password?
-                        </flux:link>
-                    </div>
+                <flux:input
+                    label="Password"
+                    type="password"
+                    name="password"
+                    placeholder="*****"
+                    viewable
+                />
 
-                    <flux:input
-                        type="password"
-                        placeholder="*****"
-                        name="password"
-                        viewable
-                    />
-                </flux:field>
+                <flux:input
+                    label="Konfirmasi Password"
+                    type="password"
+                    name="password_confirmation"
+                    placeholder="*****"
+                    viewable
+                />
 
                 <flux:button
                     variant="primary"
                     type="submit"
                 >
-                    Login
+                    Daftar
                 </flux:button>
             </div>
         </form>
 
         <flux:subheading class="text-center">
-            Belum punya akun?
+            Sudah punya akun?
             <flux:link href="/register">
-                Daftar disini
+                Login
             </flux:link>
         </flux:subheading>
     </div>
