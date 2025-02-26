@@ -60,20 +60,24 @@
                 aria-label="Preferred color scheme"
             >
                 <flux:icon.sun
+                    x-cloak
                     x-show="$flux.appearance === 'light'"
                     variant="mini"
                     class="text-zinc-500 dark:text-white"
                 />
                 <flux:icon.moon
+                    x-cloak
                     x-show="$flux.appearance === 'dark'"
                     variant="mini"
                     class="text-zinc-500 dark:text-white"
                 />
                 <flux:icon.moon
+                    x-cloak
                     x-show="$flux.appearance === 'system' && $flux.dark"
                     variant="mini"
                 />
                 <flux:icon.sun
+                    x-cloak
                     x-show="$flux.appearance === 'system' && ! $flux.dark"
                     variant="mini"
                 />
@@ -105,7 +109,7 @@
                 position="top"
                 align="end"
             >
-                <flux:profile avatar="https://fluxui.dev/img/demo/user.png" />
+                <flux:profile name="{{ auth()?->user()?->name }}" />
                 <flux:menu>
                     <flux:menu.item
                         icon="user"
