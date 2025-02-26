@@ -70,12 +70,12 @@
                 @foreach ($home['data']['ongoing']['animeList'] as $anime)
                     <a href="{{ $anime['href'] }}">
                         <div
-                            class="group relative flex flex-col overflow-hidden rounded-lg">
+                            class="focus-within:ring-accent group relative flex flex-col overflow-hidden rounded-lg focus-within:ring-2">
                             <img
                                 loading="lazy"
                                 src="{{ $anime['poster'] }}"
                                 alt="cover"
-                                class="aspect-video object-cover transition-all hover:scale-110 hover:brightness-50"
+                                class="aspect-video object-cover transition-all group-focus-within:scale-110 group-focus-within:brightness-50 group-hover:scale-110 group-hover:brightness-50"
                             >
                             <flux:badge
                                 variant="solid"
@@ -88,17 +88,20 @@
                             <flux:button
                                 variant="filled"
                                 icon="play"
-                                class="pointer-events-none !absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 !rounded-full !bg-white/50 !text-white opacity-0 transition-all group-hover:opacity-100"
+                                class="pointer-events-none !absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 !rounded-full !bg-white/50 !text-white opacity-0 transition-all group-focus-within:opacity-100 group-hover:opacity-100"
                             />
                             <div
                                 class="pointer-events-none absolute bottom-0 w-full bg-white/75 p-2 dark:bg-zinc-900/50">
-                                <flux:heading class="line-clamp-1 group-hover:underline">
+                                <flux:heading
+                                    class="line-clamp-1 group-focus-within:underline group-hover:underline"
+                                >
                                     {{ $anime['title'] }}
                                 </flux:heading>
                             </div>
                         </div>
                     </a>
                 @endforeach
+
             </div>
         </div>
     </div>
