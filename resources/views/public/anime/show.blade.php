@@ -1,5 +1,5 @@
 <x-layouts.app>
-    <div class="mb-8 flex flex-col gap-8">
+    <div class="flex flex-col gap-8">
         <div class="bg-accent aspect-video rounded-lg">
 
         </div>
@@ -45,7 +45,7 @@
 
         <flux:separator />
 
-        <div class="flex flex-col gap-4 rounded-lg bg-zinc-200 p-4 dark:bg-zinc-800">
+        <x-cards.app>
             <div class="grid gap-4 lg:grid-cols-4">
                 <div class="group relative overflow-hidden rounded-lg">
                     <img
@@ -134,7 +134,7 @@
                     </flux:subheading>
                 </div>
             </div>
-        </div>
+        </x-cards.app>
 
     </div>
 </x-layouts.app>

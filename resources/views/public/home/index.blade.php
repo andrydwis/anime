@@ -1,5 +1,5 @@
 <x-layouts.app>
-    <div class="mb-8 flex flex-col gap-8">
+    <div class="flex flex-col gap-8">
         <div class="grid gap-2 lg:grid-cols-4">
             <flux:button
                 variant="filled"

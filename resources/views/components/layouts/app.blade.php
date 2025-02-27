@@ -97,7 +97,7 @@
 
         <flux:main
             container
-            class="flex h-full flex-col"
+            class="flex h-full flex-col gap-8"
         >
             {{ $slot }}
 
