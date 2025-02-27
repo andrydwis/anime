@@ -1,28 +1,18 @@
 <x-layouts.app>
     <div class="flex flex-col gap-8">
-        {{-- <div class="hidden md:block">
-            <img
-                src="{{ asset('images/cta/shrine.jpg') }}"
-                alt="shrine"
-                class="aspect-[3/1] rounded-lg object-cover"
-            >
-        </div> --}}
-
-        <div class="grid gap-2 md:grid-cols-2 lg:grid-cols-4">
+        <div class="grid gap-2 md:grid-cols-3 lg:grid-cols-5">
             <flux:button
                 variant="filled"
                 icon="users"
-                href="/wibunitas"
+                href="/Wibunity"
             >
-                Wibunitas
-                <flux:badge color="emerald">Baru!</flux:badge>
-            </flux:button>
-            <flux:button
-                variant="filled"
-                icon="calendar-date-range"
-                href="/events"
-            >
-                Event Wibu
+                Wibunity
+                <flux:badge
+                    size="sm"
+                    color="emerald"
+                >
+                    Baru!
+                </flux:badge>
             </flux:button>
             <flux:button
                 variant="filled"
@@ -33,11 +23,30 @@
             </flux:button>
             <flux:button
                 variant="filled"
+                icon="calendar-date-range"
+                href="/events"
+            >
+                Event Wibu
+            </flux:button>
+            <flux:button
+                variant="filled"
+                icon="newspaper"
+                href="/news"
+            >
+                Berita Terbaru
+            </flux:button>
+            <flux:button
+                variant="filled"
                 icon="sparkles"
                 href="/gacha"
             >
                 Gachamon
-                <flux:badge color="emerald">Baru!</flux:badge>
+                <flux:badge
+                    size="sm"
+                    color="red"
+                >
+                    Segera!
+                </flux:badge>
             </flux:button>
         </div>
 
@@ -68,37 +77,67 @@
             </div>
             <div class="grid gap-4 md:grid-cols-3 lg:grid-cols-5">
                 @foreach ($home['data']['ongoing']['animeList'] as $anime)
-                    <a href="{{ $anime['href'] }}">
-                        <div
-                            class="group relative flex flex-col overflow-hidden rounded-lg">
-                            <img
-                                loading="lazy"
-                                src="{{ $anime['poster'] }}"
-                                alt="cover"
-                                class="aspect-video object-cover transition-all group-hover:scale-110 group-hover:brightness-50"
-                            >
-                            <flux:badge
-                                variant="solid"
-                                color="emerald"
-                                icon="play-circle"
-                                class="pointer-events-none absolute right-2 top-2"
-                            >
-                                Eps {{ $anime['episodes'] }}
-                            </flux:badge>
-                            <flux:button
-                                variant="filled"
-                                icon="play"
-                                class="pointer-events-none !absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 !rounded-full !bg-white/50 !text-white opacity-0 transition-all group-hover:border-2 group-hover:border-white group-hover:opacity-100"
-                            />
-                            <div
-                                class="pointer-events-none absolute bottom-0 w-full bg-white/75 p-2 dark:bg-zinc-900/50">
-                                <flux:heading class="line-clamp-1 group-hover:underline">
-                                    {{ $anime['title'] }}
-                                </flux:heading>
-                            </div>
-                        </div>
-                    </a>
+                    <x-cards.anime :anime="$anime" />
                 @endforeach
+            </div>
+        </div>
+
+        <flux:separator />
+
+        <div class="flex flex-col gap-4">
+            <div
+                class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                <div class="flex flex-col">
+                    <flux:heading
+                        size="xl"
+                        level="h1"
+                        class="from-accent !m-0 !bg-gradient-to-br to-cyan-600 bg-clip-text !font-semibold !text-transparent"
+                    >
+                        Event Wibu
+                    </flux:heading>
+                    <flux:subheading level="h2">
+                        Informasi terbaru event wibu yang akan datang
+                    </flux:subheading>
+                </div>
+                <flux:button
+                    variant="filled"
+                    icon="eye"
+                    class="!hidden lg:!flex"
+                >
+                    Lihat Semua
+                </flux:button>
+            </div>
+            <div class="grid gap-4 md:grid-cols-3 lg:grid-cols-5">
+
+            </div>
+        </div>
+
+        <flux:separator />
+
+        <div class="flex flex-col gap-4">
+            <div
+                class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                <div class="flex flex-col">
+                    <flux:heading
+                        size="xl"
+                        level="h1"
+                        class="from-accent !m-0 !bg-gradient-to-br to-cyan-600 bg-clip-text !font-semibold !text-transparent"
+                    >
+                        Berita Terbaru
+                    </flux:heading>
+                    <flux:subheading level="h2">
+                        Berita terbaru seputar anime, manga, game, dan lainnya
+                    </flux:subheading>
+                </div>
+                <flux:button
+                    variant="filled"
+                    icon="eye"
+                    class="!hidden lg:!flex"
+                >
+                    Lihat Semua
+                </flux:button>
+            </div>
+            <div class="grid gap-4 md:grid-cols-3 lg:grid-cols-5">
 
             </div>
         </div>

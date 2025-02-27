@@ -92,16 +92,11 @@
     </head>
 
     <body class="selection:bg-accent/50 min-h-screen bg-white dark:bg-zinc-900">
-        <x-headers.app />
-        <x-sidebars.app />
-
         <flux:main
             container
-            class="flex h-full flex-col"
+            class="flex min-h-screen items-center justify-center"
         >
             {{ $slot }}
-
-            <x-footers.app />
         </flux:main>
 
         @stack('scripts')

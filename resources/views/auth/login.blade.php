@@ -1,11 +1,12 @@
-<x-layouts.app>
+<x-layouts.auth>
     <div class="mx-auto flex w-80 max-w-80 flex-col gap-4">
-        <flux:heading
-            class="text-center"
-            size="xl"
+        <flux:brand
+            href="{{ route('home') }}"
+            name="{{ config('app.name') }}"
+            class="!mx-auto mb-8"
         >
-            Masuk ke {{ config('app.name') }}
-        </flux:heading>
+            🇯🇵
+        </flux:brand>
 
         <div class="space-y-4">
             <flux:button class="w-full">
@@ -91,4 +92,4 @@
             </flux:link>
         </flux:subheading>
     </div>
-</x-layouts.app>
+    </x-layouts.au>

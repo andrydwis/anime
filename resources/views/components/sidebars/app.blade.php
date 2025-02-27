@@ -29,11 +29,11 @@
         </flux:navlist.item>
         <flux:navlist.item
             icon="users"
-            href="/wibunitas"
+            href="/Wibunity"
             badge="Baru!"
             badge-color="emerald"
         >
-            Wibunitas
+            Wibunity
         </flux:navlist.item>
 
         <flux:separator class="my-2" />

@@ -51,7 +51,7 @@
     <div class="flex items-center gap-2">
         <flux:dropdown
             x-data
-            align="end"
+            align="center"
         >
             <flux:button
                 variant="subtle"
@@ -63,13 +63,13 @@
                     x-cloak
                     x-show="$flux.appearance === 'light'"
                     variant="mini"
-                    class="text-zinc-500 dark:text-white"
+                    class="text-zinc-900 dark:text-white"
                 />
                 <flux:icon.moon
                     x-cloak
                     x-show="$flux.appearance === 'dark'"
                     variant="mini"
-                    class="text-zinc-500 dark:text-white"
+                    class="text-zinc-900 dark:text-white"
                 />
                 <flux:icon.moon
                     x-cloak
@@ -83,19 +83,25 @@
                 />
             </flux:button>
 
-            <flux:menu>
+            <flux:menu class="">
                 <flux:menu.item
                     icon="sun"
                     x-on:click="$flux.appearance = 'light'"
-                >Light</flux:menu.item>
+                >
+                    Mode Terang
+                </flux:menu.item>
                 <flux:menu.item
                     icon="moon"
                     x-on:click="$flux.appearance = 'dark'"
-                >Dark</flux:menu.item>
+                >
+                    Mode Gelap
+                </flux:menu.item>
                 <flux:menu.item
                     icon="computer-desktop"
                     x-on:click="$flux.appearance = 'system'"
-                >System</flux:menu.item>
+                >
+                    Mode Sistem
+                </flux:menu.item>
             </flux:menu>
         </flux:dropdown>
         <flux:button
