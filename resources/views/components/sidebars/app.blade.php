@@ -68,8 +68,8 @@
         <flux:navlist.item
             icon="sparkles"
             href="/anime/ongoing"
-            badge="Baru!"
-            badge-color="emerald"
+            badge="Segera!"
+            badge-color="red"
         >
             Gachamon
         </flux:navlist.item>

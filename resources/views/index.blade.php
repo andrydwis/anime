@@ -1,5 +1,5 @@
 <x-layouts.app>
-    <div class="flex flex-col gap-8">
+    <div class="mb-8 flex flex-col gap-8">
         <div class="grid gap-2 md:grid-cols-3 lg:grid-cols-5">
             <flux:button
                 variant="filled"
@@ -108,7 +108,7 @@
                 </flux:button>
             </div>
             <div class="grid gap-4 md:grid-cols-3 lg:grid-cols-5">
-
+                <x-cards.event />
             </div>
         </div>
 
@@ -138,7 +138,7 @@
                 </flux:button>
             </div>
             <div class="grid gap-4 md:grid-cols-3 lg:grid-cols-5">
-
+                <x-cards.news />
             </div>
         </div>
     </div>
