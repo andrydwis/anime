@@ -1,6 +1,6 @@
 <x-layouts.app>
     <div class="mb-8 flex flex-col gap-8">
-        <div class="grid gap-2 md:grid-cols-3 lg:grid-cols-5">
+        <div class="grid gap-2 md:grid-cols-2 lg:grid-cols-4">
             <flux:button
                 variant="filled"
                 icon="users"
@@ -39,6 +39,7 @@
                 variant="filled"
                 icon="sparkles"
                 href="/gacha"
+                class="col-span-2 lg:col-span-4"
             >
                 Gachamon
                 <flux:badge
@@ -75,8 +76,8 @@
                     Lihat Semua
                 </flux:button>
             </div>
-            <div class="grid gap-4 md:grid-cols-3 lg:grid-cols-5">
-                @foreach ($home['data']['ongoing']['animeList'] as $anime)
+            <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                @foreach ($home['data']['recent']['animeList'] as $anime)
                     <x-cards.anime :anime="$anime" />
                 @endforeach
             </div>
@@ -107,7 +108,7 @@
                     Lihat Semua
                 </flux:button>
             </div>
-            <div class="grid gap-4 md:grid-cols-3 lg:grid-cols-5">
+            <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
                 <x-cards.event />
             </div>
         </div>
@@ -137,7 +138,7 @@
                     Lihat Semua
                 </flux:button>
             </div>
-            <div class="grid gap-4 md:grid-cols-3 lg:grid-cols-5">
+            <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
                 <x-cards.news />
             </div>
         </div>
