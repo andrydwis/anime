@@ -34,6 +34,8 @@
                         variant="filled"
                         icon="play-circle"
                         class="min-w-[100px]"
+                        href="{{ $episode['samehadakuUrl'] }}"
+                        target="_blank"
                     >
                         {{ $episode['title'] }}
                     </flux:button>
@@ -126,7 +128,7 @@
                     </div>
 
                     <flux:separator />
-                    
+
                     <flux:subheading level="h3">
                         {{ implode(' ', $anime['data']['synopsis']['paragraphs']) }}
                     </flux:subheading>

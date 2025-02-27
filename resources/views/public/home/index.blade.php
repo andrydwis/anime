@@ -1,6 +1,6 @@
 <x-layouts.app>
     <div class="mb-8 flex flex-col gap-8">
-        <div class="grid gap-2 md:grid-cols-2 lg:grid-cols-4">
+        <div class="grid gap-2 lg:grid-cols-4">
             <flux:button
                 variant="filled"
                 icon="users"
@@ -39,7 +39,7 @@
                 variant="filled"
                 icon="sparkles"
                 href="/gacha"
-                class="col-span-2 lg:col-span-4"
+                class="lg:col-span-4"
             >
                 Gachamon
                 <flux:badge
