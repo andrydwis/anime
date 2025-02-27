@@ -12,6 +12,7 @@
             <flux:button
                 icon="google"
                 class="w-full"
+                href="{{ route('socialite.redirect', ['driver' => 'google']) }}"
             >
                 Login dengan Google
             </flux:button>
@@ -64,7 +65,7 @@
 
         <flux:subheading class="text-center">
             Belum punya akun?
-            <flux:link href="/register">
+            <flux:link href="{{ route('register') }}">
                 Daftar disini
             </flux:link>
         </flux:subheading>
