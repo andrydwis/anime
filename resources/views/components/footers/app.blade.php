@@ -1,4 +1,4 @@
-<footer class="mt-auto rounded-lg bg-white p-4 py-4 dark:bg-zinc-800/50">
+<footer class="mt-auto rounded-lg bg-zinc-200 p-4 py-4 dark:bg-zinc-800/50">
     <div class="flex flex-col lg:w-1/4">
         <flux:heading size="xl">
             🇯🇵 {{ config('app.name') }}
