@@ -39,7 +39,7 @@
             Daftar Anime
         </flux:navbar.item>
         <flux:navbar.item
-            icon="calendar-days"
+            icon="calendar-date-range"
             href="/anime/ongoing"
         >
             Anime sedang Berjalan

@@ -19,7 +19,7 @@
         />
     </div>
 
-    <flux:navlist variant="outline">
+    <flux:navlist>
         <flux:navlist.item
             icon="home"
             variant="solid"
@@ -36,7 +36,7 @@
             Wibunitas
         </flux:navlist.item>
 
-        <flux:separator />
+        <flux:separator class="my-2" />
 
         <flux:navlist.item
             icon="list-bullet"
@@ -45,7 +45,7 @@
             Daftar Anime
         </flux:navlist.item>
         <flux:navlist.item
-            icon="calendar-days"
+            icon="calendar-date-range"
             href="/anime/ongoing"
         >
             Anime sedang Berjalan
@@ -57,10 +57,10 @@
             Daftar Anime Saya
         </flux:navlist.item>
 
-        <flux:separator />
+        <flux:separator class="my-2" />
 
         <flux:navlist.item
-            icon="calendar-days"
+            icon="calendar-date-range"
             href="/anime/list"
         >
             Event Wibu
@@ -68,9 +68,10 @@
         <flux:navlist.item
             icon="sparkles"
             href="/anime/ongoing"
+            badge="Baru!"
+            badge-color="emerald"
         >
             Gachamon
-            <flux:badge color="emerald">Baru!</flux:badge>
         </flux:navlist.item>
     </flux:navlist>
 </flux:sidebar>

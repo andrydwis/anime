@@ -38,3 +38,5 @@
         --color-accent-foreground: var(--color-white);
     }
 }
+
+@custom-variant hover (&:hover);
