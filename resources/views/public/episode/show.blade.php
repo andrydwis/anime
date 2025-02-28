@@ -25,9 +25,10 @@
         </div>
 
         <div class="flex flex-row items-center justify-between">
+            <div></div>
             <flux:dropdown
                 position="bottom"
-                align="start"
+                align="end"
             >
                 <flux:button icon="arrow-down-tray">Download</flux:button>
 
