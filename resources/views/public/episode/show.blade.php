@@ -12,8 +12,42 @@
             </flux:breadcrumbs.item>
         </flux:breadcrumbs>
 
-        <div class="bg-accent aspect-video rounded-lg">
+        <div class="aspect-video overflow-hidden rounded-lg">
+            <iframe
+                src="{{ $episode['data']['defaultStreamingUrl'] }}"
+                frameborder="0"
+                class="h-full w-full"
+            ></iframe>
+        </div>
 
+        <div class="flex flex-row items-center justify-between">
+            <flux:dropdown
+                position="bottom"
+                align="start"
+            >
+                <flux:button icon="arrow-down-tray">Download</flux:button>
+
+                <flux:menu>
+                    <flux:menu.submenu heading="Pilih Format" position="bottom">
+                        @foreach ($episode['data']['downloadUrl']['formats'] as $formats)
+                            <flux:menu.submenu heading="{{ $formats['title'] }}">
+                                @foreach ($formats['qualities'] as $quality)
+                                    <flux:menu.submenu heading="{{ $quality['title'] }}">
+                                        @foreach ($quality['urls'] as $url)
+                                            <flux:menu.item
+                                                href="{{ $url['url'] }}"
+                                                target="_blank"
+                                            >
+                                                {{ $url['title'] }}
+                                            </flux:menu.item>
+                                        @endforeach
+                                    </flux:menu.submenu>
+                                @endforeach
+                            </flux:menu.submenu>
+                        @endforeach
+                    </flux:menu.submenu>
+                </flux:menu>
+            </flux:dropdown>
         </div>
 
         <flux:separator />
@@ -42,7 +76,7 @@
                 @endphp
                 @foreach ($sortedEpisodes as $episode)
                     <flux:button
-                        variant="filled"
+                        :variant="$episode['episodeId'] === $episodeId ? 'primary' : 'filled'"
                         icon="play-circle"
                         class="min-w-[100px]"
                         href="{{ route('anime.episode.show', ['anime' => $animeId, 'episode' => $episode['episodeId']]) }}"

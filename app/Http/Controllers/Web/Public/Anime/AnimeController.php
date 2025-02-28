@@ -14,13 +14,14 @@ class AnimeController extends Controller
         return view('public.anime.index');
     }
 
-    public function show($id): View
+    public function show(string $animeId): View
     {
-        $anime = Cache::remember('anime-'.$id, now()->addMinutes(5), function () use ($id) {
-            return Http::get(config('app.api_url').'/samehadaku/anime/'.$id)->json();
+        $anime = Cache::remember('anime-'.$animeId, now()->addMinutes(5), function () use ($animeId) {
+            return Http::get(config('app.api_url').'/samehadaku/anime/'.$animeId)->json();
         });
 
         $data = [
+            'animeId' => $animeId,
             'anime' => $anime,
         ];
 

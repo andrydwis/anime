@@ -10,7 +10,7 @@
 
         <link
             rel="icon"
-            href="favicon.ico"
+            href="{{ asset('favicon.ico') }}"
             type="image/x-icon"
         >
 
