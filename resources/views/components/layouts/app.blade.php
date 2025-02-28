@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
     <head>
         <meta charset="utf-8" />
@@ -31,6 +31,10 @@
             name="keywords"
             content="nonton anime, komunitas wibu, anime gratis, anime terbaru, berita anime, weaboo, anime indonesia, streaming anime, forum wibu, anime terbaik"
         >
+        <meta
+            name="robots"
+            content="index, follow"
+        />
 
         <!-- Open Graph / Facebook -->
         <meta
