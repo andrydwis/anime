@@ -43,7 +43,7 @@
         />
         <meta
             property="og:url"
-            content="https://metatags.io/"
+            content="{{ config('app.url') }}"
         />
         <meta
             property="og:title"
@@ -55,7 +55,7 @@
         />
         <meta
             property="og:image"
-            content="https://metatags.io/images/meta-tags.png"
+            content="{{ asset('images/seo/cover.jpg')}}"
         />
 
         <!-- Twitter -->
@@ -65,7 +65,7 @@
         />
         <meta
             property="twitter:url"
-            content="https://metatags.io/"
+            content="{{ config('app.url') }}"
         />
         <meta
             property="twitter:title"
@@ -77,7 +77,7 @@
         />
         <meta
             property="twitter:image"
-            content="https://metatags.io/images/meta-tags.png"
+            content="{{ asset('images/seo/cover.jpg')}}"
         />
 
         {{-- Font --}}

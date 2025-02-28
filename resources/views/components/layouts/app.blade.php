@@ -43,7 +43,7 @@
         />
         <meta
             property="og:url"
-            content="https://metatags.io/"
+            content="{{ config('app.url') }}"
         />
         <meta
             property="og:title"
@@ -55,7 +55,7 @@
         />
         <meta
             property="og:image"
-            content="https://metatags.io/images/meta-tags.png"
+            content="{{ asset('images/seo/cover.jpg') }}"
         />
 
         <!-- Twitter -->
@@ -65,7 +65,7 @@
         />
         <meta
             property="twitter:url"
-            content="https://metatags.io/"
+            content="{{ config('app.url') }}"
         />
         <meta
             property="twitter:title"
@@ -77,17 +77,7 @@
         />
         <meta
             property="twitter:image"
-            content="https://metatags.io/images/meta-tags.png"
-        />
-
-        {{-- Font --}}
-        <link
-            rel="preconnect"
-            href="https://fonts.bunny.net"
-        >
-        <link
-            href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800,900&display=swap"
-            rel="stylesheet"
+            content="{{ asset('images/seo/cover.jpg') }}"
         />
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
