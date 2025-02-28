@@ -1,4 +1,4 @@
-@props(['anime', 'animeId'])
+@props(['anime', 'animeId', 'episodeId' => null])
 <div class="flex flex-col gap-4">
     <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div class="flex flex-col">
@@ -20,7 +20,7 @@
         @endphp
         @foreach ($sortedEpisodes as $episode)
             <flux:button
-                variant="filled"
+                :variant="$episode['episodeId'] == $episodeId ? 'primary' : 'filled'"
                 icon="play-circle"
                 class="w-full"
                 href="{{ route('anime.episode.show', ['anime' => $animeId, 'episode' => $episode['episodeId']]) }}"

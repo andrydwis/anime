@@ -93,6 +93,7 @@
         <x-animes.episode
             :anime="$anime"
             :animeId="$animeId"
+            :episodeId="$episodeId"
         />
 
         <x-animes.detail :anime="$anime" />
