@@ -14,7 +14,7 @@
 
         <a
             href="{{ route('anime.episode.show', ['anime' => $animeId, 'episode' => $anime['data']['episodeList'][0]['episodeId']]) }}"
-            class="group relative aspect-video rounded-lg"
+            class="group relative aspect-video overflow-hidden rounded-lg"
         >
             <img
                 src="{{ $anime['data']['poster'] }}"
