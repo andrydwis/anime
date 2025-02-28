@@ -62,7 +62,7 @@
                         level="h1"
                         class="from-accent !m-0 !bg-gradient-to-br to-cyan-600 bg-clip-text !font-semibold !text-transparent"
                     >
-                        Anime Sedang Berjalan
+                        Anime Terbaru
                     </flux:heading>
                     <flux:subheading level="h2">
                         Update terbaru anime season ini
@@ -72,6 +72,7 @@
                     variant="filled"
                     icon="eye"
                     class="!hidden lg:!flex"
+                    href="{{ route('anime.recent.index') }}"
                 >
                     Lihat Semua
                 </flux:button>

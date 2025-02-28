@@ -46,9 +46,9 @@
         </flux:navlist.item>
         <flux:navlist.item
             icon="calendar-date-range"
-            href="/anime/ongoing"
+            href="{{ route('anime.recent.index') }}"
         >
-            Anime sedang Berjalan
+            Anime Terbaru
         </flux:navlist.item>
         <flux:navlist.item
             icon="bookmark"

@@ -20,12 +20,20 @@ class SeachModal extends Component
 
     public function mount(): void
     {
-        $this->searchAnime();
+        if ($this->search) {
+            $this->searchAnime();
+        } else {
+            $this->animes = [];
+        }
     }
 
     public function updatedSearch(): void
     {
-        $this->searchAnime();
+        if ($this->search) {
+            $this->searchAnime();
+        } else {
+            $this->animes = [];
+        }
     }
 
     public function searchAnime(): void

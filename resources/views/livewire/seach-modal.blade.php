@@ -25,14 +25,17 @@
         @forelse ($animes as $anime)
             <x-cards.anime :anime="$anime" />
         @empty
-            <x-cards.app class="col-span-2">
-                <flux:heading>
-                    Anime Tidak Ditemukan
-                </flux:heading>
-                <flux:subheading>
-                    Oops! Anime yang kamu cari tidak ditemukan. Coba cari kata kunci lain.
-                </flux:subheading>
-            </x-cards.app>
+            @if ($search)
+                <x-cards.app class="col-span-2">
+                    <flux:heading>
+                        Anime Tidak Ditemukan
+                    </flux:heading>
+                    <flux:subheading>
+                        Oops! Anime yang kamu cari tidak ditemukan. Coba cari kata kunci
+                        lain.
+                    </flux:subheading>
+                </x-cards.app>
+            @endif
         @endforelse
     </div>
 </div>

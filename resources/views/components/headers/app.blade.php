@@ -40,9 +40,9 @@
         </flux:navbar.item>
         <flux:navbar.item
             icon="calendar-date-range"
-            href="/anime/ongoing"
+            href="{{ route('anime.recent.index') }}"
         >
-            Anime sedang Berjalan
+            Anime Terbaru
         </flux:navbar.item>
     </flux:navbar>
 
