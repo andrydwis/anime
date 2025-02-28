@@ -7,13 +7,17 @@
             <flux:breadcrumbs.item href="{{ route('anime.index') }}">
                 Anime
             </flux:breadcrumbs.item>
-            <flux:breadcrumbs.item>
+            <flux:breadcrumbs.item href="{{ route('anime.show', ['anime' => $animeId]) }}">
                 {{ $anime['data']['title'] }}
+            </flux:breadcrumbs.item>
+            <flux:breadcrumbs.item>
+                {{ $episode['data']['title'] }}
             </flux:breadcrumbs.item>
         </flux:breadcrumbs>
 
         <div class="aspect-video overflow-hidden rounded-lg">
             <iframe
+                allowfullscreen
                 src="{{ $episode['data']['defaultStreamingUrl'] }}"
                 frameborder="0"
                 class="h-full w-full"
@@ -28,7 +32,10 @@
                 <flux:button icon="arrow-down-tray">Download</flux:button>
 
                 <flux:menu>
-                    <flux:menu.submenu heading="Pilih Format" position="bottom">
+                    <flux:menu.submenu
+                        heading="Pilih Format"
+                        position="bottom"
+                    >
                         @foreach ($episode['data']['downloadUrl']['formats'] as $formats)
                             <flux:menu.submenu heading="{{ $formats['title'] }}">
                                 @foreach ($formats['qualities'] as $quality)
@@ -80,7 +87,6 @@
                         icon="play-circle"
                         class="min-w-[100px]"
                         href="{{ route('anime.episode.show', ['anime' => $animeId, 'episode' => $episode['episodeId']]) }}"
-                        target="_blank"
                     >
                         {{ $episode['title'] }}
                     </flux:button>

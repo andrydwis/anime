@@ -12,9 +12,27 @@
             </flux:breadcrumbs.item>
         </flux:breadcrumbs>
 
-        <div class="bg-accent aspect-video rounded-lg">
-
-        </div>
+        <a
+            href="{{ route('anime.episode.show', ['anime' => $animeId, 'episode' => $anime['data']['episodeList'][0]['episodeId']]) }}"
+            class="group relative aspect-video rounded-lg"
+        >
+            <img
+                src="{{ $anime['data']['poster'] }}"
+                alt="cover"
+                class="aspect-video h-full w-full object-cover brightness-50"
+            >
+            <flux:button
+                variant="filled"
+                icon="play"
+                class="pointer-events-none !absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 !rounded-full !bg-white/50 !text-white opacity-0 transition-all group-hover:border-2 group-hover:border-white group-hover:opacity-100"
+            />
+            <div
+                class="pointer-events-none absolute bottom-0 w-full bg-white/75 p-2 dark:bg-zinc-900/50">
+                <flux:heading size="xl" class="line-clamp-1 group-hover:underline text-center">
+                    Klik untuk melihat episode {{ $anime['data']['episodeList'][0]['title'] }}
+                </flux:heading>
+            </div>
+        </a>
 
         <flux:separator />
 
@@ -46,7 +64,6 @@
                         icon="play-circle"
                         class="min-w-[100px]"
                         href="{{ route('anime.episode.show', ['anime' => $animeId, 'episode' => $episode['episodeId']]) }}"
-                        target="_blank"
                     >
                         {{ $episode['title'] }}
                     </flux:button>
