@@ -126,7 +126,7 @@
                 position="top"
                 align="end"
             >
-                <flux:profile name="{{ str()->limit(auth()->user()->name, 10) }}" />
+                <flux:profile initials="{{ auth()->user()->initials }}" />
                 <flux:menu>
                     <flux:menu.item
                         icon="user"
