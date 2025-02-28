@@ -10,7 +10,7 @@
 
     <flux:input
         icon="magnifying-glass"
-        placeholder="Search orders"
+        placeholder="Judul anime"
         wire:model.live.debounce.500ms="search"
     >
         <x-slot name="iconTrailing">
