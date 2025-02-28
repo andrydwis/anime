@@ -14,7 +14,10 @@
         wire:model.live.debounce.500ms="search"
     >
         <x-slot name="iconTrailing">
-            <flux:icon.loading wire:loading />
+            <flux:icon.loading
+                wire:loading
+                wire:target="search"
+            />
         </x-slot>
     </flux:input>
 
