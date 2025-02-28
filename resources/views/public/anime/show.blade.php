@@ -1,13 +1,13 @@
 <x-layouts.app>
     <div class="flex flex-col gap-8">
-        <flux:breadcrumbs>
+        <flux:breadcrumbs class="flex-wrap">
             <flux:breadcrumbs.item href="{{ route('home') }}">
                 Beranda
             </flux:breadcrumbs.item>
             <flux:breadcrumbs.item href="{{ route('anime.index') }}">
                 Anime
             </flux:breadcrumbs.item>
-            <flux:breadcrumbs.item>
+            <flux:breadcrumbs.item class="!line-clamp-1">
                 {{ $anime['data']['title'] }}
             </flux:breadcrumbs.item>
         </flux:breadcrumbs>
@@ -28,8 +28,9 @@
             />
             <div
                 class="pointer-events-none absolute bottom-0 w-full bg-white/75 p-2 dark:bg-zinc-900/50">
-                <flux:heading size="xl" class="line-clamp-1 group-hover:underline text-center">
-                    Klik untuk melihat episode {{ $anime['data']['episodeList'][0]['title'] }}
+                <flux:heading class="line-clamp-1 text-center group-hover:underline">
+                    Klik untuk melihat episode
+                    {{ $anime['data']['episodeList'][0]['title'] }}
                 </flux:heading>
             </div>
         </a>
@@ -52,7 +53,7 @@
                     </flux:subheading>
                 </div>
             </div>
-            <div class="flex flex-row flex-wrap items-center gap-2">
+            <div class="grid grid-cols-3 gap-2 lg:grid-cols-6">
                 @php
                     $sortedEpisodes = collect($anime['data']['episodeList'])->sortBy(
                         'title',
@@ -163,6 +164,5 @@
                 </div>
             </div>
         </x-cards.app>
-
     </div>
 </x-layouts.app>

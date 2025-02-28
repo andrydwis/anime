@@ -1,6 +1,6 @@
 <x-layouts.app>
     <div class="flex flex-col gap-8">
-        <flux:breadcrumbs>
+        <flux:breadcrumbs class="flex-wrap">
             <flux:breadcrumbs.item href="{{ route('home') }}">
                 Beranda
             </flux:breadcrumbs.item>
@@ -25,12 +25,43 @@
         </div>
 
         <div class="flex flex-row items-center justify-between">
-            <div></div>
+            <flux:dropdown
+                position="bottom"
+                align="start"
+            >
+                <flux:button icon="server-stack">Ganti Server</flux:button>
+
+                <flux:menu>
+                    <flux:menu.submenu
+                        heading="Pilih Kualitas"
+                        position="bottom"
+                    >
+                        @foreach ($episode['data']['server']['qualities'] as $qualities)
+                            <flux:menu.submenu heading="{{ $qualities['title'] }}">
+                                @forelse ($qualities['serverList'] as $server)
+                                    <flux:menu.item
+                                        href="{{ route('anime.episode.show', ['anime' => $animeId, 'episode' => $episodeId, 'server' => $server['serverId']]) }}"
+                                    >
+                                        {{ $server['title'] }}
+                                    </flux:menu.item>
+                                @empty
+
+                                    <flux:menu.item disabled>
+                                        Tidak tersedia
+                                    </flux:menu.item>
+                                @endforelse
+                            </flux:menu.submenu>
+                        @endforeach
+                    </flux:menu.submenu>
+                </flux:menu>
+            </flux:dropdown>
+
             <flux:dropdown
                 position="bottom"
                 align="end"
             >
-                <flux:button icon="arrow-down-tray">Download</flux:button>
+                <flux:button icon="arrow-down-tray">Download
+                </flux:button>
 
                 <flux:menu>
                     <flux:menu.submenu
@@ -187,6 +218,5 @@
                 </div>
             </div>
         </x-cards.app>
-
     </div>
 </x-layouts.app>
