@@ -104,12 +104,23 @@
                 </flux:menu.item>
             </flux:menu>
         </flux:dropdown>
-        <flux:button
-            variant="ghost"
-            icon="magnifying-glass"
-            href="/search"
-        />
+
+        <flux:modal.trigger name="search">
+            <flux:button
+                variant="ghost"
+                icon="magnifying-glass"
+            />
+        </flux:modal.trigger>
+
+        <flux:modal
+            name="search"
+            class="w-full"
+        >
+            <livewire:seach-modal />
+        </flux:modal>
+
         <flux:separator vertical />
+
         @auth
             <flux:dropdown
                 position="top"

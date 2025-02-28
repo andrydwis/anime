@@ -1,9 +1,10 @@
 <x-layouts.app>
     <div class="flex flex-col gap-8">
         <flux:breadcrumbs class="flex-wrap">
-            <flux:breadcrumbs.item href="{{ route('home') }}">
-                Beranda
-            </flux:breadcrumbs.item>
+            <flux:breadcrumbs.item
+                icon="home"
+                href="{{ route('home') }}"
+            />
             <flux:breadcrumbs.item href="{{ route('anime.index') }}">
                 Anime
             </flux:breadcrumbs.item>
@@ -63,7 +64,7 @@
                     <flux:button
                         variant="filled"
                         icon="play-circle"
-                        class="min-w-[100px]"
+                        class="w-full"
                         href="{{ route('anime.episode.show', ['anime' => $animeId, 'episode' => $episode['episodeId']]) }}"
                     >
                         {{ $episode['title'] }}

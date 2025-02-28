@@ -7,15 +7,17 @@
             alt="cover"
             class="aspect-video object-cover transition-all group-hover:scale-110 group-hover:brightness-50"
         >
-        <flux:badge
-            variant="solid"
-            size="sm"
-            color="emerald"
-            icon="play-circle"
-            class="pointer-events-none absolute right-2 top-2"
-        >
-            Eps {{ $anime['episodes'] }}
-        </flux:badge>
+        @if (isset($anime['episodes']))
+            <flux:badge
+                variant="solid"
+                size="sm"
+                color="emerald"
+                icon="play-circle"
+                class="pointer-events-none absolute right-2 top-2"
+            >
+                Eps {{ $anime['episodes'] }}
+            </flux:badge>
+        @endif
         <flux:button
             variant="filled"
             icon="play"

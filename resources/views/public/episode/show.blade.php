@@ -1,9 +1,10 @@
 <x-layouts.app>
     <div class="flex flex-col gap-8">
         <flux:breadcrumbs class="flex-wrap">
-            <flux:breadcrumbs.item href="{{ route('home') }}">
-                Beranda
-            </flux:breadcrumbs.item>
+            <flux:breadcrumbs.item
+                icon="home"
+                href="{{ route('home') }}"
+            />
             <flux:breadcrumbs.item href="{{ route('anime.index') }}">
                 Anime
             </flux:breadcrumbs.item>
@@ -107,7 +108,7 @@
                     </flux:subheading>
                 </div>
             </div>
-            <div class="flex flex-row flex-wrap items-center gap-2">
+            <div class="grid grid-cols-3 gap-2 lg:grid-cols-6">
                 @php
                     $sortedEpisodes = collect($anime['data']['episodeList'])->sortBy(
                         'title',
@@ -115,9 +116,9 @@
                 @endphp
                 @foreach ($sortedEpisodes as $episode)
                     <flux:button
-                        :variant="$episode['episodeId'] === $episodeId ? 'primary' : 'filled'"
+                        variant="filled"
                         icon="play-circle"
-                        class="min-w-[100px]"
+                        class="w-full"
                         href="{{ route('anime.episode.show', ['anime' => $animeId, 'episode' => $episode['episodeId']]) }}"
                     >
                         {{ $episode['title'] }}
