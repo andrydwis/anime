@@ -23,7 +23,12 @@ class SocialiteController extends Controller
         ], [
             'name' => $socialiteUser->name,
             'email' => $socialiteUser->email,
+            'last_login_at' => now(),
         ]);
+
+        if ($user->getRoleNames()->isEmpty()) {
+            $user->assignRole('user');
+        }
 
         Auth::login($user);
 
