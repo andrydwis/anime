@@ -25,7 +25,7 @@
                     Lihat Semua
                 </flux:button>
             </div>
-            <div class="grid gap-2 md:grid-cols-2 lg:grid-cols-4">
+            <div class="grid gap-2 grid-cols-2 lg:grid-cols-4">
                 @foreach ($home['data']['recent']['animeList'] as $anime)
                     <x-cards.anime :anime="$anime" />
                 @endforeach
@@ -54,7 +54,7 @@
                     Lihat Semua
                 </flux:button>
             </div>
-            <div class="grid gap-2 md:grid-cols-2 lg:grid-cols-4">
+            <div class="grid gap-2 grid-cols-2 lg:grid-cols-4">
                 <x-cards.event />
             </div>
         </div>
@@ -81,7 +81,7 @@
                     Lihat Semua
                 </flux:button>
             </div>
-            <div class="grid gap-2 md:grid-cols-2 lg:grid-cols-4">
+            <div class="grid gap-2 grid-cols-2 lg:grid-cols-4">
                 <x-cards.news />
             </div>
         </div>
