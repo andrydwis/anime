@@ -25,9 +25,40 @@
             </div>
 
             <div class="flex flex-row flex-wrap items-center gap-2">
+                @php
+                    $colors = [
+                        'zinc',
+                        'red',
+                        'orange',
+                        'amber',
+                        'yellow',
+                        'lime',
+                        'green',
+                        'emerald',
+                        'teal',
+                        'cyan',
+                        'sky',
+                        'blue',
+                        'indigo',
+                        'violet',
+                        'purple',
+                        'fuchsia',
+                        'pink',
+                        'rose',
+                    ];
+                @endphp
+
                 @foreach ($anime['data']['genreList'] as $genre)
-                    <a href="{{ $genre['samehadakuUrl'] }}">
-                        <flux:badge size="small">
+                    @php
+                        $randomColor = $colors[array_rand($colors)];
+                    @endphp
+                    <a
+                        href="{{ route('anime.genre.show', ['genre' => $genre['genreId']]) }}">
+                        <flux:badge
+                            size="sm"
+                            color="{{ $randomColor }}"
+                            href="{{ $genre['genreId'] }}"
+                        >
                             {{ $genre['title'] }}
                         </flux:badge>
                     </a>
@@ -36,43 +67,42 @@
 
             <div class="flex flex-row flex-wrap items-center gap-2">
                 <flux:badge
-                    size="small"
+                    size="sm"
                     color="emerald"
                     icon="calendar-date-range"
                 >
                     {{ $anime['data']['status'] }}
                 </flux:badge>
                 <flux:badge
-                    size="small"
+                    size="sm"
                     icon="numbered-list"
                 >
                     {{ $anime['data']['episodes'] }} Episode
                 </flux:badge>
                 <flux:badge
-                    size="small"
+                    size="sm"
                     icon="clock"
                 >
                     {{ $anime['data']['duration'] }}
                 </flux:badge>
             </div>
             <div class="flex flex-row flex-wrap items-center gap-2">
-
                 <flux:badge
-                    size="small"
+                    size="sm"
                     color="amber"
                     icon="star"
                 >
                     {{ $anime['data']['score']['value'] }}/10
                 </flux:badge>
                 <flux:badge
-                    size="small"
+                    size="sm"
                     color="cyan"
                     icon="cloud"
                 >
                     {{ $anime['data']['season'] }}
                 </flux:badge>
                 <flux:badge
-                    size="small"
+                    size="sm"
                     color="blue"
                     icon="home-modern"
                 >

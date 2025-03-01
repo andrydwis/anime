@@ -1,9 +1,23 @@
 <footer>
     <x-cards.app class="mt-auto">
-        <div class="flex flex-col gap-4 lg:w-1/4">
-            <flux:heading size="xl">
-                🇯🇵 {{ config('app.name') }}
-            </flux:heading>
+        <div class="flex flex-col gap-2 lg:w-1/4">
+            <div class="flex flex-row items-center gap-2">
+                <flux:button
+                    variant="filled"
+                    icon="github"
+                    href="https://github.com/andrydwis/anime"
+                />
+                <flux:button
+                    variant="filled"
+                    icon="envelope"
+                    href="mailto:andry.dwi.s@gmail.com"
+                />
+                <flux:button
+                    variant="filled"
+                    icon="linkedin"
+                    href="https://www.linkedin.com/in/andry-dwi-suharmanto-09a964127/"
+                />
+            </div>
             <flux:subheading>
                 Weaboo.my.id adalah tempat terbaik untuk nonton anime gratis, bergabung
                 dengan

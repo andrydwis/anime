@@ -19,7 +19,7 @@
     <flux:navbar class="max-lg:hidden">
         <flux:navbar.item
             icon="home"
-            href="/"
+            href="{{ route('home') }}"
         >
             Beranda
         </flux:navbar.item>
