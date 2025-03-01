@@ -41,11 +41,11 @@
                         Riwayat Menonton
                     </flux:heading>
                     <div class="flex flex-col gap-2">
-                        @foreach ($histories as $date => $animes)
+                        @forelse ($histories as $date => $animes)
                             <flux:subheading
                                 class="flex flex-row items-center gap-2 !font-semibold"
                             >
-                                <flux:icon.calendar-date-range variant="solid" />
+                                <flux:icon.calendar-date-range variant="solid" size="sm" />
                                 <span>{{ $date }}</span>
                             </flux:subheading>
                             <div class="grid grid-cols-2 gap-2 lg:grid-cols-4">
@@ -71,7 +71,20 @@
                                     <x-cards.anime :anime="$anime" />
                                 @endforeach
                             </div>
-                        @endforeach
+                        @empty
+                            <x-cards.app>
+                                <flux:heading>
+                                    Belum ada riwayat anime yang pernah kamu tonton
+                                </flux:heading>
+                                <flux:subheading>
+                                    Kamu belum pernah menonton anime apapun, coba cari
+                                    anime yang kamu sukai
+                                    <flux:link href="{{ route('anime.recent.index') }}">
+                                        disini
+                                    </flux:link>
+                                </flux:subheading>
+                            </x-cards.app>
+                        @endforelse
                     </div>
                 </div>
             </x-cards.app>

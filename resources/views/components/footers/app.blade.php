@@ -14,6 +14,10 @@
                     icon="linkedin"
                     href="https://www.linkedin.com/in/andry-dwi-suharmanto-09a964127/"
                 />
+                <flux:button
+                    icon="coffee"
+                    href="https://saweria.co/andrydwis"
+                />
             </div>
             <flux:subheading>
                 Weaboo.my.id adalah tempat terbaik untuk nonton anime gratis, bergabung
