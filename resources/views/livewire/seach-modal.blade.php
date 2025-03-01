@@ -21,7 +21,7 @@
         </x-slot>
     </flux:input>
 
-    <div class="grid gap-4 lg:grid-cols-2">
+    <div class="grid gap-2 grid-cols-2">
         @forelse ($animes as $anime)
             <x-cards.anime :anime="$anime" />
         @empty
