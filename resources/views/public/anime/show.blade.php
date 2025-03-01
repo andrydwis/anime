@@ -23,7 +23,6 @@
                 class="aspect-video h-full w-full object-cover brightness-50"
             >
             <flux:button
-                variant="filled"
                 icon="play"
                 class="pointer-events-none !absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 !rounded-full !bg-white/50 !text-white opacity-0 transition-all group-hover:border-2 group-hover:border-white group-hover:opacity-100"
             />
@@ -39,6 +38,7 @@
         <x-animes.episode
             :anime="$anime"
             :animeId="$animeId"
+            :watchedEpisodes="$watchedEpisodes"
         />
 
         <x-animes.detail :anime="$anime" />

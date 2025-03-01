@@ -97,7 +97,6 @@
                         <div class="grid grid-cols-3 gap-2 lg:grid-cols-6">
                             @foreach ($animes['data']['list'] as $index => $list)
                                 <flux:button
-                                    varint="filled"
                                     x-on:click="
                                             if (activeIndex === {{ $index }}) {
                                                 activeIndex = null; 
@@ -112,7 +111,7 @@
                             @endforeach
                         </div>
 
-                        <flux:separator x-cloak x-show="activeIndex !== null"/>
+                        <flux:separator />
 
                         @foreach ($animes['data']['list'] as $index => $list)
                             <ol

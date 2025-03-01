@@ -13,7 +13,6 @@
             🇯🇵
         </flux:brand>
         <flux:sidebar.toggle
-            variant="filled"
             class="lg:hidden"
             icon="x-mark"
         />

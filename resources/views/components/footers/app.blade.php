@@ -3,17 +3,14 @@
         <div class="flex flex-col gap-2 lg:w-1/4">
             <div class="flex flex-row items-center gap-2">
                 <flux:button
-                    variant="filled"
                     icon="github"
                     href="https://github.com/andrydwis/anime"
                 />
                 <flux:button
-                    variant="filled"
                     icon="envelope"
                     href="mailto:andry.dwi.s@gmail.com"
                 />
                 <flux:button
-                    variant="filled"
                     icon="linkedin"
                     href="https://www.linkedin.com/in/andry-dwi-suharmanto-09a964127/"
                 />

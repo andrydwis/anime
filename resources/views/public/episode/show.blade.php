@@ -31,7 +31,7 @@
                 position="bottom"
                 align="start"
             >
-                <flux:button variant="filled" icon="server-stack">Ganti Server</flux:button>
+                <flux:button icon="server-stack">Ganti Server</flux:button>
 
                 <flux:menu>
                     <flux:menu.submenu
@@ -62,7 +62,7 @@
                 position="bottom"
                 align="end"
             >
-                <flux:button variant="filled" icon="arrow-down-tray">Download
+                <flux:button icon="arrow-down-tray">Download
                 </flux:button>
 
                 <flux:menu>

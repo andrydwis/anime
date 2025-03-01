@@ -42,7 +42,6 @@
                         />
                     </div>
                     <flux:button
-                        variant="filled"
                         icon="chevron-left"
                         :disabled="!$animes['pagination']['hasPrevPage']"
                         :href="$animes['pagination']['hasPrevPage'] ? route('anime.recent.index',
@@ -53,7 +52,6 @@
                         Sebelumnya
                     </flux:button>
                     <flux:button
-                        variant="filled"
                         icon-trailing="chevron-right"
                         :disabled="!$animes['pagination']['hasNextPage']"
                         :href="$animes['pagination']['hasNextPage'] ? route('anime.recent.index',

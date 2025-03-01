@@ -18,7 +18,6 @@
                     </flux:subheading>
                 </div>
                 <flux:button
-                    variant="filled"
                     icon="eye"
                     class="!hidden lg:!flex"
                     href="{{ route('anime.recent.index') }}"
@@ -49,7 +48,6 @@
                     </flux:subheading>
                 </div>
                 <flux:button
-                    variant="filled"
                     icon="eye"
                     class="!hidden lg:!flex"
                 >
@@ -77,7 +75,6 @@
                     </flux:subheading>
                 </div>
                 <flux:button
-                    variant="filled"
                     icon="eye"
                     class="!hidden lg:!flex"
                 >

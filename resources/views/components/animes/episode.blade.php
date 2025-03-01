@@ -26,9 +26,9 @@
                     in_array($episode['episodeId'], $watchedEpisodes) &&
                     $episodeId != $episode['episodeId']
                 ) {
-                    $variant = 'subtle';
-                } else {
                     $variant = 'filled';
+                } else {
+                    $variant = null;
                 }
             @endphp
             <flux:button

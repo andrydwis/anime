@@ -3,7 +3,6 @@
     class="sticky top-0 bg-white dark:bg-zinc-900/50 dark:backdrop-blur"
 >
     <flux:sidebar.toggle
-        variant="filled"
         icon="bars-2"
         class="lg:hidden"
     />
@@ -54,7 +53,6 @@
             align="center"
         >
             <flux:button
-                variant="filled"
                 square
                 class="group"
                 aria-label="Preferred color scheme"
@@ -106,10 +104,7 @@
         </flux:dropdown>
 
         <flux:modal.trigger name="search">
-            <flux:button
-                variant="filled"
-                icon="magnifying-glass"
-            />
+            <flux:button icon="magnifying-glass" />
         </flux:modal.trigger>
 
         <flux:modal
@@ -153,7 +148,6 @@
             </flux:dropdown>
         @else
             <flux:button
-                variant="filled"
                 icon="arrow-right-end-on-rectangle"
                 href="{{ route('login') }}"
             >

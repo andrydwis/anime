@@ -23,7 +23,7 @@
             method="post"
         >
             @csrf
-            <div class="flex flex-col gap-2">
+            <div class="flex flex-col gap-4">
                 <flux:input
                     label="Nama"
                     type="text"
