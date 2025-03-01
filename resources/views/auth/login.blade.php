@@ -1,4 +1,4 @@
-<x-layouts.auth>
+<x-layouts.auth title="Login">
     <div class="mx-auto flex w-80 max-w-80 flex-col gap-4">
         <flux:brand
             href="{{ route('home') }}"

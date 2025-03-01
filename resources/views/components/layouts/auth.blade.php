@@ -1,3 +1,4 @@
+@props(['title' => null, 'description' => null, 'keywords' => null, 'image' => null])
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -15,22 +16,46 @@
         >
 
         <!-- Primary Meta Tags -->
-        <title>
-            Weaboo.my.id - Nonton Anime Gratis, Komunitas Wibu, dan Berita Terbaru
-            Seputar Anime
-        </title>
-        <meta
-            name="title"
-            content="Weaboo.my.id - Nonton Anime Gratis, Komunitas Wibu, dan Berita Terbaru Seputar Anime"
-        />
-        <meta
-            name="description"
-            content="Weaboo.my.id adalah tempat terbaik untuk nonton anime gratis, bergabung dengan komunitas wibu, dan mendapatkan informasi terkini seputar dunia anime. Temukan anime favoritmu di sini!"
-        />
-        <meta
-            name="keywords"
-            content="nonton anime, komunitas wibu, anime gratis, anime terbaru, berita anime, weaboo, anime indonesia, streaming anime, forum wibu, anime terbaik"
-        >
+        @if (!$title)
+            <title>
+                Weaboo.my.id - Nonton Anime Gratis, Komunitas Wibu, dan Berita Terbaru
+                Seputar Anime
+            </title>
+            <meta
+                name="title"
+                content="Weaboo.my.id - Nonton Anime Gratis, Komunitas Wibu, dan Berita Terbaru Seputar Anime"
+            />
+        @else
+            <title>
+                Weaboo.my.id - {{ $title }}
+            </title>
+            <meta
+                name="title"
+                content="Weaboo.my.id -{{ $title }}"
+            />
+        @endif
+        @if (!$description)
+            <meta
+                name="description"
+                content="Weaboo.my.id adalah tempat terbaik untuk nonton anime gratis, bergabung dengan komunitas wibu, dan mendapatkan informasi terkini seputar dunia anime. Temukan anime favoritmu di sini!"
+            />
+        @else
+            <meta
+                name="description"
+                content="{{ $description }}"
+            />
+        @endif
+        @if (!$keywords)
+            <meta
+                name="keywords"
+                content="nonton anime, komunitas wibu, anime gratis, anime terbaru, berita anime, weaboo, anime indonesia, streaming anime, forum wibu, anime terbaik"
+            >
+        @else
+            <meta
+                name="keywords"
+                content="{{ $keywords }}"
+            >
+        @endif
         <meta
             name="robots"
             content="index, follow"
@@ -45,18 +70,39 @@
             property="og:url"
             content="{{ config('app.url') }}"
         />
-        <meta
-            property="og:title"
-            content="Weaboo.my.id - Nonton Anime Gratis, Komunitas Wibu, dan Berita Terbaru Seputar Anime"
-        />
-        <meta
-            property="og:description"
-            content="Weaboo.my.id adalah tempat terbaik untuk nonton anime gratis, bergabung dengan komunitas wibu, dan mendapatkan informasi terkini seputar dunia anime. Temukan anime favoritmu di sini!"
-        />
-        <meta
-            property="og:image"
-            content="{{ asset('images/seo/cover.jpg')}}"
-        />
+        @if (!$title)
+            <meta
+                property="og:title"
+                content="Weaboo.my.id - Nonton Anime Gratis, Komunitas Wibu, dan Berita Terbaru Seputar Anime"
+            />
+        @else
+            <meta
+                property="og:title"
+                content="Weaboo.my.id - {{ $title }}"
+            />
+        @endif
+        @if (!$description)
+            <meta
+                property="og:description"
+                content="Weaboo.my.id adalah tempat terbaik untuk nonton anime gratis, bergabung dengan komunitas wibu, dan mendapatkan informasi terkini seputar dunia anime. Temukan anime favoritmu di sini!"
+            />
+        @else
+            <meta
+                property="og:description"
+                content="{{ $description }}"
+            />
+        @endif
+        @if (!$image)
+            <meta
+                property="og:image"
+                content="{{ asset('images/seo/cover.jpg') }}"
+            />
+        @else
+            <meta
+                property="og:image"
+                content="{{ $image }}"
+            />
+        @endif
 
         <!-- Twitter -->
         <meta
@@ -67,18 +113,39 @@
             property="twitter:url"
             content="{{ config('app.url') }}"
         />
-        <meta
-            property="twitter:title"
-            content="Weaboo.my.id - Nonton Anime Gratis, Komunitas Wibu, dan Berita Terbaru Seputar Anime"
-        />
-        <meta
-            property="twitter:description"
-            content="Weaboo.my.id adalah tempat terbaik untuk nonton anime gratis, bergabung dengan komunitas wibu, dan mendapatkan informasi terkini seputar dunia anime. Temukan anime favoritmu di sini!"
-        />
-        <meta
-            property="twitter:image"
-            content="{{ asset('images/seo/cover.jpg')}}"
-        />
+        @if (!$title)
+            <meta
+                property="twitter:title"
+                content="Weaboo.my.id - Nonton Anime Gratis, Komunitas Wibu, dan Berita Terbaru Seputar Anime"
+            />
+        @else
+            <meta
+                property="twitter:title"
+                content="Weaboo.my.id - {{ $title }}"
+            />
+        @endif
+        @if (!$description)
+            <meta
+                property="twitter:description"
+                content="Weaboo.my.id adalah tempat terbaik untuk nonton anime gratis, bergabung dengan komunitas wibu, dan mendapatkan informasi terkini seputar dunia anime. Temukan anime favoritmu di sini!"
+            />
+        @else
+            <meta
+                property="twitter:description"
+                content="{{ $description }}"
+            />
+        @endif
+        @if (!$image)
+            <meta
+                property="twitter:image"
+                content="{{ asset('images/seo/cover.jpg') }}"
+            />
+        @else
+            <meta
+                property="twitter:image"
+                content="{{ $image }}"
+            />
+        @endif
 
         {{-- Font --}}
         <link
