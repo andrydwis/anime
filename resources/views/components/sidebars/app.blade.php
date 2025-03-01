@@ -23,7 +23,7 @@
         <flux:navlist.item
             icon="home"
             variant="solid"
-            href="/"
+            href="{{ route('home') }}"
         >
             Beranda
         </flux:navlist.item>
@@ -40,7 +40,7 @@
 
         <flux:navlist.item
             icon="list-bullet"
-            href="/anime/list"
+            href="{{ route('anime.index') }}"
         >
             Daftar Anime
         </flux:navlist.item>
@@ -52,7 +52,7 @@
         </flux:navlist.item>
         <flux:navlist.item
             icon="bookmark"
-            href="{{ route('anime.index') }}"
+            href="#todo"
         >
             Daftar Anime Saya
         </flux:navlist.item>

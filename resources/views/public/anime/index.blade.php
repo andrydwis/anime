@@ -28,44 +28,54 @@
             </div>
             @if ($genres['data'])
                 <x-cards.app>
-                    <div class="flex flex-row flex-wrap items-center gap-2">
-                        @php
-                            $colors = [
-                                'zinc',
-                                'red',
-                                'orange',
-                                'amber',
-                                'yellow',
-                                'lime',
-                                'green',
-                                'emerald',
-                                'teal',
-                                'cyan',
-                                'sky',
-                                'blue',
-                                'indigo',
-                                'violet',
-                                'purple',
-                                'fuchsia',
-                                'pink',
-                                'rose',
-                            ];
-                        @endphp
-
-                        @foreach ($genres['data']['genreList'] as $genre)
+                    <div class="flex flex-col gap-2">
+                        <flux:heading
+                            size="xl"
+                            level="h3"
+                            class="!font-bold"
+                        >
+                            Genre
+                        </flux:heading>
+                        <div class="flex flex-row flex-wrap items-center gap-2">
                             @php
-                                $randomColor = $colors[array_rand($colors)];
+                                $colors = [
+                                    'zinc',
+                                    'red',
+                                    'orange',
+                                    'amber',
+                                    'yellow',
+                                    'lime',
+                                    'green',
+                                    'emerald',
+                                    'teal',
+                                    'cyan',
+                                    'sky',
+                                    'blue',
+                                    'indigo',
+                                    'violet',
+                                    'purple',
+                                    'fuchsia',
+                                    'pink',
+                                    'rose',
+                                ];
                             @endphp
-                            <a href="{{ route('anime.genre.show', ['genre' => $genre['genreId']]) }}">
-                                <flux:badge
-                                    size="sm"
-                                    color="{{ $randomColor }}"
-                                    href="{{ $genre['genreId'] }}"
-                                >
-                                    {{ $genre['title'] }}
-                                </flux:badge>
-                            </a>
-                        @endforeach
+
+                            @foreach ($genres['data']['genreList'] as $genre)
+                                @php
+                                    $randomColor = $colors[array_rand($colors)];
+                                @endphp
+                                <a
+                                    href="{{ route('anime.genre.show', ['genre' => $genre['genreId']]) }}">
+                                    <flux:badge
+                                        size="sm"
+                                        color="{{ $randomColor }}"
+                                        href="{{ $genre['genreId'] }}"
+                                    >
+                                        {{ $genre['title'] }}
+                                    </flux:badge>
+                                </a>
+                            @endforeach
+                        </div>
                     </div>
                 </x-cards.app>
             @endif
