@@ -21,9 +21,20 @@
         </x-slot>
     </flux:input>
 
-    <div class="grid gap-2 grid-cols-2">
+    <div class="grid grid-cols-2 gap-2">
+        @for ($i = 0; $i < 8; $i++)
+            <x-cards.app
+                wire:loading
+                wire:target="search"
+                class="aspect-video animate-pulse"
+            />
+        @endfor
         @forelse ($animes as $anime)
-            <x-cards.anime :anime="$anime" />
+            <x-cards.anime
+                wire:loading.remove
+                wire:target="search"
+                :anime="$anime"
+            />
         @empty
             @if ($search)
                 <x-cards.app class="col-span-2">
