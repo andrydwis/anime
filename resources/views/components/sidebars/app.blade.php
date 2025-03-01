@@ -52,7 +52,7 @@
         </flux:navlist.item>
         <flux:navlist.item
             icon="bookmark"
-            href="/anime/ongoing"
+            href="{{ route('anime.index') }}"
         >
             Daftar Anime Saya
         </flux:navlist.item>

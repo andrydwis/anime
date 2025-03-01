@@ -9,7 +9,7 @@
                 Anime
             </flux:breadcrumbs.item>
             <flux:breadcrumbs.item>
-                Anime Terbaru
+                Anime Genre: {{ str()->title($genreId) }}
             </flux:breadcrumbs.item>
         </flux:breadcrumbs>
 
@@ -22,10 +22,10 @@
                         level="h1"
                         class="from-accent !m-0 !bg-gradient-to-br to-cyan-600 bg-clip-text !font-semibold !text-transparent"
                     >
-                        Anime Terbaru
+                        Anime Genre: {{ str()->title($genreId) }}
                     </flux:heading>
                     <flux:subheading level="h2">
-                        Update terbaru anime season ini
+                        Kumpulan anime dengan genre {{ str()->title($genreId) }}
                     </flux:subheading>
                 </div>
             </div>

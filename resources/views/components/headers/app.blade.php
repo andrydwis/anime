@@ -29,12 +29,12 @@
             badge="Baru!"
             badge-color="emerald"
         >
-            Wibunitas
+            Wibunity
         </flux:navbar.item>
         <flux:separator vertical />
         <flux:navbar.item
             icon="list-bullet"
-            href="/anime/list"
+            href="{{ route('anime.index') }}"
         >
             Daftar Anime
         </flux:navbar.item>
@@ -54,7 +54,7 @@
             align="center"
         >
             <flux:button
-                variant="subtle"
+                variant="filled"
                 square
                 class="group"
                 aria-label="Preferred color scheme"
@@ -83,7 +83,7 @@
                 />
             </flux:button>
 
-            <flux:menu class="">
+            <flux:menu>
                 <flux:menu.item
                     icon="sun"
                     x-on:click="$flux.appearance = 'light'"
@@ -107,7 +107,7 @@
 
         <flux:modal.trigger name="search">
             <flux:button
-                variant="ghost"
+                variant="filled"
                 icon="magnifying-glass"
             />
         </flux:modal.trigger>

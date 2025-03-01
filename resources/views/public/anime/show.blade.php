@@ -8,7 +8,7 @@
             <flux:breadcrumbs.item href="{{ route('anime.index') }}">
                 Anime
             </flux:breadcrumbs.item>
-            <flux:breadcrumbs.item class="!line-clamp-1">
+            <flux:breadcrumbs.item>
                 {{ $anime['data']['title'] }}
             </flux:breadcrumbs.item>
         </flux:breadcrumbs>
