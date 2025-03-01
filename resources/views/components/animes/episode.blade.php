@@ -21,22 +21,25 @@
         @foreach ($sortedEpisodes as $episode)
             @php
                 if ($episode['episodeId'] == $episodeId) {
+                    $status = 'playing';
                     $variant = 'primary';
                     $class = null;
                 } elseif (
                     in_array($episode['episodeId'], $watchedEpisodes) &&
                     $episodeId != $episode['episodeId']
                 ) {
+                    $status = 'watched';
                     $variant = 'primary';
-                    $class = "!opacity-50";
+                    $class = '!opacity-50';
                 } else {
+                    $status = 'available';
                     $variant = null;
                     $class = null;
                 }
             @endphp
             <flux:button
                 :variant="$variant"
-                icon="play-circle"
+                :icon="$status === 'watched' ? 'check-circle' : 'play-circle'"
                 class="w-full {{ $class ?? '' }}"
                 href="{{ route('anime.episode.show', ['anime' => $animeId, 'episode' => $episode['episodeId']]) }}"
             >
