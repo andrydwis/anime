@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Web\Public\Episode;
 
 use App\Http\Controllers\Controller;
+use App\Models\AnimeWatchHistory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
@@ -28,11 +30,32 @@ class EpisodeController extends Controller
             $episode['data']['defaultStreamingUrl'] = $server['data']['url'];
         }
 
+        if (Auth::check()) {
+            $user = Auth::user();
+
+            // Use updateOrCreate to check if the record exists and update it, or create a new one
+            $animeWatchHistory = AnimeWatchHistory::firstOrNew([
+                'user_id' => $user->id,
+                'anime_id' => $animeId,
+                'episode_id' => $episodeId,
+            ]);
+
+            // Save the record (if new) and touch it to update the `updated_at` timestamp
+            $animeWatchHistory->save();
+            $animeWatchHistory->touch();
+
+            // get all anime watch history
+            $watchedEpisodes = AnimeWatchHistory::where('user_id', $user->id)->where('anime_id', $animeId)->pluck('episode_id')->toArray();
+        } else {
+            $watchedEpisodes = [];
+        }
+
         $data = [
             'animeId' => $animeId,
             'anime' => $anime,
             'episodeId' => $episodeId,
             'episode' => $episode,
+            'watchedEpisodes' => $watchedEpisodes,
         ];
 
         return view('public.episode.show', $data);

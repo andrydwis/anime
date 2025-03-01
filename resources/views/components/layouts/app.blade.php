@@ -165,8 +165,8 @@
             <x-footers.app />
         </flux:main>
 
-        @stack('scripts')
         @fluxScripts
+        @stack('scripts')
     </body>
 
 </html>

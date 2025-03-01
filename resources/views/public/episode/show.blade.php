@@ -18,6 +18,7 @@
 
         <div class="aspect-video overflow-hidden rounded-lg">
             <iframe
+                id="player"
                 allowfullscreen
                 src="{{ $episode['data']['defaultStreamingUrl'] }}"
                 frameborder="0"
@@ -30,7 +31,7 @@
                 position="bottom"
                 align="start"
             >
-                <flux:button icon="server-stack">Ganti Server</flux:button>
+                <flux:button variant="filled" icon="server-stack">Ganti Server</flux:button>
 
                 <flux:menu>
                     <flux:menu.submenu
@@ -61,7 +62,7 @@
                 position="bottom"
                 align="end"
             >
-                <flux:button icon="arrow-down-tray">Download
+                <flux:button variant="filled" icon="arrow-down-tray">Download
                 </flux:button>
 
                 <flux:menu>
@@ -94,6 +95,7 @@
             :anime="$anime"
             :animeId="$animeId"
             :episodeId="$episodeId"
+            :watchedEpisodes="$watchedEpisodes"
         />
 
         <x-animes.detail :anime="$anime" />

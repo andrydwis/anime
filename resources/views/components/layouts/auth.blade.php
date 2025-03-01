@@ -170,8 +170,8 @@
             {{ $slot }}
         </flux:main>
 
-        @stack('scripts')
         @fluxScripts
+        @stack('scripts')
     </body>
 
 </html>

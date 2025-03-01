@@ -1,4 +1,4 @@
-@props(['anime', 'animeId', 'episodeId' => null])
+@props(['anime', 'animeId', 'episodeId' => null, 'watchedEpisodes' => []])
 <div class="flex flex-col gap-2">
     <div class="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
         <div class="flex flex-col">
@@ -19,8 +19,20 @@
             $sortedEpisodes = collect($anime['data']['episodeList'])->sortBy('title');
         @endphp
         @foreach ($sortedEpisodes as $episode)
+            @php
+                if ($episode['episodeId'] == $episodeId) {
+                    $variant = 'primary';
+                } elseif (
+                    in_array($episode['episodeId'], $watchedEpisodes) &&
+                    $episodeId != $episode['episodeId']
+                ) {
+                    $variant = 'subtle';
+                } else {
+                    $variant = 'filled';
+                }
+            @endphp
             <flux:button
-                :variant="$episode['episodeId'] == $episodeId ? 'primary' : 'filled'"
+                :variant="$variant"
                 icon="play-circle"
                 class="w-full"
                 href="{{ route('anime.episode.show', ['anime' => $animeId, 'episode' => $episode['episodeId']]) }}"
