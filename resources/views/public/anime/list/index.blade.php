@@ -25,7 +25,7 @@
                         Daftar Anime Saya
                     </flux:heading>
                     <flux:subheading level="h2">
-                        Semua anime yang pernah kamu tonton, favoritekan, dan watchlist
+                        Semua anime yang pernah kamu tonton, favorit, dan watchlist
                         yang kamu buat
                     </flux:subheading>
                 </div>
@@ -52,6 +52,7 @@
                                         $anime = $animeData->data['anime']['data'];
                                         $episodeId = $animeData->data['episodeId'];
                                         $anime['animeId'] = $animeData->data['animeId'];
+                                        $anime['episodeId'] = $episodeId;
                                         $episodeList = $anime['episodeList'];
 
                                         // Find the matching episode using a helper function
