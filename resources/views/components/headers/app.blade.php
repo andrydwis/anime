@@ -115,7 +115,7 @@
 
         <flux:modal
             name="search"
-            class="w-full h-full min-h-screen lg:h-3/4 !rounded-none lg:rounded-lg"
+            class="h-full min-h-svh w-full !rounded-none lg:h-3/4 lg:rounded-lg"
         >
             <livewire:seach-modal />
         </flux:modal>
