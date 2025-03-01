@@ -1,12 +1,12 @@
 @props(['anime'])
 <x-cards.app>
-    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+    <div class="grid gap-2 md:grid-cols-2 lg:grid-cols-4">
         <img
             src="{{ $anime['data']['poster'] }}"
             alt="cover"
             class="w-full rounded-lg"
         >
-        <div class="flex flex-col gap-4 lg:col-span-3">
+        <div class="flex flex-col gap-2 lg:col-span-3">
             <div>
                 <flux:heading
                     size="xl"

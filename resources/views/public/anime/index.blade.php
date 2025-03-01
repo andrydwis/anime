@@ -1,4 +1,4 @@
-<x-layouts.app>
+<x-layouts.app title="Daftar Anime">
     <div class="flex flex-col gap-8">
         <flux:breadcrumbs class="flex-wrap">
             <flux:breadcrumbs.item
@@ -26,6 +26,7 @@
                     </flux:subheading>
                 </div>
             </div>
+
             @if ($genres['data'])
                 <x-cards.app>
                     <div class="flex flex-col gap-2">
@@ -79,33 +80,52 @@
                     </div>
                 </x-cards.app>
             @endif
+
             @if ($animes['data'])
-                <div class="flex flex-col gap-4">
-                    @foreach ($animes['data']['list'] as $list)
-                        <x-cards.app>
-                            <div class="flex flex-col gap-2">
-                                <flux:heading
-                                    size="xl"
-                                    level="h3"
-                                    class="!font-bold"
+                <x-cards.app>
+                    <div
+                        class="flex flex-col gap-2"
+                        x-data="{ activeIndex: null }"
+                    >
+                        <div class="grid grid-cols-3 gap-2 lg:grid-cols-6">
+                            @foreach ($animes['data']['list'] as $index => $list)
+                                <flux:button
+                                    varint="filled"
+                                    x-on:click="
+                                        if (activeIndex === {{ $index }}) {
+                                            activeIndex = null; 
+                                        } else {
+                                            activeIndex = null; 
+                                            setTimeout(() => activeIndex = {{ $index }}, 300);
+                                        }
+                                    "
                                 >
                                     {{ $list['startWith'] }}
-                                </flux:heading>
-                                <ol class="list-inside list-decimal">
-                                    @foreach ($list['animeList'] as $anime)
-                                        <li>
-                                            <flux:link
-                                                href="{{ route('anime.show', ['anime' => $anime['animeId']]) }}"
-                                            >
-                                                {{ $anime['title'] }}
-                                            </flux:link>
-                                        </li>
-                                    @endforeach
-                                </ol>
-                            </div>
-                        </x-cards.app>
-                    @endforeach
-                </div>
+                                </flux:button>
+                            @endforeach
+                        </div>
+
+                        @foreach ($animes['data']['list'] as $index => $list)
+                            <ol
+                                x-cloak
+                                x-collapse
+                                x-show="activeIndex === {{ $index }}"
+                                class="list-inside list-decimal"
+                            >
+                                @foreach ($list['animeList'] as $anime)
+                                    <li>
+                                        <flux:link
+                                            href="{{ route('anime.show', ['anime' => $anime['animeId']]) }}"
+                                        >
+                                            {{ $anime['title'] }}
+                                        </flux:link>
+                                    </li>
+                                @endforeach
+                            </ol>
+                        @endforeach
+                    </div>
+
+                </x-cards.app>
             @endif
         </div>
     </div>

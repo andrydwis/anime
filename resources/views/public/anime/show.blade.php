@@ -1,4 +1,4 @@
-<x-layouts.app>
+<x-layouts.app title="{{ $anime['data']['title'] }}">
     <div class="flex flex-col gap-8">
         <flux:breadcrumbs class="flex-wrap">
             <flux:breadcrumbs.item
