@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('anime_id');
             $table->string('episode_id');
+            $table->json('data');
             $table->timestamps();
             $table->softDeletes();
         });

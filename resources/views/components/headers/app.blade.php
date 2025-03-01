@@ -38,6 +38,12 @@
             Daftar Anime
         </flux:navbar.item>
         <flux:navbar.item
+            icon="bookmark"
+            href="{{ route('anime.index') }}"
+        >
+            Daftar Anime Saya
+        </flux:navbar.item>
+        <flux:navbar.item
             icon="calendar-date-range"
             href="{{ route('anime.recent.index') }}"
         >

@@ -35,6 +35,10 @@ class AnimeController extends Controller
             return Http::get(config('app.api_url').'/samehadaku/anime/'.$animeId)->json();
         });
 
+        if ($anime['statusCode'] != 200) {
+            abort($anime['statusCode']);
+        }
+
         if (Auth::check()) {
             $user = Auth::user();
 

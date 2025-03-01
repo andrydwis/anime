@@ -22,19 +22,22 @@
             @php
                 if ($episode['episodeId'] == $episodeId) {
                     $variant = 'primary';
+                    $class = null;
                 } elseif (
                     in_array($episode['episodeId'], $watchedEpisodes) &&
                     $episodeId != $episode['episodeId']
                 ) {
-                    $variant = 'filled';
+                    $variant = 'primary';
+                    $class = "!opacity-50";
                 } else {
                     $variant = null;
+                    $class = null;
                 }
             @endphp
             <flux:button
                 :variant="$variant"
                 icon="play-circle"
-                class="w-full"
+                class="w-full {{ $class ?? '' }}"
                 href="{{ route('anime.episode.show', ['anime' => $animeId, 'episode' => $episode['episodeId']]) }}"
             >
                 {{ $episode['title'] }}

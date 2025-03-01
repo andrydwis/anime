@@ -17,15 +17,27 @@ class EpisodeController extends Controller
             return Http::get(config('app.api_url').'/samehadaku/anime/'.$animeId)->json();
         });
 
+        if ($anime['statusCode'] != 200) {
+            abort($anime['statusCode']);
+        }
+
         $episode = Cache::remember('episode-'.$episodeId, now()->addMinutes(5), function () use ($episodeId) {
             return Http::get(config('app.api_url').'/samehadaku/episode/'.$episodeId)->json();
         });
+
+        if ($episode['statusCode'] != 200) {
+            abort($episode['statusCode']);
+        }
 
         if ($request->has('server')) {
             $server = $request->get('server');
             $server = Cache::remember('server-'.$server, now()->addMinutes(5), function () use ($server) {
                 return Http::get(config('app.api_url').'/samehadaku/server/'.$server)->json();
             });
+
+            if ($server['statusCode'] != 200) {
+                abort($server['statusCode']);
+            }
 
             $episode['data']['defaultStreamingUrl'] = $server['data']['url'];
         }
@@ -34,14 +46,21 @@ class EpisodeController extends Controller
             $user = Auth::user();
 
             // Use updateOrCreate to check if the record exists and update it, or create a new one
-            $animeWatchHistory = AnimeWatchHistory::firstOrNew([
-                'user_id' => $user->id,
-                'anime_id' => $animeId,
-                'episode_id' => $episodeId,
-            ]);
-
-            // Save the record (if new) and touch it to update the `updated_at` timestamp
-            $animeWatchHistory->save();
+            $animeWatchHistory = AnimeWatchHistory::updateOrCreate(
+                [
+                    'user_id' => $user->id,
+                    'anime_id' => $animeId,
+                    'episode_id' => $episodeId,
+                ],
+                [
+                    'data' => [
+                        'animeId' => $animeId,
+                        'anime' => $anime,
+                        'episodeId' => $episodeId,
+                        'episode' => $episode,
+                    ],
+                ]
+            );
             $animeWatchHistory->touch();
 
             // get all anime watch history

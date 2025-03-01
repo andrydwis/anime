@@ -12,12 +12,6 @@
         </flux:badge>
     </flux:button>
     <flux:button
-        icon="bookmark"
-        href="/anime/bookmark"
-    >
-        Daftar Anime Saya
-    </flux:button>
-    <flux:button
         icon="calendar-date-range"
         href="/events"
     >
@@ -32,7 +26,6 @@
     <flux:button
         icon="sparkles"
         href="/gacha"
-        class="lg:col-span-4"
     >
         Gachamon
         <flux:badge

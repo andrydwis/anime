@@ -44,16 +44,16 @@
             Daftar Anime
         </flux:navlist.item>
         <flux:navlist.item
-            icon="calendar-date-range"
-            href="{{ route('anime.recent.index') }}"
-        >
-            Anime Terbaru
-        </flux:navlist.item>
-        <flux:navlist.item
             icon="bookmark"
             href="#todo"
         >
             Daftar Anime Saya
+        </flux:navlist.item>
+        <flux:navlist.item
+            icon="calendar-date-range"
+            href="{{ route('anime.recent.index') }}"
+        >
+            Anime Terbaru
         </flux:navlist.item>
 
         <flux:separator class="my-2" />

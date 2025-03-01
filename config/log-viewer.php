@@ -35,7 +35,7 @@ return [
     |
     */
 
-    'route_path' => 'log-viewer',
+    'route_path' => 'logs',
 
     /*
     |--------------------------------------------------------------------------
@@ -73,6 +73,7 @@ return [
 
     'middleware' => [
         'web',
+        'role:admin',
         \Opcodes\LogViewer\Http\Middleware\AuthorizeLogViewer::class,
     ],
 

@@ -14,7 +14,15 @@ class AnimeWatchHistory extends Model
         'user_id',
         'anime_id',
         'episode_id',
+        'data'
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'data' => 'array',
+        ];
+    }
 
     public function user(): BelongsTo
     {
