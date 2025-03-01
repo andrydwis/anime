@@ -100,4 +100,19 @@
 
         <x-animes.detail :anime="$anime" />
     </div>
+
+    @push('scripts')
+        <script>
+            async function requestWakeLock() {
+                try {
+                    const wakeLock = await navigator.wakeLock.request("screen");
+                    console.log("Screen wake lock acquired.");
+                } catch (err) {
+                    console.log(`${err.name}, ${err.message}`);
+                }
+            }
+
+            requestWakeLock();
+        </script>
+    @endpush
 </x-layouts.app>

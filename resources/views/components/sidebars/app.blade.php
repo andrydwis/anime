@@ -45,7 +45,7 @@
         </flux:navlist.item>
         <flux:navlist.item
             icon="bookmark"
-            href="#todo"
+            href="{{ route('anime.list.index') }}"
         >
             Daftar Anime Saya
         </flux:navlist.item>

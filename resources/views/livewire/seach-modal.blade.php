@@ -26,8 +26,14 @@
             <x-cards.app
                 wire:loading
                 wire:target="search"
-                class="aspect-video animate-pulse"
-            />
+                class="aspect-video animate-pulse !bg-zinc-200 dark:!bg-zinc-600"
+            >
+                <div class="flex flex-col gap-2">
+                    <div class="w-full rounded-lg bg-white p-4 dark:bg-zinc-400"></div>
+                    <div class="w-full rounded-lg bg-white p-4 dark:bg-zinc-400"></div>
+                    <div class="w-3/4 rounded-lg bg-white p-4 dark:bg-zinc-400"></div>
+                </div>
+            </x-cards.app>
         @endfor
         @forelse ($animes as $anime)
             <x-cards.anime

@@ -39,7 +39,7 @@
         </flux:navbar.item>
         <flux:navbar.item
             icon="bookmark"
-            href="{{ route('anime.index') }}"
+            href="{{ route('anime.list.index') }}"
         >
             Daftar Anime Saya
         </flux:navbar.item>
