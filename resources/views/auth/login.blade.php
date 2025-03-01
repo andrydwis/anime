@@ -1,22 +1,20 @@
 <x-layouts.auth title="Login">
-    <div class="mx-auto flex w-80 max-w-80 flex-col gap-4">
+    <div class="mx-auto flex w-80 max-w-80 flex-col gap-8">
         <flux:brand
             href="{{ route('home') }}"
             name="{{ config('app.name') }}"
-            class="!mx-auto mb-8"
+            class="!mx-auto"
         >
             🇯🇵
         </flux:brand>
 
-        <div class="space-y-4">
-            <flux:button
-                icon="google"
-                class="w-full"
-                href="{{ route('socialite.redirect', ['driver' => 'google']) }}"
-            >
-                Login dengan Google
-            </flux:button>
-        </div>
+        <flux:button
+            icon="google"
+            class="w-full"
+            href="{{ route('socialite.redirect', ['driver' => 'google']) }}"
+        >
+            Login dengan Google
+        </flux:button>
 
         <flux:separator text="atau" />
 
@@ -25,7 +23,7 @@
             method="post"
         >
             @csrf
-            <div class="flex flex-col gap-4">
+            <div class="flex flex-col gap-2">
                 <flux:input
                     label="Email"
                     type="email"
@@ -33,27 +31,13 @@
                     placeholder="email@example.com"
                     clearable
                 />
-
-                <flux:field>
-                    <div class="mb-3 flex flex-row justify-between">
-                        <flux:label>Password</flux:label>
-                        <flux:link
-                            href="#"
-                            variant="subtle"
-                            class="text-sm"
-                        >
-                            Lupa Password?
-                        </flux:link>
-                    </div>
-
-                    <flux:input
-                        type="password"
-                        placeholder="*****"
-                        name="password"
-                        viewable
-                    />
-                </flux:field>
-
+                <flux:input
+                    label="Password"
+                    type="password"
+                    name="password"
+                    placeholder="*****"
+                    viewable
+                />
                 <flux:button
                     variant="primary"
                     type="submit"

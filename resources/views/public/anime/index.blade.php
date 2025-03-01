@@ -10,9 +10,9 @@
             </flux:breadcrumbs.item>
         </flux:breadcrumbs>
 
-        <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-2">
             <div
-                class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                class="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
                 <div class="flex flex-col">
                     <flux:heading
                         size="xl"
@@ -87,23 +87,32 @@
                         class="flex flex-col gap-2"
                         x-data="{ activeIndex: null }"
                     >
+                        <flux:heading
+                            size="xl"
+                            level="h3"
+                            class="!font-bold"
+                        >
+                            Berdasarkan Huruf
+                        </flux:heading>
                         <div class="grid grid-cols-3 gap-2 lg:grid-cols-6">
                             @foreach ($animes['data']['list'] as $index => $list)
                                 <flux:button
                                     varint="filled"
                                     x-on:click="
-                                        if (activeIndex === {{ $index }}) {
-                                            activeIndex = null; 
-                                        } else {
-                                            activeIndex = null; 
-                                            setTimeout(() => activeIndex = {{ $index }}, 300);
-                                        }
-                                    "
+                                            if (activeIndex === {{ $index }}) {
+                                                activeIndex = null; 
+                                            } else {
+                                                activeIndex = null; 
+                                                setTimeout(() => activeIndex = {{ $index }}, 500);
+                                            }
+                                        "
                                 >
                                     {{ $list['startWith'] }}
                                 </flux:button>
                             @endforeach
                         </div>
+
+                        <flux:separator x-cloak x-show="activeIndex !== null"/>
 
                         @foreach ($animes['data']['list'] as $index => $list)
                             <ol

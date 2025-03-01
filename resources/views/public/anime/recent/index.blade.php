@@ -13,7 +13,7 @@
             </flux:breadcrumbs.item>
         </flux:breadcrumbs>
 
-        <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-2">
             <div
                 class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                 <div class="flex flex-col">
@@ -30,7 +30,7 @@
                 </div>
             </div>
             @if ($animes['data'])
-                <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                <div class="grid gap-2 md:grid-cols-2 lg:grid-cols-4">
                     @foreach ($animes['data']['animeList'] as $anime)
                         <x-cards.anime :anime="$anime" />
                     @endforeach

@@ -1,22 +1,20 @@
 <x-layouts.auth title="Daftar">
-    <div class="mx-auto flex w-80 max-w-80 flex-col gap-4">
+    <div class="mx-auto flex w-80 max-w-80 flex-col gap-8">
         <flux:brand
             href="{{ route('home') }}"
             name="{{ config('app.name') }}"
-            class="!mx-auto mb-8"
+            class="!mx-auto"
         >
             🇯🇵
         </flux:brand>
 
-        <div class="space-y-4">
-            <flux:button
-                icon="google"
-                class="w-full"
-                href="{{ route('socialite.redirect', ['driver' => 'google']) }}"
-            >
-                Daftar dengan Google
-            </flux:button>
-        </div>
+        <flux:button
+            icon="google"
+            class="w-full"
+            href="{{ route('socialite.redirect', ['driver' => 'google']) }}"
+        >
+            Daftar dengan Google
+        </flux:button>
 
         <flux:separator text="atau" />
 
@@ -25,14 +23,13 @@
             method="post"
         >
             @csrf
-            <div class="flex flex-col gap-4">
+            <div class="flex flex-col gap-2">
                 <flux:input
                     label="Nama"
                     type="text"
                     name="name"
                     placeholder="Masukkan nama kamu"
                 />
-
                 <flux:input
                     label="Email"
                     type="email"
@@ -40,7 +37,6 @@
                     placeholder="email@example.com"
                     clearable
                 />
-
                 <flux:input
                     label="Password"
                     type="password"
@@ -48,7 +44,6 @@
                     placeholder="*****"
                     viewable
                 />
-
                 <flux:input
                     label="Konfirmasi Password"
                     type="password"
@@ -56,7 +51,6 @@
                     placeholder="*****"
                     viewable
                 />
-
                 <flux:button
                     variant="primary"
                     type="submit"

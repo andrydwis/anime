@@ -30,7 +30,7 @@
             <div
                 class="pointer-events-none absolute bottom-0 w-full bg-white/75 p-2 dark:bg-zinc-900/50">
                 <flux:heading class="line-clamp-1 text-center group-hover:underline">
-                    Klik untuk melihat episode
+                    Klik untuk melihat Episode
                     {{ $anime['data']['episodeList'][0]['title'] }}
                 </flux:heading>
             </div>

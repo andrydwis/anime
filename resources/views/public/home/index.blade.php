@@ -1,61 +1,10 @@
 <x-layouts.app>
     <div class="flex flex-col gap-8">
-        <div class="grid gap-2 lg:grid-cols-4">
-            <flux:button
-                variant="filled"
-                icon="users"
-                href="/Wibunity"
-            >
-                Wibunity
-                <flux:badge
-                    size="sm"
-                    color="emerald"
-                >
-                    Baru!
-                </flux:badge>
-            </flux:button>
-            <flux:button
-                variant="filled"
-                icon="bookmark"
-                href="/anime/bookmark"
-            >
-                Daftar Anime Saya
-            </flux:button>
-            <flux:button
-                variant="filled"
-                icon="calendar-date-range"
-                href="/events"
-            >
-                Event Wibu
-            </flux:button>
-            <flux:button
-                variant="filled"
-                icon="newspaper"
-                href="/news"
-            >
-                Berita Terbaru
-            </flux:button>
-            <flux:button
-                variant="filled"
-                icon="sparkles"
-                href="/gacha"
-                class="lg:col-span-4"
-            >
-                Gachamon
-                <flux:badge
-                    size="sm"
-                    color="red"
-                >
-                    Segera!
-                </flux:badge>
-            </flux:button>
-        </div>
+        <x-animes.menu />
 
-        <flux:separator />
-
-        <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-2">
             <div
-                class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                class="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
                 <div class="flex flex-col">
                     <flux:heading
                         size="xl"
@@ -77,18 +26,16 @@
                     Lihat Semua
                 </flux:button>
             </div>
-            <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <div class="grid gap-2 md:grid-cols-2 lg:grid-cols-4">
                 @foreach ($home['data']['recent']['animeList'] as $anime)
                     <x-cards.anime :anime="$anime" />
                 @endforeach
             </div>
         </div>
 
-        <flux:separator />
-
-        <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-2">
             <div
-                class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                class="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
                 <div class="flex flex-col">
                     <flux:heading
                         size="xl"
@@ -109,16 +56,14 @@
                     Lihat Semua
                 </flux:button>
             </div>
-            <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <div class="grid gap-2 md:grid-cols-2 lg:grid-cols-4">
                 <x-cards.event />
             </div>
         </div>
 
-        <flux:separator />
-
-        <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-2">
             <div
-                class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                class="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
                 <div class="flex flex-col">
                     <flux:heading
                         size="xl"
@@ -139,7 +84,7 @@
                     Lihat Semua
                 </flux:button>
             </div>
-            <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <div class="grid gap-2 md:grid-cols-2 lg:grid-cols-4">
                 <x-cards.news />
             </div>
         </div>

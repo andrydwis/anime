@@ -1,6 +1,6 @@
 @props(['anime', 'animeId', 'episodeId' => null])
-<div class="flex flex-col gap-4">
-    <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+<div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
         <div class="flex flex-col">
             <flux:heading
                 size="xl"
@@ -10,7 +10,7 @@
                 Daftar Episode
             </flux:heading>
             <flux:subheading level="h2">
-                Semua episode anime {{ $anime['data']['title'] }}
+                Semua episode Anime {{ $anime['data']['title'] }}
             </flux:subheading>
         </div>
     </div>
