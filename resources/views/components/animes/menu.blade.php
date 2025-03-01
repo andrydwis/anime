@@ -1,31 +1,43 @@
 <div class="grid gap-2 lg:grid-cols-4">
     <flux:button
         icon="users"
-        href="/Wibunity"
+        href="/#"
     >
         Wibunity
         <flux:badge
             size="sm"
-            color="emerald"
+            color="red"
         >
-            Baru!
+            Segera!
         </flux:badge>
     </flux:button>
     <flux:button
         icon="calendar-date-range"
-        href="/events"
+        href="/#"
     >
         Event Wibu
+        <flux:badge
+            size="sm"
+            color="red"
+        >
+            Segera!
+        </flux:badge>
     </flux:button>
     <flux:button
         icon="newspaper"
-        href="/news"
+        href="/#"
     >
         Berita Terbaru
+        <flux:badge
+            size="sm"
+            color="red"
+        >
+            Segera!
+        </flux:badge>
     </flux:button>
     <flux:button
         icon="sparkles"
-        href="/gacha"
+        href="/#"
     >
         Gachamon
         <flux:badge

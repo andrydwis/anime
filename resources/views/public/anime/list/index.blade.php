@@ -42,9 +42,12 @@
                     </flux:heading>
                     <div class="flex flex-col gap-2">
                         @foreach ($histories as $date => $animes)
-                            <flux:heading class="!font-semibold">
-                                {{ $date }}
-                            </flux:heading>
+                            <flux:subheading
+                                class="flex flex-row items-center gap-2 !font-semibold"
+                            >
+                                <flux:icon.calendar-date-range variant="solid" />
+                                <span>{{ $date }}</span>
+                            </flux:subheading>
                             <div class="grid grid-cols-2 gap-2 lg:grid-cols-4">
                                 @foreach ($animes as $animeData)
                                     @php
@@ -71,6 +74,8 @@
                         @endforeach
                     </div>
                 </div>
+            </x-cards.app>
+            <x-cards.app>
             </x-cards.app>
         </div>
     </div>

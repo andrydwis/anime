@@ -30,7 +30,6 @@
             >
                 <div class="flex flex-col gap-2">
                     <div class="w-full rounded-lg bg-white p-4 dark:bg-zinc-400"></div>
-                    <div class="w-full rounded-lg bg-white p-4 dark:bg-zinc-400"></div>
                     <div class="w-3/4 rounded-lg bg-white p-4 dark:bg-zinc-400"></div>
                 </div>
             </x-cards.app>

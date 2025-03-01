@@ -1,4 +1,4 @@
-<x-layouts.auth title="Login">
+<x-layouts.auth title="Masuk">
     <div class="mx-auto flex w-80 max-w-80 flex-col gap-8">
         <flux:brand
             href="{{ route('home') }}"
@@ -13,7 +13,7 @@
             class="w-full"
             href="{{ route('socialite.redirect', ['driver' => 'google']) }}"
         >
-            Login dengan Google
+            Masuk dengan Google
         </flux:button>
 
         <flux:separator text="atau" />
@@ -42,7 +42,7 @@
                     variant="primary"
                     type="submit"
                 >
-                    Login
+                    Masuk
                 </flux:button>
             </div>
         </form>

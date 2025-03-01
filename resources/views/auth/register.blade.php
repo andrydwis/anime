@@ -42,6 +42,7 @@
                     type="password"
                     name="password"
                     placeholder="*****"
+                    autocomplete="new-password"
                     viewable
                 />
                 <flux:input
@@ -49,6 +50,7 @@
                     type="password"
                     name="password_confirmation"
                     placeholder="*****"
+                    autocomplete="new-password"
                     viewable
                 />
                 <flux:button

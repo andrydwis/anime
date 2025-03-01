@@ -28,9 +28,9 @@
         </flux:navlist.item>
         <flux:navlist.item
             icon="users"
-            href="/Wibunity"
-            badge="Baru!"
-            badge-color="emerald"
+            href="/#"
+            badge="Segera!"
+            badge-color="red"
         >
             Wibunity
         </flux:navlist.item>
@@ -60,13 +60,15 @@
 
         <flux:navlist.item
             icon="calendar-date-range"
-            href="/anime/list"
+            href="#"
+            badge="Segera!"
+            badge-color="red"
         >
             Event Wibu
         </flux:navlist.item>
         <flux:navlist.item
             icon="sparkles"
-            href="/anime/ongoing"
+            href="#"
             badge="Segera!"
             badge-color="red"
         >

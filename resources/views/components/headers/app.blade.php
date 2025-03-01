@@ -25,8 +25,8 @@
         <flux:navbar.item
             icon="users"
             href="/wibunitas"
-            badge="Baru!"
-            badge-color="emerald"
+            badge="Segera!"
+            badge-color="red"
         >
             Wibunity
         </flux:navbar.item>
@@ -147,7 +147,7 @@
                             type="submit"
                             icon="arrow-right-start-on-rectangle"
                         >
-                            Logout
+                            Keluar
                         </flux:menu.item>
                     </form>
                 </flux:menu>
@@ -157,7 +157,7 @@
                 icon="arrow-right-end-on-rectangle"
                 href="{{ route('login') }}"
             >
-                Login
+                Masuk
             </flux:button>
         @endauth
     </div>
