@@ -27,10 +27,10 @@
                         class="min-w-full divide-y divide-zinc-200 border border-zinc-200"
                     >
                         <thead>
-                            <tr class="bg-zinc-600">
+                            <tr class="bg-zinc-100 dark:bg-zinc-600">
                                 <th
                                     scope="col"
-                                    class="px-4 py-2 border-r"
+                                    class="px-4 py-2"
                                 >
                                     <flux:subheading>
                                         Nama
@@ -38,7 +38,7 @@
                                 </th>
                                 <th
                                     scope="col"
-                                    class="px-4 py-2 border-r"
+                                    class="px-4 py-2"
                                 >
                                     <flux:subheading>
                                         Email
@@ -46,7 +46,7 @@
                                 </th>
                                 <th
                                     scope="col"
-                                    class="px-4 py-2 border-r"
+                                    class="px-4 py-2"
                                 >
                                     <flux:subheading>
                                         Role
@@ -54,7 +54,7 @@
                                 </th>
                                 <th
                                     scope="col"
-                                    class="px-4 py-2 border-r"
+                                    class="px-4 py-2"
                                 >
                                     <flux:subheading>
                                         Terakhir Login
@@ -62,7 +62,7 @@
                                 </th>
                                 <th
                                     scope="col"
-                                    class="px-4 py-2 border-r"
+                                    class="px-4 py-2"
                                 >
                                     <flux:subheading>
                                         Aksi

@@ -36,7 +36,7 @@
                     @if (is_array($element))
                         @foreach ($element as $page => $url)
                             @if ($page == $paginator->currentPage())
-                                <flux:button disabled>
+                                <flux:button variant="primary" disabled>
                                     {{ $page }}
                                 </flux:button>
                             @else
