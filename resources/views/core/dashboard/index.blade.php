@@ -15,7 +15,7 @@
             </x-cards.app>
             <x-cards.app>
                 <flux:subheading>
-                    Total Pengguna Aktif
+                    Total Pengguna Aktif Hari Ini
                 </flux:subheading>
                 <flux:heading
                     size="xl"
@@ -27,7 +27,7 @@
             </x-cards.app>
             <x-cards.app>
                 <flux:subheading>
-                    Total Anime Ditonton
+                    Total Anime Ditonton Hari Ini
                 </flux:subheading>
                 <flux:heading
                     size="xl"
