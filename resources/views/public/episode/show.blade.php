@@ -16,10 +16,13 @@
             </flux:breadcrumbs.item>
         </flux:breadcrumbs>
 
+        <div id="status"></div>
+
         <div class="aspect-video overflow-hidden rounded-lg">
             <iframe
                 id="player"
                 allowfullscreen
+                allow="screen-wake-lock"
                 src="{{ $episode['data']['defaultStreamingUrl'] }}"
                 frameborder="0"
                 class="h-full w-full"
@@ -103,16 +106,49 @@
 
     @push('scripts')
         <script>
-            async function requestWakeLock() {
-                try {
-                    const wakeLock = await navigator.wakeLock.request("screen");
-                    console.log("Screen wake lock acquired.");
-                } catch (err) {
-                    console.log(`${err.name}, ${err.message}`);
-                }
-            }
+            document.addEventListener('DOMContentLoaded', async () => {
+                const statusElem = document.getElementById('status');
+                let wakeLock = null;
 
-            requestWakeLock();
+                // Function to request a wake lock
+                async function requestWakeLock() {
+                    try {
+                        wakeLock = await navigator.wakeLock.request('screen');
+                        statusElem.textContent = 'Wake Lock is active!';
+                        wakeLock.addEventListener('release', () => {
+                            statusElem.textContent =
+                                'Wake Lock has been released.';
+                        });
+                    } catch (err) {
+                        statusElem.textContent = `${err.name}, ${err.message}`;
+                    }
+                }
+
+                // Function to release the wake lock
+                async function releaseWakeLock() {
+                    if (wakeLock !== null) {
+                        await wakeLock.release();
+                        wakeLock = null;
+                        statusElem.textContent = 'Wake Lock has been released.';
+                    }
+                }
+
+                // Re-acquire wake lock when the document becomes visible
+                document.addEventListener('visibilitychange', async () => {
+                    if (wakeLock !== null && document.visibilityState ===
+                        'visible') {
+                        await requestWakeLock();
+                    }
+                });
+
+                // Feature detection
+                if ('wakeLock' in navigator) {
+                    await requestWakeLock();
+                } else {
+                    statusElem.textContent =
+                        'Wake Lock is not supported by this browser.';
+                }
+            });
         </script>
     @endpush
 </x-layouts.app>
