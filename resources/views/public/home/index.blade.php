@@ -1,16 +1,16 @@
 <x-layouts.app>
     <div class="flex flex-col gap-8">
-        <div class="overflow-hidden rounded-lg bg-amber-600 p-4">
+        <div
+            class="from-accent relative overflow-hidden rounded-lg bg-gradient-to-br to-cyan-600 px-6 py-3 shadow-lg">
             <div
-                class="animate-marquee flex w-full flex-row items-center [animation-play-state:running] hover:[animation-play-state:paused]">
-                <flux:subheading
-                    class="whitespace-nowrap !font-semibold text-zinc-900 dark:text-white"
-                >
-                    Jangan lupa login/daftar dahulu agar riwayat menonton anime kamu
-                    tersimpan ya!
-                </flux:subheading>
+                class="animate-marquee flex w-full items-center [animation-play-state:running] hover:[animation-play-state:paused]">
+                <flux:heading class="whitespace-nowrap font-semibold !text-white">
+                    🔥 Jangan ketinggalan! Login atau daftar sekarang supaya daftar
+                    tontonanmu tersimpan! 🎌🍿
+                </flux:heading>
             </div>
         </div>
+
         <x-animes.menu />
 
         <div class="flex flex-col gap-2">
