@@ -25,8 +25,11 @@
         ></iframe>
     </div>
 
-    <div class="flex flex-row items-center justify-between gap-2">
-        <livewire:save-anime :animeId="$animeId" />
+    <div class="flex flex-row flex-wrap items-center justify-between gap-2">
+        <livewire:save-anime
+            :animeId="$animeId"
+            :anime="$anime"
+        />
         <div class="flex flex-row items-center gap-2">
             <flux:dropdown
                 position="bottom"
