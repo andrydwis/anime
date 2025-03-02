@@ -21,6 +21,7 @@
     <flux:navlist>
         <flux:navlist.item
             icon="home"
+            iconVariant="solid"
             variant="solid"
             href="{{ route('home') }}"
         >
@@ -28,9 +29,10 @@
         </flux:navlist.item>
         <flux:navlist.item
             icon="users"
-            href="/#"
+            iconVariant="solid"
             badge="Segera!"
             badge-color="red"
+            href="/#"
         >
             Wibunity
         </flux:navlist.item>
@@ -39,6 +41,7 @@
 
         <flux:navlist.item
             icon="list-bullet"
+            iconVariant="solid"
             href="{{ route('anime.index') }}"
         >
             Daftar Anime
@@ -51,6 +54,7 @@
         </flux:navlist.item>
         <flux:navlist.item
             icon="calendar-date-range"
+            iconVariant="solid"
             href="{{ route('anime.recent.index') }}"
         >
             Anime Terbaru
@@ -60,6 +64,7 @@
 
         <flux:navlist.item
             icon="calendar-date-range"
+            iconVariant="solid"
             href="#"
             badge="Segera!"
             badge-color="red"
@@ -68,6 +73,7 @@
         </flux:navlist.item>
         <flux:navlist.item
             icon="sparkles"
+            iconVariant="solid"
             href="#"
             badge="Segera!"
             badge-color="red"

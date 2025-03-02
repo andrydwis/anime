@@ -152,7 +152,7 @@
         @stack('styles')
     </head>
 
-    <body class="selection:bg-accent/50 min-h-screen bg-white dark:bg-zinc-900">
+    <body class="selection:bg-accent/50 min-h-screen bg-white dark:bg-zinc-800">
         <x-headers.app />
         <x-sidebars.app />
 

@@ -1,19 +1,8 @@
-<flux:header
-    container
-    class="sticky top-0 bg-white dark:bg-zinc-900/50 dark:backdrop-blur"
->
+<flux:header class="sticky top-0 bg-white dark:bg-zinc-900/50 dark:backdrop-blur">
     <flux:sidebar.toggle
         icon="bars-2"
         class="lg:hidden"
     />
-
-    <flux:brand
-        href="{{ route('home') }}"
-        name="{{ config('app.name') }}"
-        class="max-lg:hidden"
-    >
-        🇯🇵
-    </flux:brand>
 
     <flux:navbar class="max-lg:hidden">
         <flux:navbar.item
@@ -33,27 +22,6 @@
             Wibunity
         </flux:navbar.item>
         <flux:separator vertical />
-        <flux:navbar.item
-            icon="list-bullet"
-            iconVariant="solid"
-            href="{{ route('anime.index') }}"
-        >
-            Daftar Anime
-        </flux:navbar.item>
-        <flux:navbar.item
-            icon="bookmark"
-            iconVariant="solid"
-            href="{{ route('anime.list.index') }}"
-        >
-            Daftar Anime Saya
-        </flux:navbar.item>
-        <flux:navbar.item
-            icon="calendar-date-range"
-            iconVariant="solid"
-            href="{{ route('anime.recent.index') }}"
-        >
-            Anime Terbaru
-        </flux:navbar.item>
     </flux:navbar>
 
     <flux:spacer />
@@ -113,17 +81,6 @@
                 </flux:menu.item>
             </flux:menu>
         </flux:dropdown>
-
-        <flux:modal.trigger name="search">
-            <flux:button icon="magnifying-glass" />
-        </flux:modal.trigger>
-
-        <flux:modal
-            name="search"
-            class="md:min-h-auto h-full min-h-svh w-full !rounded-none md:h-3/4 md:!rounded-lg"
-        >
-            <livewire:seach-modal />
-        </flux:modal>
 
         <flux:separator vertical />
 

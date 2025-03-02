@@ -147,25 +147,18 @@
             />
         @endif
 
-        {{-- Font --}}
-        <link
-            rel="preconnect"
-            href="https://fonts.bunny.net"
-        >
-        <link
-            href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800,900&display=swap"
-            rel="stylesheet"
-        />
-
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @fluxAppearance
         @stack('styles')
     </head>
 
     <body class="selection:bg-accent/50 min-h-screen bg-white dark:bg-zinc-800">
+        <x-sidebars.core />
+        <x-headers.core />
+
         <flux:main
             container
-            class="flex min-h-screen items-center justify-center"
+            class="flex h-full flex-col gap-8"
         >
             {{ $slot }}
         </flux:main>
