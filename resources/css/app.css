@@ -14,6 +14,31 @@
 }
 
 @theme {
+    --animate-marquee: animate-marquee 20s linear infinite;
+    --animate-marquee-reverse: animate-marquee-reverse 20s linear infinite;
+
+    @keyframes animate-marquee {
+        from {
+            transform: translateX(100%);
+        }
+
+        to {
+            transform: translateX(-100%);
+        }
+    }
+
+    @keyframes animate-marquee-reverse {
+        from {
+            transform: translateX(-100%);
+        }
+
+        to {
+            transform: translateX(100%);
+        }
+    }
+}
+
+@theme {
     --color-accent: var(--color-emerald-600);
     --color-accent-content: var(--color-emerald-600);
     --color-accent-foreground: var(--color-white);
@@ -29,6 +54,7 @@
 
 @custom-variant hover (&:hover);
 
-[data-flux-modal] > dialog[open], [data-flux-modal] > dialog[open]::backdrop {
+[data-flux-modal]>dialog[open],
+[data-flux-modal]>dialog[open]::backdrop {
     @apply backdrop-blur;
 }

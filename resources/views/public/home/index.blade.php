@@ -1,5 +1,16 @@
 <x-layouts.app>
     <div class="flex flex-col gap-8">
+        <div class="overflow-hidden rounded-lg bg-amber-600 p-4">
+            <div
+                class="animate-marquee flex w-full flex-row items-center [animation-play-state:running] hover:[animation-play-state:paused]">
+                <flux:subheading
+                    class="whitespace-nowrap !font-semibold text-zinc-900 dark:text-white"
+                >
+                    Jangan lupa login/daftar dahulu agar riwayat menonton anime kamu
+                    tersimpan ya!
+                </flux:subheading>
+            </div>
+        </div>
         <x-animes.menu />
 
         <div class="flex flex-col gap-2">
@@ -25,7 +36,7 @@
                     Lihat Semua
                 </flux:button>
             </div>
-            <div class="grid gap-2 grid-cols-2 lg:grid-cols-4">
+            <div class="grid grid-cols-2 gap-2 lg:grid-cols-4">
                 @foreach ($home['data']['recent']['animeList'] as $anime)
                     <x-cards.anime :anime="$anime" />
                 @endforeach
@@ -54,7 +65,7 @@
                     Lihat Semua
                 </flux:button>
             </div>
-            <div class="grid gap-2 grid-cols-2 lg:grid-cols-4">
+            <div class="grid grid-cols-2 gap-2 lg:grid-cols-4">
                 <x-cards.event />
             </div>
         </div>
@@ -81,7 +92,7 @@
                     Lihat Semua
                 </flux:button>
             </div>
-            <div class="grid gap-2 grid-cols-2 lg:grid-cols-4">
+            <div class="grid grid-cols-2 gap-2 lg:grid-cols-4">
                 <x-cards.news />
             </div>
         </div>
