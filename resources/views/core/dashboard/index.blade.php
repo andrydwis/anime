@@ -1,48 +1,46 @@
 <x-layouts.core title="Dashboard">
-    <div class="flex flex-col gap-8">
-        <div class="grid gap-2 lg:grid-cols-3">
-            <x-cards.app>
-                <flux:subheading>
-                    Total Pengguna {{ config('app.name') }}
-                </flux:subheading>
-                <flux:heading
-                    size="xl"
-                    class="flex flex-row items-center gap-2"
-                >
-                    <flux:icon.users variant="solid" />
-                    {{ $totalUsers }} Pengguna
-                </flux:heading>
-            </x-cards.app>
-            <x-cards.app>
-                <flux:subheading>
-                    Total Pengguna Aktif Hari Ini
-                </flux:subheading>
-                <flux:heading
-                    size="xl"
-                    class="flex flex-row items-center gap-2"
-                >
-                    <flux:icon.users variant="solid" />
-                    {{ $totalActiveUsers }} Pengguna
-                </flux:heading>
-            </x-cards.app>
-            <x-cards.app>
-                <flux:subheading>
-                    Total Anime Ditonton Hari Ini
-                </flux:subheading>
-                <flux:heading
-                    size="xl"
-                    class="flex flex-row items-center gap-2"
-                >
-                    <flux:icon.tv variant="solid" />
-                    {{ $totalWatchedAnimes }} Anime
-                </flux:heading>
-            </x-cards.app>
-        </div>
+    <div class="grid gap-2 lg:grid-cols-3">
         <x-cards.app>
-            <div id="chart">
-            </div>
+            <flux:subheading>
+                Total Pengguna {{ config('app.name') }}
+            </flux:subheading>
+            <flux:heading
+                size="xl"
+                class="flex flex-row items-center gap-2"
+            >
+                <flux:icon.users variant="solid" />
+                {{ $totalUsers }} Pengguna
+            </flux:heading>
+        </x-cards.app>
+        <x-cards.app>
+            <flux:subheading>
+                Total Pengguna Aktif Hari Ini
+            </flux:subheading>
+            <flux:heading
+                size="xl"
+                class="flex flex-row items-center gap-2"
+            >
+                <flux:icon.users variant="solid" />
+                {{ $totalActiveUsers }} Pengguna
+            </flux:heading>
+        </x-cards.app>
+        <x-cards.app>
+            <flux:subheading>
+                Total Anime Ditonton Hari Ini
+            </flux:subheading>
+            <flux:heading
+                size="xl"
+                class="flex flex-row items-center gap-2"
+            >
+                <flux:icon.tv variant="solid" />
+                {{ $totalWatchedAnimes }} Anime
+            </flux:heading>
         </x-cards.app>
     </div>
+    <x-cards.app>
+        <div id="chart">
+        </div>
+    </x-cards.app>
 
     @push('scripts')
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
