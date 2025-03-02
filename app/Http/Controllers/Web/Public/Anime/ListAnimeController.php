@@ -14,7 +14,7 @@ class ListAnimeController extends Controller
     {
         $user = Auth::user();
 
-        $watchlists = AnimeWatchlist::where('user_id', $user->id)->get();
+        $watchlists = AnimeWatchlist::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
 
         // group by date updated_at day
         $histories = AnimeWatchHistory::where('user_id', $user->id)->orderBy('updated_at', 'desc')->limit(24)->get()->groupBy(function ($history) {
