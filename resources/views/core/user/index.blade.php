@@ -1,25 +1,7 @@
 <x-layouts.core title="Daftar Pengguna">
     <x-cards.app>
         <div class="flex flex-col gap-2">
-            @if (session()->has('success'))
-                <div
-                    x-data="{ open: true }"
-                    x-show="open"
-                    class="bg-accent flex flex-row gap-2 rounded-lg px-4 py-2 text-white"
-                >
-                    <flux:icon.check-circle variant="solid" />
-                    <span>
-                        {{ session()->get('success') }}
-                    </span>
-                    <flux:button
-                        variant="ghost"
-                        size="xs"
-                        icon="x-mark"
-                        wire:on-click="open = false"
-                        class="ml-auto !text-white"
-                    />
-                </div>
-            @endif
+            <x-alerts.app />
 
             <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-zinc-200 border border-zinc-200">
