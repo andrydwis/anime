@@ -24,7 +24,7 @@
         </flux:navbar.item>
         <flux:navbar.item
             icon="users"
-            href="/wibunitas"
+            href="#"
             badge="Segera!"
             badge-color="red"
         >

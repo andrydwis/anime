@@ -1,4 +1,4 @@
-<a href="/events">
+<a href="#">
     <div class="group relative flex flex-col overflow-hidden rounded-lg">
         <img
             loading="lazy"
