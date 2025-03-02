@@ -1,7 +1,7 @@
 <x-layouts.app>
     <div class="flex flex-col gap-8">
         <div
-            class="from-accent relative overflow-hidden rounded-lg bg-gradient-to-br to-cyan-600 p-4x-4 py-3 shadow-xs">
+            class="from-accent shadow-xs relative overflow-hidden rounded-lg bg-gradient-to-br to-cyan-600 px-4 py-3">
             <div
                 class="animate-marquee flex w-full items-center [animation-play-state:running] hover:[animation-play-state:paused]">
                 <flux:heading class="whitespace-nowrap font-semibold !text-white">

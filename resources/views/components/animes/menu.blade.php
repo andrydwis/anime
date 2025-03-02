@@ -1,4 +1,4 @@
-<div class="grid gap-2 lg:grid-cols-4">
+<div class="grid gap-2 md:grid-cols-2 lg:grid-cols-4">
     <flux:button
         icon="users"
         href="/#"
@@ -46,5 +46,12 @@
         >
             Segera!
         </flux:badge>
+    </flux:button>
+    <flux:button
+        icon="coffee"
+        href="https://saweria.co/andrydwis"
+        class="md:col-span-2 lg:col-span-4"
+    >
+        Donasi
     </flux:button>
 </div>
