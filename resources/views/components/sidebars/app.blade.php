@@ -48,12 +48,14 @@
         </flux:navlist.item>
         <flux:navlist.item
             icon="bookmark"
+            iconVariant="solid"
             href="{{ route('anime.list.index') }}"
         >
             Daftar Anime Saya
         </flux:navlist.item>
         <flux:navlist.item
             icon="calendar-date-range"
+            iconVariant="solid"
             iconVariant="solid"
             href="{{ route('anime.recent.index') }}"
         >

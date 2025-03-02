@@ -31,11 +31,10 @@
         <flux:navlist.item
             icon="list-bullet"
             iconVariant="solid"
-            href="#"
+            href="{{ route('core.users.index') }}"
         >
             Daftar Pengguna
         </flux:navlist.item>
-
     </flux:navlist>
 
     <flux:spacer />
