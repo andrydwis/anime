@@ -14,8 +14,8 @@
 }
 
 @theme {
-    --animate-marquee: animate-marquee 20s linear infinite;
-    --animate-marquee-reverse: animate-marquee-reverse 20s linear infinite;
+    --animate-marquee: animate-marquee 15s linear infinite;
+    --animate-marquee-reverse: animate-marquee-reverse 15s linear infinite;
 
     @keyframes animate-marquee {
         from {

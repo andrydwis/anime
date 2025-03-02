@@ -2,13 +2,35 @@
     <div class="flex flex-col gap-8">
         <x-cards.app>
             <div class="flex flex-col gap-2">
+                @if (session()->has('success'))
+                    <div
+                        x-data="{ open: true }"
+                        x-show="open"
+                        class="bg-accent flex flex-row gap-2 rounded-lg px-4 py-2 text-white"
+                    >
+                        <flux:icon.check-circle variant="solid" />
+                        <span>
+                            {{ session()->get('success') }}
+                        </span>
+                        <flux:button
+                            variant="ghost"
+                            size="xs"
+                            icon="x-mark"
+                            wire:on-click="open = false"
+                            class="ml-auto !text-white"
+                        />
+                    </div>
+                @endif
+
                 <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-zinc-200">
+                    <table
+                        class="min-w-full divide-y divide-zinc-200 border border-zinc-200"
+                    >
                         <thead>
-                            <tr>
+                            <tr class="bg-zinc-600">
                                 <th
                                     scope="col"
-                                    class="px-4 py-2"
+                                    class="px-4 py-2 border-r"
                                 >
                                     <flux:subheading>
                                         Nama
@@ -16,7 +38,7 @@
                                 </th>
                                 <th
                                     scope="col"
-                                    class="px-4 py-2"
+                                    class="px-4 py-2 border-r"
                                 >
                                     <flux:subheading>
                                         Email
@@ -24,7 +46,7 @@
                                 </th>
                                 <th
                                     scope="col"
-                                    class="px-4 py-2"
+                                    class="px-4 py-2 border-r"
                                 >
                                     <flux:subheading>
                                         Role
@@ -32,7 +54,7 @@
                                 </th>
                                 <th
                                     scope="col"
-                                    class="px-4 py-2"
+                                    class="px-4 py-2 border-r"
                                 >
                                     <flux:subheading>
                                         Terakhir Login
@@ -40,7 +62,7 @@
                                 </th>
                                 <th
                                     scope="col"
-                                    class="px-4 py-2"
+                                    class="px-4 py-2 border-r"
                                 >
                                     <flux:subheading>
                                         Aksi
@@ -50,7 +72,7 @@
                         </thead>
                         <tbody class="divide-y divide-zinc-200">
                             @foreach ($users as $user)
-                                <tr class="hover:bg-zinc-200">
+                                <tr class="hover:bg-zinc-200 dark:hover:bg-zinc-800">
                                     <td class="whitespace-nowrap px-4 py-2">
                                         {{ $user?->name }}
                                     </td>
@@ -159,7 +181,7 @@
                     </table>
                 </div>
                 <div>
-                    {{ $users?->links() }}
+                    {{ $users?->onEachSide(1)?->links('components.paginations.app') }}
                 </div>
             </div>
         </x-cards.app>
