@@ -34,11 +34,16 @@
         </div>
     </a>
 
+    <livewire:save-anime :animeId="$animeId" :anime="$anime" />
+
     <x-animes.episode
         :anime="$anime"
         :animeId="$animeId"
         :watchedEpisodes="$watchedEpisodes"
     />
 
-    <x-animes.detail :anime="$anime" />
+    <x-animes.detail
+        animeId="{{ $animeId }}"
+        :anime="$anime"
+    />
 </x-layouts.app>

@@ -25,59 +25,61 @@
         ></iframe>
     </div>
 
-    <div class="flex flex-row items-center justify-between">
-        <flux:dropdown
-            position="bottom"
-            align="start"
-        >
-            <flux:button icon="server-stack">Ganti Server</flux:button>
+    <div class="flex flex-row items-center justify-between gap-2">
+        <livewire:save-anime :animeId="$animeId" />
+        <div class="flex flex-row items-center gap-2">
+            <flux:dropdown
+                position="bottom"
+                align="end"
+            >
+                <flux:button icon="server-stack">Ganti Server</flux:button>
 
-            <flux:menu>
-                @foreach ($episode['data']['server']['qualities'] as $qualities)
-                    <flux:menu.submenu heading="{{ $qualities['title'] }}">
-                        @forelse ($qualities['serverList'] as $server)
-                            <flux:menu.item
-                                href="{{ route('anime.episode.show', ['anime' => $animeId, 'episode' => $episodeId, 'server' => $server['serverId']]) }}"
-                            >
-                                {{ $server['title'] }}
-                            </flux:menu.item>
-                        @empty
+                <flux:menu>
+                    @foreach ($episode['data']['server']['qualities'] as $qualities)
+                        <flux:menu.submenu heading="{{ $qualities['title'] }}">
+                            @forelse ($qualities['serverList'] as $server)
+                                <flux:menu.item
+                                    href="{{ route('anime.episode.show', ['anime' => $animeId, 'episode' => $episodeId, 'server' => $server['serverId']]) }}"
+                                >
+                                    {{ $server['title'] }}
+                                </flux:menu.item>
+                            @empty
 
-                            <flux:menu.item disabled>
-                                Tidak tersedia
-                            </flux:menu.item>
-                        @endforelse
-                    </flux:menu.submenu>
-                @endforeach
-            </flux:menu>
-        </flux:dropdown>
+                                <flux:menu.item disabled>
+                                    Tidak tersedia
+                                </flux:menu.item>
+                            @endforelse
+                        </flux:menu.submenu>
+                    @endforeach
+                </flux:menu>
+            </flux:dropdown>
+            <flux:dropdown
+                position="bottom"
+                align="end"
+            >
+                <flux:button icon="arrow-down-tray">Download
+                </flux:button>
 
-        <flux:dropdown
-            position="bottom"
-            align="end"
-        >
-            <flux:button icon="arrow-down-tray">Download
-            </flux:button>
-
-            <flux:menu>
-                @foreach ($episode['data']['downloadUrl']['formats'] as $formats)
-                    <flux:menu.submenu heading="{{ $formats['title'] }}">
-                        @foreach ($formats['qualities'] as $quality)
-                            <flux:menu.submenu heading="{{ $quality['title'] }}">
-                                @foreach ($quality['urls'] as $url)
-                                    <flux:menu.item
-                                        href="{{ $url['url'] }}"
-                                        target="_blank"
-                                    >
-                                        {{ $url['title'] }}
-                                    </flux:menu.item>
-                                @endforeach
-                            </flux:menu.submenu>
-                        @endforeach
-                    </flux:menu.submenu>
-                @endforeach
-            </flux:menu>
-        </flux:dropdown>
+                <flux:menu>
+                    @foreach ($episode['data']['downloadUrl']['formats'] as $formats)
+                        <flux:menu.submenu heading="{{ $formats['title'] }}">
+                            @foreach ($formats['qualities'] as $quality)
+                                <flux:menu.submenu heading="{{ $quality['title'] }}">
+                                    @foreach ($quality['urls'] as $url)
+                                        <flux:menu.item
+                                            href="{{ $url['url'] }}"
+                                            target="_blank"
+                                        >
+                                            {{ $url['title'] }}
+                                        </flux:menu.item>
+                                    @endforeach
+                                </flux:menu.submenu>
+                            @endforeach
+                        </flux:menu.submenu>
+                    @endforeach
+                </flux:menu>
+            </flux:dropdown>
+        </div>
     </div>
 
     <x-animes.episode

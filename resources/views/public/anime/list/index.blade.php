@@ -36,6 +36,36 @@
                     level="h3"
                     class="!font-bold"
                 >
+                    Watchlist
+                </flux:heading>
+                <div class="grid grid-cols-2 gap-2 lg:grid-cols-4">
+                    @forelse ($watchlists as $animeData)
+                        @php
+                            $anime = $animeData->data['anime']['data'];
+                            $anime['animeId'] = $animeData->data['animeId'];
+                        @endphp
+                        <x-cards.anime :anime="$anime" />
+                    @empty
+                        <x-cards.app class="col-span-4">
+                            <flux:heading>
+                                Belum ada watchlist
+                            </flux:heading>
+                            <flux:subheading>
+                                Kamu belum pernah menambahkan anime ke watchlist
+                            </flux:subheading>
+                        </x-cards.app>
+                    @endforelse
+                </div>
+            </div>
+        </x-cards.app>
+
+        <x-cards.app>
+            <div class="flex flex-col gap-2">
+                <flux:heading
+                    size="xl"
+                    level="h3"
+                    class="!font-bold"
+                >
                     Riwayat Menonton
                 </flux:heading>
                 <div class="flex flex-col gap-2">
@@ -89,8 +119,6 @@
                     @endforelse
                 </div>
             </div>
-        </x-cards.app>
-        <x-cards.app>
         </x-cards.app>
     </div>
 </x-layouts.app>
