@@ -17,8 +17,8 @@ class SyncEventsJob implements ShouldQueue
 
     public function handle()
     {
-        $sheetId = env('GOOGLE_EVENT_SHEET_ID');
-        $gid = env('GOOGLE_EVENT_SHEET_GID');
+        $sheetId = config('services.google_sheets.event_sheet_id');
+        $gid = config('services.google_sheets.event_sheet_gid');
         $url = "https://docs.google.com/spreadsheets/d/$sheetId/gviz/tq?tqx=out:json&tq&gid=$gid";
 
         $response = Http::get($url);
