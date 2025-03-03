@@ -59,6 +59,8 @@
     <flux:spacer />
 
     <div class="flex items-center gap-2">
+        <livewire:waifu-ai />
+
         <flux:dropdown
             x-data
             align="center"
@@ -113,8 +115,6 @@
                 </flux:menu.item>
             </flux:menu>
         </flux:dropdown>
-
-        <livewire:waifu-ai />
 
         <livewire:seach-modal />
 

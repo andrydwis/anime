@@ -2,7 +2,6 @@
     <x-button
         :variant="$animeWatchlist ? 'danger' : 'primary'"
         :icon="$animeWatchlist ? 'bookmark-slash' : 'bookmark'"
-        iconVariant="solid"
         wire:click="{{ $animeWatchlist ? 'remove' : 'save' }}"
         wire:target="save, remove"
     >

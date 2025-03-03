@@ -1,7 +1,7 @@
 <div>
     @auth
         <flux:modal.trigger name="ai">
-            <flux:button icon="sparkles" />
+            <flux:button variant="primary" icon="sparkles" />
         </flux:modal.trigger>
 
         <flux:modal
@@ -20,7 +20,7 @@
 
                 <div
                     id="chat-container"
-                    class="flex max-h-[600px] flex-col gap-2 overflow-auto lg:max-h-[400px]"
+                    class="flex max-h-[400px] flex-col gap-2 overflow-auto"
                 >
                     @foreach ($messages as $message)
                         @if ($message['role'] === 'assistant')
