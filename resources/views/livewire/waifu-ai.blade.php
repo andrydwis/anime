@@ -9,12 +9,12 @@
 
         <flux:modal
             name="ai"
-            class="md:min-h-auto relative h-full min-h-svh w-full overflow-hidden !rounded-none md:h-3/4 md:!rounded-lg"
+            class="md:min-h-auto h-full min-h-svh w-full !rounded-none md:h-3/4 md:!rounded-lg"
         >
             <img
                 src="{{ asset('images/cta/ai.png') }}"
                 alt="ai"
-                class="absolute -bottom-36 left-1/2 aspect-[3/4] h-1/2 -translate-x-1/2 animate-bounce object-fill"
+                class="absolute bottom-0 left-1/2 aspect-[3/4] h-1/2 -translate-x-1/2 object-fill"
             >
 
             <div class="flex min-h-full flex-col gap-4">
