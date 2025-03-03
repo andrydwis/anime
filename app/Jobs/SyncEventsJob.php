@@ -83,10 +83,11 @@ class SyncEventsJob implements ShouldQueue
                     // Search criteria (use 'name' and 'date' if date is available)
                     [
                         'name' => $event['name'],
-                        'date' => $eventDate ?? null
+                        'area' => $event['area'],
                     ],
                     // Fields to update or create
                     [
+                        'date' => $eventDate ?? null,
                         'location' => $event['location'],
                         'area' => $event['area'],
                         'link' => $event['link'],
