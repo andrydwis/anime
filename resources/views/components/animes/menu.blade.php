@@ -47,10 +47,24 @@
             Segera!
         </flux:badge>
     </flux:button>
+    <flux:modal.trigger name="ai">
+        <flux:button
+            icon="sparkles"
+            class="md:col-span-2"
+        >
+            Waifu AI
+            <flux:badge
+                size="sm"
+                color="emerald"
+            >
+                Baru!
+            </flux:badge>
+        </flux:button>
+    </flux:modal.trigger>
     <flux:button
         icon="coffee"
         href="https://saweria.co/andrydwis"
-        class="md:col-span-2 lg:col-span-4"
+        class="md:col-span-2"
     >
         Donasi
     </flux:button>

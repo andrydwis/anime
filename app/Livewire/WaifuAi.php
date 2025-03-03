@@ -21,7 +21,7 @@ class WaifuAi extends Component
         $this->messages = [
             [
                 'role' => 'assistant',
-                'content' => 'Halo, Aku Waifu AI. Apa yang bisa aku bantu? Mau rekomendasi anime atau manga? atau... Aku? Ehe :)',
+                'content' => 'Halo, Aku Midori. Aku waifu AI kamu, apa ada yang bisa aku bantu? Mau rekomendasi anime atau manga? atau... Aku? 🥰',
             ],
         ];
     }

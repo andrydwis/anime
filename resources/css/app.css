@@ -54,7 +54,7 @@
 
 @custom-variant hover (&:hover);
 
-/* [data-flux-modal]>dialog[open],
+[data-flux-modal]>dialog[open],
 [data-flux-modal]>dialog[open]::backdrop {
     @apply backdrop-blur;
-} */
+}
