@@ -9,8 +9,14 @@
 
         <flux:modal
             name="ai"
-            class="md:min-h-auto h-full min-h-svh w-full !rounded-none md:h-3/4 md:!rounded-lg"
+            class="md:min-h-auto relative h-full min-h-svh w-full overflow-hidden !rounded-none md:h-3/4 md:!rounded-lg"
         >
+            <img
+                src="{{ asset('images/cta/ai.png') }}"
+                alt="ai"
+                class="absolute -bottom-36 left-1/2 aspect-[3/4] h-1/2 -translate-x-1/2 animate-bounce object-fill"
+            >
+
             <div class="flex min-h-full flex-col gap-4">
                 <div>
                     <flux:heading>
@@ -38,23 +44,25 @@
                     @endforeach
                 </div>
 
-                <flux:input.group>
-                    <flux:input
-                        icon="sparkles"
-                        placeholder="Anime rekomendasi tahun {{ now()?->year }}"
-                        name="message"
-                        wire:model="message"
-                        wire:keydown.enter="ask"
-                        clearable
-                    />
-                    <flux:button
-                        variant="primary"
-                        icon="paper-airplane"
-                        wire:click="ask"
-                    >
-                        Kirim
-                    </flux:button>
-                </flux:input.group>
+                <div class="z-50 bg-zinc-800">
+                    <flux:input.group>
+                        <flux:input
+                            icon="sparkles"
+                            placeholder="Anime rekomendasi tahun {{ now()?->year }}"
+                            name="message"
+                            wire:model="message"
+                            wire:keydown.enter="ask"
+                            clearable
+                        />
+                        <flux:button
+                            variant="primary"
+                            icon="paper-airplane"
+                            wire:click="ask"
+                        >
+                            Kirim
+                        </flux:button>
+                    </flux:input.group>
+                </div>
             </div>
         </flux:modal>
     @else
