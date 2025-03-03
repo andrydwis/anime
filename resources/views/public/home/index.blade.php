@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <div class="flex flex-col gap-2">
+    {{-- <div class="flex flex-col gap-2">
         <div class="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
             <div class="flex flex-col">
                 <flux:heading
@@ -80,5 +80,5 @@
         <div class="grid grid-cols-2 gap-2 lg:grid-cols-4">
             <x-cards.news />
         </div>
-    </div>
+    </div> --}}
 </x-layouts.app>

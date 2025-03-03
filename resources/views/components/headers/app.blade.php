@@ -114,16 +114,9 @@
             </flux:menu>
         </flux:dropdown>
 
-        <flux:modal.trigger name="search">
-            <flux:button icon="magnifying-glass" />
-        </flux:modal.trigger>
+        <livewire:waifu-ai />
 
-        <flux:modal
-            name="search"
-            class="md:min-h-auto h-full min-h-svh w-full !rounded-none md:h-3/4 md:!rounded-lg"
-        >
-            <livewire:seach-modal />
-        </flux:modal>
+        <livewire:seach-modal />
 
         <flux:separator vertical />
 
