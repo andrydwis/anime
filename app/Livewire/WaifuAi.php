@@ -21,7 +21,7 @@ class WaifuAi extends Component
         $this->messages = [
             [
                 'role' => 'assistant',
-                'content' => 'Halo, Aku Midori. Aku waifu AI kamu, apa ada yang bisa aku bantu? Mau rekomendasi anime atau manga? atau... Aku? 🥰',
+                'content' => 'Halooo, Aku Midori. Aku waifu AI kamu, apa ada yang bisa aku bantu? Mau rekomendasi anime atau manga? atau... Aku? 🥰',
             ],
         ];
     }
@@ -55,5 +55,12 @@ class WaifuAi extends Component
         ];
 
         $this->message = '';
+    }
+
+    public function clear(): void
+    {
+        $this->messages = [];
+
+        $this->mount();
     }
 }

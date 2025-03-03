@@ -11,6 +11,13 @@
             name="ai"
             class="md:min-h-auto h-full min-h-svh w-full !rounded-none md:h-3/4 md:!rounded-lg"
         >
+            <flux:button
+                variant="subtle"
+                size="sm"
+                icon="arrow-path"
+                class="!absolute right-0 top-0 mr-12 mt-4"
+                wire:click="clear"
+            />
             <img
                 src="{{ asset('images/cta/ai.png') }}"
                 alt="ai"
