@@ -59,6 +59,7 @@
         </flux:modal>
     @else
         <flux:button
+            variant="primary"
             icon="sparkles"
             href="{{ route('login') }}"
         />
