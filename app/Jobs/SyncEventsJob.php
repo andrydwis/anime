@@ -44,62 +44,57 @@ class SyncEventsJob implements ShouldQueue
             \Log::error("Invalid data format from Google Sheets.");
             return;
         }
-        try {
-            $count = 0;
-            foreach ($data['table']['rows'] as $row) {
+        foreach ($data['table']['rows'] as $row) {
 
-                $eventTimeString = null;
-                $eventTime = null;
+            $eventTimeString = null;
+            $eventTime = null;
 
-                //Format Date
-                if (isset($row['c'][0]['v'])) {
-                    $eventDateString = $row['c'][0]['v']; // Example: Date(2025,1,22)
-                    $dateParts = str_replace(['Date(', ')'], '', $eventDateString);
-                    $dateParts = explode(',', $dateParts);  // Split the string into an array: [2025, 1, 22]
-            
-                    // Adjust the month to be 1-indexed (JavaScript is 0-indexed)
-                    $year = $dateParts[0];
-                    $month = $dateParts[1] + 1;  // JavaScript month is 0-indexed, so add 1
-                    $day = $dateParts[2];
-    
-                    $eventDate = Carbon::create($year, $month, $day)->toDateString();
-                }
+            //Format Date
+            if (isset($row['c'][0]['v'])) {
+                $eventDateString = $row['c'][0]['v']; // Example: Date(2025,1,22)
+                $dateParts = str_replace(['Date(', ')'], '', $eventDateString);
+                $dateParts = explode(',', $dateParts);  // Split the string into an array: [2025, 1, 22]
+        
+                // Adjust the month to be 1-indexed (JavaScript is 0-indexed)
+                $year = $dateParts[0];
+                $month = $dateParts[1] + 1;  // JavaScript month is 0-indexed, so add 1
+                $day = $dateParts[2];
 
-                //Format Time
-                if (isset($row['c'][1]['f'])) {
-                    $eventTimeString = $row['c'][1]['f']; // Example: "09:00"
-                    $eventTime = Carbon::createFromFormat('H:i', $eventTimeString)->format('H:i:s');
-                }
-
-                $event = [
-                    'date' => $eventDate,
-                    'time' => $eventTime,
-                    'location' => isset($row['c'][2]['v']) ? $row['c'][2]['v'] : null,
-                    'area' => isset($row['c'][3]['v']) ? $row['c'][3]['v'] : null,
-                    'name' => isset($row['c'][4]['v']) ? $row['c'][4]['v'] : null,
-                    'link' => isset($row['c'][6]['v']) ? $row['c'][6]['v'] : null,
-                ];
-                
-                if ($event['name']) {
-                    Event::updateOrCreate(
-                        // Search criteria (use 'name' and 'date' if date is available)
-                        [
-                            'name' => $event['name'],
-                            'date' => $eventDate ?? null
-                        ],
-                        // Fields to update or create
-                        [
-                            'location' => $event['location'],
-                            'area' => $event['area'],
-                            'link' => $event['link'],
-                            'time' => $eventTime ?? null,  // Handle missing time
-                        ]
-                    );
-                }
-
+                $eventDate = Carbon::create($year, $month, $day)->toDateString();
             }
-        } catch (\Exception $e) {
-            dd($e->getMessage(), $count);
+
+            //Format Time
+            if (isset($row['c'][1]['f'])) {
+                $eventTimeString = $row['c'][1]['f']; // Example: "09:00"
+                $eventTime = Carbon::createFromFormat('H:i', $eventTimeString)->format('H:i:s');
+            }
+
+            $event = [
+                'date' => $eventDate,
+                'time' => $eventTime,
+                'location' => isset($row['c'][2]['v']) ? $row['c'][2]['v'] : null,
+                'area' => isset($row['c'][3]['v']) ? $row['c'][3]['v'] : null,
+                'name' => isset($row['c'][4]['v']) ? $row['c'][4]['v'] : null,
+                'link' => isset($row['c'][6]['v']) ? $row['c'][6]['v'] : null,
+            ];
+            
+            if ($event['name']) {
+                Event::updateOrCreate(
+                    // Search criteria (use 'name' and 'date' if date is available)
+                    [
+                        'name' => $event['name'],
+                        'date' => $eventDate ?? null
+                    ],
+                    // Fields to update or create
+                    [
+                        'location' => $event['location'],
+                        'area' => $event['area'],
+                        'link' => $event['link'],
+                        'time' => $eventTime ?? null,  // Handle missing time
+                    ]
+                );
+            }
+
         }
 
         \Log::info('Events synced successfully!');
