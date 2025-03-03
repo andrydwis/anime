@@ -148,6 +148,8 @@
         @endif
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        @livewireStyles
         @fluxAppearance
         @stack('styles')
     </head>
@@ -165,6 +167,7 @@
             <x-footers.app />
         </flux:main>
 
+        @livewireScripts
         @fluxScripts
         @stack('scripts')
     </body>

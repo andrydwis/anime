@@ -23,7 +23,7 @@
 
                 <div
                     id="chat-container"
-                    class="flex h-0 flex-grow rounded-lg flex-col gap-2 overflow-auto"
+                    class="flex h-0 flex-grow flex-col gap-2 overflow-auto rounded-lg"
                 >
                     @foreach ($messages as $message)
                         @if ($message['role'] === 'assistant')
@@ -38,11 +38,13 @@
                     @endforeach
                 </div>
 
-                <flux:input.group class="mt-auto">
+                <flux:input.group>
                     <flux:input
+                        icon="sparkles"
                         placeholder="Anime rekomendasi tahun {{ now()?->year }}"
                         name="message"
                         wire:model="message"
+                        wire:keydown.enter="ask"
                         clearable
                     />
                     <flux:button
@@ -62,3 +64,53 @@
         />
     @endauth
 </div>
+
+@push('scripts')
+    <script>
+        Livewire.hook('commit', ({
+            component,
+            commit,
+            respond,
+            succeed,
+            fail
+        }) => {
+            // Equivalent of 'message.sent'
+
+            succeed(({
+                snapshot,
+                effects
+            }) => {
+                // Equivalent of 'message.received'
+
+                queueMicrotask(() => {
+                    // Equivalent of 'message.processed'
+                    const container = document.querySelector(
+                        '#chat-container');
+                    if (container) {
+                        // Add a delay of 500ms (0.5 seconds) before scrolling
+                        setTimeout(() => {
+                            const lastChild = container
+                                .lastElementChild;
+                            if (lastChild) {
+                                lastChild.scrollIntoView({
+                                    behavior: 'smooth'
+                                });
+
+                            } else {
+                                console.warn(
+                                    'No child elements found in the container'
+                                );
+                            }
+                        }, 500); // Adjust the delay time as needed
+                    } else {
+                        console.error('Chat container not found!');
+                    }
+                })
+            })
+
+            fail(() => {
+                // Equivalent of 'message.failed'
+            })
+        })
+    </script>
+@endpush
