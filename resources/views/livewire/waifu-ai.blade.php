@@ -1,14 +1,17 @@
 <div>
     @auth
         <flux:modal.trigger name="ai">
-            <flux:button variant="primary" icon="sparkles" />
+            <flux:button
+                variant="primary"
+                icon="sparkles"
+            />
         </flux:modal.trigger>
 
         <flux:modal
             name="ai"
             class="md:min-h-auto h-full min-h-svh w-full !rounded-none md:h-3/4 md:!rounded-lg"
         >
-            <div class="flex min-h-full flex-col gap-4 !overflow-hidden">
+            <div class="flex min-h-full flex-col gap-4">
                 <div>
                     <flux:heading>
                         Waifu AI
@@ -20,11 +23,11 @@
 
                 <div
                     id="chat-container"
-                    class="flex max-h-[400px] flex-col gap-2 overflow-auto"
+                    class="flex h-0 flex-grow rounded-lg flex-col gap-2 overflow-auto"
                 >
                     @foreach ($messages as $message)
                         @if ($message['role'] === 'assistant')
-                            <x-cards.app class="!bg-accent w-3/4">
+                            <x-cards.app class="!bg-accent w-3/4 !text-white">
                                 {!! str()->markdown($message['content']) !!}
                             </x-cards.app>
                         @else
