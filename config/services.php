@@ -40,4 +40,9 @@ return [
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
         'redirect' => env('GOOGLE_REDIRECT'),
     ],
+
+    'google_sheets' => [
+        'event_sheet_id' => env('GOOGLE_EVENT_SHEET_ID'),
+        'event_sheet_gid' => env('GOOGLE_EVENT_SHEET_GID'),
+    ],
 ];

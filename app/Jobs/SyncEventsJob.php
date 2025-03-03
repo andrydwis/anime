@@ -9,7 +9,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class SyncEventsJob implements ShouldQueue
 {
@@ -22,82 +24,148 @@ class SyncEventsJob implements ShouldQueue
         $url = "https://docs.google.com/spreadsheets/d/$sheetId/gviz/tq?tqx=out:json&tq&gid=$gid";
 
         $response = Http::get($url);
+
         if ($response->failed()) {
-            \Log::error("Failed to fetch event data.");
+            Log::error("Failed to fetch event data.");
             return;
         }
 
-        // Extract JSON from Google's response
+        // Extract JSON response
         $jsonData = str_replace(['/*O_o*/', 'google.visualization.Query.setResponse('], '', $response->body());
-
-        // Remove the trailing closing parenthesis `)`
-        $jsonData = substr($jsonData, 0, -2);
-
-        // Decode JSON
+        $jsonData = substr($jsonData, 0, -2); // Remove trailing parenthesis
         $data = json_decode($jsonData, true);
 
-        //Clear Table
-
-
-
         if (!isset($data['table']['rows'])) {
-            \Log::error("Invalid data format from Google Sheets.");
+            Log::error("Invalid data format from Google Sheets.");
             return;
         }
+
+        $events = [];
+        $syncTime = Carbon::now();
+
         foreach ($data['table']['rows'] as $row) {
-
-            $eventTimeString = null;
-            $eventTime = null;
-
-            //Format Date
-            if (isset($row['c'][0]['v'])) {
-                $eventDateString = $row['c'][0]['v']; // Example: Date(2025,1,22)
-                $dateParts = str_replace(['Date(', ')'], '', $eventDateString);
-                $dateParts = explode(',', $dateParts);  // Split the string into an array: [2025, 1, 22]
+            // Extract name first
+            $eventName = $row['c'][4]['v'] ?? null;
+            if (!$eventName) {
+                continue; // Skip inserting if name is missing
+            }
         
-                // Adjust the month to be 1-indexed (JavaScript is 0-indexed)
-                $year = $dateParts[0];
-                $month = $dateParts[1] + 1;  // JavaScript month is 0-indexed, so add 1
-                $day = $dateParts[2];
-
-                $eventDate = Carbon::create($year, $month, $day)->toDateString();
+            // Parse date
+            $eventDate = null;
+            if (isset($row['c'][0]['v'])) {
+                $dateParts = explode(',', str_replace(['Date(', ')'], '', $row['c'][0]['v']));
+                $eventDate = Carbon::create($dateParts[0], $dateParts[1] + 1, $dateParts[2])->toDateString();
             }
-
-            //Format Time
-            if (isset($row['c'][1]['f'])) {
-                $eventTimeString = $row['c'][1]['f']; // Example: "09:00"
-                $eventTime = Carbon::createFromFormat('H:i', $eventTimeString)->format('H:i:s');
+        
+            // Parse time
+            $eventTime = isset($row['c'][1]['f']) ? Carbon::createFromFormat('H:i', $row['c'][1]['f'])->format('H:i:s') : null;
+        
+            // Parse sync_time
+            $syncTime = null;
+            if (isset($row['c'][5]['f'])) {
+                $syncTimeString = $row['c'][5]['f'];
+                $syncTime = Carbon::createFromFormat('d-m-Y H:i', $syncTimeString);
             }
-
-            $event = [
+        
+            // Add only valid events
+            $events[] = [
+                'name' => $eventName,
+                'area' => $row['c'][3]['v'] ?? null,
                 'date' => $eventDate,
                 'time' => $eventTime,
-                'location' => isset($row['c'][2]['v']) ? $row['c'][2]['v'] : null,
-                'area' => isset($row['c'][3]['v']) ? $row['c'][3]['v'] : null,
-                'name' => isset($row['c'][4]['v']) ? $row['c'][4]['v'] : null,
-                'link' => isset($row['c'][6]['v']) ? $row['c'][6]['v'] : null,
+                'location' => $row['c'][2]['v'] ?? null,
+                'link' => $row['c'][6]['v'] ?? null,
+                'sync_time' => $syncTime ?? Carbon::now(),
+                'created_at' => now(),
+                'updated_at' => now(),
             ];
-            
-            if ($event['name']) {
-                Event::updateOrCreate(
-                    // Search criteria (use 'name' and 'date' if date is available)
-                    [
-                        'name' => $event['name'],
-                        'area' => $event['area'],
-                    ],
-                    // Fields to update or create
-                    [
-                        'date' => $eventDate ?? null,
-                        'location' => $event['location'],
-                        'area' => $event['area'],
-                        'link' => $event['link'],
-                        'time' => $eventTime ?? null,  // Handle missing time
-                    ]
-                );
-            }
+        }
+        
 
+        if (empty($events)) {
+            Log::info('No new events found.');
+            return;
         }
 
-        \Log::info('Events synced successfully!');
+        // Bulk process events
+        $this->bulkSyncEvents($events);
+
+        Log::info('Events synced successfully!');
+    }
+
+    /**
+     * Sync events in bulk with batch inserts and updates
+     */
+    private function bulkSyncEvents(array $events)
+    {
+        $eventNames = array_column($events, 'name');
+        $eventAreas = array_column($events, 'area');
+
+        // Fetch existing events
+        $existingEvents = Event::whereIn('name', $eventNames)
+            ->whereIn('area', $eventAreas)
+            ->get()
+            ->keyBy(fn($event) => $event->name . '|' . $event->area);
+
+        $insertData = [];
+        $updateData = [];
+
+        foreach ($events as $event) {
+            $key = $event['name'] . '|' . $event['area'];
+
+            if (isset($existingEvents[$key])) {
+                $existingEvent = $existingEvents[$key];
+
+                // Only update if sync_time is newer
+                if ($existingEvent->sync_time < $event['sync_time']) {
+                    $updateData[] = [
+                        'id' => $existingEvent->id,
+                        'date' => $event['date'],
+                        'time' => $event['time'],
+                        'location' => $event['location'],
+                        'link' => $event['link'],
+                        'sync_time' => $event['sync_time'],
+                        'updated_at' => now(),
+                    ];
+                }
+            } else {
+                $insertData[] = $event;
+            }
+        }
+
+        // Perform bulk inserts
+        if (!empty($insertData)) {
+            Event::insert($insertData);
+        }
+
+        // Perform bulk updates
+        if (!empty($updateData)) {
+            $this->bulkUpdateEvents($updateData);
+        }
+    }
+
+    /**
+     * Bulk update events using raw SQL
+     */
+    private function bulkUpdateEvents(array $updateData)
+    {
+        $table = (new Event())->getTable();
+        $cases = [];
+        $ids = [];
+
+        foreach ($updateData as $update) {
+            $cases[] = "WHEN id = {$update['id']} THEN '{$update['sync_time']}'";
+            $ids[] = $update['id'];
+        }
+
+        $casesString = implode(' ', $cases);
+        $idsString = implode(',', $ids);
+
+        DB::statement("
+            UPDATE $table
+            SET sync_time = CASE $casesString END,
+                updated_at = NOW()
+            WHERE id IN ($idsString)
+        ");
     }
 }

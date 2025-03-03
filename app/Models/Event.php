@@ -17,5 +17,6 @@ class Event extends Model
         'area',
         'date',
         'time',
+        'sync_time'
     ];
 }
