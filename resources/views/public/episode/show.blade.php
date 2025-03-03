@@ -1,66 +1,61 @@
 <x-layouts.app title="{{ $episode['data']['title'] }}">
-    <div class="flex flex-col gap-8">
-        <flux:breadcrumbs class="flex-wrap">
-            <flux:breadcrumbs.item
-                icon="home"
-                href="{{ route('home') }}"
-            />
-            <flux:breadcrumbs.item href="{{ route('anime.index') }}">
-                Anime
-            </flux:breadcrumbs.item>
-            <flux:breadcrumbs.item href="{{ route('anime.show', ['anime' => $animeId]) }}">
-                {{ $anime['data']['title'] }}
-            </flux:breadcrumbs.item>
-            <flux:breadcrumbs.item>
-                {{ $episode['data']['title'] }}
-            </flux:breadcrumbs.item>
-        </flux:breadcrumbs>
+    <flux:breadcrumbs class="flex-wrap">
+        <flux:breadcrumbs.item
+            icon="home"
+            href="{{ route('home') }}"
+        />
+        <flux:breadcrumbs.item href="{{ route('anime.index') }}">
+            Anime
+        </flux:breadcrumbs.item>
+        <flux:breadcrumbs.item href="{{ route('anime.show', ['anime' => $animeId]) }}">
+            {{ $anime['data']['title'] }}
+        </flux:breadcrumbs.item>
+        <flux:breadcrumbs.item>
+            {{ $episode['data']['title'] }}
+        </flux:breadcrumbs.item>
+    </flux:breadcrumbs>
 
-        <div id="status"></div>
+    <div class="aspect-video overflow-hidden rounded-lg">
+        <iframe
+            id="player"
+            allowfullscreen
+            src="{{ $episode['data']['defaultStreamingUrl'] }}"
+            frameborder="0"
+            class="h-full w-full"
+        ></iframe>
+    </div>
 
-        <div class="aspect-video overflow-hidden rounded-lg">
-            <iframe
-                id="player"
-                allowfullscreen
-                allow="screen-wake-lock"
-                src="{{ $episode['data']['defaultStreamingUrl'] }}"
-                frameborder="0"
-                class="h-full w-full"
-            ></iframe>
-        </div>
-
-        <div class="flex flex-row items-center justify-between">
+    <div class="flex flex-row flex-wrap items-center justify-between gap-2">
+        <livewire:save-anime
+            :animeId="$animeId"
+            :anime="$anime"
+        />
+        <div class="flex flex-row items-center gap-2">
             <flux:dropdown
                 position="bottom"
-                align="start"
+                align="end"
             >
                 <flux:button icon="server-stack">Ganti Server</flux:button>
 
                 <flux:menu>
-                    <flux:menu.submenu
-                        heading="Pilih Kualitas"
-                        position="bottom"
-                    >
-                        @foreach ($episode['data']['server']['qualities'] as $qualities)
-                            <flux:menu.submenu heading="{{ $qualities['title'] }}">
-                                @forelse ($qualities['serverList'] as $server)
-                                    <flux:menu.item
-                                        href="{{ route('anime.episode.show', ['anime' => $animeId, 'episode' => $episodeId, 'server' => $server['serverId']]) }}"
-                                    >
-                                        {{ $server['title'] }}
-                                    </flux:menu.item>
-                                @empty
+                    @foreach ($episode['data']['server']['qualities'] as $qualities)
+                        <flux:menu.submenu heading="{{ $qualities['title'] }}">
+                            @forelse ($qualities['serverList'] as $server)
+                                <flux:menu.item
+                                    href="{{ route('anime.episode.show', ['anime' => $animeId, 'episode' => $episodeId, 'server' => $server['serverId']]) }}"
+                                >
+                                    {{ $server['title'] }}
+                                </flux:menu.item>
+                            @empty
 
-                                    <flux:menu.item disabled>
-                                        Tidak tersedia
-                                    </flux:menu.item>
-                                @endforelse
-                            </flux:menu.submenu>
-                        @endforeach
-                    </flux:menu.submenu>
+                                <flux:menu.item disabled>
+                                    Tidak tersedia
+                                </flux:menu.item>
+                            @endforelse
+                        </flux:menu.submenu>
+                    @endforeach
                 </flux:menu>
             </flux:dropdown>
-
             <flux:dropdown
                 position="bottom"
                 align="end"
@@ -69,86 +64,33 @@
                 </flux:button>
 
                 <flux:menu>
-                    <flux:menu.submenu
-                        heading="Pilih Format"
-                        position="bottom"
-                    >
-                        @foreach ($episode['data']['downloadUrl']['formats'] as $formats)
-                            <flux:menu.submenu heading="{{ $formats['title'] }}">
-                                @foreach ($formats['qualities'] as $quality)
-                                    <flux:menu.submenu heading="{{ $quality['title'] }}">
-                                        @foreach ($quality['urls'] as $url)
-                                            <flux:menu.item
-                                                href="{{ $url['url'] }}"
-                                                target="_blank"
-                                            >
-                                                {{ $url['title'] }}
-                                            </flux:menu.item>
-                                        @endforeach
-                                    </flux:menu.submenu>
-                                @endforeach
-                            </flux:menu.submenu>
-                        @endforeach
-                    </flux:menu.submenu>
+                    @foreach ($episode['data']['downloadUrl']['formats'] as $formats)
+                        <flux:menu.submenu heading="{{ $formats['title'] }}">
+                            @foreach ($formats['qualities'] as $quality)
+                                <flux:menu.submenu heading="{{ $quality['title'] }}">
+                                    @foreach ($quality['urls'] as $url)
+                                        <flux:menu.item
+                                            href="{{ $url['url'] }}"
+                                            target="_blank"
+                                        >
+                                            {{ $url['title'] }}
+                                        </flux:menu.item>
+                                    @endforeach
+                                </flux:menu.submenu>
+                            @endforeach
+                        </flux:menu.submenu>
+                    @endforeach
                 </flux:menu>
             </flux:dropdown>
         </div>
-
-        <x-animes.episode
-            :anime="$anime"
-            :animeId="$animeId"
-            :episodeId="$episodeId"
-            :watchedEpisodes="$watchedEpisodes"
-        />
-
-        <x-animes.detail :anime="$anime" />
     </div>
 
-    @push('scripts')
-        <script>
-            document.addEventListener('DOMContentLoaded', async () => {
-                const statusElem = document.getElementById('status');
-                let wakeLock = null;
+    <x-animes.episode
+        :anime="$anime"
+        :animeId="$animeId"
+        :episodeId="$episodeId"
+        :watchedEpisodes="$watchedEpisodes"
+    />
 
-                // Function to request a wake lock
-                async function requestWakeLock() {
-                    try {
-                        wakeLock = await navigator.wakeLock.request('screen');
-                        statusElem.textContent = 'Wake Lock is active!';
-                        wakeLock.addEventListener('release', () => {
-                            statusElem.textContent =
-                                'Wake Lock has been released.';
-                        });
-                    } catch (err) {
-                        statusElem.textContent = `${err.name}, ${err.message}`;
-                    }
-                }
-
-                // Function to release the wake lock
-                async function releaseWakeLock() {
-                    if (wakeLock !== null) {
-                        await wakeLock.release();
-                        wakeLock = null;
-                        statusElem.textContent = 'Wake Lock has been released.';
-                    }
-                }
-
-                // Re-acquire wake lock when the document becomes visible
-                document.addEventListener('visibilitychange', async () => {
-                    if (wakeLock !== null && document.visibilityState ===
-                        'visible') {
-                        await requestWakeLock();
-                    }
-                });
-
-                // Feature detection
-                if ('wakeLock' in navigator) {
-                    await requestWakeLock();
-                } else {
-                    statusElem.textContent =
-                        'Wake Lock is not supported by this browser.';
-                }
-            });
-        </script>
-    @endpush
+    <x-animes.detail :anime="$anime" />
 </x-layouts.app>

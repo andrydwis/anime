@@ -68,6 +68,11 @@ class User extends Authenticatable
         );
     }
 
+    public function animeWatchlists(): HasMany
+    {
+        return $this->hasMany(AnimeWatchlist::class);
+    }
+
     public function animeWatchHistories(): HasMany
     {
         return $this->hasMany(AnimeWatchHistory::class);

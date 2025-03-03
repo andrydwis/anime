@@ -1,6 +1,6 @@
 <footer>
     <x-cards.app class="mt-auto">
-        <div class="flex flex-col gap-2 lg:w-1/4">
+        <div class="flex flex-col gap-2">
             <div class="flex flex-row items-center gap-2">
                 <flux:button
                     icon="github"
@@ -19,14 +19,14 @@
                     href="https://saweria.co/andrydwis"
                 />
             </div>
-            <flux:subheading>
+            <flux:subheading class="lg:w-1/4">
                 Weaboo.my.id adalah tempat terbaik untuk nonton anime gratis, bergabung
                 dengan
                 komunitas wibu, dan mendapatkan informasi terkini seputar dunia anime.
                 Temukan
                 anime favoritmu di sini!
             </flux:subheading>
-            <flux:subheading>
+            <flux:subheading class="lg:w-1/4">
                 © {{ now()->year }} {{ config('app.name') }}
             </flux:subheading>
         </div>

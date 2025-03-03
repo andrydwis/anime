@@ -1,4 +1,4 @@
-@props(['anime'])
+@props(['animeId', 'anime'])
 <x-cards.app>
     <div class="grid gap-2 md:grid-cols-2 lg:grid-cols-4">
         <img

@@ -165,9 +165,11 @@
     <body class="selection:bg-accent/50 min-h-screen bg-white dark:bg-zinc-800">
         <flux:main
             container
-            class="flex min-h-screen items-center justify-center"
+            class="flex min-h-screen flex-col items-center justify-center"
         >
-            {{ $slot }}
+            <div class="mx-auto flex w-80 max-w-80 flex-col gap-8">
+                {{ $slot }}
+            </div>
         </flux:main>
 
         @fluxScripts
