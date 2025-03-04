@@ -47,10 +47,26 @@
             Segera!
         </flux:badge>
     </flux:button>
-    <flux:modal.trigger name="ai">
+    @auth
+        <flux:modal.trigger name="ai">
+            <flux:button
+                icon="sparkles"
+                class="md:col-span-2"
+            >
+                Waifu AI
+                <flux:badge
+                    size="sm"
+                    color="emerald"
+                >
+                    Baru!
+                </flux:badge>
+            </flux:button>
+        </flux:modal.trigger>
+    @else
         <flux:button
             icon="sparkles"
             class="md:col-span-2"
+            :href="route('login')"
         >
             Waifu AI
             <flux:badge
@@ -60,7 +76,7 @@
                 Baru!
             </flux:badge>
         </flux:button>
-    </flux:modal.trigger>
+    @endauth
     <flux:button
         icon="coffee"
         href="https://saweria.co/andrydwis"
