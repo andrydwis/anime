@@ -19,7 +19,9 @@
         "livewire/livewire": "^3.5",
         "opcodesio/log-viewer": "^3.15",
         "openai-php/laravel": "^0.11.0",
-        "spatie/laravel-permission": "^6.15"
+        "spatie/laravel-medialibrary": "^11.12",
+        "spatie/laravel-permission": "^6.15",
+        "symfony/html-sanitizer": "^7.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.15",

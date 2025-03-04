@@ -29,11 +29,18 @@
         <flux:separator class="my-2" />
 
         <flux:navlist.item
-            icon="list-bullet"
+            icon="users"
             iconVariant="solid"
             href="{{ route('core.users.index') }}"
         >
             Daftar Pengguna
+        </flux:navlist.item>
+        <flux:navlist.item
+            icon="newspaper"
+            iconVariant="solid"
+            href="{{ route('core.news.index') }}"
+        >
+            Berita
         </flux:navlist.item>
     </flux:navlist>
 

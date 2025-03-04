@@ -52,14 +52,17 @@
                 </div>
 
                 <div class="z-50 flex flex-col gap-2">
-                    <div class="flex-row flex overflow-x-auto items-center gap-2">
+                    <div class="flex flex-row items-center gap-2 overflow-x-auto">
                         @foreach ($messageRecommendations as $messageRecommendation)
-                            <flux:button size="sm" wire:click="message = '{{ $messageRecommendation }}'">
+                            <flux:button
+                                size="sm"
+                                wire:click="message = '{{ $messageRecommendation }}'"
+                            >
                                 {{ $messageRecommendation }}
                             </flux:button>
                         @endforeach
                     </div>
-                    <flux:input.group class="!bg-zinc-800">
+                    <flux:input.group>
                         <flux:input
                             icon="sparkles"
                             placeholder="Anime rekomendasi tahun {{ now()?->year }}"

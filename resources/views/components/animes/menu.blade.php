@@ -25,14 +25,14 @@
     </flux:button>
     <flux:button
         icon="newspaper"
-        href="/#"
+        href="{{ route('news.index') }}"
     >
         Berita Terbaru
         <flux:badge
             size="sm"
-            color="red"
+            color="emerald"
         >
-            Segera!
+            Baru!
         </flux:badge>
     </flux:button>
     <flux:button

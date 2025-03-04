@@ -1,5 +1,5 @@
-<footer>
-    <x-cards.app class="mt-auto">
+<footer class="mt-auto">
+    <x-cards.app>
         <div class="flex flex-col gap-2">
             <div class="flex flex-row items-center gap-2">
                 <flux:button

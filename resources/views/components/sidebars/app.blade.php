@@ -67,6 +67,15 @@
         <flux:navlist.item
             icon="calendar-date-range"
             iconVariant="solid"
+            href="{{ route('news.index') }}"
+            badge="Baru!"
+            badge-color="emerald"
+        >
+            Berita Terbaru
+        </flux:navlist.item>
+        <flux:navlist.item
+            icon="calendar-date-range"
+            iconVariant="solid"
             href="#"
             badge="Segera!"
             badge-color="red"

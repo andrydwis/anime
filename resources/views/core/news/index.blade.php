@@ -1,4 +1,4 @@
-<x-layouts.core title="Daftar Pengguna">
+<x-layouts.core title="Berita">
     <x-alerts.app />
 
     <div class="flex flex-row items-center justify-between">
@@ -7,12 +7,19 @@
                 size="xl"
                 class="!font-semibold"
             >
-                Daftar Pengguna
+                Berita
             </flux:heading>
             <flux:subheading>
-                Semua pengguna {{ config('app.name') }}
+                Berita terbaru seputar anime, manga, game, dan lainnya
             </flux:subheading>
         </div>
+        <flux:button
+            variant="primary"
+            icon="plus"
+            href="{{ route('core.news.create') }}"
+        >
+            Tambah
+        </flux:button>
     </div>
 
     <x-cards.app>
@@ -26,7 +33,7 @@
                                 class="px-4 py-2"
                             >
                                 <flux:subheading>
-                                    Nama
+                                    Judul
                                 </flux:subheading>
                             </th>
                             <th
@@ -34,7 +41,7 @@
                                 class="px-4 py-2"
                             >
                                 <flux:subheading>
-                                    Email
+                                    Penulis
                                 </flux:subheading>
                             </th>
                             <th
@@ -42,17 +49,10 @@
                                 class="px-4 py-2"
                             >
                                 <flux:subheading>
-                                    Role
+                                    Sudah Publish?
                                 </flux:subheading>
                             </th>
-                            <th
-                                scope="col"
-                                class="px-4 py-2"
-                            >
-                                <flux:subheading>
-                                    Terakhir Login
-                                </flux:subheading>
-                            </th>
+
                             <th
                                 scope="col"
                                 class="px-4 py-2"
@@ -64,75 +64,51 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-zinc-200">
-                        @forelse ($users as $user)
+                        @forelse ($news as $newsData)
                             <tr class="hover:bg-zinc-200 dark:hover:bg-zinc-800">
                                 <td class="whitespace-nowrap px-4 py-2">
-                                    {{ $user?->name }}
+                                    {{ $newsData?->title }}
                                 </td>
                                 <td class="whitespace-nowrap px-4 py-2">
-                                    <flux:link href="mailto:{{ $user->email }}">
-                                        {{ $user?->email }}
-                                    </flux:link>
+                                    {{ $newsData?->user?->name }}
                                 </td>
-                                <td class="whitespace-nowrap px-4 py-2">
-                                    <div
-                                        class="flex flex-row items-center justify-center gap-2">
-                                        @if ($user?->roles?->count() > 0)
-                                            <flux:badge
-                                                size="sm"
-                                                color="emerald"
-                                            >
-                                                {{ $user?->roles?->first()?->name ?? '-' }}
-                                            </flux:badge>
-                                        @endif
-                                    </div>
+                                <td class="whitespace-nowrap px-4 py-2 text-center">
+                                    <livewire:switch-publish-news :news="$newsData" />
                                 </td>
                                 <td class="whitespace-nowrap px-4 py-2">
                                     <div
                                         class="flex flex-row items-center justify-center gap-2">
-                                        @if ($user?->last_login_at)
-                                            <flux:badge
-                                                size="sm"
-                                                icon="clock"
-                                            >
-                                                {{ $user?->last_login_at?->diffForHumans() ?? '-' }}
-                                            </flux:badge>
-                                        @endif
-                                    </div>
-                                </td>
-                                <td class="whitespace-nowrap px-4 py-2">
-                                    <div
-                                        class="flex flex-row items-center justify-center gap-2">
+                                        <flux:tooltip content="Edit">
+                                            <flux:button
+                                                icon="pencil"
+                                                size="xs"
+                                                href="{{ route('core.news.edit', ['news' => $newsData]) }}"
+                                            />
+                                        </flux:tooltip>
                                         <flux:tooltip content="Hapus">
-                                            @php
-                                                $isSelf =
-                                                    $user?->id === auth()->user()?->id;
-                                            @endphp
                                             <div>
                                                 <flux:modal.trigger
-                                                    name="delete-user-{{ $user?->id }}"
+                                                    name="delete-news-{{ $newsData?->id }}"
                                                 >
                                                     <flux:button
                                                         variant="danger"
                                                         icon="trash"
                                                         size="xs"
-                                                        :disabled="$isSelf"
                                                     />
                                                 </flux:modal.trigger>
                                                 <flux:modal
                                                     variant="flyout"
                                                     position="bottom"
-                                                    name="delete-user-{{ $user?->id }}"
+                                                    name="delete-news-{{ $newsData?->id }}"
                                                 >
                                                     <div class="flex flex-col gap-2">
                                                         <div>
                                                             <flux:heading size="lg">
-                                                                Hapus Pengguna
+                                                                Hapus Berita
                                                             </flux:heading>
                                                             <flux:subheading>
                                                                 Apakah kamu yakin
-                                                                ingin
-                                                                menghapus pengguna
+                                                                ingin menghapus berita
                                                                 ini?
                                                             </flux:subheading>
                                                         </div>
@@ -146,7 +122,7 @@
                                                                 </flux:button>
                                                             </flux:modal.close>
                                                             <form
-                                                                action="{{ route('core.users.destroy', ['user' => $user]) }}"
+                                                                action="{{ route('core.news.destroy', ['news' => $newsData]) }}"
                                                                 method="post"
                                                             >
                                                                 @csrf
@@ -180,7 +156,7 @@
                 </table>
             </div>
             <div>
-                {{ $users?->onEachSide(1)?->links('components.paginations.app') }}
+                {{ $news?->onEachSide(1)?->links('components.paginations.app') }}
             </div>
         </div>
     </x-cards.app>
