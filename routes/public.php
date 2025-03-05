@@ -15,6 +15,7 @@ Route::get('anime/{anime}', [App\Http\Controllers\Web\Public\Anime\AnimeControll
 Route::get('anime/{anime}/episode/{episode}', [App\Http\Controllers\Web\Public\Episode\EpisodeController::class, 'show'])->name('anime.episode.show');
 
 Route::resource('news', App\Http\Controllers\Web\Public\News\NewsController::class)->scoped(['news' => 'slug'])->only(['index', 'show']);
+Route::resource('event', App\Http\Controllers\Web\Public\Event\EventController::class)->scoped(['event' => 'slug'])->only(['index', 'show']);
 
 Route::get('profile', [App\Http\Controllers\Web\Public\Profile\ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth');
 Route::patch('profile', [App\Http\Controllers\Web\Public\Profile\ProfileController::class, 'update'])->name('profile.update')->middleware('auth');

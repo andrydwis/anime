@@ -40,9 +40,15 @@
             iconVariant="solid"
             href="{{ route('core.news.index') }}"
         >
-            Berita
+            Berita Terbaru
+        </flux:navlist.item>
+        <flux:navlist.item
+            icon="calendar-date-range"
+            iconVariant="solid"
+            href="{{ route('core.events.index') }}"
+        >
+            Event
         </flux:navlist.item>
     </flux:navlist>
-
     <flux:spacer />
 </flux:sidebar>

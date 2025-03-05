@@ -10,10 +10,7 @@
     </flux:breadcrumbs>
 
     <div class="flex flex-col gap-2">
-        <x-alerts.app />
-
         <x-cards.app class="mx-auto w-full md:max-w-lg">
-
             <form
                 action="{{ route('profile.update') }}"
                 method="post"
@@ -21,26 +18,7 @@
                 @method('patch')
                 @csrf
                 <div class="flex flex-col gap-4">
-                    @if (session()->has('success'))
-                        <div
-                            x-data="{ open: true }"
-                            x-show="open"
-                            class="bg-accent flex flex-row gap-2 rounded-lg px-4 py-2 text-white"
-                        >
-                            <flux:icon.check-circle variant="solid" />
-                            <span>
-                                {{ session()->get('success') }}
-                            </span>
-                            <flux:button
-                                variant="ghost"
-                                size="xs"
-                                icon="x-mark"
-                                x-on:click="open = false"
-                                class="ml-auto !text-white"
-                            />
-                        </div>
-                    @endif
-
+                    <x-alerts.app />
                     <flux:input
                         label="Nama"
                         type="text"
