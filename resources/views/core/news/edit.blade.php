@@ -97,6 +97,11 @@
                 theme: 'snow'
             });
 
+            //trigger focus on load
+            setTimeout(() => {
+                quill.focus();
+            }, 100);
+
             quill.on('editor-change', (delta, oldDelta, source) => {
                 document.getElementById('content').value = quill.root.innerHTML;
             });
