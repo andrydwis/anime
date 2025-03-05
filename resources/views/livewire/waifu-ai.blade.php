@@ -62,7 +62,7 @@
                             </flux:button>
                         @endforeach
                     </div>
-                    <flux:input.group>
+                    <flux:input.group class="bg-white dark:bg-zinc-800">
                         <flux:input
                             icon="sparkles"
                             placeholder="Anime rekomendasi tahun {{ now()?->year }}"
