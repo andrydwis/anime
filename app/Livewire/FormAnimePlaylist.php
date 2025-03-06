@@ -3,7 +3,6 @@
 namespace App\Livewire;
 
 use App\Models\AnimePlaylist;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 
@@ -77,5 +76,11 @@ class FormAnimePlaylist extends Component
         });
 
         $this->updatedSavedAnimes();
+    }
+
+    public function toggleIsPublic(): void
+    {
+        $this->playlist->is_public = ! $this->playlist->is_public;
+        $this->playlist->save();
     }
 }
