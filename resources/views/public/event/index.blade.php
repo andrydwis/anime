@@ -1,11 +1,11 @@
-<x-layouts.app title="Berita Terbaru">
+<x-layouts.app title="Event">
     <flux:breadcrumbs class="flex-wrap">
         <flux:breadcrumbs.item
             icon="home"
             href="{{ route('home') }}"
         />
         <flux:breadcrumbs.item>
-            Berita Terbaru
+            Event
         </flux:breadcrumbs.item>
     </flux:breadcrumbs>
 
@@ -17,20 +17,20 @@
                     level="h1"
                     class="from-accent !m-0 !bg-gradient-to-br to-cyan-600 bg-clip-text !font-semibold !text-transparent"
                 >
-                    Berita Terbaru
+                    Event
                 </flux:heading>
                 <flux:subheading level="h2">
-                    Berita terbaru seputar anime, manga, game, dan lainnya
+                    Informasi terbaru event yang akan datang
                 </flux:subheading>
             </div>
         </div>
         <div class="grid grid-cols-2 gap-2 lg:grid-cols-4">
-            @foreach ($news as $newsData)
-                <x-cards.news :news="$newsData" />
+            @foreach ($events as $event)
+                <x-cards.event :event="$event" />
             @endforeach
         </div>
         <div>
-            {{ $news?->onEachSide(1)?->links('components.paginations.app') }}
+            {{ $events?->onEachSide(1)?->links('components.paginations.app') }}
         </div>
     </div>
 </x-layouts.app>

@@ -10,7 +10,7 @@
                 Event
             </flux:heading>
             <flux:subheading>
-                Informasi terbaru event wibu yang akan datang
+                Informasi terbaru event yang akan datang
             </flux:subheading>
         </div>
         <flux:button
@@ -34,6 +34,9 @@
                     </x-tables.column>
                     <x-tables.column>
                         Wilayah
+                    </x-tables.column>
+                    <x-tables.column>
+                        Sudah Publish?
                     </x-tables.column>
                     <x-tables.column>
                         Aksi
@@ -62,6 +65,9 @@
                                     @else
                                         -
                                     @endif
+                                </x-tables.cell>
+                                <x-tables.cell class="text-center">
+                                    <livewire:switch-publish-event :event="$event" />
                                 </x-tables.cell>
                                 <x-tables.cell>
                                     <div

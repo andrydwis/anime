@@ -1,19 +1,20 @@
-<a href="#">
+@props(['event'])
+<a href="{{ route('events.show', ['event' => $event]) }}">
     <div class="group relative flex flex-col overflow-hidden rounded-lg">
         <img
             loading="lazy"
-            src="https://picsum.photos/200/300"
+            src="{{ !empty($event?->getFirstMediaUrl('event')) ? $event?->getFirstMediaUrl('event') : asset('images/placeholder/empty.jpg') }}"
             alt="cover"
             class="aspect-video object-cover transition-all group-hover:scale-110 group-hover:brightness-50"
         >
         <flux:badge
             variant="solid"
             size="sm"
-            color="red"
-            icon="fire"
+            color="zinc"
+            icon="calendar-date-range"
             class="pointer-events-none absolute right-2 top-2"
         >
-            Segera!
+            {{ $event?->created_at?->isoFormat('DD MMM Y') }}
         </flux:badge>
         <flux:button
             icon="eye"
@@ -22,9 +23,7 @@
         <div
             class="pointer-events-none absolute bottom-0 w-full bg-white/75 p-2 dark:bg-zinc-900/50">
             <flux:heading class="line-clamp-1 group-hover:underline">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident, vel
-                beatae. Fugit corporis at neque nesciunt ratione eum corrupti? Facilis
-                quasi nihil quis aspernatur? Earum ab quam sunt laudantium illo!
+                {{ $event?->name }}
             </flux:heading>
         </div>
     </div>

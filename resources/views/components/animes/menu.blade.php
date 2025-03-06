@@ -13,14 +13,14 @@
     </flux:button>
     <flux:button
         icon="calendar-date-range"
-        href="/#"
+        href="{{ route('events.index') }}"
     >
-        Event Wibu
+        Event
         <flux:badge
             size="sm"
-            color="red"
+            color="emerald"
         >
-            Segera!
+            Baru!
         </flux:badge>
     </flux:button>
     <flux:button

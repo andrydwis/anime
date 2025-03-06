@@ -30,31 +30,37 @@
         </div>
     </div>
 
-    {{-- <div class="flex flex-col gap-2">
-        <div class="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
-            <div class="flex flex-col">
-                <flux:heading
-                    size="xl"
-                    level="h1"
-                    class="from-accent !m-0 !bg-gradient-to-br to-cyan-600 bg-clip-text !font-semibold !text-transparent"
+    @if ($events?->isNotEmpty())
+        <div class="flex flex-col gap-2">
+            <div
+                class="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
+                <div class="flex flex-col">
+                    <flux:heading
+                        size="xl"
+                        level="h1"
+                        class="from-accent !m-0 !bg-gradient-to-br to-cyan-600 bg-clip-text !font-semibold !text-transparent"
+                    >
+                        Event
+                    </flux:heading>
+                    <flux:subheading level="h2">
+                        Informasi terbaru event yang akan datang
+                    </flux:subheading>
+                </div>
+                <flux:button
+                    icon="eye"
+                    class="!hidden lg:!flex"
+                    href="{{ route('events.index') }}"
                 >
-                    Event Wibu
-                </flux:heading>
-                <flux:subheading level="h2">
-                    Informasi terbaru event wibu yang akan datang
-                </flux:subheading>
+                    Lihat Semua
+                </flux:button>
             </div>
-            <flux:button
-                icon="eye"
-                class="!hidden lg:!flex"
-            >
-                Lihat Semua
-            </flux:button>
+            <div class="grid grid-cols-2 gap-2 lg:grid-cols-4">
+                @foreach ($events as $event)
+                    <x-cards.event :event="$event" />
+                @endforeach
+            </div>
         </div>
-        <div class="grid grid-cols-2 gap-2 lg:grid-cols-4">
-            <x-cards.event />
-        </div>
-    </div> --}}
+    @endif
 
     @if ($news?->isNotEmpty())
         <div class="flex flex-col gap-2">

@@ -1,14 +1,14 @@
-<x-layouts.app title="{{ $news->title }}">
+<x-layouts.app title="{{ $event?->name }}">
     <flux:breadcrumbs class="flex-wrap">
         <flux:breadcrumbs.item
             icon="home"
             href="{{ route('home') }}"
         />
         <flux:breadcrumbs.item href="{{ route('news.index') }}">
-            Berita Terbaru
+            Event
         </flux:breadcrumbs.item>
         <flux:breadcrumbs.item>
-            {{ $news->title }}
+            {{ $event?->name }}
         </flux:breadcrumbs.item>
     </flux:breadcrumbs>
 
@@ -20,11 +20,10 @@
                     level="h1"
                     class="from-accent !m-0 !bg-gradient-to-br to-cyan-600 bg-clip-text !font-semibold !text-transparent"
                 >
-                    {{ $news?->title }}
+                    {{ $event?->name }}
                 </flux:heading>
                 <flux:subheading level="h2">
-                    Oleh {{ $news?->user?->name }} |
-                    {{ $news?->created_at->isoFormat('DD MMM YYYY') }}
+
                 </flux:subheading>
             </div>
         </div>
@@ -32,7 +31,7 @@
         <x-cards.app>
             <div class="flex flex-col gap-2">
                 <img
-                    src="{{ !empty($news?->getFirstMediaUrl('news')) ? $news?->getFirstMediaUrl('news') : asset('images/placeholder/news.jpg') }}"
+                    src="{{ !empty($event?->getFirstMediaUrl('event')) ? $event?->getFirstMediaUrl('event') : asset('images/placeholder/empty.jpg') }}"
                     alt="cover"
                     class="aspect-video rounded-lg object-cover transition-all hover:brightness-50"
                 >
@@ -41,14 +40,14 @@
                         id="editor"
                         class="rounded-lg !border-zinc-200 dark:!border-zinc-600"
                     >
-                        {!! $news?->content !!}
+                        {!! $event?->content !!}
                     </div>
                 </div>
                 <flux:button
                     icon="arrow-top-right-on-square"
                     onclick="share()"
                 >
-                    Bagikan Berita
+                    Bagikan Event
                 </flux:button>
             </div>
         </x-cards.app>
@@ -79,9 +78,9 @@
                 }
 
                 const data = {
-                    title: @json($news?->title),
-                    text: @json($news?->content),
-                    url: @json(route('news.show', ['news' => $news]))
+                    title: @json($event?->name),
+                    text: @json($event?->content),
+                    url: @json(route('events.show', ['event' => $event]))
                 };
 
                 try {

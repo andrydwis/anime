@@ -20,7 +20,7 @@
                 Edit Event
             </flux:heading>
             <flux:subheading>
-                Informasi terbaru event wibu yang akan datang
+                Informasi terbaru event yang akan datang
             </flux:subheading>
         </div>
     </div>

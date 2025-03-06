@@ -4,14 +4,19 @@ namespace App\Http\Controllers\Web\Public\News;
 
 use App\Http\Controllers\Controller;
 use App\Models\News;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
 class NewsController extends Controller
 {
     public function index(): View
     {
+        $news = Cache::remember('news-'.request()->input('page', 1), now()->addMinutes(5), function () {
+            return News::latest()->with(['user', 'media'])->paginate(10)->withQueryString();
+        });
+
         $data = [
-            'news' => News::latest()->with(['user', 'media'])->paginate(10)->withQueryString(),
+            'news' => $news,
         ];
 
         return view('public.news.index', $data);

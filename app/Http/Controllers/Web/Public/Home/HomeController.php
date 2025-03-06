@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web\Public\Home;
 
 use App\Http\Controllers\Controller;
+use App\Models\Event;
 use App\Models\News;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
@@ -18,10 +19,14 @@ class HomeController extends Controller
         $news = Cache::remember('news', now()->addMinutes(5), function () {
             return News::where('is_published', true)->latest()->with(['media'])->limit(4)->get();
         });
+        $events = Cache::remember('events', now()->addMinutes(5), function () {
+            return Event::where('is_published', true)->whereDate('start_date', '<=', now())->orderBy('start_date', 'asc')->orderBy('created_at', 'desc')->with(['media'])->limit(4)->get();
+        });
 
         $data = [
             'home' => $home,
-            'news' => $news
+            'news' => $news,
+            'events' => $events,
         ];
 
         return view('public.home.index', $data);

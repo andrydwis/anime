@@ -3,7 +3,7 @@
     <div class="group relative flex flex-col overflow-hidden rounded-lg">
         <img
             loading="lazy"
-            src="{{ !empty($news?->getFirstMediaUrl('news')) ? $news?->getFirstMediaUrl('news') : asset('images/placeholder/news.jpg') }}"
+            src="{{ !empty($news?->getFirstMediaUrl('news')) ? $news?->getFirstMediaUrl('news') : asset('images/placeholder/empty.jpg') }}"
             alt="cover"
             class="aspect-video object-cover transition-all group-hover:scale-110 group-hover:brightness-50"
         >

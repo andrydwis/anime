@@ -76,11 +76,11 @@
         <flux:navlist.item
             icon="calendar-date-range"
             iconVariant="solid"
-            href="#"
-            badge="Segera!"
-            badge-color="red"
+            href="{{ route('events.index') }}"
+            badge="Baru!"
+            badge-color="emerald"
         >
-            Event Wibu
+            Event
         </flux:navlist.item>
         <flux:navlist.item
             icon="sparkles"
