@@ -14,7 +14,7 @@
             icon="fire"
             class="pointer-events-none absolute right-2 top-2"
         >
-            {{ $event?->start_date?->diffForHumans() ?? 'TBA' }}
+            {{ $event?->start_date?->isoFormat('DD MMM YYYY') ?? 'TBA' }}
         </flux:badge>
         <flux:button
             icon="eye"
