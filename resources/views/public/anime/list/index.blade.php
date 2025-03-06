@@ -12,6 +12,8 @@
         </flux:breadcrumbs.item>
     </flux:breadcrumbs>
 
+    <x-alerts.app />
+
     <div class="flex flex-col gap-2">
         <div class="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
             <div class="flex flex-col">
@@ -28,6 +30,115 @@
                 </flux:subheading>
             </div>
         </div>
+
+        <x-cards.app>
+            <div class="flex flex-col gap-2">
+                <div class="flex flex-row items-center justify-between gap-2">
+                    <flux:heading
+                        size="xl"
+                        level="h3"
+                        class="!font-bold"
+                    >
+                        Playlist
+                        <flux:badge
+                            size="sm"
+                            color="emerald"
+                        >
+                            Baru!
+                        </flux:badge>
+                    </flux:heading>
+                    @if ($playlists?->isNotEmpty())
+                        <flux:modal.trigger name="add-playlist">
+                            <flux:button
+                                variant="primary"
+                                icon="plus"
+                            >
+                                Tambah Playlist
+                            </flux:button>
+                        </flux:modal.trigger>
+                    @endif
+                </div>
+                <div class="grid gap-2 lg:grid-cols-2">
+                    @forelse ($playlists as $playlist)
+                        <flux:button
+                            icon="film"
+                            href="{{ route('anime.list.show', $playlist) }}"
+                        >
+                            {{ $playlist?->name }}
+                        </flux:button>
+                    @empty
+                        <flux:modal.trigger name="add-playlist">
+                            <flux:button
+                                variant="primary"
+                                icon="plus"
+                                class="col-span-2 md:mx-auto"
+                            >
+                                Tambah Playlist
+                            </flux:button>
+                        </flux:modal.trigger>
+                    @endforelse
+                </div>
+            </div>
+            <flux:modal
+                name="add-playlist"
+                class="md:min-h-auto h-full min-h-svh w-full !rounded-none md:h-3/4 md:!rounded-lg"
+            >
+                <form
+                    action="{{ route('anime.list.store') }}"
+                    method="post"
+                    class="flex min-h-full flex-col gap-4"
+                >
+                    @csrf
+                    <div>
+                        <flux:heading>
+                            Tambah Playlist
+                        </flux:heading>
+                        <flux:subheading>
+                            Buat playlist baru kumpulan anime favoritmu
+                        </flux:subheading>
+                    </div>
+
+                    <flux:input
+                        label="Judul"
+                        placeholder="Judul playlist"
+                        name="name"
+                        required
+                        clearable
+                    />
+
+                    <flux:field>
+                        <flux:label>Deskripsi</flux:label>
+
+                        <flux:textarea
+                            id="description"
+                            name="description"
+                            placeholder="Masukkan deskripsi playlist"
+                            value="{{ old('description') }}"
+                            class="hidden"
+                        />
+                        <!-- Create the editor container -->
+                        <div class="bg-white !text-zinc-800">
+                            <div
+                                id="editor"
+                                class="!h-[200px] w-full"
+                            >
+                                {!! old('description') !!}
+                            </div>
+                        </div>
+
+                        <flux:error name="description" />
+                    </flux:field>
+
+                    <flux:button
+                        variant="primary"
+                        type="submit"
+                        class="mt-auto"
+                    >
+                        Simpan
+                    </flux:button>
+                </form>
+            </flux:modal>
+        </x-cards.app>
 
         <x-cards.app>
             <div class="flex flex-col gap-2">
@@ -121,4 +232,24 @@
             </div>
         </x-cards.app>
     </div>
+
+    @push('styles')
+        <link
+            href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css"
+            rel="stylesheet"
+        />
+    @endpush
+
+    @push('scripts')
+        <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+        <script>
+            const quill = new Quill('#editor', {
+                theme: 'snow'
+            });
+
+            quill.on('text-change', (delta, oldDelta, source) => {
+                document.getElementById('content').value = quill.root.innerHTML;
+            });
+        </script>
+    @endpush
 </x-layouts.app>

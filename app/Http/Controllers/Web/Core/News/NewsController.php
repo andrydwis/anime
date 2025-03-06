@@ -45,7 +45,7 @@ class NewsController extends Controller
 
         $news = new News;
         $news->title = $request->input('title');
-        $news->slug = Str::slug($request->input('title')).'-'.Carbon::now()->timestamp;
+        $news->slug = Str::slug($request->input('title')).'-'.Carbon::now()->format('dmY');
         $news->content = $content;
         $news->user_id = Auth::id();
         $news->save();

@@ -49,7 +49,7 @@ class EventController extends Controller
 
         $event = new Event;
         $event->name = $request->input('name');
-        $event->slug = Str::slug($request->input('name')).'-'.Carbon::now()->timestamp;
+        $event->slug = Str::slug($request->input('name')).'-'.Carbon::now()->format('dmY');
         $event->content = $content;
         $event->start_date = $request->input('start_date');
         $event->end_date = $request->input('end_date');
