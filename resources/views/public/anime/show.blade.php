@@ -1,4 +1,8 @@
-<x-layouts.app title="{{ $anime['data']['title'] }}">
+<x-layouts.app
+    title="{{ $anime['data']['title'] }}"
+    description="{{ $anime['data']['description'] }}"
+    image="{{ $anime['data']['poster'] }}"
+>
     <flux:breadcrumbs class="flex-wrap">
         <flux:breadcrumbs.item
             icon="home"
@@ -34,7 +38,10 @@
         </div>
     </a>
 
-    <livewire:save-anime :animeId="$animeId" :anime="$anime" />
+    <livewire:save-anime
+        :animeId="$animeId"
+        :anime="$anime"
+    />
 
     <x-animes.episode
         :anime="$anime"
