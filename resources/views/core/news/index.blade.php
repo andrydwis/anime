@@ -40,7 +40,7 @@
                     </x-tables.column>
                 </x-tables.columns>
                 <x-tables.rows>
-                    @foreach ($news as $newsData)
+                    @forelse ($news as $newsData)
                         <x-tables.row>
                             <x-tables.cell>
                                 {{ $newsData?->title }}
@@ -118,7 +118,18 @@
                                 </div>
                             </x-tables.cell>
                         </x-tables.row>
-                    @endforeach
+                    @empty
+                        <x-tables.row>
+                            <x-tables.cell
+                                colspan="4"
+                                class="text-center"
+                            >
+                                <flux:subheading>
+                                    Tidak ada berita
+                                </flux:subheading>
+                            </x-tables.cell>
+                        </x-tables.row>
+                    @endforelse
                 </x-tables.rows>
             </x-tables.app>
             {{ $news?->onEachSide(1)?->links('components.paginations.app') }}

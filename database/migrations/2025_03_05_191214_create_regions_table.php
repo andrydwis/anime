@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('slug')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
 
         // Seeder from api
@@ -27,17 +28,17 @@ return new class extends Migration
         foreach ($regions as $region) {
             $province = new Region;
             $province->id = $region['id'];
-            $province->name = $region['name'];
+            $province->name = Str::title($region['name']);
             $province->slug = Str::slug($region['name']);
             $province->save();
-        
+
             $cities = Http::get('https://www.emsifa.com/api-wilayah-indonesia/api/regencies/'.$region['id'].'.json')->json();
             // Fix: Change loop variable to $cityData
             foreach ($cities as $cityData) {
                 $city = new Region;
                 $city->id = $cityData['id'];
                 $city->parent_id = $cityData['province_id'];
-                $city->name = $cityData['name'];
+                $city->name = Str::title($cityData['name']);
                 $city->slug = Str::slug($cityData['name']);
                 $city->save();
             }

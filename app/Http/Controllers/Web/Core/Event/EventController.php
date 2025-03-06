@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Web\Core\Event;
 use App\Http\Controllers\Controller;
 use App\Models\Event;
 use Carbon\Carbon;
-use Illuminate\Http\Client\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
@@ -55,7 +55,6 @@ class EventController extends Controller
         $event->end_date = $request->input('end_date');
         $event->province_id = $request->input('province_id');
         $event->city_id = $request->input('city_id');
-        $event->user_id = Auth::id();
         $event->save();
 
         if ($request->hasFile('image')) {

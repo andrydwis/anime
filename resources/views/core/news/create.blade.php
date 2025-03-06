@@ -14,7 +14,7 @@
                 size="xl"
                 class="!font-semibold"
             >
-                Berita
+                Tambah Berita
             </flux:heading>
             <flux:subheading>
                 Berita terbaru seputar anime, manga, game, dan lainnya
@@ -51,13 +51,14 @@
                         id="content"
                         name="content"
                         placeholder="Masukkan konten berita"
-                        required
-                        value="{{ old('content') }}"
                         class="hidden"
-                    />
+                    >
+                        {!! old('content', $news?->content) !!}
+                    </flux:textarea>
                     <!-- Create the editor container -->
                     <div class="bg-white !text-zinc-800">
                         <div id="editor">
+                            {!! old('content') !!}
                         </div>
                     </div>
 

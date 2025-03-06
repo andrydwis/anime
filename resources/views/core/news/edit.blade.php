@@ -17,7 +17,7 @@
                 size="xl"
                 class="!font-semibold"
             >
-                Berita
+                Edit Berita
             </flux:heading>
             <flux:subheading>
                 Berita terbaru seputar anime, manga, game, dan lainnya
@@ -55,10 +55,10 @@
                         id="content"
                         name="content"
                         placeholder="Masukkan konten berita"
-                        required
-                        value="{{ old('content', $news?->content) }}"
                         class="hidden"
-                    />
+                    >
+                        {!! old('content', $news?->content) !!}
+                    </flux:textarea>
                     <!-- Create the editor container -->
                     <div class="bg-white !text-zinc-800">
                         <div id="editor">
@@ -96,11 +96,6 @@
             const quill = new Quill('#editor', {
                 theme: 'snow'
             });
-
-            //trigger focus on load
-            setTimeout(() => {
-                quill.focus();
-            }, 100);
 
             quill.on('editor-change', (delta, oldDelta, source) => {
                 document.getElementById('content').value = quill.root.innerHTML;

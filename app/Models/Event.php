@@ -23,6 +23,15 @@ class Event extends Model implements HasMedia
         'city_id',
     ];
 
+    protected function casts(): array
+    {
+        return [
+            'is_published' => 'boolean',
+            'start_date' => 'datetime',
+            'end_date' => 'datetime',
+        ];
+    }
+
     public function province(): BelongsTo
     {
         return $this->belongsTo(Region::class, 'province_id');
