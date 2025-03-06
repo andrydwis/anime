@@ -8,6 +8,7 @@
             class="aspect-video object-cover transition-all group-hover:scale-110 group-hover:brightness-50"
         >
         <flux:badge
+            variant="solid"
             size="sm"
             color="zinc"
             icon="calendar-date-range"
