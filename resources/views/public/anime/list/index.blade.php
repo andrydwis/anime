@@ -52,9 +52,16 @@
                             <flux:button
                                 variant="primary"
                                 icon="plus"
+                                class="!hidden md:!flex"
                             >
                                 Tambah Playlist
                             </flux:button>
+                            <flux:button
+                                variant="primary"
+                                icon="plus"
+                                class="md:!hidden"
+                                square
+                            />
                         </flux:modal.trigger>
                     @endif
                 </div>
