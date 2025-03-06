@@ -53,13 +53,14 @@ class ListAnimeController extends Controller
 
         session()->flash('success', 'Playlist berhasil dibuat.');
 
-        return redirect()->route('anime.list.index');
+        return redirect()->route('anime.list.show', ['playlist' => $playlist]);
     }
 
     public function show(AnimePlaylist $playlist): View
     {
         $data = [
             'playlist' => $playlist,
+            'isMyPlaylist' => Auth::check() && Auth::id() == $playlist->user_id,
         ];
 
         return view('public.anime.list.show', $data);
@@ -67,6 +68,10 @@ class ListAnimeController extends Controller
 
     public function update(Request $request, AnimePlaylist $playlist): RedirectResponse
     {
+        if (Auth::id() != $playlist->user_id) {
+            abort(403);
+        }
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
@@ -78,11 +83,15 @@ class ListAnimeController extends Controller
 
         session()->flash('success', 'Playlist berhasil diperbarui.');
 
-        return redirect()->route('anime.list.index');
+        return redirect()->back();
     }
 
     public function destroy(AnimePlaylist $playlist): RedirectResponse
     {
+        if (Auth::id() != $playlist->user_id) {
+            abort(403);
+        }
+
         $playlist->delete();
 
         session()->flash('success', 'Playlist berhasil dihapus.');

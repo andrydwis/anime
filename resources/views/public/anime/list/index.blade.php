@@ -102,6 +102,7 @@
                         label="Judul"
                         placeholder="Judul playlist"
                         name="name"
+                        value="{{ old('name') }}"
                         required
                         clearable
                     />
@@ -113,9 +114,10 @@
                             id="description"
                             name="description"
                             placeholder="Masukkan deskripsi playlist"
-                            value="{{ old('description') }}"
                             class="hidden"
-                        />
+                        >
+                            {!! old('description') !!}
+                        </flux:textarea>
                         <!-- Create the editor container -->
                         <div class="bg-white !text-zinc-800">
                             <div
@@ -248,7 +250,7 @@
             });
 
             quill.on('text-change', (delta, oldDelta, source) => {
-                document.getElementById('content').value = quill.root.innerHTML;
+                document.getElementById('description').value = quill.root.innerHTML;
             });
         </script>
     @endpush
