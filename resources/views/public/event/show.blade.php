@@ -23,7 +23,7 @@
                     {{ $event?->name }}
                 </flux:heading>
                 <flux:subheading level="h2">
-
+                    Detail event {{ $event?->name }}
                 </flux:subheading>
             </div>
         </div>
@@ -35,6 +35,39 @@
                     alt="cover"
                     class="aspect-video rounded-lg object-cover transition-all hover:brightness-50"
                 >
+                <x-cards.app>
+                    <ol class="flex list-inside flex-col gap-2">
+                        <li class="flex flex-row items-center gap-2">
+                            <flux:subheading>
+                                Tanggal:
+                            </flux:subheading>
+                            @if ($event?->start_date && $event?->end_date)
+                                <flux:badge size="sm">
+                                    {{ $event?->start_date?->isoFormat('DD MMM YYYY') }}
+                                    -
+                                    {{ $event?->end_date?->isoFormat('DD MMM YYYY') }}
+                                </flux:badge>
+                            @elseif($event?->start_date)
+                                <flux:badge size="sm">
+                                    {{ $event?->start_date?->isoFormat('DD MMM YYYY') }}
+                                </flux:badge>
+                            @else
+                                <flux:badge size="sm">
+                                    TBA
+                                </flux:badge>
+                            @endif
+                        </li>
+                        <li class="flex flex-row items-center gap-2">
+                            <flux:subheading>
+                                Daerah:
+                            </flux:subheading>
+                            <flux:badge size="sm">
+                                {{ $event?->province?->name }},
+                                {{ $event?->city?->name }}
+                            </flux:badge>
+                        </li>
+                    </ol>
+                </x-cards.app>
                 <div class="!text-zinc-800 dark:!text-white">
                     <div
                         id="editor"

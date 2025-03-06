@@ -1,6 +1,6 @@
 <x-layouts.core title="Edit Event">
     <flux:breadcrumbs class="flex-wrap">
-        <flux:breadcrumbs.item href="{{ route('core.news.index') }}">
+        <flux:breadcrumbs.item href="{{ route('core.events.index') }}">
             Event
         </flux:breadcrumbs.item>
         <flux:breadcrumbs.item>
@@ -72,14 +72,14 @@
                         type="date"
                         label="Tanggal Mulai"
                         name="start_date"
-                        value="{{ old('start_date', $event?->start_date) }}"
+                        value="{{ old('start_date', $event?->start_date?->format('Y-m-d')) }}"
                         clearable
                     />
                     <flux:input
                         type="date"
                         label="Tanggal Selesai"
                         name="end_date"
-                        value="{{ old('end_date', $event?->end_date) }}"
+                        value="{{ old('end_date', $event?->end_date?->format('Y-m-d')) }}"
                         clearable
                     />
                 </div>

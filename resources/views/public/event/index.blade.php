@@ -25,9 +25,18 @@
             </div>
         </div>
         <div class="grid grid-cols-2 gap-2 lg:grid-cols-4">
-            @foreach ($events as $event)
+            @forelse ($events as $event)
                 <x-cards.event :event="$event" />
-            @endforeach
+            @empty
+                <x-cards.app class="col-span-4">
+                    <flux:heading>
+                        Belum ada event
+                    </flux:heading>
+                    <flux:subheading>
+                        Coba cari ke halaman lain atau coba lagi nanti
+                    </flux:subheading>
+                </x-cards.app>
+            @endforelse
         </div>
         <div>
             {{ $events?->onEachSide(1)?->links('components.paginations.app') }}
