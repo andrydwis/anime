@@ -1,6 +1,6 @@
 <x-layouts.core title="Tambah Event">
     <flux:breadcrumbs class="flex-wrap">
-        <flux:breadcrumbs.item href="{{ route('core.news.index') }}">
+        <flux:breadcrumbs.item href="{{ route('core.events.index') }}">
             Event
         </flux:breadcrumbs.item>
         <flux:breadcrumbs.item>

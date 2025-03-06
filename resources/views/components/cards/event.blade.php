@@ -10,11 +10,11 @@
         <flux:badge
             variant="solid"
             size="sm"
-            color="zinc"
-            icon="calendar-date-range"
+            color="red"
+            icon="fire"
             class="pointer-events-none absolute right-2 top-2"
         >
-            {{ $event?->created_at?->isoFormat('DD MMM Y') }}
+            {{ $event?->start_date?->isoFormat('DD MMM YYYY') ?? 'TBA' }}
         </flux:badge>
         <flux:button
             icon="eye"
