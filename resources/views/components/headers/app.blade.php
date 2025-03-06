@@ -1,6 +1,6 @@
 <flux:header
     container
-    class="sticky top-0 bg-white dark:bg-zinc-900/50 dark:backdrop-blur"
+    class="sticky top-0 bg-white dark:bg-zinc-900/50 dark:backdrop-blur border-b border-zinc-200 dark:border-zinc-600"
 >
     <flux:sidebar.toggle
         icon="bars-2"

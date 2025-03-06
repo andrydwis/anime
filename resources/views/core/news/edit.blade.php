@@ -4,7 +4,7 @@
             Berita
         </flux:breadcrumbs.item>
         <flux:breadcrumbs.item>
-            {{ $news->title }}
+            {{ $news?->title }}
         </flux:breadcrumbs.item>
         <flux:breadcrumbs.item>
             Edit Berita
