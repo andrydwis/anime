@@ -8,13 +8,12 @@
             class="aspect-video object-cover transition-all group-hover:scale-110 group-hover:brightness-50"
         >
         <flux:badge
-            variant="solid"
             size="sm"
-            color="zinc"
-            icon="calendar-date-range"
+            color="red"
+            icon="fire"
             class="pointer-events-none absolute right-2 top-2"
         >
-            {{ $event?->created_at?->isoFormat('DD MMM Y') }}
+            {{ $event?->created_at?->diffForHumans() ?? 'TBD' }}
         </flux:badge>
         <flux:button
             icon="eye"

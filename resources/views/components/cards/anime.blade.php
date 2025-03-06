@@ -22,7 +22,6 @@
         >
         @if (isset($anime['episodes']))
             <flux:badge
-                variant="solid"
                 size="sm"
                 color="emerald"
                 icon="play-circle"

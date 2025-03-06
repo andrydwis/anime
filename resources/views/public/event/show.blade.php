@@ -4,7 +4,7 @@
             icon="home"
             href="{{ route('home') }}"
         />
-        <flux:breadcrumbs.item href="{{ route('news.index') }}">
+        <flux:breadcrumbs.item href="{{ route('events.index') }}">
             Event
         </flux:breadcrumbs.item>
         <flux:breadcrumbs.item>
