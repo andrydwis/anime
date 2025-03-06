@@ -58,6 +58,10 @@ class ListAnimeController extends Controller
 
     public function show(AnimePlaylist $playlist): View
     {
+        if (! $playlist->isPublic && Auth::id() != $playlist->user_id) {
+            abort(403);
+        }
+
         $data = [
             'playlist' => $playlist,
             'isMyPlaylist' => Auth::check() && Auth::id() == $playlist->user_id,
