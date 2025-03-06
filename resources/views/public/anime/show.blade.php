@@ -1,6 +1,6 @@
 <x-layouts.app
     title="{{ $anime['data']['title'] }}"
-    description="{{ $anime['data']['description'] }}"
+    description="{{ implode(' ', $anime['data']['synopsis']['paragraphs']) }}"
     image="{{ $anime['data']['poster'] }}"
 >
     <flux:breadcrumbs class="flex-wrap">
