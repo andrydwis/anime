@@ -44,7 +44,7 @@
                                 {!! str()->markdown($message['content']) !!}
                             </x-cards.app>
                         @else
-                            <x-cards.app class="max-w-3/4 ml-auto text-right">
+                            <x-cards.app class="max-w-3/4 ml-auto w-max text-right">
                                 {{ $message['content'] }}
                             </x-cards.app>
                         @endif
@@ -75,9 +75,7 @@
                             variant="primary"
                             icon="paper-airplane"
                             wire:click="ask"
-                        >
-                            Kirim
-                        </flux:button>
+                        />
                     </flux:input.group>
                 </div>
             </div>
