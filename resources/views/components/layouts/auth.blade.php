@@ -9,6 +9,7 @@
             content="width=device-width, initial-scale=1.0"
         />
 
+        <!-- Favicon -->
         <link
             rel="icon"
             href="{{ asset('favicon.ico') }}"
@@ -21,6 +22,7 @@
                 Weaboo.my.id - Nonton Anime Gratis, Komunitas Wibu, dan Berita Terbaru
                 Seputar Anime
             </title>
+
             <meta
                 name="title"
                 content="Weaboo.my.id - Nonton Anime Gratis, Komunitas Wibu, dan Berita Terbaru Seputar Anime"
@@ -31,9 +33,13 @@
             </title>
             <meta
                 name="title"
-                content="Weaboo.my.id -{{ $title }}"
+                content="Weaboo.my.id - {{ $title }}"
             />
         @endif
+        <link
+            rel="canonical"
+            href="{{ url()?->current() }}"
+        />
         @if (!$description)
             <meta
                 name="description"
@@ -60,6 +66,10 @@
             name="robots"
             content="index, follow"
         />
+        <meta
+            name="revisit-after"
+            content="1"
+        >
 
         <!-- Open Graph / Facebook -->
         <meta
@@ -68,7 +78,7 @@
         />
         <meta
             property="og:url"
-            content="{{ config('app.url') }}"
+            content="{{ url()?->current() }}"
         />
         @if (!$title)
             <meta
@@ -111,7 +121,7 @@
         />
         <meta
             property="twitter:url"
-            content="{{ config('app.url') }}"
+            content="{{ url()?->current() }}"
         />
         @if (!$title)
             <meta
@@ -147,17 +157,9 @@
             />
         @endif
 
-        {{-- Font --}}
-        <link
-            rel="preconnect"
-            href="https://fonts.bunny.net"
-        >
-        <link
-            href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800,900&display=swap"
-            rel="stylesheet"
-        />
-
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        @livewireStyles
         @fluxAppearance
         @stack('styles')
     </head>
