@@ -48,7 +48,7 @@ class ListAnimeController extends Controller
         $playlist->user_id = Auth::id();
         $playlist->name = $request->input('name');
         $playlist->slug = Str::slug($request->input('name')).'-'.Carbon::now()->format('dmY');
-        $playlist->description = $request->input('description');
+        $playlist->description = Str::sanitizeHtml($request->input('description'));
         $playlist->save();
 
         session()->flash('success', 'Playlist berhasil dibuat.');
@@ -82,7 +82,7 @@ class ListAnimeController extends Controller
         ]);
 
         $playlist->name = $request->input('name');
-        $playlist->description = $request->input('description');
+        $playlist->description = Str::sanitizeHtml($request->input('description'));
         $playlist->save();
 
         session()->flash('success', 'Playlist berhasil diperbarui.');

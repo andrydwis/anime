@@ -1,4 +1,4 @@
-<x-layouts.app>
+<x-layouts.app title="DMCA">
     <article class="prose prose-headings:text-white text-white">
         <h1>DMCA Takedown Request</h1>
 

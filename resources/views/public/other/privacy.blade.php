@@ -1,4 +1,4 @@
-<x-layouts.app>
+<x-layouts.app title="Kebijakan Privasi">
     <article class="prose prose-headings:text-white text-white">
         <h1>Kebijakan Privasi</h1>
 

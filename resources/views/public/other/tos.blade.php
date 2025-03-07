@@ -1,4 +1,4 @@
-<x-layouts.app>
+<x-layouts.app title="Syarat dan Ketentuan">
     <article class="prose prose-headings:text-white text-white">
         <h1>Syarat dan Ketentuan</h1>
 
