@@ -23,3 +23,7 @@ Route::resource('events', App\Http\Controllers\Web\Public\Event\EventController:
 
 Route::get('profile', [App\Http\Controllers\Web\Public\Profile\ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth');
 Route::patch('profile', [App\Http\Controllers\Web\Public\Profile\ProfileController::class, 'update'])->name('profile.update')->middleware('auth');
+
+Route::view('dmca', 'public.other.dmca')->name('dmca');
+Route::view('privacy-policy', 'public.other.privacy')->name('privacy-policy');
+Route::view('terms-of-service', 'public.other.tos')->name('terms-of-service');

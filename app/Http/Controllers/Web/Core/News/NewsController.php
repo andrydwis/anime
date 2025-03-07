@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
-use Symfony\Component\HtmlSanitizer\HtmlSanitizer;
-use Symfony\Component\HtmlSanitizer\HtmlSanitizerConfig;
 
 class NewsController extends Controller
 {
@@ -38,15 +36,10 @@ class NewsController extends Controller
             'image' => ['nullable', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
         ]);
 
-        $htmlSanitizer = new HtmlSanitizer(
-            (new HtmlSanitizerConfig)->allowSafeElements()
-        );
-        $content = $htmlSanitizer->sanitize($request->input('content'));
-
         $news = new News;
         $news->title = $request->input('title');
         $news->slug = Str::slug($request->input('title')).'-'.Carbon::now()->format('dmY');
-        $news->content = $content;
+        $news->content = Str::sanitizeHtml($request->input('content'));
         $news->user_id = Auth::id();
         $news->save();
 
@@ -78,13 +71,8 @@ class NewsController extends Controller
             'image' => ['nullable', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
         ]);
 
-        $htmlSanitizer = new HtmlSanitizer(
-            (new HtmlSanitizerConfig)->allowSafeElements()
-        );
-        $content = $htmlSanitizer->sanitize($request->input('content'));
-
         $news->title = $request->input('title');
-        $news->content = $content;
+        $news->content = Str::sanitizeHtml($request->input('content'));
         $news->save();
 
         if ($request->hasFile('image')) {

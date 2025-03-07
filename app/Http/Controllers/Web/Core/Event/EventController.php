@@ -7,12 +7,9 @@ use App\Models\Event;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
-use Symfony\Component\HtmlSanitizer\HtmlSanitizer;
-use Symfony\Component\HtmlSanitizer\HtmlSanitizerConfig;
 
 class EventController extends Controller
 {
@@ -42,15 +39,10 @@ class EventController extends Controller
             'city_id' => ['nullable', 'exists:regions,id'],
         ]);
 
-        $htmlSanitizer = new HtmlSanitizer(
-            (new HtmlSanitizerConfig)->allowSafeElements()
-        );
-        $content = $htmlSanitizer->sanitize($request->input('content'));
-
         $event = new Event;
         $event->name = $request->input('name');
         $event->slug = Str::slug($request->input('name')).'-'.Carbon::now()->format('dmY');
-        $event->content = $content;
+        $event->content = Str::sanitizeHtml($request->input('content'));
         $event->start_date = $request->input('start_date');
         $event->end_date = $request->input('end_date');
         $event->province_id = $request->input('province_id');
@@ -89,13 +81,8 @@ class EventController extends Controller
             'city_id' => ['nullable', 'exists:regions,id'],
         ]);
 
-        $htmlSanitizer = new HtmlSanitizer(
-            (new HtmlSanitizerConfig)->allowSafeElements()
-        );
-        $content = $htmlSanitizer->sanitize($request->input('content'));
-
         $event->name = $request->input('name');
-        $event->content = $content;
+        $event->content = Str::sanitizeHtml($request->input('content'));
         $event->start_date = $request->input('start_date');
         $event->end_date = $request->input('end_date');
         $event->province_id = $request->input('province_id');

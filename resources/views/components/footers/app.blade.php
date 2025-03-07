@@ -20,12 +20,35 @@
                 />
             </div>
             <flux:subheading class="lg:w-1/4">
-                Weaboo.my.id adalah tempat terbaik untuk nonton anime gratis, bergabung
-                dengan
-                komunitas wibu, dan mendapatkan informasi terkini seputar dunia anime.
-                Temukan
-                anime favoritmu di sini!
+                Weaboo.my.id tidak menyimpan file apa pun di server kami. Kami hanya
+                menyediakan tautan ke media yang dihosting oleh layanan pihak ketiga.
             </flux:subheading>
+            <div class="flex flex-row items-center gap-2">
+                <a href="{{ route('dmca') }}">
+                    <flux:badge
+                        as="button"
+                        size="sm"
+                    >
+                        DMCA
+                    </flux:badge>
+                </a>
+                <a href="{{ route('privacy-policy') }}">
+                    <flux:badge
+                        as="button"
+                        size="sm"
+                    >
+                        Kebijakan Privasi
+                    </flux:badge>
+                </a>
+                <a href="{{ route('terms-of-service') }}">
+                    <flux:badge
+                        as="button"
+                        size="sm"
+                    >
+                        Syarat dan Ketentuan
+                    </flux:badge>
+                </a>
+            </div>
             <flux:subheading class="lg:w-1/4">
                 © {{ now()->year }} {{ config('app.name') }}
             </flux:subheading>
