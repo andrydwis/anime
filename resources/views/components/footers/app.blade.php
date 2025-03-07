@@ -23,7 +23,7 @@
                 Weaboo.my.id tidak menyimpan file apa pun di server kami. Kami hanya
                 menyediakan tautan ke media yang dihosting oleh layanan pihak ketiga.
             </flux:subheading>
-            <div class="flex flex-row items-center gap-2">
+            <div class="flex flex-row flex-wrap items-center gap-2">
                 <a href="{{ route('dmca') }}">
                     <flux:badge
                         as="button"
