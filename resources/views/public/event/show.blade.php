@@ -116,7 +116,10 @@
 
                 const data = {
                     title: @json($event?->name),
-                    text: @json(str($event?->content)->stripTags()),
+                    text: @json(
+                        '🔥 Jangan sampai ketinggalan! ' .
+                            $event?->name .
+                            ' 📅 Yuk, cek selengkapnya di sini!'),
                     url: @json(route('events.show', ['event' => $event]))
                 };
 

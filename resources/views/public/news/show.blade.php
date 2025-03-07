@@ -84,7 +84,7 @@
 
                 const data = {
                     title: @json($news?->title),
-                    text: @json(str($news?->content)->stripTags()),
+                    text: @json('📰 Baca berita menarik ini! ' . $news?->title . ' 🌍 Jangan sampai ketinggalan!'),
                     url: @json(route('news.show', ['news' => $news]))
                 };
 
