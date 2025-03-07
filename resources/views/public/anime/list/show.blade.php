@@ -200,7 +200,8 @@
             });
 
             quillPlaylist.on('text-change', (delta, oldDelta, source) => {
-                document.getElementById('description').value = quill.root.innerHTML;
+                document.getElementById('description').value = quillPlaylist.root
+                    .innerHTML;
             });
         </script>
     @endpush
