@@ -198,6 +198,10 @@
             const quillPlaylist = new Quill('#editor-playlist', {
                 theme: 'snow'
             });
+
+            quillPlaylist.on('text-change', (delta, oldDelta, source) => {
+                document.getElementById('description').value = quill.root.innerHTML;
+            });
         </script>
     @endpush
 </x-layouts.app>
