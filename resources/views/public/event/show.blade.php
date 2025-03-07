@@ -1,4 +1,8 @@
-<x-layouts.app title="{{ $event?->name }}">
+<x-layouts.app
+    title="{{ $event?->name }}"
+    description="{{ str($event?->content)?->stripTags() }}"
+    image="{{ !empty($event?->getFirstMediaUrl('event')) ? $event?->getFirstMediaUrl('event') : asset('images/placeholder/empty.jpg') }}"
+>
     <flux:breadcrumbs class="flex-wrap">
         <flux:breadcrumbs.item
             icon="home"
