@@ -116,7 +116,7 @@
 
                 const data = {
                     title: @json($event?->name),
-                    text: @json($event?->content),
+                    text: @json(str($event?->content)->stripTags()),
                     url: @json(route('events.show', ['event' => $event]))
                 };
 

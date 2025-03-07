@@ -36,7 +36,7 @@
         <x-cards.app>
             <div class="flex flex-col gap-2">
                 <img
-                    src="{{ !empty($news?->getFirstMediaUrl('news')) ? $news?->getFirstMediaUrl('news') : asset('images/placeholder/news.jpg') }}"
+                    src="{{ !empty($news?->getFirstMediaUrl('news')) ? $news?->getFirstMediaUrl('news') : asset('images/placeholder/empty.jpg') }}"
                     alt="cover"
                     class="aspect-video rounded-lg object-cover transition-all hover:brightness-50"
                 >
@@ -84,7 +84,7 @@
 
                 const data = {
                     title: @json($news?->title),
-                    text: @json($news?->content),
+                    text: @json(str($news?->content)->stripTags()),
                     url: @json(route('news.show', ['news' => $news]))
                 };
 
