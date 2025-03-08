@@ -7,7 +7,7 @@
             class="aspect-[9/16] object-cover brightness-50 md:aspect-video"
         >
         <div
-            class="absolute inset-0 bg-gradient-to-b from-zinc-800 from-5% via-transparent to-zinc-800 to-95%">
+            class="absolute inset-0 bg-gradient-to-b from-white from-5% via-transparent to-white to-95% dark:from-zinc-800 dark:to-zinc-800">
 
         </div>
         <div
@@ -15,7 +15,7 @@
             <flux:heading
                 size="xl"
                 level="h1"
-                class="text-center !text-2xl !font-bold lg:!text-4xl"
+                class="text-center !text-2xl !font-bold lg:!text-4xl !text-white"
             >
                 Tonton Anime Tanpa Iklan Cuma di
                 <span
