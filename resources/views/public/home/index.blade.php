@@ -4,7 +4,7 @@
         <img
             src="{{ asset('images/cta/home.jpg') }}"
             alt="cta"
-            class="aspect-[4/3] object-cover brightness-50 md:aspect-video"
+            class="aspect-[9/16] object-cover brightness-50 md:aspect-video"
         >
         <div
             class="absolute inset-0 bg-gradient-to-b from-zinc-800 from-5% via-transparent to-zinc-800 to-95%">
@@ -17,7 +17,12 @@
                 level="h1"
                 class="text-center !text-2xl !font-bold lg:!text-4xl"
             >
-                Tonton Anime Tanpa Iklan Cuma di Weaboo.my.id
+                Tonton Anime Tanpa Iklan Cuma di
+                <span
+                    class="from-accent !bg-gradient-to-br to-cyan-600 bg-clip-text !text-transparent"
+                >
+                    Weaboo.my.id
+                </span>
             </flux:heading>
             <flux:modal.trigger name="search">
                 <flux:input
