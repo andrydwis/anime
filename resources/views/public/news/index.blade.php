@@ -25,9 +25,18 @@
             </div>
         </div>
         <div class="grid grid-cols-2 gap-2 lg:grid-cols-4">
-            @foreach ($news as $newsData)
+            @forelse ($news as $newsData)
                 <x-cards.news :news="$newsData" />
-            @endforeach
+            @empty
+                <x-cards.app class="col-span-4">
+                    <flux:heading>
+                        Belum ada berita
+                    </flux:heading>
+                    <flux:subheading>
+                        Coba cari ke halaman lain atau coba lagi nanti
+                    </flux:subheading>
+                </x-cards.app>
+            @endforelse
         </div>
         <div>
             {{ $news?->onEachSide(1)?->links('components.paginations.app') }}
