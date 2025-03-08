@@ -16,24 +16,12 @@
         href="{{ route('events.index') }}"
     >
         Event
-        <flux:badge
-            size="sm"
-            color="emerald"
-        >
-            Baru!
-        </flux:badge>
     </flux:button>
     <flux:button
         icon="newspaper"
         href="{{ route('news.index') }}"
     >
         Berita Terbaru
-        <flux:badge
-            size="sm"
-            color="emerald"
-        >
-            Baru!
-        </flux:badge>
     </flux:button>
     <flux:button
         icon="sparkles"
