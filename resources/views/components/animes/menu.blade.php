@@ -83,5 +83,11 @@
         class="md:col-span-2"
     >
         Donasi
+        <flux:badge
+            size="sm"
+            color="amber"
+        >
+            Support Yuk!
+        </flux:badge>
     </flux:button>
 </div>

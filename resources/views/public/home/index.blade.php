@@ -1,4 +1,34 @@
 <x-layouts.app>
+
+    <div class="relative py-4">
+        <img
+            src="{{ asset('images/cta/home.jpg') }}"
+            alt="cta"
+            class="aspect-[4/3] object-cover brightness-50 md:aspect-video"
+        >
+        <div
+            class="absolute inset-0 bg-gradient-to-b from-zinc-800 from-5% via-transparent to-zinc-800 to-95%">
+
+        </div>
+        <div
+            class="absolute left-1/2 top-1/2 flex w-full -translate-x-1/2 -translate-y-1/2 flex-col gap-2 p-4 backdrop-blur md:w-1/2">
+            <flux:heading
+                size="xl"
+                level="h1"
+                class="text-center !text-2xl !font-bold lg:!text-4xl"
+            >
+                Tonton Anime Tanpa Iklan Cuma di Weaboo.my.id
+            </flux:heading>
+            <flux:modal.trigger name="search">
+                <flux:input
+                    as="button"
+                    placeholder="Cari anime..."
+                    icon="magnifying-glass"
+                />
+            </flux:modal.trigger>
+        </div>
+    </div>
+
     <x-animes.menu />
 
     <div class="flex flex-col gap-2">
