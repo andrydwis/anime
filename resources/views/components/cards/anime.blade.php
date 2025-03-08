@@ -1,22 +1,12 @@
 @props(['anime'])
-@php
-    if (isset($anime['episodeId'])) {
-        $route = route('anime.episode.show', [
-            'anime' => $anime['animeId'],
-            'episode' => $anime['episodeId'],
-        ]);
-    } else {
-        $route = route('anime.show', ['anime' => $anime['animeId']]);
-    }
-@endphp
 <a
     {{ $attributes }}
-    href="{{ $route }}"
+    href="{{ route('anime.show', ['anime' => $anime['id']]) }}"
 >
     <div class="group relative flex flex-col overflow-hidden rounded-lg">
         <img
             loading="lazy"
-            src="{{ $anime['poster'] }}"
+            src="{{ $anime['img'] }}"
             alt="cover"
             class="aspect-video object-cover transition-all group-hover:scale-110 group-hover:brightness-50"
         >
@@ -28,7 +18,7 @@
                 icon="play-circle"
                 class="pointer-events-none absolute right-2 top-2"
             >
-                Eps {{ $anime['episodes'] }}
+                Eps {{ $anime['episodes']['sub'] }}
             </flux:badge>
         @endif
         <flux:button
@@ -38,7 +28,7 @@
         <div
             class="pointer-events-none absolute bottom-0 w-full bg-white/75 p-2 dark:bg-zinc-900/50">
             <flux:heading class="line-clamp-1 group-hover:underline">
-                {{ $anime['title'] }}
+                {{ $anime['name'] }}
             </flux:heading>
         </div>
     </div>

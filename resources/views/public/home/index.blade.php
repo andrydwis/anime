@@ -24,7 +24,7 @@
             </flux:button>
         </div>
         <div class="grid grid-cols-2 gap-2 lg:grid-cols-4">
-            @foreach ($home['data']['recent']['animeList'] as $anime)
+            @foreach ($home['latestEpisodes'] as $anime)
                 <x-cards.anime :anime="$anime" />
             @endforeach
         </div>

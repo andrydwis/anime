@@ -32,12 +32,8 @@ class AnimeController extends Controller
     public function show(string $animeId): View
     {
         $anime = Cache::remember('anime-'.$animeId, now()->addMinutes(5), function () use ($animeId) {
-            return Http::get(config('app.api_url').'/samehadaku/anime/'.$animeId)->json();
+            return Http::get(config('app.api_url').'/aniwatch/anime/'.$animeId)->json();
         });
-
-        if ($anime['statusCode'] != 200) {
-            abort($anime['statusCode']);
-        }
 
         if (Auth::check()) {
             $user = Auth::user();

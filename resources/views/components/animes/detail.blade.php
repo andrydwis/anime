@@ -2,7 +2,7 @@
 <x-cards.app>
     <div class="grid gap-2 md:grid-cols-2 lg:grid-cols-4">
         <img
-            src="{{ $anime['data']['poster'] }}"
+            src="{{ $anime['info']['img'] }}"
             alt="cover"
             class="w-full rounded-lg"
         >
@@ -13,14 +13,14 @@
                     level="h1"
                     class="from-accent !m-0 !bg-gradient-to-br to-cyan-600 bg-clip-text !font-semibold !text-transparent"
                 >
-                    {{ $anime['data']['title'] }}
+                    {{ $anime['info']['name'] }}
                 </flux:heading>
                 <flux:heading
                     size="lg"
                     level="h1"
                     class="!font-semibold"
                 >
-                    {{ $anime['data']['japanese'] }}
+                    {{ $anime['moreInfo']['Japanese:'] }}
                 </flux:heading>
             </div>
 
@@ -48,18 +48,16 @@
                     ];
                 @endphp
 
-                @foreach ($anime['data']['genreList'] as $genre)
+                @foreach ($anime['moreInfo']['Genres'] as $genre)
                     @php
                         $randomColor = $colors[array_rand($colors)];
                     @endphp
-                    <a
-                        href="{{ route('anime.genre.show', ['genre' => $genre['genreId']]) }}">
+                    <a>
                         <flux:badge
                             size="sm"
                             color="{{ $randomColor }}"
-                            href="{{ $genre['genreId'] }}"
                         >
-                            {{ $genre['title'] }}
+                            {{ $genre }}
                         </flux:badge>
                     </a>
                 @endforeach
@@ -71,19 +69,19 @@
                     color="emerald"
                     icon="calendar-date-range"
                 >
-                    {{ $anime['data']['status'] }}
+                    {{ $anime['moreInfo']['Status:'] }}
                 </flux:badge>
                 <flux:badge
                     size="sm"
                     icon="numbered-list"
                 >
-                    {{ $anime['data']['episodes'] }} Episode
+                    {{ $anime['info']['episodes']['eps'] }} Episode
                 </flux:badge>
                 <flux:badge
                     size="sm"
                     icon="clock"
                 >
-                    {{ $anime['data']['duration'] }}
+                    {{ $anime['info']['duration'] }}
                 </flux:badge>
             </div>
             <div class="flex flex-row flex-wrap items-center gap-2">
@@ -92,28 +90,27 @@
                     color="amber"
                     icon="star"
                 >
-                    {{ $anime['data']['score']['value'] }}/10
+                    {{ $anime['moreInfo']['MAL Score:'] }}/10
                 </flux:badge>
                 <flux:badge
                     size="sm"
                     color="cyan"
                     icon="cloud"
                 >
-                    {{ $anime['data']['season'] }}
+                    {{ $anime['moreInfo']['Premiered:'] }}
                 </flux:badge>
                 <flux:badge
                     size="sm"
                     color="blue"
                     icon="home-modern"
                 >
-                    {{ $anime['data']['studios'] }}
+                    {{ $anime['moreInfo']['Studios:'] }}
                 </flux:badge>
             </div>
 
             <flux:subheading level="h3">
-                {{ implode(' ', $anime['data']['synopsis']['paragraphs']) }}
+                {{ $anime['info']['description'] }}
             </flux:subheading>
         </div>
     </div>
-
 </x-cards.app>

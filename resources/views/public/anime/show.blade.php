@@ -1,7 +1,7 @@
 <x-layouts.app
-    title="{{ $anime['data']['title'] }}"
-    description="{{ implode(' ', $anime['data']['synopsis']['paragraphs']) }}"
-    image="{{ $anime['data']['poster'] }}"
+    title="{{ $anime['info']['name'] }}"
+    description="{{ $anime['info']['description'] }}"
+    image="{{ $anime['info']['img'] }}"
 >
     <flux:breadcrumbs class="flex-wrap">
         <flux:breadcrumbs.item
@@ -12,11 +12,11 @@
             Anime
         </flux:breadcrumbs.item>
         <flux:breadcrumbs.item>
-            {{ $anime['data']['title'] }}
+            {{ $anime['info']['name'] }}
         </flux:breadcrumbs.item>
     </flux:breadcrumbs>
 
-    <a
+    {{-- <a
         href="{{ route('anime.episode.show', ['anime' => $animeId, 'episode' => $anime['data']['episodeList'][0]['episodeId']]) }}"
         class="group relative aspect-video overflow-hidden rounded-lg"
     >
@@ -36,18 +36,18 @@
                 {{ $anime['data']['episodeList'][0]['title'] }}
             </flux:heading>
         </div>
-    </a>
+    </a> --}}
 
-    <livewire:save-anime
+    {{-- <livewire:save-anime
         :animeId="$animeId"
         :anime="$anime"
-    />
+    /> --}}
 
-    <x-animes.episode
+    {{-- <x-animes.episode
         :anime="$anime"
         :animeId="$animeId"
         :watchedEpisodes="$watchedEpisodes"
-    />
+    /> --}}
 
     <x-animes.detail
         animeId="{{ $animeId }}"
