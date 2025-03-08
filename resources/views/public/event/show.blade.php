@@ -73,12 +73,12 @@
                     </ol>
                 </x-cards.app>
                 <div class="!text-zinc-800 dark:!text-white">
-                    <div
+                    <article
                         id="editor"
                         class="rounded-lg !border-zinc-200 dark:!border-zinc-600"
                     >
                         {!! $event?->content !!}
-                    </div>
+                    </article>
                 </div>
                 <flux:button
                     icon="arrow-top-right-on-square"
