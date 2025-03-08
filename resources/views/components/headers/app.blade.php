@@ -1,6 +1,6 @@
 <flux:header
     container
-    class="sticky top-0 bg-white dark:bg-zinc-900/50 dark:backdrop-blur border-b border-zinc-200 dark:border-zinc-600"
+    class="sticky top-0 border-b border-zinc-200 bg-white dark:border-zinc-600 dark:bg-zinc-900/50 dark:backdrop-blur"
 >
     <flux:sidebar.toggle
         icon="bars-2"
@@ -142,12 +142,10 @@
                         Profil
                     </flux:menu.item>
                     <flux:menu.separator />
-                    <form
-                        id="logout-form"
+                    <x-forms
                         action="{{ route('logout') }}"
-                        method="post"
+                        method="POST"
                     >
-                        @csrf
                         <flux:menu.item
                             as="button"
                             type="submit"
@@ -155,7 +153,7 @@
                         >
                             Keluar
                         </flux:menu.item>
-                    </form>
+                    </x-forms>
                 </flux:menu>
             </flux:dropdown>
         @else

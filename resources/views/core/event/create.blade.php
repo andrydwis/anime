@@ -23,12 +23,10 @@
     </div>
 
     <x-cards.app>
-        <form
+        <x-forms
             action="{{ route('core.events.store') }}"
-            method="post"
-            enctype="multipart/form-data"
+            method="POST"
         >
-            @csrf
             <div class="flex flex-col gap-4">
                 <flux:input
                     label="Gambar"
@@ -94,7 +92,7 @@
                     </flux:button>
                 </div>
             </div>
-        </form>
+        </x-forms>
     </x-cards.app>
 
     @push('styles')

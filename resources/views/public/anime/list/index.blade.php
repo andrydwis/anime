@@ -90,12 +90,11 @@
                 name="add-playlist"
                 class="md:min-h-auto h-full min-h-svh w-full !rounded-none md:h-3/4 md:!rounded-lg"
             >
-                <form
+                <x-forms
                     action="{{ route('anime.list.store') }}"
-                    method="post"
+                    method="POST"
                     class="flex min-h-full flex-col gap-4"
                 >
-                    @csrf
                     <div>
                         <flux:heading>
                             Tambah Playlist
@@ -145,7 +144,7 @@
                     >
                         Simpan
                     </flux:button>
-                </form>
+                </x-forms>
             </flux:modal>
         </x-cards.app>
 

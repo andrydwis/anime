@@ -17,11 +17,10 @@
 
     <flux:separator text="atau" />
 
-    <form
+    <x-forms
         action="{{ route('login') }}"
-        method="post"
+        method="POST"
     >
-        @csrf
         <div class="flex flex-col gap-4">
             <flux:input
                 label="Email"
@@ -44,7 +43,7 @@
                 Masuk
             </flux:button>
         </div>
-    </form>
+    </x-forms>
 
     <flux:subheading class="text-center">
         Belum punya akun?

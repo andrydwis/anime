@@ -17,11 +17,10 @@
 
     <flux:separator text="atau" />
 
-    <form
+    <x-forms
         action="{{ route('register') }}"
-        method="post"
+        method="POST"
     >
-        @csrf
         <div class="flex flex-col gap-4">
             <flux:input
                 label="Nama"
@@ -59,7 +58,7 @@
                 Daftar
             </flux:button>
         </div>
-    </form>
+    </x-forms>
 
     <flux:subheading class="text-center">
         Sudah punya akun?

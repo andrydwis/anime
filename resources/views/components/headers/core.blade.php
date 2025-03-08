@@ -108,12 +108,10 @@
                         Profil
                     </flux:menu.item>
                     <flux:menu.separator />
-                    <form
-                        id="logout-form"
+                    <x-forms
                         action="{{ route('logout') }}"
-                        method="post"
+                        method="POST"
                     >
-                        @csrf
                         <flux:menu.item
                             as="button"
                             type="submit"
@@ -121,7 +119,7 @@
                         >
                             Keluar
                         </flux:menu.item>
-                    </form>
+                    </x-forms>
                 </flux:menu>
             </flux:dropdown>
         @else

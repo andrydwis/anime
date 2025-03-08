@@ -145,19 +145,17 @@
                                                                     Batal
                                                                 </flux:button>
                                                             </flux:modal.close>
-                                                            <form
+                                                            <x-forms
                                                                 action="{{ route('core.users.destroy', ['user' => $user]) }}"
-                                                                method="post"
+                                                                method="DELETE"
                                                             >
-                                                                @csrf
-                                                                @method('delete')
                                                                 <flux:button
                                                                     type="submit"
                                                                     variant="danger"
                                                                 >
                                                                     Hapus
                                                                 </flux:button>
-                                                            </form>
+                                                            </x-forms>
                                                         </div>
                                                     </div>
                                                 </flux:modal>

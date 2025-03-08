@@ -11,12 +11,10 @@
 
     <div class="flex flex-col gap-2">
         <x-cards.app class="mx-auto w-full md:max-w-lg">
-            <form
+            <x-forms
                 action="{{ route('profile.update') }}"
-                method="post"
+                method="PATCH"
             >
-                @method('patch')
-                @csrf
                 <div class="flex flex-col gap-4">
                     <x-alerts.app />
                     <flux:input
@@ -61,7 +59,7 @@
                         Simpan
                     </flux:button>
                 </div>
-            </form>
+            </x-forms>
         </x-cards.app>
     </div>
 </x-layouts.app>

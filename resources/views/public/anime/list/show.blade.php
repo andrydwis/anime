@@ -62,13 +62,11 @@
                             name="edit-playlist"
                             class="md:min-h-auto h-full min-h-svh w-full !rounded-none md:h-3/4 md:!rounded-lg"
                         >
-                            <form
+                            <x-forms
                                 action="{{ route('anime.list.update', ['playlist' => $playlist]) }}"
-                                method="post"
+                                method="PATCH"
                                 class="flex min-h-full flex-col gap-4"
                             >
-                                @csrf
-                                @method('patch')
                                 <div>
                                     <flux:heading>
                                         Tambah Playlist
@@ -118,7 +116,7 @@
                                 >
                                     Simpan
                                 </flux:button>
-                            </form>
+                            </x-forms>
                         </flux:modal>
                     </div>
                     <div>
@@ -155,19 +153,17 @@
                                             Batal
                                         </flux:button>
                                     </flux:modal.close>
-                                    <form
+                                    <x-forms
                                         action="{{ route('anime.list.destroy', ['playlist' => $playlist]) }}"
-                                        method="post"
+                                        method="DELETE"
                                     >
-                                        @csrf
-                                        @method('delete')
                                         <flux:button
                                             type="submit"
                                             variant="danger"
                                         >
                                             Hapus
                                         </flux:button>
-                                    </form>
+                                    </x-forms>
                                 </div>
                             </div>
                         </flux:modal>
