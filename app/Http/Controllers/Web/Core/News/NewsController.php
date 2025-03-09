@@ -133,8 +133,10 @@ class NewsController extends Controller
             $news->clearMediaCollection('news');
             $news->addMediaFromRequest('image')->toMediaCollection('news');
         } elseif ($request->has('image_url')) {
-            $news->clearMediaCollection('news');
-            $news->addMediaFromUrl($request->input('image_url'))->toMediaCollection('news');
+            if (! empty($request->input('image_url'))) {
+                $news->clearMediaCollection('news');
+                $news->addMediaFromUrl($request->input('image_url'))->toMediaCollection('news');
+            }
         }
 
         Cache::clear('news');
