@@ -1,17 +1,17 @@
 <x-layouts.app>
 
-    <div class="relative py-4">
+    <div class="relative -mx-6 py-4 md:mx-0">
         <img
             src="{{ asset('images/cta/home.jpg') }}"
             alt="cta"
-            class="aspect-[9/16] object-cover brightness-50 md:aspect-video"
+            class="aspect-[4/3] object-cover brightness-50 md:aspect-video"
         >
         <div
             class="absolute inset-0 bg-gradient-to-b from-white from-5% via-transparent to-white to-95% dark:from-zinc-800 dark:to-zinc-800">
 
         </div>
         <div
-            class="absolute left-1/2 top-1/2 flex w-full -translate-x-1/2 -translate-y-1/2 flex-col gap-2 p-4 backdrop-blur md:w-1/2">
+            class="absolute left-1/2 top-1/2 flex w-full -translate-x-1/2 -translate-y-1/2 flex-col gap-2 px-6 backdrop-blur md:w-1/2 lg:px-8">
             <flux:heading
                 size="xl"
                 level="h1"
