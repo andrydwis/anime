@@ -31,7 +31,7 @@
                     >
                         <div>
                             <flux:heading>
-                                Scraping Anime
+                                Scraping Berita
                             </flux:heading>
                             <flux:subheading>
                                 Masukkan link berita yang akan di scraping
