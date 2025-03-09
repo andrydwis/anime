@@ -41,7 +41,7 @@
                     type="url"
                     name="image_url"
                     placeholder="Masukkan link gambar"
-                    value="{{ old('image_url', $news?->getFirstMediaUrl('news')) }}"
+                    value="{{ old('image_url') }}"
                     clearable
                 />
                 <flux:input
