@@ -15,9 +15,9 @@
             <flux:heading
                 size="xl"
                 level="h1"
-                class="text-center !text-2xl !font-bold lg:!text-4xl !text-white"
+                class="text-center !text-2xl !font-bold !text-white lg:!text-4xl"
             >
-                Tonton Anime Tanpa Iklan Cuma di
+                Nonton Anime Tanpa Iklan Cuma di
                 <span
                     class="from-accent !bg-gradient-to-br to-cyan-600 bg-clip-text !text-transparent"
                 >
