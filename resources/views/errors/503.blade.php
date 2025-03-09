@@ -1,7 +1,7 @@
 <x-layouts.auth>
     <x-cards.app>
         <flux:heading>
-            Ubur-ubur 🪼 iklan lele 🐟, maintenance dulu le...
+            Ubur-Ubur 🪼 Iklan Lele 🐟. Maintenance Dulu Lee...
         </flux:heading>
         <flux:subheading>
             Saat ini website sedang dalam maintenance, coba lagi nanti ya 👋.
