@@ -34,11 +34,19 @@
                     name="image"
                 />
                 <flux:input
+                    label="Link Gambar"
+                    type="url"
+                    name="image_url"
+                    placeholder="Masukkan link gambar"
+                    value="{{ old('image_url', isset($newsData['image']) ? $newsData['image'] : null) }}"
+                    clearable
+                />
+                <flux:input
                     label="Judul"
                     type="text"
                     name="title"
                     placeholder="Masukkan judul berita"
-                    value="{{ old('title') }}"
+                    value="{{ old('title', isset($newsData['title']) ? $newsData['title'] : null) }}"
                     required
                     clearable
                 />
@@ -51,12 +59,12 @@
                         placeholder="Masukkan konten berita"
                         class="hidden"
                     >
-                        {!! old('content', $news?->content) !!}
+                        {!! old('content', isset($newsData['content']) ? $newsData['content'] : null) !!}
                     </flux:textarea>
                     <!-- Create the editor container -->
                     <div class="bg-white !text-zinc-800">
                         <div id="editor">
-                            {!! old('content') !!}
+                            {!! old('content', isset($newsData['content']) ? $newsData['content'] : null) !!}
                         </div>
                     </div>
 

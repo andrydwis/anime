@@ -37,6 +37,14 @@
                     name="image"
                 />
                 <flux:input
+                    label="Link Gambar"
+                    type="url"
+                    name="image_url"
+                    placeholder="Masukkan link gambar"
+                    value="{{ old('image_url', $news?->getFirstMediaUrl('news')) }}"
+                    clearable
+                />
+                <flux:input
                     label="Judul"
                     type="text"
                     name="title"

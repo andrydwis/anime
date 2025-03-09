@@ -13,13 +13,60 @@
                 Berita terbaru seputar anime, manga, game, dan lainnya
             </flux:subheading>
         </div>
-        <flux:button
-            variant="primary"
-            icon="plus"
-            href="{{ route('core.news.create') }}"
-        >
-            Tambah
-        </flux:button>
+        <div class="flex flex-row items-center gap-2">
+            <div>
+                <flux:modal.trigger name="scrape">
+                    <flux:button icon="sparkles">
+                        Scraping Berita
+                    </flux:button>
+                </flux:modal.trigger>
+                <flux:modal
+                    name="scrape"
+                    class="md:min-h-auto h-full min-h-svh w-full !rounded-none md:h-3/4 md:!rounded-lg"
+                >
+                    <x-forms
+                        action="{{ route('core.news.create') }}"
+                        method="GET"
+                        class="flex min-h-full flex-col gap-4"
+                    >
+                        <div>
+                            <flux:heading>
+                                Scraping Anime
+                            </flux:heading>
+                            <flux:subheading>
+                                Masukkan link berita yang akan di scraping
+                            </flux:subheading>
+                        </div>
+
+                        <flux:input
+                            type="url"
+                            label="Link Berita"
+                            icon="link"
+                            placeholder="Link Berita di MyAnimeList"
+                            name="url"
+                        />
+
+                        <div class="flex">
+                            <flux:spacer />
+
+                            <flux:button
+                                type="submit"
+                                variant="primary"
+                            >
+                                Scraping
+                            </flux:button>
+                        </div>
+                    </x-forms>
+                </flux:modal>
+            </div>
+            <flux:button
+                variant="primary"
+                icon="plus"
+                href="{{ route('core.news.create') }}"
+            >
+                Tambah
+            </flux:button>
+        </div>
     </div>
 
     <x-cards.app>

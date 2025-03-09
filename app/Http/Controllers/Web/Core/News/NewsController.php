@@ -9,8 +9,10 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
+use Symfony\Component\DomCrawler\Crawler;
 
 class NewsController extends Controller
 {
@@ -23,9 +25,57 @@ class NewsController extends Controller
         return view('core.news.index', $data);
     }
 
-    public function create(): View
+    public function scrapeNews(string $url): array
     {
-        return view('core.news.create');
+        $response = Http::get($url);
+        $html = $response->body();
+
+        $crawler = new Crawler($html);
+
+        // Extract title
+        $title = $crawler->filter('h1.title a')->count() > 0
+        ? trim($crawler->filter('h1.title a')->text())
+        : null;
+
+        // Extract image URL
+        $image = $crawler->filter('.content img.userimg')->count() > 0
+            ? $crawler->filter('.content img.userimg')->attr('src')
+            : null;
+
+        // Extract content
+        $content = $crawler->filter('.content')->count() > 0
+            ? trim($crawler->filter('.content')->html())
+            : null;
+
+        // Extract tags
+        $tags = $crawler->filter('.tags a')->each(function (Crawler $tagNode) {
+            return [
+                'name' => trim($tagNode->text()),
+                'url' => $tagNode->attr('href'),
+            ];
+        });
+
+        return [
+            'title' => $title,
+            'image' => $image,
+            'content' => $content,
+            'tags' => $tags,
+        ];
+    }
+
+    public function create(Request $request): View
+    {
+        if ($request->input('url')) {
+            $newsData = $this->scrapeNews($request->input('url'));
+        } else {
+            $newsData = [];
+        }
+
+        $data = [
+            'newsData' => $newsData,
+        ];
+
+        return view('core.news.create', $data);
     }
 
     public function store(Request $request): RedirectResponse
@@ -34,6 +84,7 @@ class NewsController extends Controller
             'title' => ['required', 'string', 'max:255'],
             'content' => ['required', 'string'],
             'image' => ['nullable', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+            'image_url' => ['nullable', 'string', 'url'],
         ]);
 
         $news = new News;
@@ -45,6 +96,8 @@ class NewsController extends Controller
 
         if ($request->hasFile('image')) {
             $news->addMediaFromRequest('image')->toMediaCollection('news');
+        } elseif ($request->has('image_url')) {
+            $news->addMediaFromUrl($request->input('image_url'))->toMediaCollection('news');
         }
 
         Cache::clear('news');
@@ -69,6 +122,7 @@ class NewsController extends Controller
             'title' => ['required', 'string', 'max:255'],
             'content' => ['required', 'string'],
             'image' => ['nullable', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+            'image_url' => ['nullable', 'string', 'url'],
         ]);
 
         $news->title = $request->input('title');
@@ -78,6 +132,9 @@ class NewsController extends Controller
         if ($request->hasFile('image')) {
             $news->clearMediaCollection('news');
             $news->addMediaFromRequest('image')->toMediaCollection('news');
+        } elseif ($request->has('image_url')) {
+            $news->clearMediaCollection('news');
+            $news->addMediaFromUrl($request->input('image_url'))->toMediaCollection('news');
         }
 
         Cache::clear('news');

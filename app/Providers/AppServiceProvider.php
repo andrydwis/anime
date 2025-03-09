@@ -18,7 +18,9 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(HtmlSanitizerInterface::class, function () {
             return new HtmlSanitizer((new HtmlSanitizerConfig
-            )->allowSafeElements()
+            )
+                ->allowSafeElements()
+                ->allowElement('iframe', allowedAttributes: ['width', 'height', 'src', 'frameborder', 'allowfullscreen'])
                 ->allowRelativeLinks()
                 ->allowRelativeMedias()
                 ->allowAttribute('class', allowedElements: '*')
