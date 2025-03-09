@@ -1,5 +1,5 @@
-<x-cards.app>
-    <div class="grid gap-4 md:grid-cols-2">
+<div class="grid gap-4 md:grid-cols-2">
+    <x-cards.app>
         <div class="flex flex-col gap-4">
             <flux:input
                 label="Link *"
@@ -47,40 +47,52 @@
                 Generate
             </flux:button>
         </div>
-        <x-cards.app>
+    </x-cards.app>
+    <x-cards.app>
+        @if ($generatedLink)
             <div class="flex flex-col gap-4">
-                @if ($generatedLink)
+                <div>
                     <x-alerts.app />
+                </div>
 
-                    <flux:input
-                        label="Short Link"
-                        icon="link"
-                        wire:model="generatedLink"
-                        readonly
-                        copyable
-                    />
+                <flux:input
+                    label="Short Link"
+                    icon="link"
+                    wire:model="generatedLink"
+                    readonly
+                    copyable
+                />
 
-                    <flux:field>
-                        <flux:label>QR Code</flux:label>
+                <flux:field>
+                    <flux:label>QR Code</flux:label>
 
-                        <img
-                            src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data={{ $generatedLink }}"
-                            alt="qr-code"
-                            class="mb-3 rounded-lg border border-zinc-200 p-1 dark:border-zinc-600"
-                        >
+                    <img
+                        src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data={{ $generatedLink }}"
+                        alt="qr-code"
+                        class="mb-3 rounded-lg border border-zinc-200 p-1 dark:border-zinc-600 mx-auto"
+                    >
 
-                        <flux:button
-                            icon="arrow-down-tray"
-                            wire:click="downloadQrCode"
-                        >
-                            Download
-                        </flux:button>
-                    </flux:field>
-                @endif
+                    <flux:button
+                        icon="arrow-down-tray"
+                        wire:click="downloadQrCode"
+                        class="w-full"
+                    >
+                        Download
+                    </flux:button>
+                </flux:field>
             </div>
-        </x-cards.app>
-    </div>
-</x-cards.app>
+        @else
+            <div>
+                <flux:heading>
+                    Hasil generate short link akan muncul disini 👇🏻
+                </flux:heading>
+                <flux:subheading>
+                    Isi form terlebih dahulu, lalu klik generate.
+                </flux:subheading>
+            </div>
+        @endif
+    </x-cards.app>
+</div>
 
 @script
 @endscript

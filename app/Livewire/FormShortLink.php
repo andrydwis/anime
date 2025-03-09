@@ -60,7 +60,7 @@ class FormShortLink extends Component
         $link->expired_at = $this->expiredAt;
         $link->save();
 
-        session()->flash('success', 'Short Link berhasil dibuat 🎉.');
+        session()->flash('success', 'Short link berhasil dibuat 🎉.');
 
         $this->generatedLink = route('links.show', ['link' => $link]);
 
