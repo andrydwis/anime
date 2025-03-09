@@ -97,7 +97,9 @@ class NewsController extends Controller
         if ($request->hasFile('image')) {
             $news->addMediaFromRequest('image')->toMediaCollection('news');
         } elseif ($request->has('image_url')) {
-            $news->addMediaFromUrl($request->input('image_url'))->toMediaCollection('news');
+            if (! empty($request->input('image_url'))) {
+                $news->addMediaFromUrl($request->input('image_url'))->toMediaCollection('news');
+            }
         }
 
         Cache::clear('news');
