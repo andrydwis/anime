@@ -1,5 +1,4 @@
 <x-layouts.app>
-
     <div class="relative -mx-6 py-4 md:mx-0">
         <img
             src="{{ asset('images/cta/home.jpg') }}"
