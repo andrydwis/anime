@@ -3,20 +3,12 @@
         <div class="flex flex-col gap-2">
             <div class="flex flex-row items-center gap-2">
                 <flux:button
-                    icon="github"
-                    href="https://github.com/andrydwis/anime"
-                />
-                <flux:button
                     icon="envelope"
-                    href="mailto:andry.dwi.s@gmail.com"
-                />
-                <flux:button
-                    icon="linkedin"
-                    href="https://www.linkedin.com/in/andry-dwi-suharmanto-09a964127/"
+                    href="mailto:admin@weaboo.my.id"
                 />
                 <flux:button
                     icon="coffee"
-                    href="https://saweria.co/andrydwis"
+                    href="https://trakteer.id/weaboo-my-id"
                 />
             </div>
             <flux:subheading class="lg:w-1/4">

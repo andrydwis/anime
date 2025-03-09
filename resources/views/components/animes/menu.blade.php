@@ -67,7 +67,7 @@
     @endauth
     <flux:button
         icon="coffee"
-        href="https://saweria.co/andrydwis"
+        href="https://trakteer.id/weaboo-my-id"
         class="md:col-span-2"
     >
         Donasi
