@@ -93,8 +93,8 @@
         <flux:navlist.item
             icon="link"
             iconVariant="solid"
-            badge="Segera!"
-            badge-color="red"
+            badge="Baru!"
+            badge-color="emerald"
             href="{{ route('tools.short-links.index') }}"
         >
             Short Link
