@@ -116,7 +116,13 @@
                             label="{{ $link?->name }}"
                             icon="link"
                             value="{{ config('app.url') }}/{{ $link?->link }}"
-                            description="{{ $link?->original_link }}"
+                            readonly
+                            copyable
+                        />
+                        <flux:input
+                            label="Link Asli"
+                            icon="link"
+                            value="{{ $link?->original_link }}"
                             readonly
                             copyable
                         />
