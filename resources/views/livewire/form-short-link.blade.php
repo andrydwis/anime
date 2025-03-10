@@ -112,7 +112,7 @@
                 </flux:subheading>
             </div>
             @forelse ($shortLinks as $link)
-                <x-cards.app>
+                <x-cards.app wire:key="link-{{ $link?->id }}">
                     <div class="flex flex-col gap-4">
                         <flux:input
                             label="{{ $link?->name }}"
@@ -141,13 +141,57 @@
                             />
                         @endif
                         <div class="grid grid-cols-2 gap-2">
-                            <flux:button
-                                variant="danger"
-                                icon="trash"
-                                wire:click="destroy({{ $link->id }})"
-                            >
-                                Hapus
-                            </flux:button>
+                            <div>
+                                <div>
+                                    <flux:modal.trigger
+                                        name="delete-link-{{ $link?->id }}"
+                                    >
+                                        <flux:button
+                                            variant="danger"
+                                            icon="trash"
+                                            class="w-full"
+                                        >
+                                            Hapus
+                                        </flux:button>
+                                    </flux:modal.trigger>
+                                    <flux:modal
+                                        variant="flyout"
+                                        position="bottom"
+                                        name="delete-link-{{ $link?->id }}"
+                                    >
+                                        <div class="flex flex-col gap-2">
+                                            <div>
+                                                <flux:heading size="lg">
+                                                    Hapus Short Link
+                                                </flux:heading>
+                                                <flux:subheading>
+                                                    Apakah kamu yakin
+                                                    ingin menghapus short link
+                                                    ini?
+                                                </flux:subheading>
+                                            </div>
+
+                                            <div class="flex flex-row items-center gap-2">
+                                                <flux:spacer />
+                                                <flux:modal.close>
+                                                    <flux:button>
+                                                        Batal
+                                                    </flux:button>
+                                                </flux:modal.close>
+                                                <flux:modal.close>
+                                                    <flux:button
+                                                        type="submit"
+                                                        variant="danger"
+                                                        wire:click="destroy({{ $link?->id }})"
+                                                    >
+                                                        Hapus
+                                                    </flux:button>
+                                                </flux:modal.close>
+                                            </div>
+                                        </div>
+                                    </flux:modal>
+                                </div>
+                            </div>
                             <flux:button
                                 icon="presentation-chart-line"
                                 href="{{ route('tools.short-links.show', ['link' => $link]) }}"
@@ -172,6 +216,3 @@
         </div>
     </x-cards.app>
 </div>
-
-@script
-@endscript

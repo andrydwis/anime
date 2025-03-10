@@ -123,4 +123,10 @@ class FormShortLink extends Component
 
         return response()->download($path, $filename)->deleteFileAfterSend(true);
     }
+
+    public function destroy(Link $link): void
+    {
+        $link->delete();
+        $this->mount();
+    }
 }

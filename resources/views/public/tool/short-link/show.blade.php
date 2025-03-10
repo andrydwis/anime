@@ -7,7 +7,7 @@
         <flux:breadcrumbs.item>
             Tools
         </flux:breadcrumbs.item>
-        <flux:breadcrumbs.item>
+        <flux:breadcrumbs.item href="{{ route('tools.short-links.index') }}">
             Short Link
         </flux:breadcrumbs.item>
         <flux:breadcrumbs.item>
@@ -30,6 +30,6 @@
                 </flux:subheading>
             </div>
         </div>
-        <livewire:form-short-link />
+        <livewire:stat-short-link :linkData="$link" />
     </div>
 </x-layouts.app>

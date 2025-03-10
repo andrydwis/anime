@@ -82,7 +82,7 @@
                                         <flux:tooltip content="Hapus">
                                             <div>
                                                 <flux:modal.trigger
-                                                    name="delete-news-{{ $event?->id }}"
+                                                    name="delete-event-{{ $event?->id }}"
                                                 >
                                                     <flux:button
                                                         variant="danger"
@@ -93,7 +93,7 @@
                                                 <flux:modal
                                                     variant="flyout"
                                                     position="bottom"
-                                                    name="delete-news-{{ $event?->id }}"
+                                                    name="delete-event-{{ $event?->id }}"
                                                 >
                                                     <div class="flex flex-col gap-2">
                                                         <div>
