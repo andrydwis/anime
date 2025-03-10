@@ -103,7 +103,16 @@
                     Jumlah klik, total unique pengunjung, dan data lainnya
                 </flux:subheading>
             </div>
-            
+            <x-cards.app>
+                <div>
+                    <flux:heading>
+                        Coming Soon 🚧
+                    </flux:heading>
+                    <flux:subheading>
+                        Sedang dalam tahap pengembangan
+                    </flux:subheading>
+                </div>
+            </x-cards.app>
         </div>
     </x-cards.app>
 </div>

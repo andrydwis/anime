@@ -5,9 +5,6 @@
             href="{{ route('home') }}"
         />
         <flux:breadcrumbs.item>
-            Tools
-        </flux:breadcrumbs.item>
-        <flux:breadcrumbs.item>
             Short Link
         </flux:breadcrumbs.item>
     </flux:breadcrumbs>
