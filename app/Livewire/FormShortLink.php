@@ -81,7 +81,7 @@ class FormShortLink extends Component
         $this->mount();
     }
 
-    public function isShortUrlAvailable($shortUrl)
+    public function isShortUrlAvailable(string $shortUrl)
     {
         $shortUrl = trim($shortUrl, '/');
 

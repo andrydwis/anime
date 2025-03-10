@@ -59,9 +59,7 @@
     <x-cards.app>
         @if ($generatedLink)
             <div class="flex flex-col gap-4">
-                <div>
-                    <x-alerts.app />
-                </div>
+                <x-alerts.app />
 
                 <flux:input
                     label="Short Link"
