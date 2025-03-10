@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Link;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
@@ -11,9 +12,12 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 use Livewire\Component;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class FormShortLink extends Component
 {
+    public $name;
+
     public $link;
 
     public $customLink;
@@ -24,14 +28,22 @@ class FormShortLink extends Component
 
     public $generatedLink;
 
+    public $shortLinks;
+
     public function render(): View
     {
         return view('livewire.form-short-link');
     }
 
+    public function mount(): void
+    {
+        $this->shortLinks = Link::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
+    }
+
     public function generate(): void
     {
         $this->validate([
+            'name' => ['nullable', 'string', 'max:255'],
             'link' => ['required', 'string', 'active_url'],
             'customLink' => ['nullable', 'string', 'alpha_dash'],
             'password' => ['nullable', 'string', 'min:8'],
@@ -39,21 +51,21 @@ class FormShortLink extends Component
         ]);
 
         if ($this->customLink) {
-            $exists = $this->routeUriExists($this->customLink);
-
-            if ($exists) {
+            $generatedLink = $this->customLink;
+            if (! $this->isShortUrlAvailable($generatedLink)) {
                 // thow error bag to customLink
                 $this->addError('customLink', 'Custom link sudah digunakan, coba yang lain.');
 
                 return;
             }
+        } else {
+            $generatedLink = Str::random(8);
         }
-
-        $generatedLink = $customLink ?? Str::random(8);
 
         $link = new Link;
         $link->user_id = Auth::id();
         $link->uuid = Str::uuid();
+        $link->name = $this->name ?? 'Short Link '.Carbon::now()->format('dmY');
         $link->original_link = $this->link;
         $link->link = $generatedLink;
         $link->password = $this->password;
@@ -65,26 +77,40 @@ class FormShortLink extends Component
         $this->generatedLink = route('links.show', ['link' => $link]);
 
         $this->reset(['link', 'customLink', 'password', 'expiredAt']);
+
+        $this->mount();
     }
 
-    public function routeUriExists(string $url): bool
+    public function isShortUrlAvailable($shortUrl)
     {
-        $path = parse_url($url, PHP_URL_PATH);
-        $routes = app('router')->getRoutes();
+        $shortUrl = trim($shortUrl, '/');
 
-        foreach ($routes as $route) {
-            $uri = $route->uri();
-            // Convert route URI to regex pattern (basic parameter handling)
-            $pattern = '@^'.preg_replace('/{.*?}/', '([^/]+)', $uri).'$@';
-            if (preg_match($pattern, $path)) {
-                return true;
-            }
+        // Get all registered route paths
+        $routes = collect(Route::getRoutes())->map(function ($route) {
+            return trim($route->uri(), '/');
+        });
+
+        // Check for exact route matches
+        if ($routes->contains($shortUrl)) {
+            return false;
         }
 
-        return false;
+        // Check for partial matches with static routes
+        $staticRoutes = $routes->filter(fn ($uri) => ! str_contains($uri, '{'));
+
+        if ($staticRoutes->contains(fn ($uri) => str_starts_with($shortUrl, $uri.'/'))) {
+            return false;
+        }
+
+        // Check database for existing short links
+        if (Link::where('link', $shortUrl)->exists()) {
+            return false;
+        }
+
+        return true;
     }
 
-    public function downloadQrCode()
+    public function downloadQrCode(): BinaryFileResponse
     {
         $response = Http::get('https://api.qrserver.com/v1/create-qr-code/?size=150x150&format=png&data='.$this->generatedLink)->body();
 

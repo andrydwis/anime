@@ -25,6 +25,7 @@ Route::get('profile', [App\Http\Controllers\Web\Public\Profile\ProfileController
 Route::patch('profile', [App\Http\Controllers\Web\Public\Profile\ProfileController::class, 'update'])->name('profile.update')->middleware(['auth']);
 
 Route::get('tools/short-links', [App\Http\Controllers\Web\Public\Tool\ShortLink\ShortLinkController::class, 'index'])->name('tools.short-links.index')->middleware(['auth']);
+Route::get('tools/short-links/{link:uuid}', [App\Http\Controllers\Web\Public\Tool\ShortLink\ShortLinkController::class, 'show'])->name('tools.short-links.show')->whereUuid('link')->middleware(['auth']);
 
 Route::view('dmca', 'public.other.dmca')->name('dmca');
 Route::view('privacy-policy', 'public.other.privacy')->name('privacy-policy');

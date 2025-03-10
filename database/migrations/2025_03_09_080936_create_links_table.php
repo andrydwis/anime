@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->uuid('uuid');
+            $table->string('name');
             $table->string('original_link');
             $table->string('link');
             $table->string('password')->nullable();

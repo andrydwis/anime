@@ -13,6 +13,7 @@ class Link extends Model
     protected $fillable = [
         'user_id',
         'uuid',
+        'name',
         'original_link',
         'link',
         'password',
