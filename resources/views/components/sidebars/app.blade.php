@@ -81,11 +81,23 @@
         <flux:navlist.item
             icon="sparkles"
             iconVariant="solid"
-            href="#"
             badge="Segera!"
             badge-color="red"
+            href="#"
         >
             Gachamon
+        </flux:navlist.item>
+
+        <flux:separator class="my-2" />
+
+        <flux:navlist.item
+            icon="link"
+            iconVariant="solid"
+            badge="Segera!"
+            badge-color="red"
+            href="{{ route('tools.short-links.index') }}"
+        >
+            Short Link
         </flux:navlist.item>
     </flux:navlist>
 </flux:sidebar>
