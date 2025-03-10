@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web\Public\Tool\ShortLink;
 
 use App\Http\Controllers\Controller;
 use App\Models\Link;
+use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -16,7 +17,7 @@ class RedirectShortLinkController extends Controller
             'link' => $link,
         ];
 
-        if (now()->gt($link->expired_at)) {
+        if ($link->expired_at && Carbon::now()->gt($link->expired_at)) {
             return view('public.tool.short-link.expired', $data);
         }
 

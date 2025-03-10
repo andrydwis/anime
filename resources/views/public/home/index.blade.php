@@ -43,7 +43,7 @@
                     level="h1"
                     class="from-accent !m-0 !bg-gradient-to-br to-cyan-600 bg-clip-text !font-semibold !text-transparent"
                 >
-                    Tools Lain-lain
+                    Tools Lainnya
                 </flux:heading>
                 <flux:subheading level="h2">
                     Kumpulan tools dan fitur gratis lainnya untuk membantu kamu
