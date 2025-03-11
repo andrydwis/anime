@@ -47,8 +47,6 @@ class RedirectShortLinkController extends Controller
             ];
 
             $link->logs()->create($data);
-
-            dd($data);
         }
 
         return redirect($link->original_link);
