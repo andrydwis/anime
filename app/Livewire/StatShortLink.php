@@ -3,7 +3,6 @@
 namespace App\Livewire;
 
 use App\Models\Link;
-use App\Models\LogLink;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -39,6 +38,8 @@ class StatShortLink extends Component
 
     public array $topCountryCities = [];
 
+    public array $chartLast30DayVisitors = [];
+
     public function render(): View
     {
         return view('livewire.stat-short-link');
@@ -53,15 +54,48 @@ class StatShortLink extends Component
         $this->expiredAt = $this->linkData->expired_at;
         $this->generatedLink = route('links.show', ['link' => $this->linkData]);
 
-        $this->totalVisits = LogLink::select(DB::raw('count(*) as total'))->where('link_id', $this->linkData->id)->first()->total;
-        $this->totalUniqueVisitors = LogLink::select(DB::raw('count(distinct ip) as total'))->where('link_id', $this->linkData->id)->first()->total;
+        // Total visits
+        $this->totalVisits = DB::table('log_links')
+            ->select(DB::raw('count(*) as total'))
+            ->where('link_id', $this->linkData->id)
+            ->first()->total;
 
-        $this->topCountryCities = LogLink::select(DB::raw('country_name, city, count(*) as total'))
+        // Total unique visitors
+        $this->totalUniqueVisitors = DB::table('log_links')
+            ->select(DB::raw('count(distinct ip) as total'))
+            ->where('link_id', $this->linkData->id)
+            ->first()->total;
+
+        // Top country and cities
+        $this->topCountryCities = DB::table('log_links')
+            ->select(DB::raw('country_name, city, count(*) as total'))
             ->where('link_id', $this->linkData->id)
             ->groupBy('country_name', 'city')
-            ->orderBy('total', 'desc')
+            ->orderByDesc('total')
             ->limit(10)
-            ->get()->toArray();
+            ->get()
+            ->map(function ($item) {
+                return (array) $item; // Convert each object to an array
+            })
+            ->toArray();
+
+        // Chart data for last 30 days
+        $chart = DB::table('log_links')
+            ->select(DB::raw('DATE(created_at) as date, count(*) as total'))
+            ->where('link_id', $this->linkData->id)
+            ->where('created_at', '>=', Carbon::now()->subDays(30))
+            ->groupBy('date')
+            ->orderBy('date')
+            ->get()
+            ->map(fn ($item) => [
+                'date' => $item->date, // Already formatted by MySQL
+                'total' => $item->total,
+            ]);
+
+        $this->chartLast30DayVisitors = [
+            'labels' => $chart->pluck('date')->toArray(),
+            'data' => $chart->pluck('total')->toArray(),
+        ];
     }
 
     public function toggleIsEdit(): void

@@ -129,10 +129,21 @@
                 <x-cards.app class="md:col-span-2">
                     <div>
                         <flux:subheading>
-                            Pengunjung berdasar Daerah
+                            Pengunjung Berdasar Daerah
                         </flux:subheading>
                         <div class="mt-2">
                             <x-tables.app>
+                                <x-tables.columns>
+                                    <x-tables.column>
+                                        Negara
+                                    </x-tables.column>
+                                    <x-tables.column>
+                                        Kota
+                                    </x-tables.column>
+                                    <x-tables.column>
+                                        Total
+                                    </x-tables.column>
+                                </x-tables.columns>
                                 <x-tables.rows>
                                     @foreach ($topCountryCities as $countryCity)
                                         <x-tables.row>
@@ -152,7 +163,70 @@
                         </div>
                     </div>
                 </x-cards.app>
+
+                <x-cards.app class="md:col-span-2 lg:col-span-4">
+                    <div>
+                        <flux:subheading>
+                            Pengunjung Short Link 30 Hari Terakhir
+                        </flux:subheading>
+                        <div class="mt-2">
+                            <div id="chart">
+                            </div>
+                        </div>
+                    </div>
+                </x-cards.app>
             </div>
         </div>
     </x-cards.app>
 </div>
+
+@push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const chartData = {
+                series: [{
+                    name: "Pengguna Baru",
+                    data: {{ Js::from($chartLast30DayVisitors['data']) }}
+                }],
+                categories: {{ Js::from($chartLast30DayVisitors['labels']) }}
+            };
+
+            const options = {
+                theme: {
+                    mode: 'dark'
+                },
+                chart: {
+                    height: 350,
+                    type: 'area',
+                    zoom: {
+                        enabled: false
+                    }
+                },
+                colors: ['#009966'], // Set line color
+                dataLabels: {
+                    enabled: false
+                },
+                stroke: {
+                    curve: 'straight'
+                },
+                title: {
+                    text: 'Grafik Pengunjung Short Link 30 Hari Terakhir',
+                    align: 'left'
+                },
+                grid: {
+                    row: {
+                        colors: ['#f3f3f3', 'transparent'],
+                        opacity: 0.5
+                    }
+                },
+                xaxis: {
+                    categories: chartData.categories
+                },
+                series: chartData.series
+            };
+
+            new ApexCharts(document.querySelector("#chart"), options).render();
+        });
+    </script>
+@endpush
