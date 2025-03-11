@@ -3,7 +3,9 @@
 namespace App\Livewire;
 
 use App\Models\Link;
+use App\Models\LogLink;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
@@ -33,6 +35,10 @@ class StatShortLink extends Component
 
     public int $totalVisits = 0;
 
+    public int $totalUniqueVisitors = 0;
+
+    public array $topCountryCities = [];
+
     public function render(): View
     {
         return view('livewire.stat-short-link');
@@ -47,7 +53,15 @@ class StatShortLink extends Component
         $this->expiredAt = $this->linkData->expired_at;
         $this->generatedLink = route('links.show', ['link' => $this->linkData]);
 
-        $this->totalVisits = $this->linkData->logs()->count();
+        $this->totalVisits = LogLink::select(DB::raw('count(*) as total'))->where('link_id', $this->linkData->id)->first()->total;
+        $this->totalUniqueVisitors = LogLink::select(DB::raw('count(distinct ip) as total'))->where('link_id', $this->linkData->id)->first()->total;
+
+        $this->topCountryCities = LogLink::select(DB::raw('country_name, city, count(*) as total'))
+            ->where('link_id', $this->linkData->id)
+            ->groupBy('country_name', 'city')
+            ->orderBy('total', 'desc')
+            ->limit(10)
+            ->get()->toArray();
     }
 
     public function toggleIsEdit(): void

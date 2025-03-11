@@ -103,15 +103,53 @@
                     Jumlah klik, total unique pengunjung, dan data lainnya
                 </flux:subheading>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4">
+            <div class="grid gap-2 md:grid-cols-2 lg:grid-cols-4">
                 <x-cards.app>
                     <div>
-                        <flux:heading>
-                            Total Pengunjung
-                        </flux:heading>
                         <flux:subheading>
-                            {{ $totalVisits }} Klik
+                            Total Dikunjungi
                         </flux:subheading>
+                        <flux:heading size="xl">
+                            {{ $totalVisits }} Kunjungan
+                        </flux:heading>
+                    </div>
+                </x-cards.app>
+
+                <x-cards.app>
+                    <div>
+                        <flux:subheading>
+                            Total Pengunjung Unik
+                        </flux:subheading>
+                        <flux:heading size="xl">
+                            {{ $totalUniqueVisitors }} Pengunjung
+                        </flux:heading>
+                    </div>
+                </x-cards.app>
+
+                <x-cards.app class="md:col-span-2">
+                    <div>
+                        <flux:subheading>
+                            Pengunjung berdasar Daerah
+                        </flux:subheading>
+                        <div class="mt-2">
+                            <x-tables.app>
+                                <x-tables.rows>
+                                    @foreach ($topCountryCities as $countryCity)
+                                        <x-tables.row>
+                                            <x-tables.cell>
+                                                {{ $countryCity['country_name'] ?? 'Tidak Diketahui' }}
+                                            </x-tables.cell>
+                                            <x-tables.cell>
+                                                {{ $countryCity['city'] ?? 'Tidak Diketahui' }}
+                                            </x-tables.cell>
+                                            <x-tables.cell>
+                                                {{ $countryCity['total'] }} Kunjungan
+                                            </x-tables.cell>
+                                        </x-tables.row>
+                                    @endforeach
+                                </x-tables.rows>
+                            </x-tables.app>
+                        </div>
                     </div>
                 </x-cards.app>
             </div>
