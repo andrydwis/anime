@@ -186,7 +186,7 @@
         document.addEventListener("DOMContentLoaded", function() {
             const chartData = {
                 series: [{
-                    name: "Pengguna Baru",
+                    name: "Pengunjung",
                     data: {{ Js::from($chartLast30DayVisitors['data']) }}
                 }],
                 categories: {{ Js::from($chartLast30DayVisitors['labels']) }}
