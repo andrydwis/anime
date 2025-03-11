@@ -3,7 +3,7 @@
         <img
             src="{{ asset('images/cta/home.jpg') }}"
             alt="cta"
-            class="aspect-[4/3] object-cover brightness-50 md:aspect-video"
+            class="aspect-square object-cover brightness-50 md:aspect-video"
         >
         <div
             class="absolute inset-0 bg-gradient-to-b from-white from-5% via-transparent to-white to-95% dark:from-zinc-800 dark:to-zinc-800">
@@ -30,6 +30,33 @@
                     icon="magnifying-glass"
                 />
             </flux:modal.trigger>
+            <flux:callout
+                icon="sparkles"
+                color="emerald"
+            >
+                <flux:callout.heading>Yuk Cobain Waifu AI 🙋🏻‍♀️</flux:callout.heading>
+                <flux:callout.text>
+                    Bingung mau nonton anime apa, coba tanya Waifu AI aja, kamu akan
+                    diberikan rekomendasi anime yang cocok buat kamu.
+                    <flux:modal.trigger name="ai">
+                        <flux:callout.link>Coba Sekarang</flux:callout.link>
+                    </flux:modal.trigger>
+                </flux:callout.text>
+            </flux:callout>
+            <flux:callout
+                icon="link"
+                color="cyan"
+            >
+                <flux:callout.heading>Fitur Baru, Short Link Generator 🚀
+                </flux:callout.heading>
+                <flux:callout.text>
+                    Buat short link kamu sendiri, biar lebih mudah diingat dan
+                    dibagikan.
+                    <flux:callout.link href="{{ route('tools.short-links.index') }}">
+                        Buat Sekarang
+                    </flux:callout.link>
+                </flux:callout.text>
+            </flux:callout>
         </div>
     </div>
 
