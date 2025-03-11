@@ -16,7 +16,13 @@
                 method="PATCH"
             >
                 <div class="flex flex-col gap-4">
-                    <x-alerts.app />
+                    @if (session()->has('success'))
+                        <flux:callout
+                            color="emerald"
+                            icon="check-circle"
+                            heading="{{ session()->get('success') }}"
+                        />
+                    @endif
                     <flux:input
                         label="Nama"
                         type="text"

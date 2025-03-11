@@ -1,5 +1,11 @@
 <x-layouts.core title="Berita">
-    <x-alerts.app />
+    @if (session()->has('success'))
+        <flux:callout
+            color="emerald"
+            icon="check-circle"
+            heading="{{ session()->get('success') }}"
+        />
+    @endif
 
     <div class="flex flex-row flex-wrap items-center justify-between gap-2">
         <div>

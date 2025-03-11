@@ -59,7 +59,13 @@
     <x-cards.app>
         @if ($generatedLink)
             <div class="flex flex-col gap-4">
-                <x-alerts.app />
+                @if (session()->has('success'))
+                    <flux:callout
+                        color="emerald"
+                        icon="check-circle"
+                        heading="{{ session()->get('success') }}"
+                    />
+                @endif
 
                 <flux:input
                     label="Short Link"
@@ -147,7 +153,8 @@
                         <div class="grid gap-2 md:grid-cols-2">
                             <div class="row-start-2 md:row-start-auto">
                                 <flux:modal.trigger
-                                    name="delete-link-{{ $link?->id }}">
+                                    name="delete-link-{{ $link?->id }}"
+                                >
                                     <flux:button
                                         variant="danger"
                                         icon="trash"

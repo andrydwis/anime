@@ -15,7 +15,13 @@
         </flux:breadcrumbs.item>
     </flux:breadcrumbs>
 
-    <x-alerts.app />
+    @if (session()->has('success'))
+        <flux:callout
+            color="emerald"
+            icon="check-circle"
+            heading="{{ session()->get('success') }}"
+        />
+    @endif
 
     <div class="flex flex-col gap-2">
         <div class="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
