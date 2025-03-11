@@ -1,5 +1,6 @@
 @if ($paginator->hasPages())
-    <nav class="flex flex-row items-center justify-between gap-2 flex-wrap">
+    <nav
+        class="flex flex-row flex-wrap items-center justify-center gap-2 md:justify-between">
         <flux:subheading>
             {!! __('Showing') !!}
             @if ($paginator->firstItem())
@@ -36,7 +37,10 @@
                     @if (is_array($element))
                         @foreach ($element as $page => $url)
                             @if ($page == $paginator->currentPage())
-                                <flux:button variant="primary" disabled>
+                                <flux:button
+                                    variant="primary"
+                                    disabled
+                                >
                                     {{ $page }}
                                 </flux:button>
                             @else

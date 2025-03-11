@@ -103,7 +103,7 @@
                     Jumlah klik, total unique pengunjung, dan data lainnya
                 </flux:subheading>
             </div>
-            <div class="grid gap-2 md:grid-cols-2 lg:grid-cols-4">
+            <div class="grid gap-2 md:grid-cols-2">
                 <x-cards.app>
                     <div>
                         <flux:subheading>
@@ -126,7 +126,7 @@
                     </div>
                 </x-cards.app>
 
-                <x-cards.app class="md:col-span-2">
+                <x-cards.app class="overflow-hidden md:col-span-2">
                     <div>
                         <flux:subheading>
                             Pengunjung Berdasar Daerah
@@ -164,7 +164,7 @@
                     </div>
                 </x-cards.app>
 
-                <x-cards.app class="md:col-span-2 lg:col-span-4">
+                <x-cards.app class="md:col-span-2">
                     <div>
                         <flux:subheading>
                             Pengunjung Short Link 30 Hari Terakhir

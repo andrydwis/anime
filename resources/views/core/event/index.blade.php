@@ -1,7 +1,7 @@
 <x-layouts.core title="Event">
     <x-alerts.app />
 
-    <div class="flex flex-row items-center justify-between">
+    <div class="flex flex-row flex-wrap items-center justify-between gap-2">
         <div>
             <flux:heading
                 size="xl"
