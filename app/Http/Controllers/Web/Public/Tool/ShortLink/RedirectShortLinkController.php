@@ -27,7 +27,7 @@ class RedirectShortLinkController extends Controller
             return view('public.tool.short-link.password', $data);
         }
 
-        if (config('app.env') == 'local') {
+        if (config('app.env') != 'local') {
             $client = new IPinfo;
             $details = $client->getDetails($request->ip());
 
