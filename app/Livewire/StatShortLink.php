@@ -31,6 +31,8 @@ class StatShortLink extends Component
 
     public bool $isEdit = false;
 
+    public int $totalVisits = 0;
+
     public function render(): View
     {
         return view('livewire.stat-short-link');
@@ -44,6 +46,8 @@ class StatShortLink extends Component
         $this->password = $this->linkData->password;
         $this->expiredAt = $this->linkData->expired_at;
         $this->generatedLink = route('links.show', ['link' => $this->linkData]);
+
+        $this->totalVisits = $this->linkData->logs()->count();
     }
 
     public function toggleIsEdit(): void
