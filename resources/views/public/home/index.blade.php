@@ -30,33 +30,49 @@
                     icon="magnifying-glass"
                 />
             </flux:modal.trigger>
-            <flux:callout
-                icon="sparkles"
-                color="emerald"
-            >
-                <flux:callout.heading>Yuk Cobain Waifu AI 🙋🏻‍♀️</flux:callout.heading>
-                <flux:callout.text>
-                    Bingung mau nonton anime apa, coba tanya Waifu AI aja, kamu akan
-                    diberikan rekomendasi anime yang cocok buat kamu.
-                    <flux:modal.trigger name="ai">
-                        <flux:callout.link>Coba Sekarang</flux:callout.link>
-                    </flux:modal.trigger>
-                </flux:callout.text>
-            </flux:callout>
-            <flux:callout
-                icon="link"
-                color="cyan"
-            >
-                <flux:callout.heading>Fitur Baru, Short Link Generator 🚀
-                </flux:callout.heading>
-                <flux:callout.text>
-                    Buat short link kamu sendiri, biar lebih mudah diingat dan
-                    dibagikan.
-                    <flux:callout.link href="{{ route('tools.short-links.index') }}">
-                        Buat Sekarang
-                    </flux:callout.link>
-                </flux:callout.text>
-            </flux:callout>
+
+            <div class="swiper w-full">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <flux:callout
+                            icon="sparkles"
+                            color="emerald"
+                        >
+                            <flux:callout.heading>Yuk Cobain Waifu AI 🙋🏻‍♀️
+                            </flux:callout.heading>
+                            <flux:callout.text>
+                                Bingung mau nonton anime apa, coba tanya Waifu AI aja,
+                                kamu akan
+                                diberikan rekomendasi anime yang cocok buat kamu.
+                                <flux:modal.trigger name="ai">
+                                    <flux:callout.link>Coba Sekarang</flux:callout.link>
+                                </flux:modal.trigger>
+                            </flux:callout.text>
+                        </flux:callout>
+                    </div>
+                    <div class="swiper-slide">
+                        <flux:callout
+                            icon="link"
+                            color="cyan"
+                        >
+                            <flux:callout.heading>Fitur Baru, Short Link Generator 🚀
+                            </flux:callout.heading>
+                            <flux:callout.text>
+                                Buat short link kamu sendiri, biar lebih mudah diingat dan
+                                dibagikan.
+                                <flux:callout.link
+                                    href="{{ route('tools.short-links.index') }}"
+                                >
+                                    Buat Sekarang
+                                </flux:callout.link>
+                            </flux:callout.text>
+                        </flux:callout>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="swiper-scrollbar"></div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -185,4 +201,29 @@
             </div>
         </div>
     @endif
+
+    @push('styles')
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+        />
+    @endpush
+
+    @push('scripts')
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script>
+            const swiper = swiper = new Swiper(".swiper", {
+                scrollbar: {
+                    el: ".swiper-scrollbar",
+                    hide: true,
+                },
+                grabCursor: true,
+                rewind: true,
+                autoplay: {
+                    delay: 2000,
+                    disableOnInteraction: false,
+                },
+            });
+        </script>
+    @endpush
 </x-layouts.app>
