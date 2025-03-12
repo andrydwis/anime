@@ -26,17 +26,17 @@
         <div class="swiper-wrapper">
             @foreach ($home['spotLightAnimes'] as $anime)
                 <div class="swiper-slide">
-                    <x-cards.app class="relative h-[400px] overflow-hidden">
+                    <x-cards.app class="relative aspect-video overflow-hidden">
                         <img
                             src="{{ $anime['img'] }}"
                             alt="cover"
-                            class="absolute inset-0 h-[400px] w-full rounded-lg object-cover"
+                            class="absolute inset-0 h-full w-full rounded-lg object-cover"
                         >
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-zinc-900 to-transparent">
                         </div>
                         <div
-                            class="min-h-1/2 absolute bottom-0 left-0 z-40 flex w-full flex-col gap-2 p-4">
+                            class="absolute bottom-0 left-0 z-40 flex w-full flex-col gap-2 p-4">
                             <div class="flex flex-col">
                                 <flux:heading
                                     size="lg"

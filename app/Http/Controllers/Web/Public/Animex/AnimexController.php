@@ -14,7 +14,7 @@ class AnimexController extends Controller
     public function index(): View
     {
         // $home = Http::get(config('app.beta_api_url').'/aniwatch')->json();
-        $home = Cache::remember('home', Carbon::now()->addMinutes(5), function () {
+        $home = Cache::remember('home-animex', Carbon::now()->addMinutes(5), function () {
             return Http::get(config('app.beta_api_url').'/aniwatch')->json();
         });
 

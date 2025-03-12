@@ -30,6 +30,7 @@
                         src="{{ $track['file'] }}"
                         kind="{{ $track['kind'] }}"
                         label="{{ $track['label'] }}"
+                        srclang="{{ $track['language'] ?? 'ewdawd'  }}"
                     >
                 @endif
             @endforeach
@@ -79,7 +80,7 @@
                     };
 
                     // Initialize Plyr after setting up the options
-                    const player = new Plyr(video, plyrOptions);
+                    // const player = new Plyr(video, plyrOptions);
 
                     // Function to update video quality
                     function updateQuality(newQuality) {
