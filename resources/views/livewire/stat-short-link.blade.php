@@ -1,6 +1,14 @@
 <div class="grid gap-4 md:grid-cols-2">
     <x-cards.app>
         <div class="flex flex-col gap-4">
+            @if (session()->has('success'))
+                <flux:callout
+                    color="emerald"
+                    icon="check-circle"
+                    heading="{{ session()->get('success') }}"
+                />
+            @endif
+
             <flux:input
                 label="Nama"
                 icon="hashtag"
@@ -71,14 +79,6 @@
 
     <x-cards.app>
         <div class="flex flex-col gap-4">
-            @if (session()->has('success'))
-                <flux:callout
-                    color="emerald"
-                    icon="check-circle"
-                    heading="{{ session()->get('success') }}"
-                />
-            @endif
-
             <flux:field>
                 <flux:label>QR Code</flux:label>
 

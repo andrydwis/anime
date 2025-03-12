@@ -44,9 +44,17 @@
                                 Bingung mau nonton anime apa, coba tanya Waifu AI aja,
                                 kamu akan
                                 diberikan rekomendasi anime yang cocok buat kamu.
-                                <flux:modal.trigger name="ai">
-                                    <flux:callout.link>Coba Sekarang</flux:callout.link>
-                                </flux:modal.trigger>
+                                @auth
+                                    <flux:modal.trigger name="ai">
+                                        <flux:callout.link>
+                                            Coba Sekarang
+                                        </flux:callout.link>
+                                    </flux:modal.trigger>
+                                @else
+                                    <flux:callout.link href="{{ route('login') }}">
+                                        Coba Sekarang
+                                    </flux:callout.link>
+                                @endauth
                             </flux:callout.text>
                         </flux:callout>
                     </div>
@@ -68,9 +76,6 @@
                             </flux:callout.text>
                         </flux:callout>
                     </div>
-                </div>
-                <div class="mt-4">
-                    <div class="swiper-scrollbar"></div>
                 </div>
             </div>
         </div>
@@ -213,12 +218,13 @@
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <script>
             const swiper = swiper = new Swiper(".swiper", {
-                scrollbar: {
-                    el: ".swiper-scrollbar",
-                    hide: true,
-                },
+                // scrollbar: {
+                //     el: ".swiper-scrollbar",
+                //     hide: true,
+                // },
+                spaceBetween: 8,
                 grabCursor: true,
-                rewind: true,
+                loop: true,
                 autoplay: {
                     delay: 2000,
                     disableOnInteraction: false,
