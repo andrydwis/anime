@@ -37,7 +37,7 @@
                         </div>
                         <div
                             class="min-h-1/2 absolute bottom-0 left-0 z-40 flex w-full flex-col gap-2 p-4">
-                            <div>
+                            <div class="flex flex-col">
                                 <flux:heading
                                     size="lg"
                                     level="h1"
@@ -48,26 +48,24 @@
                                 <flux:heading
                                     size="xl"
                                     level="h1"
-                                    class="w-1/2 !font-bold"
+                                    class="line-clamp-2 !font-bold md:w-1/2"
                                 >
                                     {{ $anime['name'] }}
                                 </flux:heading>
                                 <flux:subheading
                                     level="h2"
-                                    class="line-clamp-3 w-1/2"
+                                    class="line-clamp-3 md:w-1/2"
                                 >
                                     {{ $anime['description'] }}
                                 </flux:subheading>
                             </div>
-                            <div class="flex flex-row items-center gap-2">
+                            <div class="flex flex-row flex-wrap items-center gap-2">
                                 <flux:button
                                     variant="primary"
                                     icon="play-circle"
+                                    href="{{ route('animex.show', ['animex' => $anime['id']]) }}"
                                 >
                                     Nonton Sekarang
-                                </flux:button>
-                                <flux:button icon="information-circle">
-                                    Detail Anime
                                 </flux:button>
                             </div>
                         </div>
