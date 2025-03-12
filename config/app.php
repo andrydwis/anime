@@ -56,6 +56,8 @@ return [
 
     'api_url' => env('API_URL', 'http://localhost'),
 
+    'beta_api_url' => env('BETA_API_URL', 'http://localhost'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

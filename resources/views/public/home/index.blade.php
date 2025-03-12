@@ -35,6 +35,23 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <flux:callout
+                            icon="wrench-screwdriver"
+                            color="amber"
+                        >
+                            <flux:callout.heading>
+                                Animex (BETA) Dalam Pengembangan 🛠️
+                            </flux:callout.heading>
+                            <flux:callout.text>
+                                Pantau terus fitur Animex, fitur ini masih dalam tahap
+                                pengembangan.
+                                <flux:callout.link href="{{ route('animex.index') }}">
+                                    Lihat
+                                </flux:callout.link>
+                            </flux:callout.text>
+                        </flux:callout>
+                    </div>
+                    <div class="swiper-slide">
+                        <flux:callout
                             icon="sparkles"
                             color="emerald"
                         >

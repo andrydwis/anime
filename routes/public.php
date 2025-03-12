@@ -30,3 +30,6 @@ Route::get('tools/short-links/{link:uuid}', [App\Http\Controllers\Web\Public\Too
 Route::view('dmca', 'public.other.dmca')->name('dmca');
 Route::view('privacy-policy', 'public.other.privacy')->name('privacy-policy');
 Route::view('terms-of-service', 'public.other.tos')->name('terms-of-service');
+
+// / BETA FEATURES
+Route::get('animex', [App\Http\Controllers\Web\Public\Animex\AnimexController::class, 'index'])->name('animex.index')->middleware(['auth']);
