@@ -23,14 +23,16 @@
             controls
             crossorigin="anonymous"
             data-poster="{{ $detail['info']['img'] }}"
+            class="aspect-video w-full rounded-lg"
         >
             @foreach ($stream['tracks'] as $track)
                 @if ($track['kind'] == 'captions')
                     <track
                         src="{{ $track['file'] }}"
-                        kind="{{ $track['kind'] }}"
+                        kind="subtitles"
                         label="{{ $track['label'] }}"
-                        srclang="{{ $track['language'] ?? 'ewdawd'  }}"
+                        srclang="{{ str()->lower($track['label']) }}"
+                        {{ isset($track['default']) ? 'default' : '' }}
                     >
                 @endif
             @endforeach
@@ -64,11 +66,10 @@
                     // Define Plyr options dynamically after manifest is parsed
                     const plyrOptions = {
                         controls: [
-                            'play-large', 'restart', 'rewind', 'play',
-                            'fast-forward',
+                            'play-large', 'play',
                             'progress', 'current-time', 'duration', 'mute',
                             'volume',
-                            'captions', 'settings', 'pip', 'airplay',
+                            'captions', 'settings', 'pip',
                             'fullscreen',
                         ],
                         quality: {
@@ -80,7 +81,7 @@
                     };
 
                     // Initialize Plyr after setting up the options
-                    // const player = new Plyr(video, plyrOptions);
+                    const player = new Plyr(video, plyrOptions);
 
                     // Function to update video quality
                     function updateQuality(newQuality) {
