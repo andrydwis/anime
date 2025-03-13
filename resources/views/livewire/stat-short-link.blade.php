@@ -28,9 +28,6 @@
             <flux:field>
                 <flux:label>Custom Link</flux:label>
 
-                <flux:description>Jika dikosongi, maka akan digenerate secara otomatis
-                </flux:description>
-
                 <flux:input.group>
                     <flux:input.group.prefix>
                         {{ config('app.url') }}
@@ -150,17 +147,7 @@
     </x-cards.app>
 
     <x-cards.app class="md:col-span-2">
-        <div class="flex flex-col">
-            <flux:heading>
-                Grafik Pengunjung
-            </flux:heading>
-            <flux:subheading>
-                Jumlah pengunjung dalam 30 hari terakhir.
-            </flux:subheading>
-        </div>
-        <div class="mt-2">
-            <div id="chart">
-            </div>
+        <div id="chart">
         </div>
     </x-cards.app>
 </div>
