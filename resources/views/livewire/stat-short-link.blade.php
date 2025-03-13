@@ -145,18 +145,21 @@
                         </div>
                     </x-cards.app>
                 @endforeach
+            </div>
+        </div>
+    </x-cards.app>
 
-                <x-cards.app class="md:col-span-2">
-                    <div class="flex flex-col">
-                        <flux:subheading>
-                            Grafik Pengunjung
-                        </flux:subheading>
-                        <div class="mt-2">
-                            <div id="chart">
-                            </div>
-                        </div>
-                    </div>
-                </x-cards.app>
+    <x-cards.app class="md:col-span-2">
+        <div class="flex flex-col">
+            <flux:heading>
+                Grafik Pengunjung
+            </flux:heading>
+            <flux:subheading>
+                Jumlah pengunjung dalam 30 hari terakhir.
+            </flux:subheading>
+        </div>
+        <div class="mt-2">
+            <div id="chart">
             </div>
         </div>
     </x-cards.app>
