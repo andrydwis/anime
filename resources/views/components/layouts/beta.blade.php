@@ -176,6 +176,7 @@
 
     <body class="selection:bg-accent/50 min-h-screen bg-white dark:bg-zinc-800">
         <x-headers.beta />
+        <x-sidebars.beta />
 
         <flux:main
             container

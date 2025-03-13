@@ -48,6 +48,28 @@
 
     <x-animes.detailx :anime="$detail" />
 
+    <div class="flex flex-col gap-2">
+        <div class="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
+            <div class="flex flex-col">
+                <flux:heading
+                    size="xl"
+                    level="h1"
+                    class="from-accent !m-0 !bg-gradient-to-br to-cyan-600 bg-clip-text !font-semibold !text-transparent"
+                >
+                    Rekomendasi Anime Lainnya
+                </flux:heading>
+                <flux:subheading level="h2">
+                    Anime yang mungkin kamu suka dari anime ini
+                </flux:subheading>
+            </div>
+        </div>
+        <div class="grid grid-cols-2 gap-2 lg:grid-cols-4">
+            @foreach ($detail['recommendedAnimes'] as $anime)
+                <x-cards.animex :anime="$anime" />
+            @endforeach
+        </div>
+    </div>
+
     @push('styles')
         <link
             rel="stylesheet"

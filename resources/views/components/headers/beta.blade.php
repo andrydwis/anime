@@ -23,8 +23,18 @@
         >
             Beranda
         </flux:navbar.item>
-       
+
         <flux:separator vertical />
+
+        <flux:navbar.item
+            icon="sparkles"
+            iconVariant="solid"
+            badge="WIP!"
+            badge-color="amber"
+            href="{{ route('animex.index') }}"
+        >
+            Anime X (BETA)
+        </flux:navbar.item>
     </flux:navbar>
 
     <flux:spacer />

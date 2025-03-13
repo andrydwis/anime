@@ -22,6 +22,14 @@
         </flux:callout.text>
     </flux:callout>
 
+    <flux:modal.trigger name="search">
+        <flux:input
+            as="button"
+            placeholder="Cari anime..."
+            icon="magnifying-glass"
+        />
+    </flux:modal.trigger>
+
     <div class="swiper w-full">
         <div class="swiper-wrapper">
             @foreach ($home['spotLightAnimes'] as $anime)
@@ -41,20 +49,20 @@
                                 <flux:heading
                                     size="lg"
                                     level="h1"
-                                    class="!font-bold"
+                                    class="!font-bold !text-white"
                                 >
                                     #Anime Spotlight {{ $anime['rank'] }}
                                 </flux:heading>
                                 <flux:heading
                                     size="xl"
                                     level="h1"
-                                    class="line-clamp-2 !font-bold md:w-1/2"
+                                    class="line-clamp-2 !font-bold !text-white md:w-1/2"
                                 >
                                     {{ $anime['name'] }}
                                 </flux:heading>
                                 <flux:subheading
                                     level="h2"
-                                    class="line-clamp-3 md:w-1/2"
+                                    class="line-clamp-3 !text-zinc-400 md:w-1/2"
                                 >
                                     {{ $anime['description'] }}
                                 </flux:subheading>
@@ -74,14 +82,6 @@
             @endforeach
         </div>
     </div>
-    
-    <flux:modal.trigger name="search">
-        <flux:input
-            as="button"
-            placeholder="Cari anime..."
-            icon="magnifying-glass"
-        />
-    </flux:modal.trigger>
 
     <div class="flex flex-col gap-2">
         <div class="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
