@@ -98,6 +98,19 @@
         </div>
     </div>
 
+    <flux:button
+        icon="sparkles"
+        href="{{ route('animex.index') }}"
+    >
+        Anime X (BETA)
+        <flux:badge
+            size="sm"
+            color="amber"
+        >
+            WIP!
+        </flux:badge>
+    </flux:button>
+
     <x-animes.menu />
 
     <div class="flex flex-col gap-2">
