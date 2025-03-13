@@ -59,6 +59,7 @@ class EpisodeController extends Controller
                         'episodeId' => $episodeId,
                         'episode' => $episode,
                     ],
+                    'type' => 'anime',
                 ]
             );
             $animeWatchHistory->touch();

@@ -229,11 +229,14 @@
                                 @else
                                     @php
                                         $anime = $animeData['data']['anime']['info'];
-                                        $episodeList = $animeData['data']['episode'];
-                                        $anime['episodes']['sub'] =
-                                            $episodeList['episodeNo'];
+                                        $episode = $animeData['data']['episode'];
+                                        $anime['episodes']['sub'] = $episode['episodeNo'];
+                                        $anime['episodeId'] = str()->remove(
+                                            $anime['id'] . '?ep=',
+                                            $episode['episodeId'],
+                                        );
                                     @endphp
-                                    <x-cards.animex :anime="$animeData['data']['anime']['info']" />
+                                    <x-cards.animex :anime="$anime" />
                                 @endif
                             @endforeach
                         </div>

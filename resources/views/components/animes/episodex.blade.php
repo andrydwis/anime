@@ -43,13 +43,16 @@
                 class="{{ $class ?? '' }} w-full"
                 href="{{ route('animex.show', [
                     'animex' => $anime['info']['id'],
-                    'episode' => $episode['episodeId'],
+                    'episode' => str()->remove($anime['info']['id'] . '?ep=', $episode['episodeId']),
                 ]) }}"
             >
                 {{ $episode['episodeNo'] }}
             </flux:button>
         @endforeach
     </div>
+    @if (!empty($anime['seasons']))
+        <flux:separator />
+    @endif
     <div class="grid grid-cols-2 gap-2">
         @foreach ($anime['seasons'] as $season)
             <flux:button

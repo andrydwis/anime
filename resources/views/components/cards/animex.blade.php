@@ -1,7 +1,17 @@
 @props(['anime'])
+@php
+    if (isset($anime['episodeId'])) {
+        $route = route('animex.show', [
+            'animex' => $anime['id'],
+            'episode' => $anime['episodeId'],
+        ]);
+    } else {
+        $route = route('animex.show', ['animex' => $anime['id']]);
+    }
+@endphp
 <a
     {{ $attributes }}
-    href="{{ route('animex.show', ['animex' => $anime['id']]) }}"
+    href="{{ $route }}"
 >
     <div class="group relative flex flex-col overflow-hidden rounded-lg">
         <img
