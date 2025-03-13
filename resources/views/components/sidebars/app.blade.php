@@ -1,7 +1,7 @@
 <flux:sidebar
     stashable
     sticky
-    class="w-full border-r border-zinc-200 bg-white lg:hidden dark:border-zinc-600 dark:bg-zinc-900/50 dark:backdrop-blur"
+    class="z-[100] w-full border-r border-zinc-200 bg-white lg:hidden dark:border-zinc-600 dark:bg-zinc-900/50 dark:backdrop-blur"
 >
 
     <div class="flex flex-row items-center justify-between gap-2">
