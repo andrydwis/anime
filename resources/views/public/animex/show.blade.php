@@ -76,8 +76,7 @@
                     const plyrOptions = {
                         controls: [
                             'play-large', 'play',
-                            'progress', 'current-time', 'duration', 'mute',
-                            'volume',
+                            'progress', 'current-time', 'duration',
                             'captions', 'settings', 'pip',
                             'fullscreen',
                         ],

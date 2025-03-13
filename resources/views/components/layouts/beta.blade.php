@@ -175,6 +175,8 @@
     </head>
 
     <body class="selection:bg-accent/50 min-h-screen bg-white dark:bg-zinc-800">
+        <x-headers.beta />
+
         <flux:main
             container
             class="flex h-full flex-col gap-8"

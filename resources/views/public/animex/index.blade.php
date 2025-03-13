@@ -26,7 +26,7 @@
         <div class="swiper-wrapper">
             @foreach ($home['spotLightAnimes'] as $anime)
                 <div class="swiper-slide">
-                    <x-cards.app class="relative aspect-video overflow-hidden">
+                    <x-cards.app class="relative h-[300px] overflow-hidden md:h-[400px]">
                         <img
                             src="{{ $anime['img'] }}"
                             alt="cover"
@@ -74,6 +74,14 @@
             @endforeach
         </div>
     </div>
+    
+    <flux:modal.trigger name="search">
+        <flux:input
+            as="button"
+            placeholder="Cari anime..."
+            icon="magnifying-glass"
+        />
+    </flux:modal.trigger>
 
     <div class="flex flex-col gap-2">
         <div class="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
