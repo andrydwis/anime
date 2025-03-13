@@ -14,7 +14,8 @@ class AnimeWatchHistory extends Model
         'user_id',
         'anime_id',
         'episode_id',
-        'data'
+        'data',
+        'type'
     ];
 
     protected function casts(): array

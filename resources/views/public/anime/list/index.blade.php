@@ -206,26 +206,35 @@
                         </flux:subheading>
                         <div class="grid grid-cols-2 gap-2 lg:grid-cols-4">
                             @foreach ($animes as $animeData)
-                                @php
-                                    // Extract data from $animeData
-                                    $anime = $animeData->data['anime']['data'];
-                                    $episodeId = $animeData->data['episodeId'];
-                                    $anime['animeId'] = $animeData->data['animeId'];
-                                    $anime['episodeId'] = $episodeId;
-                                    $episodeList = $anime['episodeList'];
+                                @if ($animeData['type'] == 'anime')
+                                    @php
+                                        // Extract data from $animeData
+                                        $anime = $animeData->data['anime']['data'];
+                                        $episodeId = $animeData->data['episodeId'];
+                                        $anime['animeId'] = $animeData->data['animeId'];
+                                        $anime['episodeId'] = $episodeId;
+                                        $episodeList = $anime['episodeList'];
 
-                                    // Find the matching episode using a helper function
-                                    $matchingEpisode = collect($episodeList)->firstWhere(
-                                        'episodeId',
-                                        $episodeId,
-                                    );
+                                        // Find the matching episode using a helper function
+                                        $matchingEpisode = collect(
+                                            $episodeList,
+                                        )->firstWhere('episodeId', $episodeId);
 
-                                    // Add the episode title to the anime data if a match is found
-                                    $anime['episodes'] = $matchingEpisode
-                                        ? $matchingEpisode['title']
-                                        : null;
-                                @endphp
-                                <x-cards.anime :anime="$anime" />
+                                        // Add the episode title to the anime data if a match is found
+                                        $anime['episodes'] = $matchingEpisode
+                                            ? $matchingEpisode['title']
+                                            : null;
+                                    @endphp
+                                    <x-cards.anime :anime="$anime" />
+                                @else
+                                    @php
+                                        $anime = $animeData['data']['anime']['info'];
+                                        $episodeList = $animeData['data']['episode'];
+                                        $anime['episodes']['sub'] =
+                                            $episodeList['episodeNo'];
+                                    @endphp
+                                    <x-cards.animex :anime="$animeData['data']['anime']['info']" />
+                                @endif
                             @endforeach
                         </div>
                     @empty

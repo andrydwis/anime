@@ -43,6 +43,7 @@
         :anime="$detail"
         :episodes="$episodes['episodes']"
         :episodeId="$currentEpisode['episodeId']"
+        :watchedEpisodes="$watchedEpisodes"
     />
 
     <x-animes.detailx :anime="$detail" />

@@ -50,4 +50,15 @@
             </flux:button>
         @endforeach
     </div>
+    <div class="grid grid-cols-2 gap-2">
+        @foreach ($anime['seasons'] as $season)
+            <flux:button
+                :variant="$season['isCurrent'] ? 'primary' : null"
+                icon="cloud"
+                href="{{ route('animex.show', ['animex' => $season['id']]) }}"
+            >
+                {{ $season['seasonTitle'] }}
+            </flux:button>
+        @endforeach
+    </div>
 </div>
