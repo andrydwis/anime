@@ -8,7 +8,7 @@
         class="md:min-h-auto h-full min-h-svh w-full !rounded-none md:h-3/4 md:!rounded-lg"
     >
         <div class="flex min-h-full flex-col gap-4">
-            <div>
+            <div class="flex flex-col">
                 <flux:heading>
                     Cari Anime
                 </flux:heading>

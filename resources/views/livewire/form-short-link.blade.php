@@ -94,7 +94,7 @@
                 </flux:field>
             </div>
         @else
-            <div>
+            <div class="flex flex-col">
                 <flux:heading>
                     Hasil generate short link akan muncul disini 👇🏻
                 </flux:heading>
@@ -107,7 +107,7 @@
 
     <x-cards.app class="md:col-span-2">
         <div class="flex flex-col gap-4">
-            <div>
+            <div class="flex flex-col">
                 <flux:heading>
                     Daftar Short Link Saya
                 </flux:heading>

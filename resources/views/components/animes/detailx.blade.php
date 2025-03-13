@@ -7,7 +7,7 @@
             class="w-full rounded-lg"
         >
         <div class="flex flex-col gap-2 lg:col-span-3">
-            <div>
+            <div class="flex flex-col">
                 <flux:heading
                     size="xl"
                     level="h1"

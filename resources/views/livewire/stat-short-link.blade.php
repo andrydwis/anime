@@ -101,7 +101,7 @@
 
     <x-cards.app class="md:col-span-2">
         <div class="flex flex-col gap-4">
-            <div>
+            <div class="flex flex-col">
                 <flux:heading>
                     Statistik Short Link
                 </flux:heading>
@@ -111,7 +111,7 @@
             </div>
             <div class="grid gap-2 md:grid-cols-2">
                 <x-cards.app>
-                    <div>
+                    <div class="flex flex-col">
                         <flux:subheading>
                             Total Dikunjungi
                         </flux:subheading>
@@ -122,7 +122,7 @@
                 </x-cards.app>
 
                 <x-cards.app>
-                    <div>
+                    <div class="flex flex-col">
                         <flux:subheading>
                             Total Pengunjung Unik
                         </flux:subheading>
@@ -132,46 +132,22 @@
                     </div>
                 </x-cards.app>
 
-                <x-cards.app class="overflow-hidden md:col-span-2">
-                    <div>
-                        <flux:subheading>
-                            Pengunjung Berdasar Daerah
-                        </flux:subheading>
-                        <div class="mt-2">
-                            <x-tables.app>
-                                <x-tables.columns>
-                                    <x-tables.column>
-                                        Negara
-                                    </x-tables.column>
-                                    <x-tables.column>
-                                        Kota
-                                    </x-tables.column>
-                                    <x-tables.column>
-                                        Total
-                                    </x-tables.column>
-                                </x-tables.columns>
-                                <x-tables.rows>
-                                    @foreach ($topCountryCities as $countryCity)
-                                        <x-tables.row>
-                                            <x-tables.cell>
-                                                {{ $countryCity['country_name'] ?? 'Tidak Diketahui' }}
-                                            </x-tables.cell>
-                                            <x-tables.cell>
-                                                {{ $countryCity['city'] ?? 'Tidak Diketahui' }}
-                                            </x-tables.cell>
-                                            <x-tables.cell>
-                                                {{ $countryCity['total'] }} Kunjungan
-                                            </x-tables.cell>
-                                        </x-tables.row>
-                                    @endforeach
-                                </x-tables.rows>
-                            </x-tables.app>
+                @foreach ($topCountryCities as $countryCity)
+                    <x-cards.app class="flex flex-col">
+                        <div class="flex flex-col">
+                            <flux:subheading>
+                                {{ $countryCity['country_name'] ?? 'Tidak Diketahui' }},
+                                {{ $countryCity['region_name'] ?? 'Tidak Diketahui' }}
+                            </flux:subheading>
+                            <flux:heading size="xl">
+                                {{ $countryCity['total'] }} Kunjungan
+                            </flux:heading>
                         </div>
-                    </div>
-                </x-cards.app>
+                    </x-cards.app>
+                @endforeach
 
                 <x-cards.app class="md:col-span-2">
-                    <div>
+                    <div class="flex flex-col">
                         <flux:subheading>
                             Pengunjung Short Link 30 Hari Terakhir
                         </flux:subheading>

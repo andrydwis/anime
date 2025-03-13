@@ -46,12 +46,6 @@
                         class="!font-bold"
                     >
                         Playlist
-                        <flux:badge
-                            size="sm"
-                            color="emerald"
-                        >
-                            Baru!
-                        </flux:badge>
                     </flux:heading>
                     @if ($playlists?->isNotEmpty())
                         <flux:modal.trigger name="add-playlist">
@@ -195,14 +189,8 @@
                 </flux:heading>
                 <div class="flex flex-col gap-2">
                     @forelse ($histories as $date => $animes)
-                        <flux:subheading
-                            class="flex flex-row items-center gap-2 !font-semibold"
-                        >
-                            <flux:icon.calendar-date-range
-                                variant="solid"
-                                size="sm"
-                            />
-                            <span>{{ $date }}</span>
+                        <flux:subheading>
+                            {{ $date }}
                         </flux:subheading>
                         <div class="grid grid-cols-2 gap-2 lg:grid-cols-4">
                             @foreach ($animes as $animeData)
