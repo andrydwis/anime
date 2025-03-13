@@ -39,10 +39,10 @@
                             color="amber"
                         >
                             <flux:callout.heading>
-                                Animex (BETA) Dalam Pengembangan 🛠️
+                                Anime X (BETA) Dalam Pengembangan 🛠️
                             </flux:callout.heading>
                             <flux:callout.text>
-                                Pantau terus fitur Animex, fitur ini masih dalam tahap
+                                Pantau terus fitur Anime X, fitur ini masih dalam tahap
                                 pengembangan.
                                 <flux:callout.link href="{{ route('animex.index') }}">
                                     Lihat

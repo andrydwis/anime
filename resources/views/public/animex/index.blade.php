@@ -1,11 +1,11 @@
-<x-layouts.beta title="Animex">
+<x-layouts.beta title="Anime X">
     <flux:breadcrumbs class="flex-wrap">
         <flux:breadcrumbs.item
             icon="home"
             href="{{ route('home') }}"
         />
         <flux:breadcrumbs.item>
-            Animex (BETA)
+            Anime X (BETA)
         </flux:breadcrumbs.item>
     </flux:breadcrumbs>
 

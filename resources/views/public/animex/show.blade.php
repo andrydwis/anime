@@ -9,7 +9,7 @@
             href="{{ route('home') }}"
         />
         <flux:breadcrumbs.item href="{{ route('animex.index') }}">
-            Animex (BETA)
+            Anime X (BETA)
         </flux:breadcrumbs.item>
         <flux:breadcrumbs.item>
             {{ $detail['info']['name'] }}
@@ -38,6 +38,14 @@
             @endforeach
         </video>
     </div>
+
+    <x-animes.episodex
+        :anime="$detail"
+        :episodes="$episodes['episodes']"
+        :episodeId="$currentEpisode['episodeId']"
+    />
+
+    <x-animes.detailx :anime="$detail" />
 
     @push('styles')
         <link

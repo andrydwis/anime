@@ -35,7 +35,7 @@ class AnimexController extends Controller
         });
 
         if ($request->has('episode')) {
-            $currentEpisode = collect($episodes['episodes'])->where('episode', $request->get('episode'))->first();
+            $currentEpisode = collect($episodes['episodes'])->where('episodeId', $request->get('episode'))->first();
         } else {
             $currentEpisode = collect($episodes['episodes'])->last();
         }
