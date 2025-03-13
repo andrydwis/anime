@@ -115,12 +115,13 @@
                 }
 
                 const data = {
-                    title: @json($event?->name),
-                    text: @json(
+                    title: {{ Js::from($event?->name) }},
+                    text: {{ Js::from(
                         '🔥 Jangan sampai ketinggalan! ' .
                             $event?->name .
-                            ' 📅 Yuk, cek selengkapnya di sini!'),
-                    url: @json(route('events.show', ['event' => $event]))
+                            ' 📅 Yuk, cek selengkapnya di sini!',
+                    ) }},
+                    url: {{ Js::from(route('events.show', ['event' => $event])) }}
                 };
 
                 try {

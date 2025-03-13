@@ -41,7 +41,7 @@
                             class="absolute inset-0 h-full w-full rounded-lg object-cover"
                         >
                         <div
-                            class="absolute inset-0 bg-gradient-to-t from-zinc-900 to-transparent">
+                            class="absolute inset-0 bg-gradient-to-t from-white to-transparent dark:from-zinc-900">
                         </div>
                         <div
                             class="absolute bottom-0 left-0 z-40 flex w-full flex-col gap-2 p-4">
@@ -49,20 +49,20 @@
                                 <flux:heading
                                     size="lg"
                                     level="h1"
-                                    class="!font-bold !text-white"
+                                    class="!font-bold"
                                 >
                                     #Anime Spotlight {{ $anime['rank'] }}
                                 </flux:heading>
                                 <flux:heading
                                     size="xl"
                                     level="h1"
-                                    class="line-clamp-2 !font-bold !text-white md:w-1/2"
+                                    class="line-clamp-2 !font-bold md:w-1/2"
                                 >
                                     {{ $anime['name'] }}
                                 </flux:heading>
                                 <flux:subheading
                                     level="h2"
-                                    class="line-clamp-3 !text-zinc-400 md:w-1/2"
+                                    class="line-clamp-3 md:w-1/2"
                                 >
                                     {{ $anime['description'] }}
                                 </flux:subheading>
@@ -123,10 +123,10 @@
                 spaceBetween: 8,
                 grabCursor: true,
                 loop: true,
-                // autoplay: {
-                //     delay: 2000,
-                //     disableOnInteraction: false,
-                // },
+                autoplay: {
+                    delay: 2000,
+                    disableOnInteraction: false,
+                },
             });
         </script>
     @endpush

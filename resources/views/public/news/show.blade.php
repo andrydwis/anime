@@ -83,9 +83,9 @@
                 }
 
                 const data = {
-                    title: @json($news?->title),
-                    text: @json('📰 Baca berita menarik ini! ' . $news?->title . ' 🌍 Jangan sampai ketinggalan!'),
-                    url: @json(route('news.show', ['news' => $news]))
+                    title: {{ Js::from($news?->title) }},
+                    text: {{ Js::from('📰 Baca berita menarik ini! ' . $news?->title . ' 🌍 Jangan sampai ketinggalan! ') }},
+                    url: {{ Js::from(route('news.show', ['news' => $news])) }}
                 };
 
                 try {
