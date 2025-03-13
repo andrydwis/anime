@@ -97,6 +97,13 @@
                     Update terbaru anime season ini
                 </flux:subheading>
             </div>
+            <flux:button
+                icon="eye"
+                class="!hidden lg:!flex"
+                href="{{ route('animex.recent.index') }}"
+            >
+                Lihat Semua
+            </flux:button>
         </div>
         <div class="grid grid-cols-2 gap-2 lg:grid-cols-4">
             @foreach ($home['latestEpisodes'] as $anime)

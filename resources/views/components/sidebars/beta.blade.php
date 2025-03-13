@@ -39,6 +39,14 @@
         >
             Anime X (BETA)
         </flux:navlist.item>
+        <flux:navlist.item
+            icon="calendar-date-range"
+            iconVariant="solid"
+            iconVariant="solid"
+            href="{{ route('animex.recent.index') }}"
+        >
+            Anime Terbaru
+        </flux:navlist.item>
 
     </flux:navlist>
 </flux:sidebar>
