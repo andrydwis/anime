@@ -146,13 +146,13 @@
         </div>
     </x-cards.app>
 
-    <x-cards.app class="md:col-span-2">
+    {{-- <x-cards.app class="md:col-span-2">
         <div id="chart">
         </div>
-    </x-cards.app>
+    </x-cards.app> --}}
 </div>
 
-@push('scripts')
+{{-- @push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -201,4 +201,4 @@
             new ApexCharts(document.querySelector("#chart"), options).render();
         });
     </script>
-@endpush
+@endpush --}}
