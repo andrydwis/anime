@@ -110,10 +110,10 @@
                 <x-cards.app>
                     <div class="flex flex-col">
                         <flux:subheading>
-                            Total Dikunjungi
+                            Total Pengunjung Unik
                         </flux:subheading>
                         <flux:heading size="xl">
-                            {{ $totalVisits }} Kunjungan
+                            {{ $totalUniqueVisitors }} Pengunjung
                         </flux:heading>
                     </div>
                 </x-cards.app>
@@ -121,10 +121,10 @@
                 <x-cards.app>
                     <div class="flex flex-col">
                         <flux:subheading>
-                            Total Pengunjung Unik
+                            Total Dikunjungi
                         </flux:subheading>
                         <flux:heading size="xl">
-                            {{ $totalUniqueVisitors }} Pengunjung
+                            {{ $totalVisits }} Kunjungan
                         </flux:heading>
                     </div>
                 </x-cards.app>
