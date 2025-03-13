@@ -12,7 +12,7 @@ class NewsController extends Controller
     public function index(): View
     {
         $news = Cache::remember('news-'.request()->input('page', 1), now()->addMinutes(5), function () {
-            return News::where('is_published', true)->latest()->with(['user', 'media'])->paginate(10)->withQueryString();
+            return News::where('is_published', true)->latest()->with(['user', 'media'])->paginate(12)->withQueryString();
         });
 
         $data = [
