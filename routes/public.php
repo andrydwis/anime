@@ -32,5 +32,5 @@ Route::view('privacy-policy', 'public.other.privacy')->name('privacy-policy');
 Route::view('terms-of-service', 'public.other.tos')->name('terms-of-service');
 
 // / BETA FEATURES
-Route::get('animex', [App\Http\Controllers\Web\Public\Animex\AnimexController::class, 'index'])->name('animex.index')->middleware(['auth']);
-Route::get('animex/{animex}', [App\Http\Controllers\Web\Public\Animex\AnimexController::class, 'show'])->name('animex.show')->middleware(['auth']);
+Route::get('animex', [App\Http\Controllers\Web\Public\Animex\AnimexController::class, 'index'])->name('animex.index');
+Route::get('animex/{animex}', [App\Http\Controllers\Web\Public\Animex\AnimexController::class, 'show'])->name('animex.show');
