@@ -74,6 +74,9 @@
                     <flux:button href="{{ route('core.news.index') }}">
                         Kembali
                     </flux:button>
+                    <flux:button icon="arrow-path" href="{{ route('core.news.create') }}?url={{ request()->input('url') }}">
+                        Coba Lagi
+                    </flux:button>
                     <flux:button
                         variant="primary"
                         type="submit"

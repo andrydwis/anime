@@ -137,7 +137,7 @@
                         <div class="flex flex-col">
                             <flux:subheading>
                                 {{ $countryCity['country_name'] ?? 'Tidak Diketahui' }},
-                                {{ $countryCity['region_name'] ?? 'Tidak Diketahui' }}
+                                {{ $countryCity['city'] ?? 'Tidak Diketahui' }}
                             </flux:subheading>
                             <flux:heading size="xl">
                                 {{ $countryCity['total'] }} Kunjungan
@@ -149,7 +149,7 @@
                 <x-cards.app class="md:col-span-2">
                     <div class="flex flex-col">
                         <flux:subheading>
-                            Pengunjung Short Link 30 Hari Terakhir
+                            Grafik Pengunjung
                         </flux:subheading>
                         <div class="mt-2">
                             <div id="chart">
@@ -193,7 +193,7 @@
                     curve: 'straight'
                 },
                 title: {
-                    text: 'Grafik Pengunjung Short Link 30 Hari Terakhir',
+                    text: 'Grafik Pengunjung',
                     align: 'left'
                 },
                 grid: {

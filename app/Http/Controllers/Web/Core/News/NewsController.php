@@ -25,48 +25,14 @@ class NewsController extends Controller
         return view('core.news.index', $data);
     }
 
-    public function scrapeNews(string $url): array
-    {
-        $response = Http::get($url);
-        $html = $response->body();
-
-        $crawler = new Crawler($html);
-
-        // Extract title
-        $title = $crawler->filter('h1.title a')->count() > 0
-        ? trim($crawler->filter('h1.title a')->text())
-        : null;
-
-        // Extract image URL
-        $image = $crawler->filter('.content img.userimg')->count() > 0
-            ? $crawler->filter('.content img.userimg')->attr('src')
-            : null;
-
-        // Extract content
-        $content = $crawler->filter('.content')->count() > 0
-            ? trim($crawler->filter('.content')->html())
-            : null;
-
-        // Extract tags
-        $tags = $crawler->filter('.tags a')->each(function (Crawler $tagNode) {
-            return [
-                'name' => trim($tagNode->text()),
-                'url' => $tagNode->attr('href'),
-            ];
-        });
-
-        return [
-            'title' => $title,
-            'image' => $image,
-            'content' => $content,
-            'tags' => $tags,
-        ];
-    }
-
     public function create(Request $request): View
     {
         if ($request->input('url')) {
             $newsData = $this->scrapeNews($request->input('url'));
+            $translate = $this->translate($newsData['title'], $newsData['content']);
+
+            $newsData['title'] = $translate['title'];
+            $newsData['content'] = $translate['content'];
         } else {
             $newsData = [];
         }
@@ -157,5 +123,85 @@ class NewsController extends Controller
         session()->flash('success', 'Berita berhasil dihapus.');
 
         return redirect()->route('core.news.index');
+    }
+
+    public function translate(string $title, string $content): array
+    {
+
+        $prompt = 'Translate the following text into BAHASA INDONESIA. The JSON object must use the schema {"title": "judul terjemahan", "content": "konten terjemahan"}';
+
+        $messages = [
+            ['role' => 'user', 'content' => $prompt],
+            ['role' => 'user', 'content' => "Judul: $title\nKonten: $content"],
+        ];
+
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer '.config('openai.api_key'), // Use your API key from .env
+            'Content-Type' => 'application/json',
+        ])
+            ->post('https://api.groq.com/openai/v1/chat/completions', [
+                'messages' => $messages,
+                'model' => 'mixtral-8x7b-32768',
+                'response_format' => [
+                    'type' => 'json_object',
+                ],
+                'temperature' => 0.7,
+            ]);
+
+        // Check the response
+        if ($response->successful()) {
+            $data = $response->json(); // Get the JSON response
+
+            // Process the data as needed
+            return json_decode($data['choices'][0]['message']['content'], true);
+        } else {
+            // Handle errors
+            $error = $response->body(); // Get the error response body
+            $statusCode = $response->status(); // Get the HTTP status code
+            dd("Error: {$error}, Status Code: {$statusCode}");
+        }
+
+        return [
+            'title' => $title,
+            'content' => $content,
+        ];
+    }
+
+    public function scrapeNews(string $url): array
+    {
+        $response = Http::get($url);
+        $html = $response->body();
+
+        $crawler = new Crawler($html);
+
+        // Extract title
+        $title = $crawler->filter('h1.title a')->count() > 0
+        ? trim($crawler->filter('h1.title a')->text())
+        : null;
+
+        // Extract image URL
+        $image = $crawler->filter('.content img.userimg')->count() > 0
+            ? $crawler->filter('.content img.userimg')->attr('src')
+            : null;
+
+        // Extract content
+        $content = $crawler->filter('.content')->count() > 0
+            ? trim($crawler->filter('.content')->html())
+            : null;
+
+        // Extract tags
+        $tags = $crawler->filter('.tags a')->each(function (Crawler $tagNode) {
+            return [
+                'name' => trim($tagNode->text()),
+                'url' => $tagNode->attr('href'),
+            ];
+        });
+
+        return [
+            'title' => $title,
+            'image' => $image,
+            'content' => $content,
+            'tags' => $tags,
+        ];
     }
 }
