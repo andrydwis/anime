@@ -58,6 +58,7 @@
                             <flux:button
                                 type="submit"
                                 variant="primary"
+                                icon="sparkles"
                             >
                                 Scraping
                             </flux:button>

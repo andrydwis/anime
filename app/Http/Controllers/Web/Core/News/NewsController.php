@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
+use OpenAI;
 use Symfony\Component\DomCrawler\Crawler;
 
 class NewsController extends Controller
@@ -127,6 +128,10 @@ class NewsController extends Controller
 
     public function translate(string $title, string $content): array
     {
+        $client = OpenAI::factory()
+            ->withApiKey(config('openai.api_key'))
+            ->withBaseUri(config('openai.base_uri'))
+            ->make();
 
         $prompt = 'Translate the following text into BAHASA INDONESIA. The JSON object must use the schema {"title": "judul terjemahan", "content": "konten terjemahan"}';
 
@@ -135,36 +140,19 @@ class NewsController extends Controller
             ['role' => 'user', 'content' => "Judul: $title\nKonten: $content"],
         ];
 
-        $response = Http::withHeaders([
-            'Authorization' => 'Bearer '.config('openai.api_key'), // Use your API key from .env
-            'Content-Type' => 'application/json',
-        ])
-            ->post('https://api.groq.com/openai/v1/chat/completions', [
-                'messages' => $messages,
-                'model' => 'mixtral-8x7b-32768',
-                'response_format' => [
-                    'type' => 'json_object',
-                ],
-                'temperature' => 0.7,
-            ]);
+        $chat = $client->chat()->create([
+            'model' => 'mixtral-8x7b-32768',
+            'messages' => $messages,
+            'response_format' => [
+                'type' => 'json_object',
+            ],
+        ]);
 
-        // Check the response
-        if ($response->successful()) {
-            $data = $response->json(); // Get the JSON response
+        $response = $chat->choices[0]->message->content;
 
-            // Process the data as needed
-            return json_decode($data['choices'][0]['message']['content'], true);
-        } else {
-            // Handle errors
-            $error = $response->body(); // Get the error response body
-            $statusCode = $response->status(); // Get the HTTP status code
-            dd("Error: {$error}, Status Code: {$statusCode}");
-        }
+        $response = json_decode($response, true);
 
-        return [
-            'title' => $title,
-            'content' => $content,
-        ];
+        return $response;
     }
 
     public function scrapeNews(string $url): array
