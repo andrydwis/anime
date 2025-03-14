@@ -247,11 +247,7 @@
     @push('scripts')
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <script>
-            const swiper = swiper = new Swiper(".swiper", {
-                // scrollbar: {
-                //     el: ".swiper-scrollbar",
-                //     hide: true,
-                // },
+            const swiper = new Swiper(".swiper", {
                 spaceBetween: 8,
                 grabCursor: true,
                 loop: true,
