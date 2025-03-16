@@ -30,7 +30,7 @@
         />
     </flux:modal.trigger>
 
-    <div class="swiper w-full">
+    {{-- <div class="swiper w-full">
         <div class="swiper-wrapper">
             @foreach ($home['spotLightAnimes'] as $anime)
                 <div class="swiper-slide">
@@ -81,7 +81,7 @@
                 </div>
             @endforeach
         </div>
-    </div>
+    </div> --}}
 
     <div class="flex flex-col gap-2">
         <div class="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
@@ -106,7 +106,7 @@
             </flux:button>
         </div>
         <div class="grid grid-cols-2 gap-2 lg:grid-cols-4">
-            @foreach ($home['latestEpisodes'] as $anime)
+            @foreach ($animes as $anime)
                 <x-cards.animex :anime="$anime" />
             @endforeach
         </div>

@@ -6,7 +6,7 @@
             'episode' => $anime['episodeId'],
         ]);
     } else {
-        $route = route('animex.show', ['animex' => $anime['id']]);
+        $route = route('animex.show', ['anime' => $anime['id']]);
     }
 @endphp
 <a
@@ -16,7 +16,7 @@
     <div class="group relative flex flex-col overflow-hidden rounded-lg">
         <img
             loading="lazy"
-            src="{{ $anime['img'] }}"
+            src="{{ $anime['image'] }}"
             alt="cover"
             class="aspect-video object-cover transition-all group-hover:scale-110 group-hover:brightness-50"
         >
