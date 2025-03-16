@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Web\Public\Animex;
 
-use Carbon\Carbon;
-use Illuminate\View\View;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Http;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
+use Illuminate\View\View;
 use Symfony\Component\DomCrawler\Crawler;
 
 class AnimexController extends Controller
@@ -150,7 +150,7 @@ class AnimexController extends Controller
         $crawler = new Crawler($html);
 
         // Extract iframe link
-        $iframe = $crawler->filter('iframe')->attr('src');
+        $iframe = $crawler->filter('iframe')->count() > 0 ? $crawler->filter('iframe')->attr('src') : null;
 
         return [
             'iframe' => $iframe,

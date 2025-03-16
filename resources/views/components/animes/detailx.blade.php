@@ -61,26 +61,25 @@
                     </flux:badge>
                 @endforeach
             </div>
-            {{ dd($anime) }}
             <div class="flex flex-row flex-wrap items-center gap-2">
                 <flux:badge
                     size="sm"
                     color="emerald"
                     icon="calendar-date-range"
                 >
-                    {{ $anime['metadata']['Status:'] }}
+                    {{ $anime['metadata']['status'] }}
                 </flux:badge>
                 <flux:badge
                     size="sm"
                     icon="numbered-list"
                 >
-                    {{ $anime['info']['episodes']['sub'] }} Episode
+                    {{ $anime['metadata']['episodes'] }} Episode
                 </flux:badge>
                 <flux:badge
                     size="sm"
                     icon="clock"
                 >
-                    {{ $anime['info']['duration'] }}
+                    {{ $anime['metadata']['duration'] }}
                 </flux:badge>
             </div>
             <div class="flex flex-row flex-wrap items-center gap-2">
@@ -89,26 +88,26 @@
                     color="amber"
                     icon="star"
                 >
-                    {{ $anime['moreInfo']['MAL Score:'] }}/10
+                    {{ $anime['rating'] }}/10
                 </flux:badge>
                 <flux:badge
                     size="sm"
                     color="cyan"
                     icon="cloud"
                 >
-                    {{ $anime['moreInfo']['Premiered:'] }}
+                    {{ $anime['metadata']['season'] }}
                 </flux:badge>
                 <flux:badge
                     size="sm"
                     color="blue"
                     icon="home-modern"
                 >
-                    {{ $anime['moreInfo']['Studios:'] }}
+                    {{ $anime['metadata']['studio'] }}
                 </flux:badge>
             </div>
 
             <flux:subheading level="h3">
-                {{ $anime['info']['description'] }}
+                {{ $anime['description'] }}
             </flux:subheading>
         </div>
     </div>
