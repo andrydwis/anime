@@ -3,7 +3,6 @@
 namespace App\Livewire;
 
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Str;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 use Symfony\Component\DomCrawler\Crawler;
@@ -24,7 +23,7 @@ class SocialMediaVideoDownloader extends Component
 
     public function download()
     {
-        if (Str::contains($this->url, 'facebook.com')) {
+        if ($this->url) {
             $this->socialMedia = 'facebook';
             $this->data = $this->handleFacebookVideo();
         } else {
@@ -41,13 +40,13 @@ class SocialMediaVideoDownloader extends Component
 
         // Fetch the HTML content of the Facebook video page
         $html = Http::withHeaders([
-            'User-Agent' => $userAgent,
             'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
         ])->get($this->url)->body();
 
         // Extract the title using a DOM crawler
         $crawler = new Crawler($html);
         $title = $crawler->filter('title')->text();
+        $thumbnail = $crawler->filter('meta[property="og:image"]')->attr('content');
 
         // Extract the SD and HD video URLs using regex
         $sdLink = $this->extractVideoUrl($html, 'browser_native_sd_url');
@@ -60,6 +59,7 @@ class SocialMediaVideoDownloader extends Component
         // Return the structured data
         return [
             'title' => $title,
+            'thumbnail' => $thumbnail,
             'videos' => [
                 'sd' => [
                     'url' => $sdLink,

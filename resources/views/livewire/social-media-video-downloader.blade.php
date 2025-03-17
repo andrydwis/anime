@@ -15,6 +15,16 @@
             @if ($data && $socialMedia == 'facebook')
                 <flux:separator />
                 <div class="grid gap-2 md:grid-cols-2">
+                    <div class="flex flex-col gap-2 md:col-span-2">
+                        <img
+                            src="{{ $data['thumbnail'] }}"
+                            alt="thumbnail"
+                            class="aspect-video w-full rounded-lg object-cover brightness-50"
+                        >
+                        <flux:heading>
+                            {{ $data['title'] }}
+                        </flux:heading>
+                    </div>
                     <flux:button
                         icon="video-camera"
                         href="{{ $data['videos']['sd']['url'] }}"
