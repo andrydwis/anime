@@ -14,7 +14,7 @@
             </flux:button>
             @if ($data && $socialMedia == 'facebook')
                 <flux:separator />
-                <div class="grid grid-cols-2 gap-2">
+                <div class="grid gap-2 md:grid-cols-2">
                     <flux:button
                         icon="video-camera"
                         href="{{ $data['videos']['sd']['url'] }}"
