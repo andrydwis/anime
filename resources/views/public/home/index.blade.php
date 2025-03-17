@@ -128,12 +128,24 @@
                 </flux:subheading>
             </div>
         </div>
-        <div class="grid gap-2">
+        <div class="grid grid-cols-2 gap-2">
             <flux:button
                 icon="link"
                 href="{{ route('tools.short-links.index') }}"
             >
                 Short Link
+                <flux:badge
+                    size="sm"
+                    color="emerald"
+                >
+                    Baru!
+                </flux:badge>
+            </flux:button>
+            <flux:button
+                icon="video-camera"
+                href="{{ route('tools.social-media-video-downloader.index') }}"
+            >
+                Social Media Video Downloader
                 <flux:badge
                     size="sm"
                     color="emerald"
