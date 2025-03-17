@@ -35,7 +35,7 @@ class SocialMediaVideoDownloader extends Component
         } else {
             $this->socialMedia = '';
             $this->data = [];
-            $this->addError('url', 'Untuk sekarang hanya support Facebook.');
+            $this->addError('url', 'Untuk sekarang hanya support Facebook dan Tiktok.');
         }
     }
 
