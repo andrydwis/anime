@@ -40,6 +40,29 @@
                         Download Video HD
                     </flux:button>
                 </div>
+            @elseif ($data && $socialMedia == 'tiktok')
+                <flux:separator />
+                <div class="grid gap-2 md:grid-cols-2">
+                    <div class="flex flex-col gap-2 md:col-span-2">
+                        <img
+                            src="{{ $data['data']['cover'] }}"
+                            alt="thumbnail"
+                            class="aspect-video w-full rounded-lg object-cover brightness-50"
+                        >
+                        <flux:heading>
+                            {{ $data['data']['title'] }} -
+                            {{ $data['data']['author']['nickname'] }}
+                        </flux:heading>
+                    </div>
+                    <flux:button
+                        icon="video-camera"
+                        target="_blank"
+                        class="md:col-span-2"
+                        wire:click="downloadTiktokVideo('{{ $data['data']['play'] }}')"
+                    >
+                        Download Video
+                    </flux:button>
+                </div>
             @endif
         </div>
     </x-cards.app>
