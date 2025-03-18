@@ -3,7 +3,6 @@
 namespace App\Livewire;
 
 use App\Helpers\FacebookVideoDownloader;
-use App\Helpers\InstagramVideoDownloader;
 use App\Helpers\TiktokVideoDownloader;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -33,9 +32,6 @@ class SocialMediaVideoDownloader extends Component
         } elseif (Str::contains($this->url, 'tiktok.com')) {
             $this->socialMedia = 'tiktok';
             $this->data = TiktokVideoDownloader::parse($this->url);
-        } elseif (Str::contains($this->url, 'instagram.com')) {
-            $this->socialMedia = 'instagram';
-            $this->data = InstagramVideoDownloader::parse($this->url);
         } else {
             $this->socialMedia = '';
             $this->data = [];
