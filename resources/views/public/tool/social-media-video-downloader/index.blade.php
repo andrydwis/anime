@@ -1,4 +1,4 @@
-<x-layouts.app title="Short Link">
+<x-layouts.app title="Social Media Video Downloader">
     <flux:breadcrumbs class="flex-wrap">
         <flux:breadcrumbs.item
             icon="home"
