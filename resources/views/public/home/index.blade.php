@@ -78,7 +78,7 @@
                     </div>
                     <div class="swiper-slide">
                         <flux:callout
-                            icon="link"
+                            icon="video-camera"
                             color="cyan"
                         >
                             <flux:callout.heading>Fitur Baru, Social Media Video
