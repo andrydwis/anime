@@ -35,23 +35,6 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <flux:callout
-                            icon="wrench-screwdriver"
-                            color="amber"
-                        >
-                            <flux:callout.heading>
-                                Anime X (BETA) Dalam Pengembangan 🛠️
-                            </flux:callout.heading>
-                            <flux:callout.text>
-                                Pantau terus fitur Anime X, fitur ini masih dalam tahap
-                                pengembangan.
-                                <flux:callout.link href="{{ route('animex.index') }}">
-                                    Lihat
-                                </flux:callout.link>
-                            </flux:callout.text>
-                        </flux:callout>
-                    </div>
-                    <div class="swiper-slide">
-                        <flux:callout
                             icon="sparkles"
                             color="emerald"
                         >
@@ -93,23 +76,29 @@
                             </flux:callout.text>
                         </flux:callout>
                     </div>
+                    <div class="swiper-slide">
+                        <flux:callout
+                            icon="link"
+                            color="cyan"
+                        >
+                            <flux:callout.heading>Fitur Baru, Social Media Video
+                                Downloader 🚀
+                            </flux:callout.heading>
+                            <flux:callout.text>
+                                Download video dari social media favorit kamu, praktis dan
+                                cepat.
+                                <flux:callout.link
+                                    href="{{ route('tools.social-media-video-downloader.index') }}"
+                                >
+                                    Coba Sekarang
+                                </flux:callout.link>
+                            </flux:callout.text>
+                        </flux:callout>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <flux:button
-        icon="sparkles"
-        href="{{ route('animex.index') }}"
-    >
-        Anime X (BETA)
-        <flux:badge
-            size="sm"
-            color="amber"
-        >
-            WIP!
-        </flux:badge>
-    </flux:button>
 
     <x-animes.menu />
 

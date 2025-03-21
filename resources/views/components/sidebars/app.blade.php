@@ -99,5 +99,14 @@
         >
             Short Link
         </flux:navlist.item>
+        <flux:navlist.item
+            icon="video-camera"
+            iconVariant="solid"
+            badge="Baru!"
+            badge-color="emerald"
+            href="{{ route('tools.social-media-video-downloader.index') }}"
+        >
+            Social Media Video Downloader
+        </flux:navlist.item>
     </flux:navlist>
 </flux:sidebar>
