@@ -25,14 +25,14 @@
     </flux:button>
     <flux:button
         icon="sparkles"
-        href="/#"
+        href="{{ route('gachamon.index') }}"
     >
         Gachamon
         <flux:badge
             size="sm"
-            color="red"
+            color="emerald"
         >
-            Segera!
+            Baru!
         </flux:badge>
     </flux:button>
     @auth

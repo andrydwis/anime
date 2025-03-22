@@ -81,9 +81,9 @@
         <flux:navlist.item
             icon="sparkles"
             iconVariant="solid"
-            badge="Segera!"
-            badge-color="red"
-            href="#"
+            badge="Baru!"
+            badge-color="emerald"
+            href="{{ route('gachamon.index') }}"
         >
             Gachamon
         </flux:navlist.item>
