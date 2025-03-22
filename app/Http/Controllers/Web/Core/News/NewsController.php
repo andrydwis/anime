@@ -141,7 +141,7 @@ class NewsController extends Controller
         ];
 
         $chat = $client->chat()->create([
-            'model' => 'mixtral-8x7b-32768',
+            'model' => 'qwen-2.5-coder-32b',
             'messages' => $messages,
             'response_format' => [
                 'type' => 'json_object',
