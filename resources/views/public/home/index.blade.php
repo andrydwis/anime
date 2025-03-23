@@ -153,6 +153,62 @@
                     level="h1"
                     class="from-accent !m-0 !bg-gradient-to-br to-cyan-600 bg-clip-text !font-semibold !text-transparent"
                 >
+                    Anime Spotlight
+                </flux:heading>
+                <flux:subheading level="h2">
+                    Anime yang sedang trending
+                </flux:subheading>
+            </div>
+        </div>
+        <div class="swiper w-full">
+            <div class="swiper-wrapper">
+                @foreach ($home['spotlight-animes'] as $anime)
+                    <div class="swiper-slide">
+                        <x-cards.app
+                            class="relative aspect-[3/1] overflow-hidden !border-0"
+                            style="background-image: url({{ $anime['image'] }}); background-size: cover; background-position: center; background-repeat: no-repeat;"
+                        >
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-white via-white/75 to-transparent dark:from-zinc-900 dark:via-zinc-900/75">
+                            </div>
+                            <div class="flex h-full flex-col">
+                                <div class="z-50 mt-auto flex flex-col gap-2">
+                                    <div class="flex flex-col">
+                                        <flux:heading
+                                            size="xl"
+                                            class="line-clamp-2 w-1/2 !text-2xl !font-bold lg:!text-4xl"
+                                        >
+                                            {{ $anime['title'] }}
+                                        </flux:heading>
+                                        <flux:subheading class="line-clamp-3 w-1/2">
+                                            {{ $anime['description'] }}
+                                        </flux:subheading>
+                                    </div>
+                                    <flux:button
+                                        variant="filled"
+                                        icon="play"
+                                        href="{{ route('anime.show', ['anime' => $anime['id']]) }}"
+                                        class="w-max"
+                                    >
+                                        Tonton Sekarang
+                                    </flux:button>
+                                </div>
+                            </div>
+                        </x-cards.app>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+
+    <div class="flex flex-col gap-2">
+        <div class="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
+            <div class="flex flex-col">
+                <flux:heading
+                    size="xl"
+                    level="h1"
+                    class="from-accent !m-0 !bg-gradient-to-br to-cyan-600 bg-clip-text !font-semibold !text-transparent"
+                >
                     Anime Terbaru
                 </flux:heading>
                 <flux:subheading level="h2">
@@ -167,8 +223,8 @@
                 Lihat Semua
             </flux:button>
         </div>
-        <div class="grid grid-cols-2 gap-2 lg:grid-cols-4">
-            @foreach ($home['data']['recent']['animeList'] as $anime)
+        <div class="grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-6">
+            @foreach ($home['recent-animes'] as $anime)
                 <x-cards.anime :anime="$anime" />
             @endforeach
         </div>
@@ -252,10 +308,10 @@
                 spaceBetween: 8,
                 grabCursor: true,
                 loop: true,
-                autoplay: {
-                    delay: 2000,
-                    disableOnInteraction: false,
-                },
+                // autoplay: {
+                //     delay: 2000,
+                //     disableOnInteraction: false,
+                // },
             });
         </script>
     @endpush

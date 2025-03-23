@@ -1,4 +1,4 @@
-@props(['anime', 'animeId', 'episodeId' => null, 'watchedEpisodes' => []])
+@props(['anime', 'episodes' => [], 'watchedEpisodes' => [], 'episodeId' => null])
 <div class="flex flex-col gap-2">
     <div class="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
         <div class="flex flex-col">
@@ -10,23 +10,20 @@
                 Daftar Episode
             </flux:heading>
             <flux:subheading level="h2">
-                Semua episode Anime {{ $anime['data']['title'] }}
+                Semua episode Anime {{ $anime['title'] }}
             </flux:subheading>
         </div>
     </div>
     <div class="grid grid-cols-3 gap-2 lg:grid-cols-6">
-        @php
-            $sortedEpisodes = collect($anime['data']['episodeList'])->sortBy('title');
-        @endphp
-        @foreach ($sortedEpisodes as $episode)
+        @foreach ($episodes as $episode)
             @php
-                if ($episode['episodeId'] == $episodeId) {
+                if ($episode['id'] == $episodeId) {
                     $status = 'playing';
                     $variant = 'primary';
                     $class = null;
                 } elseif (
-                    in_array($episode['episodeId'], $watchedEpisodes) &&
-                    $episodeId != $episode['episodeId']
+                    in_array($episode['id'], $watchedEpisodes) &&
+                    $episodeId != $episode['id']
                 ) {
                     $status = 'watched';
                     $variant = 'primary';
@@ -40,10 +37,11 @@
             <flux:button
                 :variant="$variant"
                 :icon="$status === 'watched' ? 'check-circle' : 'play-circle'"
-                class="w-full {{ $class ?? '' }}"
-                href="{{ route('anime.episode.show', ['anime' => $animeId, 'episode' => $episode['episodeId']]) }}"
+                href="{{ route('anime.episode.show', ['anime' => $anime['id'], 'episode' => $episode['id']]) }}"
+                title="{{ $episode['title'] }}"
+                class="{{ $class ?? '' }} w-full"
             >
-                {{ $episode['title'] }}
+                {{ $episode['number'] }}
             </flux:button>
         @endforeach
     </div>

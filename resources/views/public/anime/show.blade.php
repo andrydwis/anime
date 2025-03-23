@@ -1,7 +1,7 @@
 <x-layouts.app
-    title="{{ !empty($anime['data']['title']) ? $anime['data']['title'] : $anime['data']['synonyms'] }}"
-    description="{{ implode(' ', $anime['data']['synopsis']['paragraphs']) }}"
-    image="{{ $anime['data']['poster'] }}"
+    title="{{ $anime['title'] }}"
+    description="{{ $anime['description'] }}"
+    image="{{ $anime['image'] }}"
 >
     <flux:breadcrumbs class="flex-wrap">
         <flux:breadcrumbs.item
@@ -12,16 +12,16 @@
             Anime
         </flux:breadcrumbs.item>
         <flux:breadcrumbs.item>
-            {{ !empty($anime['data']['title']) ? $anime['data']['title'] : $anime['data']['synonyms'] }}
+            {{ $anime['title'] }}
         </flux:breadcrumbs.item>
     </flux:breadcrumbs>
 
     <a
-        href="{{ route('anime.episode.show', ['anime' => $animeId, 'episode' => $anime['data']['episodeList'][0]['episodeId']]) }}"
+        href="{{ route('anime.episode.show', ['anime' => $animeId, 'episode' => $episodes[0]['id']]) }}"
         class="group relative aspect-video overflow-hidden rounded-lg"
     >
         <img
-            src="{{ $anime['data']['poster'] }}"
+            src="{{ $anime['image'] }}"
             alt="cover"
             class="aspect-video h-full w-full object-cover brightness-50"
         >
@@ -33,7 +33,7 @@
             class="pointer-events-none absolute bottom-0 w-full bg-white/75 p-2 dark:bg-zinc-900/50">
             <flux:heading class="line-clamp-1 text-center group-hover:underline">
                 Klik untuk melihat Episode
-                {{ $anime['data']['episodeList'][0]['title'] }}
+                {{ $episodes[0]['number'] }}
             </flux:heading>
         </div>
     </a>
@@ -45,7 +45,7 @@
 
     <x-animes.episode
         :anime="$anime"
-        :animeId="$animeId"
+        :episodes="$episodes"
         :watchedEpisodes="$watchedEpisodes"
     />
 

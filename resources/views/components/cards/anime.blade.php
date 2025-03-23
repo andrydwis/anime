@@ -1,24 +1,14 @@
 @props(['anime'])
-@php
-    if (isset($anime['episodeId'])) {
-        $route = route('anime.episode.show', [
-            'anime' => $anime['animeId'],
-            'episode' => $anime['episodeId'],
-        ]);
-    } else {
-        $route = route('anime.show', ['anime' => $anime['animeId']]);
-    }
-@endphp
 <a
     {{ $attributes }}
-    href="{{ $route }}"
+    href="{{ route('anime.show', ['anime' => $anime['id']]) }}"
 >
     <div class="group relative flex flex-col overflow-hidden rounded-lg">
         <img
             loading="lazy"
-            src="{{ $anime['poster'] }}"
+            src="{{ $anime['image'] }}"
             alt="cover"
-            class="aspect-video object-cover transition-all group-hover:scale-110 group-hover:brightness-50"
+            class="aspect-[3/4] object-cover transition-all group-hover:scale-110 group-hover:brightness-50"
         >
         @if (isset($anime['episodes']))
             <flux:badge
@@ -38,7 +28,7 @@
         <div
             class="pointer-events-none absolute bottom-0 w-full bg-white/75 p-2 dark:bg-zinc-900/50">
             <flux:heading class="line-clamp-1 group-hover:underline">
-                {{ !empty($anime['title']) ? $anime['title'] : $anime['synonyms'] }}
+                {{ $anime['title'] }}
             </flux:heading>
         </div>
     </div>
