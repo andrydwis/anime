@@ -80,7 +80,8 @@
                     :selectedProvince="old('province_id', 0)"
                     :selectedCity="old('city_id', 0)"
                 />
-                <div class="flex flex-row items-center justify-end gap-2">
+                <div
+                    class="flex flex-col gap-2 md:flex-row md:items-center md:justify-end">
                     <flux:button href="{{ route('core.events.index') }}">
                         Kembali
                     </flux:button>

@@ -28,8 +28,8 @@
                         alt="sprite"
                         class="mx-auto aspect-square w-[200px] rounded-lg border border-zinc-200 object-contain p-4 dark:border-zinc-600"
                     >
-                    <div class="flex flex-col">
-                        <flux:heading>
+                    <div class="flex flex-row items-center gap-2">
+                        <flux:heading class="!m-0">
                             {{ str()->title($gachaResult['name']) }}
                         </flux:heading>
                         @php
@@ -41,13 +41,13 @@
                         <flux:subheading>
                             {{ str()->title($speciesName) }}
                         </flux:subheading>
-                        <div class="mt-2 flex flex-row flex-wrap gap-2">
-                            @foreach ($gachaResult['types'] as $type)
-                                <flux:badge size="sm">
-                                    {{ str()->title($type['type']['name']) }}
-                                </flux:badge>
-                            @endforeach
-                        </div>
+                    </div>
+                    <div class="flex flex-row flex-wrap gap-2">
+                        @foreach ($gachaResult['types'] as $type)
+                            <flux:badge size="sm">
+                                {{ str()->title($type['type']['name']) }}
+                            </flux:badge>
+                        @endforeach
                     </div>
                     <flux:separator />
                     <flux:text>
@@ -182,15 +182,15 @@
             @forelse ($gachaHistory as $history)
                 <x-cards.app>
                     <div class="flex flex-col gap-2">
-                        <div class="flex flex-row items-center gap-2">
+                        <div class="flex flex-row items-start gap-2">
                             <img
                                 src="{{ $history['sprites']['other']['official-artwork']['front_default'] }}"
                                 alt="sprite"
                                 class="aspect-square w-[100px] rounded-lg border border-zinc-200 object-contain p-4 dark:border-zinc-600"
                             >
                             <div class="flex flex-col gap-2">
-                                <div class="flex flex-col">
-                                    <flux:heading>
+                                <div class="flex flex-row items-center gap-2">
+                                    <flux:heading class="!m-0">
                                         {{ str()->title($history['name']) }}
                                     </flux:heading>
                                     @php
@@ -207,6 +207,30 @@
                                     @foreach ($history['types'] as $type)
                                         <flux:badge size="sm">
                                             {{ str()->title($type['type']['name']) }}
+                                        </flux:badge>
+                                    @endforeach
+                                </div>
+
+                                <flux:separator />
+
+                                <div class="flex flex-row flex-wrap items-center gap-2">
+                                    <flux:text>
+                                        Ability:
+                                    </flux:text>
+                                    @foreach ($history['abilities'] as $ability)
+                                        <flux:badge size="sm">
+                                            {{ str()->title($ability['ability']['name']) }}
+                                        </flux:badge>
+                                    @endforeach
+                                </div>
+                                <div class="flex flex-row flex-wrap items-center gap-2">
+                                    <flux:text>
+                                        Stats:
+                                    </flux:text>
+                                    @foreach ($history['stats'] as $stat)
+                                        <flux:badge size="sm">
+                                            {{ str()->title($stat['stat']['name']) }}:
+                                            {{ $stat['base_stat'] }}
                                         </flux:badge>
                                     @endforeach
                                 </div>

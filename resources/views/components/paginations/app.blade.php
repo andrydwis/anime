@@ -15,7 +15,7 @@
             {!! __('results') !!}
         </flux:subheading>
         <div class="flex flex-row items-center gap-2">
-            <flux:button.group>
+            <div class="flex flex-row items-center gap-1">
                 @if ($paginator->onFirstPage())
                     <flux:button
                         icon="chevron-left"
@@ -30,8 +30,9 @@
                 @foreach ($elements as $element)
                     @if (is_string($element))
                         <flux:button
-                            disabled
                             icon="ellipsis-horizontal"
+                            class="!hidden sm:!flex"
+                            disabled
                         />
                     @endif
                     @if (is_array($element))
@@ -39,12 +40,16 @@
                             @if ($page == $paginator->currentPage())
                                 <flux:button
                                     variant="primary"
+                                    class="!hidden sm:!flex"
                                     disabled
                                 >
                                     {{ $page }}
                                 </flux:button>
                             @else
-                                <flux:button href="{{ $url }}">
+                                <flux:button
+                                    href="{{ $url }}"
+                                    class="!hidden sm:!flex"
+                                >
                                     {{ $page }}
                                 </flux:button>
                             @endif
@@ -62,7 +67,7 @@
                         disabled
                     />
                 @endif
-            </flux:button.group>
+            </div>
         </div>
     </nav>
 @endif

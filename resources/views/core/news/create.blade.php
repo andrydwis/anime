@@ -70,11 +70,15 @@
 
                     <flux:error name="content" />
                 </flux:field>
-                <div class="flex flex-row items-center justify-end gap-2">
+                <div
+                    class="flex flex-col gap-2 md:flex-row md:items-center md:justify-end">
                     <flux:button href="{{ route('core.news.index') }}">
                         Kembali
                     </flux:button>
-                    <flux:button icon="arrow-path" href="{{ route('core.news.create') }}?url={{ request()->input('url') }}">
+                    <flux:button
+                        icon="arrow-path"
+                        href="{{ route('core.news.create') }}?url={{ request()->input('url') }}"
+                    >
                         Coba Lagi
                     </flux:button>
                     <flux:button

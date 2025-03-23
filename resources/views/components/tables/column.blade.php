@@ -1,8 +1,6 @@
 <th
     scope="col"
-    {{ $attributes->class(['px-4 py-2']) }}
+    {{ $attributes->class(['py-3 px-3 first:ps-0 last:pe-0 text-center text-sm font-medium text-zinc-800 dark:text-white  **:data-flux-table-sortable:last:me-0']) }}
 >
-    <flux:subheading>
-        {{ $slot }}
-    </flux:subheading>
+    {{ $slot }}
 </th>
