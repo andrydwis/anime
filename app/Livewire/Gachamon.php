@@ -85,6 +85,19 @@ class Gachamon extends Component
             // Combine Pokémon data and species data
             $responseData['species'] = $speciesResponse->json();
 
+            $responseData = collect($responseData)->only([
+                'id',
+                'name',
+                'height',
+                'weight',
+                'abilities',
+                'stats',
+                'species',
+                'cries',
+                'types',
+                'sprites',
+            ])->toArray();
+
             return $responseData;
         });
 
