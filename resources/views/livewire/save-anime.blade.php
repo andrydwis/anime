@@ -21,7 +21,7 @@
                     icon="bookmark"
                     heading="Simpan ke..."
                 >
-                    @foreach ($animePlaylists as $playlist)
+                    @forelse ($animePlaylists as $playlist)
                         @php
                             // Extract all 'title' values from $playlist['data']
                             $playlistIds = collect($playlist['data'])->pluck('animeId');
@@ -36,7 +36,14 @@
                         >
                             {{ $playlist['name'] }}
                         </flux:menu.item>
-                    @endforeach
+                    @empty
+                        <flux:menu.item
+                            icon="hashtag"
+                            disabled
+                        >
+                            Belum Ada Playlist
+                        </flux:menu.item>
+                    @endforelse
 
                     <flux:menu.separator />
 
