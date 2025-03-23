@@ -42,7 +42,7 @@
 
                     <flux:menu>
                         @foreach ($episode['data']['server']['qualities'] as $qualities)
-                            <flux:menu.submenu heading="{{ $qualities['title'] }}">
+                            <flux:menu.group heading="{{ $qualities['title'] }}">
                                 @forelse ($qualities['serverList'] as $server)
                                     <flux:menu.item
                                         href="{{ route('anime.episode.show', ['anime' => $animeId, 'episode' => $episodeId, 'server' => $server['serverId']]) }}"
@@ -55,7 +55,7 @@
                                         Tidak tersedia
                                     </flux:menu.item>
                                 @endforelse
-                            </flux:menu.submenu>
+                            </flux:menu.group>
                         @endforeach
                     </flux:menu>
                 </flux:dropdown>
@@ -69,7 +69,7 @@
 
                     <flux:menu>
                         @foreach ($episode['data']['downloadUrl']['formats'] as $formats)
-                            <flux:menu.submenu heading="{{ $formats['title'] }}">
+                            <flux:menu.group heading="{{ $formats['title'] }}">
                                 @foreach ($formats['qualities'] as $quality)
                                     <flux:menu.submenu heading="{{ $quality['title'] }}">
                                         @foreach ($quality['urls'] as $url)
@@ -82,7 +82,7 @@
                                         @endforeach
                                     </flux:menu.submenu>
                                 @endforeach
-                            </flux:menu.submenu>
+                            </flux:menu.group>
                         @endforeach
                     </flux:menu>
                 </flux:dropdown>

@@ -107,7 +107,20 @@
                                                     Eps {{ $anime['episodes'] }}
                                                 </flux:badge>
                                             @endif
-                                            @if (!in_array($anime, $savedAnimes))
+                                            @php
+                                                $savedAnimes = collect($playlist['data'])
+                                                    ->pluck('animeId')
+                                                    ->toArray();
+
+                                                $animeId = $anime['animeId'];
+
+                                                // Check if $animeSynonyms exists in $playlistTitles
+                                                $isSaved = in_array(
+                                                    $animeId,
+                                                    $savedAnimes,
+                                                );
+                                            @endphp
+                                            @if (!$isSaved)
                                                 <flux:button
                                                     icon="plus"
                                                     class="!absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer !rounded-full !bg-white/50 !text-white opacity-0 transition-all group-hover:border-2 group-hover:!border-white group-hover:opacity-100"
@@ -126,7 +139,7 @@
                                                     <flux:heading
                                                         class="line-clamp-1 group-hover:underline"
                                                     >
-                                                        {{ $anime['title'] }}
+                                                        {{ !empty($anime['title']) ? $anime['title'] : $anime['synonyms'] }}
                                                     </flux:heading>
                                                 </div>
                                             @else
@@ -135,7 +148,7 @@
                                                     <flux:heading
                                                         class="line-clamp-1 group-hover:underline"
                                                     >
-                                                        {{ $anime['title'] }}
+                                                        {{ !empty($anime['title']) ? $anime['title'] : $anime['synonyms'] }}
                                                     </flux:heading>
                                                 </div>
                                             @endif
@@ -171,6 +184,5 @@
                 {{ $playlist?->is_public ? 'Set Playlist Pribadi' : 'Set Playlist Publik' }}
             </flux:button>
         </div>
-
     @endif
 </div>

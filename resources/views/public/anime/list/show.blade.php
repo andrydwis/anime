@@ -41,14 +41,16 @@
 
         <x-cards.app>
             <div class="flex flex-col gap-2">
-                <div class="!text-zinc-800 dark:!text-white">
-                    <div
-                        id="editor"
-                        class="rounded-lg !border-zinc-200 dark:!border-zinc-600"
-                    >
-                        {!! $playlist?->description !!}
+                @if ($playlist?->description)
+                    <div class="!text-zinc-800 dark:!text-white">
+                        <div
+                            id="editor"
+                            class="rounded-lg !border-zinc-200 dark:!border-zinc-600"
+                        >
+                            {!! $playlist?->description !!}
+                        </div>
                     </div>
-                </div>
+                @endif
                 <livewire:form-anime-playlist
                     :playlist="$playlist"
                     :isMyPlaylist="$isMyPlaylist"

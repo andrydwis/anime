@@ -123,7 +123,7 @@
                                     <flux:link
                                         href="{{ route('anime.show', ['anime' => $anime['animeId']]) }}"
                                     >
-                                        {{ $anime['title'] }}
+                                        {{ !empty($anime['title']) ? $anime['title'] : $anime['synonyms'] }}
                                     </flux:link>
                                 </li>
                             @endforeach
