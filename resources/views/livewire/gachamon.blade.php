@@ -41,7 +41,7 @@
                         <flux:subheading>
                             {{ str()->title($speciesName) }}
                         </flux:subheading>
-                        <div class="mt-2 flex flex-row gap-2">
+                        <div class="mt-2 flex flex-row flex-wrap gap-2">
                             @foreach ($gachaResult['types'] as $type)
                                 <flux:badge size="sm">
                                     {{ str()->title($type['type']['name']) }}
@@ -70,7 +70,7 @@
                             {{ $gachaResult['weight'] }} hg
                         </flux:badge>
                     </div>
-                    <div class="flex flex-row items-center gap-2">
+                    <div class="flex flex-row flex-wrap items-center gap-2">
                         <flux:text>
                             Ability:
                         </flux:text>
@@ -132,19 +132,21 @@
             wire:target="gacha"
             class="relative"
         >
-            <div class="flex flex-col gap-2">
-                <img
-                    src="{{ asset('images/pokemon/pokeball.png') }}"
-                    alt="pokeball"
-                    class="z-10 mx-auto aspect-square w-[100px] animate-spin object-contain transition-all hover:scale-110"
-                >
-                <div class="flex flex-col items-center">
-                    <flux:heading class="text-center">
-                        Sedang Memanggil Pokemon ✨
-                    </flux:heading>
-                    <flux:subheading class="text-center">
-                        Tunggu sebentar ya!
-                    </flux:subheading>
+            <div class="flex h-full">
+                <div class="m-auto flex flex-col gap-2">
+                    <img
+                        src="{{ asset('images/pokemon/pokeball.png') }}"
+                        alt="pokeball"
+                        class="z-10 mx-auto aspect-square w-[100px] animate-spin object-contain transition-all hover:scale-110"
+                    >
+                    <div class="flex flex-col items-center">
+                        <flux:heading class="text-center">
+                            Sedang Memanggil Pokemon ✨
+                        </flux:heading>
+                        <flux:subheading class="text-center">
+                            Tunggu sebentar ya!
+                        </flux:subheading>
+                    </div>
                 </div>
             </div>
         </x-cards.app>
