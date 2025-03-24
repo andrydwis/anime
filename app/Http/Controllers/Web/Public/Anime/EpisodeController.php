@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Web\Public\Episode;
+namespace App\Http\Controllers\Web\Public\Anime;
 
 use App\Http\Controllers\Controller;
 use App\Models\AnimeWatchHistory;
@@ -78,6 +78,6 @@ class EpisodeController extends Controller
             'watchedEpisodes' => $watchedEpisodes,
         ];
 
-        return view('public.episode.show', $data);
+        return view('public.anime.episode.show', $data);
     }
 }

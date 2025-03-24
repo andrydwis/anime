@@ -8,7 +8,7 @@
             Anime
         </flux:breadcrumbs.item>
         <flux:breadcrumbs.item href="{{ route('anime.show', ['anime' => $animeId]) }}">
-            {{ str()->title(str()->replace('-', ' ', $anime['data']['animeId'])) }}
+            {{ str()->title(str()->replace('-', ' ', $animeId)) }}
         </flux:breadcrumbs.item>
         <flux:breadcrumbs.item>
             {{ $episode['data']['title'] }}
@@ -93,7 +93,6 @@
             <div
                 class="blur-xs flex flex-row flex-wrap items-center justify-between gap-2 transition-all">
                 <flux:button
-                    variant="primary"
                     icon="bookmark"
                     disabled
                 >
@@ -140,5 +139,8 @@
         :watchedEpisodes="$watchedEpisodes"
     />
 
-    <x-animes.detail :anime="$anime" />
+    <x-animes.detail
+        :animeId="$animeId"
+        :anime="$anime"
+    />
 </x-layouts.app>
