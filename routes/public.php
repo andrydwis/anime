@@ -16,7 +16,7 @@ Route::patch('anime/list/{playlist:slug}', [App\Http\Controllers\Web\Public\Anim
 Route::delete('anime/list/{playlist:slug}', [App\Http\Controllers\Web\Public\Anime\ListAnimeController::class, 'destroy'])->name('anime.list.destroy')->middleware(['auth']);
 
 Route::get('anime/{anime}', [App\Http\Controllers\Web\Public\Anime\AnimeController::class, 'show'])->name('anime.show');
-Route::get('anime/{anime}/episode/{episode}', [App\Http\Controllers\Web\Public\Episode\EpisodeController::class, 'show'])->name('anime.episode.show');
+Route::get('anime/{anime}/episode/{episode}', [App\Http\Controllers\Web\Public\Anime\EpisodeController::class, 'show'])->name('anime.episode.show');
 
 Route::get('gachamon', [App\Http\Controllers\Web\Public\Gachamon\GachamonController::class, 'index'])->name('gachamon.index')->middleware(['auth']);
 Route::get('gachamon/{gachamon}', [App\Http\Controllers\Web\Public\Gachamon\GachamonController::class, 'show'])->name('gachamon.show')->middleware(['auth']);

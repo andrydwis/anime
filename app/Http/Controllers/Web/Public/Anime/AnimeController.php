@@ -15,6 +15,7 @@ class AnimeController extends Controller
 {
     public function index(): View
     {
+        //TODO
         $animes = Cache::remember('anime', now()->addMinutes(5), function () {
             return Http::get(config('app.api_url').'/samehadaku/anime/')->json();
         });

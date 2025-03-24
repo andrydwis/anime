@@ -17,4 +17,13 @@ class EpisodeController extends Controller
 
         return response()->json($episodes);
     }
+
+    public function show(string $animeId, string $episodeId): JsonResponse
+    {
+        $sources = Cache::remember('sources-'.$episodeId, now()->addHour(), function () use ($episodeId) {
+            return EpisodeService::scrapeEpisodeSources($episodeId);
+        });
+
+        return response()->json($sources);
+    }
 }

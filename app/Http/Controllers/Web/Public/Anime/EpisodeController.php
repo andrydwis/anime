@@ -1,46 +1,30 @@
 <?php
 
-namespace App\Http\Controllers\Web\Public\Episode;
+namespace App\Http\Controllers\Web\Public\Anime;
 
 use App\Http\Controllers\Controller;
 use App\Models\AnimeWatchHistory;
+use App\Services\Scraper\AnimeService;
+use App\Services\Scraper\EpisodeService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Http;
 
 class EpisodeController extends Controller
 {
     public function show(string $animeId, string $episodeId, Request $request)
     {
-        $anime = Cache::remember('anime-'.$animeId, now()->addMinutes(5), function () use ($animeId) {
-            return Http::get(config('app.api_url').'/samehadaku/anime/'.$animeId)->json();
+        $anime = Cache::remember('anime-'.$animeId, now()->addDay(), function () use ($animeId) {
+            return AnimeService::scrapeDetailAnime($animeId);
         });
 
-        if ($anime['statusCode'] != 200) {
-            abort($anime['statusCode']);
-        }
-
-        $episode = Cache::remember('episode-'.$episodeId, now()->addMinutes(5), function () use ($episodeId) {
-            return Http::get(config('app.api_url').'/samehadaku/episode/'.$episodeId)->json();
+        $episodes = Cache::remember('episodes-'.$animeId, now()->addHour(), function () use ($animeId) {
+            return EpisodeService::scrapeEpisodesAnime($animeId);
         });
 
-        if ($episode['statusCode'] != 200) {
-            abort($episode['statusCode']);
-        }
-
-        if ($request->has('server')) {
-            $server = $request->get('server');
-            $server = Cache::remember('server-'.$server, now()->addMinutes(5), function () use ($server) {
-                return Http::get(config('app.api_url').'/samehadaku/server/'.$server)->json();
-            });
-
-            if ($server['statusCode'] != 200) {
-                abort($server['statusCode']);
-            }
-
-            $episode['data']['defaultStreamingUrl'] = $server['data']['url'];
-        }
+        $episode = Cache::remember('episode-'.$episodeId, now()->addHour(), function () use ($episodeId) {
+            return EpisodeService::scrapeEpisodeSources($episodeId);
+        });
 
         if (Auth::check()) {
             $user = Auth::user();
@@ -75,9 +59,10 @@ class EpisodeController extends Controller
             'anime' => $anime,
             'episodeId' => $episodeId,
             'episode' => $episode,
+            'episodes' => $episodes,
             'watchedEpisodes' => $watchedEpisodes,
         ];
 
-        return view('public.episode.show', $data);
+        return view('public.anime.episode.show', $data);
     }
 }
