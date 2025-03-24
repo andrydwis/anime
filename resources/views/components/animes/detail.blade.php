@@ -20,7 +20,7 @@
                     level="h1"
                     class="!font-semibold"
                 >
-                    {{ $anime['details']['japanese-title'] }}
+                    {{ $anime['details']['japanese_title'] }}
                 </flux:heading>
             </div>
 
@@ -90,7 +90,7 @@
                     color="amber"
                     icon="star"
                 >
-                    {{ $anime['details']['mal-score'] }}/10
+                    {{ $anime['details']['mal_score'] }}/10
                 </flux:badge>
                 <flux:badge
                     size="sm"

@@ -162,7 +162,7 @@
         </div>
         <div class="swiper w-full">
             <div class="swiper-wrapper">
-                @foreach ($home['spotlight-animes'] as $anime)
+                @foreach ($home['spotlight_animes'] as $anime)
                     <div class="swiper-slide">
                         <x-cards.app
                             class="relative aspect-[3/1] overflow-hidden !border-0"
@@ -224,7 +224,7 @@
             </flux:button>
         </div>
         <div class="grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-6">
-            @foreach ($home['recent-animes'] as $anime)
+            @foreach ($home['recent_animes'] as $anime)
                 <x-cards.anime :anime="$anime" />
             @endforeach
         </div>

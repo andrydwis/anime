@@ -23,7 +23,7 @@
         <img
             src="{{ $anime['image'] }}"
             alt="cover"
-            class="aspect-video h-full w-full object-cover brightness-50"
+            class="aspect-video h-full w-full object-cover blur-2xl brightness-50"
         >
         <flux:button
             icon="play"
