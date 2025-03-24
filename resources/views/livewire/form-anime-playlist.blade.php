@@ -139,7 +139,7 @@
                                                     <flux:heading
                                                         class="line-clamp-1 group-hover:underline"
                                                     >
-                                                        {{ !empty($anime['title']) ? $anime['title'] : $anime['synonyms'] }}
+                                                        {{ str()->title(str()->replace('-', ' ', $anime['animeId'])) }}
                                                     </flux:heading>
                                                 </div>
                                             @else
@@ -148,7 +148,7 @@
                                                     <flux:heading
                                                         class="line-clamp-1 group-hover:underline"
                                                     >
-                                                        {{ !empty($anime['title']) ? $anime['title'] : $anime['synonyms'] }}
+                                                        {{ str()->title(str()->replace('-', ' ', $anime['animeId'])) }}
                                                     </flux:heading>
                                                 </div>
                                             @endif

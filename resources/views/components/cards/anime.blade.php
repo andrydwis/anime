@@ -38,7 +38,7 @@
         <div
             class="pointer-events-none absolute bottom-0 w-full bg-white/75 p-2 dark:bg-zinc-900/50">
             <flux:heading class="line-clamp-1 group-hover:underline">
-                {{ !empty($anime['title']) ? $anime['title'] : $anime['synonyms'] }}
+                {{ str()->title(str()->replace('-', ' ', $anime['animeId'])) }}
             </flux:heading>
         </div>
     </div>

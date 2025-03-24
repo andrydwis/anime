@@ -1,5 +1,5 @@
 <x-layouts.app
-    title="{{ !empty($anime['data']['title']) ? $anime['data']['title'] : $anime['data']['synonyms'] }}"
+    title="{{ str()->title(str()->replace('-', ' ', $animeId)) }}"
     description="{{ implode(' ', $anime['data']['synopsis']['paragraphs']) }}"
     image="{{ $anime['data']['poster'] }}"
 >
@@ -12,7 +12,7 @@
             Anime
         </flux:breadcrumbs.item>
         <flux:breadcrumbs.item>
-            {{ !empty($anime['data']['title']) ? $anime['data']['title'] : $anime['data']['synonyms'] }}
+            {{ str()->title(str()->replace('-', ' ', $animeId)) }}
         </flux:breadcrumbs.item>
     </flux:breadcrumbs>
 

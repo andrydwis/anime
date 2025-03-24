@@ -8,7 +8,7 @@
             Anime
         </flux:breadcrumbs.item>
         <flux:breadcrumbs.item href="{{ route('anime.show', ['anime' => $animeId]) }}">
-            {{ $anime['data']['title'] }}
+            {{ str()->title(str()->replace('-', ' ', $anime['data']['animeId'])) }}
         </flux:breadcrumbs.item>
         <flux:breadcrumbs.item>
             {{ $episode['data']['title'] }}

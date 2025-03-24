@@ -10,7 +10,7 @@
                 Daftar Episode
             </flux:heading>
             <flux:subheading level="h2">
-                Semua episode Anime {{ $anime['data']['title'] }}
+                Semua episode Anime {{ str()->title(str()->replace('-', ' ', $animeId)) }}
             </flux:subheading>
         </div>
     </div>
@@ -40,7 +40,7 @@
             <flux:button
                 :variant="$variant"
                 :icon="$status === 'watched' ? 'check-circle' : 'play-circle'"
-                class="w-full {{ $class ?? '' }}"
+                class="{{ $class ?? '' }} w-full"
                 href="{{ route('anime.episode.show', ['anime' => $animeId, 'episode' => $episode['episodeId']]) }}"
             >
                 {{ $episode['title'] }}

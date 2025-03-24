@@ -13,7 +13,7 @@
                     level="h1"
                     class="from-accent !m-0 !bg-gradient-to-br to-cyan-600 bg-clip-text !font-semibold !text-transparent"
                 >
-                    {{ !empty($anime['data']['title']) ? $anime['data']['title'] : $anime['data']['synonyms'] }}
+                    {{ str()->title(str()->replace('-', ' ', $animeId)) }}
                 </flux:heading>
                 <flux:heading
                     size="lg"
