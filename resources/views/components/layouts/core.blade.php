@@ -26,6 +26,12 @@
             rel="stylesheet"
         />
 
+        <script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
+        <link
+            rel="stylesheet"
+            href="{{ asset('css/minimal.css') }}"
+        >
+
         <!-- Primary Meta Tags -->
         @if (!$title)
             <title>
