@@ -50,7 +50,7 @@
     />
 
     <x-animes.detail
-        animeId="{{ $animeId }}"
+        :animeId="$animeId"
         :anime="$anime"
     />
 </x-layouts.app>

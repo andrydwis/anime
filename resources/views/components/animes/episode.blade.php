@@ -37,10 +37,14 @@
             <flux:button
                 :variant="$variant"
                 :icon="$status === 'watched' ? 'check-circle' : 'play-circle'"
+                <<<<<<<
+                HEAD
                 href="{{ route('anime.episode.show', ['anime' => $anime['id'], 'episode' => $episode['id']]) }}"
                 title="{{ $episode['title'] }}"
-                class="{{ $class ?? '' }} w-full"
-            >
+                class="{{ $class ?? '' }} w-full"=======class="{{ $class ?? '' }} w-full"
+                href="{{ route('anime.episode.show', ['anime' => $animeId, 'episode' => $episode['episodeId']]) }}"
+            >>>>>>> master
+                >
                 {{ $episode['number'] }}
             </flux:button>
         @endforeach

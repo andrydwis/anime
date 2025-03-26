@@ -90,47 +90,50 @@
                         level="h3"
                         class="!font-bold"
                     >
-                        Berdasarkan Huruf
+                        Berdasarkan Abjad
                     </flux:heading>
-                    <div class="grid grid-cols-3 gap-2 lg:grid-cols-6">
-                        @foreach ($animes['data']['list'] as $index => $list)
-                            <flux:button
-                                x-on:click="
-                                            if (activeIndex === {{ $index }}) {
-                                                activeIndex = null; 
-                                            } else {
-                                                activeIndex = null; 
-                                                setTimeout(() => activeIndex = {{ $index }}, 500);
-                                            }
-                                        "
-                            >
-                                {{ $list['startWith'] }}
-                            </flux:button>
-                        @endforeach
-                    </div>
 
-                    <flux:separator />
-
-                    @foreach ($animes['data']['list'] as $index => $list)
-                        <ol
-                            x-cloak
-                            x-collapse
-                            x-show="activeIndex === {{ $index }}"
-                            class="list-inside list-decimal"
-                        >
-                            @foreach ($list['animeList'] as $anime)
-                                <li>
-                                    <flux:link
-                                        href="{{ route('anime.show', ['anime' => $anime['animeId']]) }}"
+                    <div class="grid gap-2 md:grid-cols-2">
+                        <div>
+                            <div class="grid grid-cols-3 gap-2 lg:grid-cols-4">
+                                @foreach ($animes['data']['list'] as $index => $list)
+                                    <flux:button
+                                        x-on:click="
+                                                    if (activeIndex === {{ $index }}) {
+                                                        activeIndex = null; 
+                                                    } else {
+                                                        activeIndex = null; 
+                                                        setTimeout(() => activeIndex = {{ $index }}, 500);
+                                                    }
+                                                "
                                     >
-                                        {{ !empty($anime['title']) ? $anime['title'] : $anime['synonyms'] }}
-                                    </flux:link>
-                                </li>
+                                        {{ $list['startWith'] }}
+                                    </flux:button>
+                                @endforeach
+                            </div>
+                        </div>
+                        <div>
+                            @foreach ($animes['data']['list'] as $index => $list)
+                                <ol
+                                    x-cloak
+                                    x-collapse
+                                    x-show="activeIndex === {{ $index }}"
+                                    class="list-inside list-disc ms-4"
+                                >
+                                    @foreach ($list['animeList'] as $anime)
+                                        <li>
+                                            <flux:link
+                                                href="{{ route('anime.show', ['anime' => $anime['animeId']]) }}"
+                                            >
+                                                {{ str()->title(str()->replace('-', ' ', $anime['animeId'])) }}
+                                            </flux:link>
+                                        </li>
+                                    @endforeach
+                                </ol>
                             @endforeach
-                        </ol>
-                    @endforeach
+                        </div>
+                    </div>
                 </div>
-
             </x-cards.app>
         @endif
     </div>

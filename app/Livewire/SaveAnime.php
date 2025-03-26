@@ -86,7 +86,7 @@ class SaveAnime extends Component
         // upsert the anime data
         $anime = $this->anime['data'];
         $anime['animeId'] = $this->animeId;
-        $anime['title'] = $this->anime['data']['synonyms'];
+        $anime['title'] = Str::title(Str::replace('-', ' ', $anime['animeId']));
 
         // Remove duplicates based on animeId
         $data = array_filter($data, function ($item) use ($anime) {
