@@ -25,20 +25,43 @@
                             {{ $data['title'] }}
                         </flux:heading>
                     </div>
-                    <flux:button
-                        icon="video-camera"
-                        href="{{ $data['videos']['sd']['url'] }}"
-                        target="_blank"
-                    >
-                        Download Video SD
-                    </flux:button>
-                    <flux:button
-                        icon="video-camera"
-                        href="{{ $data['videos']['hd']['url'] }}"
-                        target="_blank"
-                    >
-                        Download Video HD
-                    </flux:button>
+                    @foreach ($data['formats'] as $format)
+                        <flux:button
+                            icon="video-camera"
+                            target="_blank"
+                            href="{{ $format['url'] }}"
+                        >
+                            {{ $format['format_id'] }} - {{ $format['resolution'] }}
+                            ({{ $format['ext'] }})
+                        </flux:button>
+                    @endforeach
+                </div>
+            @elseif ($data && $socialMedia == 'youtube')
+                <flux:separator />
+                <div class="grid gap-2 md:grid-cols-2">
+                    <div class="flex flex-col gap-2 md:col-span-2">
+                        <img
+                            src="{{ $data['thumbnail'] }}"
+                            alt="thumbnail"
+                            class="aspect-video w-full rounded-lg object-cover brightness-50"
+                        >
+                        <flux:heading>
+                            {{ $data['title'] }}
+                        </flux:heading>
+                    </div>
+                    @foreach ($data['formats'] as $format)
+                        <flux:button
+                            icon="video-camera"
+                            target="_blank"
+                            href="{{ $format['url'] }}"
+                        >
+                            {{ $format['resolution'] }}
+                            @if (!$format['has_audio'])
+                                (Video Only)
+                            @endif
+                            ({{ $format['ext'] }})
+                        </flux:button>
+                    @endforeach
                 </div>
             @elseif ($data && $socialMedia == 'tiktok')
                 <flux:separator />
@@ -58,7 +81,7 @@
                         icon="video-camera"
                         target="_blank"
                         class="md:col-span-2"
-                        wire:click="downloadTiktokVideo('{{ $data['data']['play'] }}')"
+                        href="{{ $data['data']['play'] }}"
                     >
                         Download Video
                     </flux:button>

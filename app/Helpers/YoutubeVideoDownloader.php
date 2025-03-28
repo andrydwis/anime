@@ -4,7 +4,7 @@ namespace App\Helpers;
 
 use Illuminate\Support\Facades\Http;
 
-class FacebookVideoDownloader
+class YoutubeVideoDownloader
 {
     /**
      * Downloads metadata and video URLs for a given Facebook video.
@@ -19,7 +19,7 @@ class FacebookVideoDownloader
         try {
             $apiUrl = 'https://api.weaboo.my.id';
 
-            $response = Http::withHeaders(['Accept' => 'application/json'])->get($apiUrl.'/extract-metadata', ['platform' => 'facebook', 'video_url' => $url]);
+            $response = Http::withHeaders(['Accept' => 'application/json'])->get($apiUrl.'/extract-metadata', ['platform' => 'youtube', 'video_url' => $url]);
             $data = $response->json();
 
             return $data;

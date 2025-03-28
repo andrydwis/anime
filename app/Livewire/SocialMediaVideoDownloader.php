@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Helpers\FacebookVideoDownloader;
 use App\Helpers\TiktokVideoDownloader;
+use App\Helpers\YoutubeVideoDownloader;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
@@ -32,10 +33,14 @@ class SocialMediaVideoDownloader extends Component
         } elseif (Str::contains($this->url, 'tiktok.com')) {
             $this->socialMedia = 'tiktok';
             $this->data = TiktokVideoDownloader::parse($this->url);
+        } elseif (Str::contains($this->url, ['youtube.com', 'youtu.be'])) {
+            $this->socialMedia = 'youtube';
+            $this->data = YoutubeVideoDownloader::parse($this->url);
+            // dd($this->data);
         } else {
             $this->socialMedia = '';
             $this->data = [];
-            $this->addError('url', 'Untuk sekarang hanya support Facebook dan Tiktok.');
+            $this->addError('url', 'Untuk sekarang hanya support Facebook, Youtube dan Tiktok.');
         }
     }
 
