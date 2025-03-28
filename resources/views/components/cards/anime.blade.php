@@ -1,7 +1,7 @@
 @props(['anime'])
 <a
     {{ $attributes }}
-    href="{{ route('anime.show', ['anime' => $anime['id']]) }}"
+    href="{{ route('anime.show', ['anime' => $anime['slug']]) }}"
 >
     <div class="group relative flex flex-col overflow-hidden rounded-lg">
         <img

@@ -145,7 +145,7 @@
         </div>
     </div>
 
-    <div class="flex flex-col gap-2">
+    {{-- <div class="flex flex-col gap-2">
         <div class="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
             <div class="flex flex-col">
                 <flux:heading
@@ -199,7 +199,32 @@
                 @endforeach
             </div>
         </div>
-    </div>
+    </div> --}}
+
+    <video
+        id="vid"
+        onloadeddata="unm2()"
+        class="videodiv"
+        controls=""
+        autoplay=""
+        playsinline=""
+        crossorigin="anonymous"
+    >
+        <source
+            src="https://cg.animeheaven.me/video.mp4?02a1dc090c8e03b6e515110ac6b7ab23&amp;6b067f7ec4724560d0896c969b8a9645"
+            type="video/mp4"
+            onerror="xhr(event)"
+        >
+        <source
+            src="https://cc.animeheaven.me/cc/video.mp4?02a1dc090c8e03b6e515110ac6b7ab23&amp;6b067f7ec4724560d0896c969b8a9645&amp;err2a"
+            type="video/mp4"
+        >
+        <source
+            src="https://e2.animeheaven.me/e2/video.mp4?02a1dc090c8e03b6e515110ac6b7ab23&amp;6b067f7ec4724560d0896c969b8a9645&amp;err3"
+            type="video/mp4"
+        >
+        Your browser does not support HTML video.
+    </video>
 
     <div class="flex flex-col gap-2">
         <div class="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
@@ -224,7 +249,7 @@
             </flux:button>
         </div>
         <div class="grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-6">
-            @foreach ($home['recent_animes'] as $anime)
+            @foreach ($home['animes'] as $anime)
                 <x-cards.anime :anime="$anime" />
             @endforeach
         </div>

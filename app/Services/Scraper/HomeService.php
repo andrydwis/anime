@@ -2,7 +2,6 @@
 
 namespace App\Services\Scraper;
 
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use Symfony\Component\DomCrawler\Crawler;
@@ -19,44 +18,32 @@ class HomeService
 
     public static function scrapeHome(): array
     {
-        $html = Http::get(config('app.api_url').'/home')->body();
+        $html = Http::get(config('app.api_url'))->body();
         $crawler = new Crawler($html);
 
-        $spotlights = $crawler->filter('.deslide-wrap .swiper-slide')->each(function (Crawler $node) {
-            return [
-                'id' => Str::remove('/', $node->filter('.desi-buttons a.btn.btn-secondary.btn-radius')->attr('href')),
-                'title' => $node->filter('.desi-head-title')->text(),
-                'description' => $node->filter('.desi-description')->text(),
-                'image' => $node->filter('.film-poster-img')->attr('data-src'),
-                'category' => $node->filter('.scd-item i.fa-play-circle')->closest('.scd-item')->text(),
-                'duration' => $node->filter('.scd-item i.fa-clock')->closest('.scd-item')->text(),
-                'episodes' => $node->filter('.tick-item.tick-sub')->text(),
-                'release_date' => Carbon::parse($node->filter('.scd-item i.fa-calendar')->closest('.scd-item')->text())->isoFormat('DD MMM YYYY'),
-            ];
-        });
-
-        $recentAnimesSection = $crawler->filter('.block_area-header:contains("Latest Episode")')->closest('.block_area');
-        $recentAnimes = $recentAnimesSection->filter('.flw-item')->each(function (Crawler $node) {
-            $id = $node->filter('.film-poster-ahref')->attr('href');
-            if (preg_match('/\/watch\/([^?]+)/', $id, $matches)) {
-                $id = $matches[1];
-            }
+        $animes = $crawler->filter('.chart')->each(function (Crawler $node) {
+            $id = Str::remove('anime.php?', $node->filter('.charttitle.c a')->attr('href'));
+            $title = $node->filter('.charttitle.c a')->text();
+            $jp_title = $node->filter('.charttitlejp.c')->text();
+            $slug = Str::slug($title.'-'.$id);
+            $image = config('app.api_url').'/'.$node->filter('img')->attr('src');
+            $episodes = $node->filter('.chartep.c2')->text();
 
             return [
                 'id' => $id,
-                'title' => $node->filter('.film-name a')->text(),
-                'image' => $node->filter('.film-poster-img')->attr('data-src'),
-                'category' => $node->filter('.fdi-item')->text(),
-                'duration' => $node->filter('.fdi-duration')->text(),
-                'episodes' => $node->filter('.tick-item.tick-sub')->text(),
+                'title' => $title,
+                'jp_title' => $jp_title,
+                'slug' => $slug,
+                'image' => $image,
+                'episodes' => $episodes,
             ];
         });
 
-        $data = [
-            'spotlight_animes' => $spotlights,
-            'recent_animes' => $recentAnimes,
-        ];
+        // limit get only 16 animes
+        $animes = array_slice($animes, 0, 16);
 
-        return $data;
+        return [
+            'animes' => $animes,
+        ];
     }
 }

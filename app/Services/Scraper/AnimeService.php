@@ -18,81 +18,45 @@ class AnimeService
 
     public static function scrapeDetailAnime(string $animeId): array
     {
-        $html = Http::get(config('app.api_url').'/'.$animeId)->body();
+        $html = Http::get(config('app.api_url').'/anime.php?'.$animeId)->body();
         $crawler = new Crawler($html);
 
-        $malId = $crawler->filter('#syncData')->text();
-        $malId = json_decode($malId, true)['mal_id'];
-
-        // Extract Overview
-        $details['overview'] = $crawler->filter('.item-title.w-hide .text')->text();
-
-        // Extract Japanese Title
-        $details['japanese_title'] = $crawler->filter('.item-title:contains("Japanese") .name')->text();
-
-        // Extract Premiered
-        $details['season'] = $crawler->filter('.item-title:contains("Premiered") .name')->text();
-
-        // Extract Duration
-        $details['duration'] = $crawler->filter('.item-title:contains("Duration") .name')->text();
-
-        // Extract Status
-        $details['status'] = $crawler->filter('.item-title:contains("Status") .name')->text();
-
-        // Extract MAL Score
-        $details['mal_score'] = $crawler->filter('.item-title:contains("MAL Score") .name')->text();
-
-        // Extract Genres
-        $details['genres'] = [];
-        $crawler->filter('.item-list:contains("Genres") a')->each(function (Crawler $node) use (&$details) {
-            $details['genres'][] = [
-                'id' => Str::remove('/genre/', $node->attr('href')),
-                'name' => $node->text(),
-            ];
+        $id = $animeId;
+        $title = $crawler->filter('.infotitle.c')->text();
+        $jp_title = $crawler->filter('.infotitlejp.c')->text();
+        $slug = Str::slug($title.'-'.$id);
+        $image = $crawler->filter('.infoimg .posterimg')->attr('src');
+        $description = $crawler->filter('.infodes.c')->text();
+        $genres = $crawler->filter('.boxitem.bc2.c1')->each(function (Crawler $node) {
+            return $node->text();
         });
+        // Extract the first (and only) .infoyear.c element
+        $infoNode = $crawler->filter('.infoyear.c')->first();
 
-        // Extract Studios
-        $details['studios'] = [];
-        $crawler->filter('.item-title:contains("Studios") a.name')->each(function (Crawler $node) use (&$details) {
-            $details['studios'][] = $node->text();
-        });
+        // Extract the .inline.c2 elements
+        $infoElements = $infoNode->filter('.inline.c2');
 
-        // Extract Seasons
-        $seasons = [];
-        $crawler->filter('a.os-item')->each(function (Crawler $node) use (&$seasons) {
-            // Extract the title
-            $title = $node->filter('div.title')->text();
+        // Ensure there are enough elements to extract episodes, aired date, and rating
+        if ($infoElements->count() >= 3) {
+            $episodes = trim($infoElements->eq(0)->text()); // First element: episodes
+            $aired = trim($infoElements->eq(1)->text());    // Second element: aired date
+            $rating = trim($infoElements->eq(2)->text());   // Third element: rating
+        } else {
+            // Handle missing or insufficient data
+            $episodes = $aired = $rating = null;
+        }
 
-            // Extract the URL
-            $url = $node->attr('href');
-
-            $id = Str::remove('/', $url);
-
-            // if has .active class, then it is the current season
-            $isCurrent = $node->filter('.active')->count() > 0;
-
-            // Add the data to the seasons array
-            $seasons[] = [
-                'id' => $id,
-                'title' => $title,
-                'url' => $url,
-                'is_current' => $isCurrent,
-            ];
-        });
-
-        $data = [
-            'id' => $animeId,
-            'mal_id' => $malId,
-            'title' => $crawler->filter('.film-name.dynamic-name')->text(),
-            'description' => $crawler->filter('.film-description')->text(),
-            'image' => $crawler->filter('.film-poster-img')->attr('src'),
-            'category' => $crawler->filter('.fdi-item')->text(),
-            'duration' => $crawler->filter('.fdi-duration')->text(),
-            'episodes' => $crawler->filter('.tick-item.tick-sub')->text(),
-            'details' => $details,
-            'seasons' => $seasons,
+        return [
+            'id' => $id,
+            'title' => $title,
+            'jp_title' => $jp_title,
+            'slug' => $slug,
+            'image' => $image,
+            'description' => $description,
+            'genres' => $genres,
+            'episodes' => $episodes,
+            'aired' => $aired,
+            'rating' => $rating,
         ];
-
-        return $data;
     }
 }
