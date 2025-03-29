@@ -28,7 +28,7 @@
             </div>
         </div>
         @if ($animes['data'])
-            <div class="grid grid-cols-2 gap-2 lg:grid-cols-4">
+            <div class="grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-6">
                 @foreach ($animes['data']['animeList'] as $anime)
                     <x-cards.anime :anime="$anime" />
                 @endforeach
