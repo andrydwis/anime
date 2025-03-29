@@ -114,5 +114,4 @@
             </flux:text>
         </div>
     </div>
-
 </x-cards.app>

@@ -10,16 +10,16 @@
         <div class="flex min-h-full flex-col gap-4">
             <div class="flex flex-col">
                 <flux:heading>
-                    Cari Anime
+                    Cari Anime atau Manga
                 </flux:heading>
                 <flux:text>
-                    Masukkan judul anime yang kamu cari
+                    Masukkan judul anime atau manga yang kamu cari
                 </flux:text>
             </div>
 
             <flux:input
                 icon="magnifying-glass"
-                placeholder="Judul anime"
+                placeholder="Judul anime atau manga"
                 wire:model.live.debounce.500ms="search"
             >
                 <x-slot name="iconTrailing">
@@ -48,29 +48,52 @@
                             </div>
                         </x-cards.app>
                     @endfor
-                    @forelse ($animes as $anime)
+                    @if ($search && !empty($animes))
+                        <div class="col-span-2 md:col-span-3">
+                            <flux:heading>
+                                Anime
+                            </flux:heading>
+                        </div>
+                    @endif
+                    @foreach ($animes as $anime)
                         <x-cards.anime
                             wire:loading.remove
                             wire:target="search"
                             :anime="$anime"
                         />
-                    @empty
-                        @if ($search)
-                            <x-cards.app
-                                wire:loading.remove
-                                wire:target="search"
-                                class="col-span-2 md:col-span-3"
+                    @endforeach
+                    @if ($search && !empty($mangas))
+                        <div class="col-span-2 md:col-span-3">
+                            <flux:heading>
+                                Manga
+                            </flux:heading>
+                        </div>
+                    @endif
+                    @foreach ($mangas as $manga)
+                        <div>
+                            <flux:link
+                                href="{{ route('manga.show', ['manga' => $manga['id']]) }}"
                             >
-                                <flux:heading>
-                                    Anime Tidak Ditemukan
-                                </flux:heading>
-                                <flux:text>
-                                    Oops! Anime yang kamu cari tidak ditemukan.
-                                    Coba cari kata kunci lain.
-                                </flux:text>
-                            </x-cards.app>
-                        @endif
-                    @endforelse
+                                {{ $manga['title'] }}
+                            </flux:link>
+                        </div>
+                    @endforeach
+
+                    @if ($search && !empty($animes) && !empty($mangas))
+                        <x-cards.app
+                            wire:loading.remove
+                            wire:target="search"
+                            class="col-span-2 md:col-span-3"
+                        >
+                            <flux:heading>
+                                Anime atau Manga Tidak Ditemukan
+                            </flux:heading>
+                            <flux:text>
+                                Oops! Anime yang kamu cari tidak ditemukan.
+                                Coba cari kata kunci lain.
+                            </flux:text>
+                        </x-cards.app>
+                    @endif
                 </div>
             </div>
         </div>

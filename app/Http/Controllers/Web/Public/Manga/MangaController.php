@@ -10,12 +10,36 @@ class MangaController extends Controller
 {
     public function index(): View
     {
-        $response = Http::get('https://consumet-nine-hazel.vercel.app/manga/mangadex/read/e7c4d0c9-cec9-4116-aba1-178b2a5d4cc3')->json();
+        return view('public.manga.index');
+    }
+
+    public function show(string $mangaId): View
+    {
+        $response = Http::get(config('app.consumet_api_url').'/manga/mangadex/info/'.$mangaId)->json();
 
         $data = [
-            'pages' => $response,
+            'manga' => $response,
         ];
 
-        return view('public.manga.index', $data);
+        return view('public.manga.show', $data);
+    }
+
+    public function read(string $mangaId, string $chapterId): View
+    {
+        $manga = Http::get(config('app.consumet_api_url').'/manga/mangadex/info/'.$mangaId)->json();
+        $pages = Http::get(config('app.consumet_api_url').'/manga/mangadex/read/'.$chapterId)->json();
+
+        $chapter = collect($manga['chapters'])->firstWhere('id', $chapterId);
+
+        $data = [
+            'mangaId' => $mangaId,
+            'chapterId' => $chapterId,
+            'manga' => $manga,
+            'chapter' => $chapter,
+            'chapters' => $manga['chapters'],
+            'pages' => $pages,
+        ];
+
+        return view('public.manga.read', $data);
     }
 }

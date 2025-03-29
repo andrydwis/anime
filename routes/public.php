@@ -19,6 +19,8 @@ Route::get('anime/{anime}', [App\Http\Controllers\Web\Public\Anime\AnimeControll
 Route::get('anime/{anime}/episode/{episode}', [App\Http\Controllers\Web\Public\Anime\EpisodeController::class, 'show'])->name('anime.episode.show');
 
 Route::get('manga', [App\Http\Controllers\Web\Public\Manga\MangaController::class, 'index'])->name('manga.index');
+Route::get('manga/{manga}', [App\Http\Controllers\Web\Public\Manga\MangaController::class, 'show'])->name('manga.show');
+Route::get('manga/{mangaId}/chapter/{chapterId}', [App\Http\Controllers\Web\Public\Manga\MangaController::class, 'read'])->name('manga.read');
 
 Route::get('gachamon', [App\Http\Controllers\Web\Public\Gachamon\GachamonController::class, 'index'])->name('gachamon.index')->middleware(['auth']);
 Route::get('gachamon/{gachamon}', [App\Http\Controllers\Web\Public\Gachamon\GachamonController::class, 'show'])->name('gachamon.show')->middleware(['auth']);

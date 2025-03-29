@@ -56,7 +56,7 @@ return [
 
     'api_url' => env('API_URL', 'http://localhost'),
 
-    'beta_api_url' => env('BETA_API_URL', 'http://localhost'),
+    'consumet_api_url' => env('CONSUMET_API_URL', 'http://localhost'),
 
     /*
     |--------------------------------------------------------------------------

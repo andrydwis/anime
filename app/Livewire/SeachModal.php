@@ -14,6 +14,8 @@ class SeachModal extends Component
 
     public array $animes = [];
 
+    public array $mangas = [];
+
     public function render(): View
     {
         return view('livewire.seach-modal');
@@ -23,8 +25,10 @@ class SeachModal extends Component
     {
         if ($this->search) {
             $this->searchAnime();
+            $this->searchManga();
         } else {
             $this->animes = [];
+            $this->mangas = [];
         }
     }
 
@@ -32,8 +36,10 @@ class SeachModal extends Component
     {
         if ($this->search) {
             $this->searchAnime();
+            $this->searchManga();
         } else {
             $this->animes = [];
+            $this->mangas = [];
         }
     }
 
@@ -42,5 +48,12 @@ class SeachModal extends Component
         $animes = Http::get(config('app.api_url').'/samehadaku/search', ['q' => $this->search])->json();
 
         $this->animes = $animes['data']['animeList'] ?? [];
+    }
+
+    public function searchManga(): void
+    {
+        $mangas = Http::get(config('app.consumet_api_url').'/manga/mangadex/'.$this->search)->json();
+
+        $this->mangas = $mangas['results'] ?? [];
     }
 }
