@@ -18,6 +18,8 @@ Route::delete('anime/list/{playlist:slug}', [App\Http\Controllers\Web\Public\Ani
 Route::get('anime/{anime}', [App\Http\Controllers\Web\Public\Anime\AnimeController::class, 'show'])->name('anime.show');
 Route::get('anime/{anime}/episode/{episode}', [App\Http\Controllers\Web\Public\Anime\EpisodeController::class, 'show'])->name('anime.episode.show');
 
+Route::get('manga', [App\Http\Controllers\Web\Public\Manga\MangaController::class, 'index'])->name('manga.index');
+
 Route::get('gachamon', [App\Http\Controllers\Web\Public\Gachamon\GachamonController::class, 'index'])->name('gachamon.index')->middleware(['auth']);
 Route::get('gachamon/{gachamon}', [App\Http\Controllers\Web\Public\Gachamon\GachamonController::class, 'show'])->name('gachamon.show')->middleware(['auth']);
 
