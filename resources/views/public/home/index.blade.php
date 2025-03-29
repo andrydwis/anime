@@ -171,6 +171,13 @@
             @foreach (array_slice($home['data']['recent']['animeList'], 0, 12) as $anime)
                 <x-cards.anime :anime="$anime" />
             @endforeach
+            <flux:button
+                icon="eye"
+                class="col-span-2 !flex md:col-span-4 lg:col-span-6 lg:!hidden"
+                href="{{ route('anime.recent.index') }}"
+            >
+                Lihat Semua
+            </flux:button>
         </div>
     </div>
 
@@ -202,6 +209,13 @@
                 @foreach ($events as $event)
                     <x-cards.event :event="$event" />
                 @endforeach
+                <flux:button
+                    icon="eye"
+                    class="col-span-2 !flex md:col-span-4 lg:!hidden"
+                    href="{{ route('events.index') }}"
+                >
+                    Lihat Semua
+                </flux:button>
             </div>
         </div>
     @endif
@@ -234,6 +248,13 @@
                 @foreach ($news as $newsData)
                     <x-cards.news :news="$newsData" />
                 @endforeach
+                <flux:button
+                    icon="eye"
+                    class="col-span-2 !flex md:col-span-4 lg:!hidden"
+                    href="{{ route('news.index') }}"
+                >
+                    Lihat Semua
+                </flux:button>
             </div>
         </div>
     @endif

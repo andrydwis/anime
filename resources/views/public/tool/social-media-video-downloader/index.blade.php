@@ -24,6 +24,19 @@
                 </flux:text>
             </div>
         </div>
+
+        <flux:callout
+            icon="video-camera"
+            color="cyan"
+        >
+            <flux:callout.heading>
+                Fitur Baru, Social Media Video Downloader 🚀
+            </flux:callout.heading>
+            <flux:callout.text>
+                Support download video dari Facebook, Tiktok dan Instagram!
+            </flux:callout.text>
+        </flux:callout>
+
         <livewire:social-media-video-downloader />
     </div>
 </x-layouts.app>

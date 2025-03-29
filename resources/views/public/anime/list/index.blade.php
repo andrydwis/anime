@@ -67,7 +67,7 @@
                 <div class="grid gap-2 lg:grid-cols-2">
                     @forelse ($playlists as $playlist)
                         <flux:button
-                            icon="film"
+                            icon="play-circle"
                             href="{{ route('anime.list.show', $playlist) }}"
                         >
                             {{ $playlist?->name }}
@@ -155,7 +155,7 @@
                 >
                     Watchlist
                 </flux:heading>
-                <div class="grid grid-cols-2 gap-2 lg:grid-cols-4">
+                <div class="grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-6">
                     @forelse ($watchlists as $animeData)
                         @php
                             $anime = $animeData->data['anime']['data'];
@@ -189,7 +189,7 @@
                         <flux:text>
                             {{ $date }}
                         </flux:text>
-                        <div class="grid grid-cols-2 gap-2 lg:grid-cols-4">
+                        <div class="grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-6">
                             @foreach ($animes as $animeData)
                                 @if ($animeData['type'] == 'anime')
                                     @php
