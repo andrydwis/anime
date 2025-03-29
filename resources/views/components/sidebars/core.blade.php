@@ -3,7 +3,6 @@
     sticky
     class="z-[100] w-full border-r border-zinc-200 bg-white dark:border-zinc-600 dark:bg-zinc-900/50 dark:backdrop-blur"
 >
-
     <div class="flex flex-row items-center justify-between gap-2">
         <flux:brand
             href="/"

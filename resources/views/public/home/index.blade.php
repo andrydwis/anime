@@ -112,9 +112,9 @@
                 >
                     Tools Lainnya
                 </flux:heading>
-                <flux:subheading level="h2">
+                <flux:text>
                     Kumpulan tools dan fitur gratis lainnya untuk membantu kamu
-                </flux:subheading>
+                </flux:text>
             </div>
         </div>
         <div class="grid gap-2 md:grid-cols-2">
@@ -155,9 +155,9 @@
                 >
                     Anime Terbaru
                 </flux:heading>
-                <flux:subheading level="h2">
+                <flux:text>
                     Update terbaru anime season ini
-                </flux:subheading>
+                </flux:text>
             </div>
             <flux:button
                 icon="eye"
@@ -167,10 +167,17 @@
                 Lihat Semua
             </flux:button>
         </div>
-        <div class="grid grid-cols-2 gap-2 lg:grid-cols-4">
-            @foreach ($home['data']['recent']['animeList'] as $anime)
+        <div class="grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-6">
+            @foreach (array_slice($home['data']['recent']['animeList'], 0, 12) as $anime)
                 <x-cards.anime :anime="$anime" />
             @endforeach
+            <flux:button
+                icon="eye"
+                class="col-span-2 !flex md:col-span-4 lg:col-span-6 lg:!hidden"
+                href="{{ route('anime.recent.index') }}"
+            >
+                Lihat Semua
+            </flux:button>
         </div>
     </div>
 
@@ -186,9 +193,9 @@
                     >
                         Event
                     </flux:heading>
-                    <flux:subheading level="h2">
+                    <flux:text>
                         Informasi terbaru event yang akan datang
-                    </flux:subheading>
+                    </flux:text>
                 </div>
                 <flux:button
                     icon="eye"
@@ -202,6 +209,13 @@
                 @foreach ($events as $event)
                     <x-cards.event :event="$event" />
                 @endforeach
+                <flux:button
+                    icon="eye"
+                    class="col-span-2 !flex md:col-span-4 lg:!hidden"
+                    href="{{ route('events.index') }}"
+                >
+                    Lihat Semua
+                </flux:button>
             </div>
         </div>
     @endif
@@ -218,9 +232,9 @@
                     >
                         Berita Terbaru
                     </flux:heading>
-                    <flux:subheading level="h2">
+                    <flux:text>
                         Berita terbaru seputar anime, manga, game, dan lainnya
-                    </flux:subheading>
+                    </flux:text>
                 </div>
                 <flux:button
                     icon="eye"
@@ -234,6 +248,13 @@
                 @foreach ($news as $newsData)
                     <x-cards.news :news="$newsData" />
                 @endforeach
+                <flux:button
+                    icon="eye"
+                    class="col-span-2 !flex md:col-span-4 lg:!hidden"
+                    href="{{ route('news.index') }}"
+                >
+                    Lihat Semua
+                </flux:button>
             </div>
         </div>
     @endif

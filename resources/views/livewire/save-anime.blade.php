@@ -69,9 +69,9 @@
                     <flux:heading>
                         Tambah Playlist
                     </flux:heading>
-                    <flux:subheading>
+                    <flux:text>
                         Buat playlist baru kumpulan anime favoritmu
-                    </flux:subheading>
+                    </flux:text>
                 </div>
 
                 <flux:input

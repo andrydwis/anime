@@ -16,9 +16,9 @@
             >
                 Tambah Berita
             </flux:heading>
-            <flux:subheading>
+            <flux:text>
                 Berita terbaru seputar anime, manga, game, dan lainnya
-            </flux:subheading>
+            </flux:text>
         </div>
     </div>
 

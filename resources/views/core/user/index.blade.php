@@ -15,9 +15,9 @@
             >
                 Daftar Pengguna
             </flux:heading>
-            <flux:subheading>
+            <flux:text>
                 Semua pengguna {{ config('app.name') }}
-            </flux:subheading>
+            </flux:text>
         </div>
     </div>
 
@@ -45,7 +45,9 @@
                     @forelse ($users as $user)
                         <x-tables.row>
                             <x-tables.cell>
-                                {{ $user?->name }}
+                                <flex:text>
+                                    {{ $user?->name }}
+                                </flex:text>
                             </x-tables.cell>
                             <x-tables.cell>
                                 <flux:link href="mailto:{{ $user->email }}">
@@ -106,10 +108,10 @@
                                                         <flux:heading size="lg">
                                                             Hapus Pengguna
                                                         </flux:heading>
-                                                        <flux:subheading>
+                                                        <flux:text>
                                                             Apakah kamu yakin ingin
                                                             menghapus pengguna ini?
-                                                        </flux:subheading>
+                                                        </flux:text>
                                                     </div>
                                                     <div
                                                         class="flex flex-row items-center gap-2">

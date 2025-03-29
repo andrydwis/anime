@@ -3,8 +3,8 @@
         <flux:heading>
             Ubur-Ubur 🪼 Iklan Lele 🐟. Maintenance Dulu Lee...
         </flux:heading>
-        <flux:subheading>
+        <flux:text>
             Saat ini website sedang dalam maintenance, coba lagi nanti ya 👋.
-        </flux:subheading>
+        </flux:text>
     </x-cards.app>
 </x-layouts.auth>

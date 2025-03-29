@@ -30,10 +30,10 @@
                 >
                     Daftar Anime Saya
                 </flux:heading>
-                <flux:subheading level="h2">
+                <flux:text>
                     Semua anime yang pernah kamu tonton, favorit, dan watchlist
                     yang kamu buat
-                </flux:subheading>
+                </flux:text>
             </div>
         </div>
 
@@ -42,7 +42,6 @@
                 <div class="flex flex-row items-center justify-between gap-2">
                     <flux:heading
                         size="xl"
-                        level="h3"
                         class="!font-bold"
                     >
                         Playlist
@@ -68,7 +67,7 @@
                 <div class="grid gap-2 lg:grid-cols-2">
                     @forelse ($playlists as $playlist)
                         <flux:button
-                            icon="film"
+                            icon="play-circle"
                             href="{{ route('anime.list.show', $playlist) }}"
                         >
                             {{ $playlist?->name }}
@@ -99,9 +98,9 @@
                         <flux:heading>
                             Tambah Playlist
                         </flux:heading>
-                        <flux:subheading>
+                        <flux:text>
                             Buat playlist baru kumpulan anime favoritmu
-                        </flux:subheading>
+                        </flux:text>
                     </div>
 
                     <flux:input
@@ -152,12 +151,11 @@
             <div class="flex flex-col gap-2">
                 <flux:heading
                     size="xl"
-                    level="h3"
                     class="!font-bold"
                 >
                     Watchlist
                 </flux:heading>
-                <div class="grid grid-cols-2 gap-2 lg:grid-cols-4">
+                <div class="grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-6">
                     @forelse ($watchlists as $animeData)
                         @php
                             $anime = $animeData->data['anime']['data'];
@@ -169,9 +167,9 @@
                             <flux:heading>
                                 Belum ada watchlist
                             </flux:heading>
-                            <flux:subheading>
+                            <flux:text>
                                 Kamu belum pernah menambahkan anime ke watchlist
-                            </flux:subheading>
+                            </flux:text>
                         </x-cards.app>
                     @endforelse
                 </div>
@@ -182,17 +180,16 @@
             <div class="flex flex-col gap-2">
                 <flux:heading
                     size="xl"
-                    level="h3"
                     class="!font-bold"
                 >
                     Riwayat Menonton
                 </flux:heading>
                 <div class="flex flex-col gap-2">
                     @forelse ($histories as $date => $animes)
-                        <flux:subheading>
+                        <flux:text>
                             {{ $date }}
-                        </flux:subheading>
-                        <div class="grid grid-cols-2 gap-2 lg:grid-cols-4">
+                        </flux:text>
+                        <div class="grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-6">
                             @foreach ($animes as $animeData)
                                 @if ($animeData['type'] == 'anime')
                                     @php
@@ -214,17 +211,6 @@
                                             : null;
                                     @endphp
                                     <x-cards.anime :anime="$anime" />
-                                @else
-                                    @php
-                                        $anime = $animeData['data']['anime']['info'];
-                                        $episode = $animeData['data']['episode'];
-                                        $anime['episodes']['sub'] = $episode['episodeNo'];
-                                        $anime['episodeId'] = str()->remove(
-                                            $anime['id'] . '?ep=',
-                                            $episode['episodeId'],
-                                        );
-                                    @endphp
-                                    <x-cards.animex :anime="$anime" />
                                 @endif
                             @endforeach
                         </div>
@@ -233,13 +219,13 @@
                             <flux:heading>
                                 Belum ada riwayat anime yang pernah kamu tonton
                             </flux:heading>
-                            <flux:subheading>
+                            <flux:text>
                                 Kamu belum pernah menonton anime apapun, coba cari
                                 anime yang kamu sukai
                                 <flux:link href="{{ route('anime.recent.index') }}">
                                     disini
                                 </flux:link>
-                            </flux:subheading>
+                            </flux:text>
                         </x-cards.app>
                     @endforelse
                 </div>

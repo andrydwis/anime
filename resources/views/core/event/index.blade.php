@@ -15,9 +15,9 @@
             >
                 Event
             </flux:heading>
-            <flux:subheading>
+            <flux:text>
                 Informasi terbaru event yang akan datang
-            </flux:subheading>
+            </flux:text>
         </div>
         <flux:button
             variant="primary"
@@ -52,26 +52,32 @@
                     @forelse ($events as $event)
                         <x-tables.row>
                             <x-tables.cell>
-                                {{ $event?->name }}
+                                <flex:text>
+                                    {{ $event?->name }}
+                                </flex:text>
                             </x-tables.cell>
                             <x-tables.cell class="text-center">
-                                @if ($event?->start_date && $event?->end_date)
-                                    {{ $event?->start_date?->isoFormat('DD MMM YYYY') }}
-                                    -
-                                    {{ $event?->end_date?->isoFormat('DD MMM YYYY') }}
-                                @elseif($event?->start_date)
-                                    {{ $event?->start_date?->isoFormat('DD MMM YYYY') }}
-                                @else
-                                    -
-                                @endif
+                                <flex:text>
+                                    @if ($event?->start_date && $event?->end_date)
+                                        {{ $event?->start_date?->isoFormat('DD MMM YYYY') }}
+                                        -
+                                        {{ $event?->end_date?->isoFormat('DD MMM YYYY') }}
+                                    @elseif($event?->start_date)
+                                        {{ $event?->start_date?->isoFormat('DD MMM YYYY') }}
+                                    @else
+                                        -
+                                    @endif
+                                </flex:text>
                             </x-tables.cell>
                             <x-tables.cell class="text-center">
-                                @if ($event->province && $event->city)
-                                    {{ $event?->province?->name }},
-                                    {{ $event?->city?->name }}
-                                @else
-                                    -
-                                @endif
+                                <flex:text>
+                                    @if ($event->province && $event->city)
+                                        {{ $event?->province?->name }},
+                                        {{ $event?->city?->name }}
+                                    @else
+                                        -
+                                    @endif
+                                </flex:text>
                             </x-tables.cell>
                             <x-tables.cell class="text-center">
                                 <livewire:switch-publish-event :event="$event" />
@@ -107,11 +113,11 @@
                                                         <flux:heading size="lg">
                                                             Hapus Event
                                                         </flux:heading>
-                                                        <flux:subheading>
+                                                        <flux:text>
                                                             Apakah kamu yakin
                                                             ingin menghapus event
                                                             ini?
-                                                        </flux:subheading>
+                                                        </flux:text>
                                                     </div>
 
                                                     <div
@@ -147,9 +153,9 @@
                                 colspan="4"
                                 class="text-center"
                             >
-                                <flux:subheading>
+                                <flux:text>
                                     Tidak ada event
-                                </flux:subheading>
+                                </flux:text>
                             </x-tables.cell>
                         </x-tables.row>
                     @endforelse

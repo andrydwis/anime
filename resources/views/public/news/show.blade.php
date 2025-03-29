@@ -26,10 +26,10 @@
                 >
                     {{ $news?->title }}
                 </flux:heading>
-                <flux:subheading level="h2">
+                <flux:text>
                     Oleh {{ $news?->user?->name }} |
                     {{ $news?->created_at->isoFormat('DD MMM YYYY') }}
-                </flux:subheading>
+                </flux:text>
             </div>
         </div>
 

@@ -18,7 +18,7 @@
             loading="lazy"
             src="{{ $anime['poster'] }}"
             alt="cover"
-            class="aspect-video object-cover transition-all group-hover:scale-110 group-hover:brightness-50"
+            class="aspect-[3/4] object-cover transition-all group-hover:scale-110 group-hover:brightness-50"
         >
         @if (isset($anime['episodes']))
             <flux:badge

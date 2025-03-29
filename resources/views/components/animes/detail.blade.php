@@ -109,9 +109,9 @@
                 </flux:badge>
             </div>
 
-            <flux:subheading level="h3">
+            <flux:text>
                 {{ implode(' ', $anime['data']['synopsis']['paragraphs']) }}
-            </flux:subheading>
+            </flux:text>
         </div>
     </div>
 

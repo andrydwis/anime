@@ -1,11 +1,13 @@
 <x-layouts.app title="Syarat dan Ketentuan">
-    <article class="prose prose-headings:text-white text-white">
+    <article class="prose dark:prose-headings:text-white dark:text-white">
         <h1>Syarat dan Ketentuan</h1>
 
         <section>
             <h2>1. Penerimaan Syarat</h2>
-            <p>Dengan mengakses dan menggunakan Weaboo.my.id, Anda menyetujui untuk
-                mematuhi syarat dan ketentuan yang ditetapkan dalam halaman ini.</p>
+            <p>
+                Dengan mengakses dan menggunakan Weaboo.my.id, Anda menyetujui untuk
+                mematuhi syarat dan ketentuan yang ditetapkan dalam halaman ini.
+            </p>
         </section>
 
         <section>
@@ -37,8 +39,10 @@
 
         <section>
             <h2>5. Perubahan Syarat</h2>
-            <p>Kami berhak mengubah Syarat dan Ketentuan ini kapan saja. Perubahan
-                akan diberlakukan segera setelah dipublikasikan di situs ini.</p>
+            <p>
+                Kami berhak mengubah Syarat dan Ketentuan ini kapan saja. Perubahan
+                akan diberlakukan segera setelah dipublikasikan di situs ini.
+            </p>
         </section>
     </article>
 </x-layouts.app>

@@ -38,9 +38,9 @@
                             )->firstWhere('language.name', 'ja-Hrkt');
                             $speciesName = $species['name'];
                         @endphp
-                        <flux:subheading>
+                        <flux:text>
                             {{ str()->title($speciesName) }}
-                        </flux:subheading>
+                        </flux:text>
                     </div>
                     <div class="flex flex-row flex-wrap gap-2">
                         @foreach ($gachaResult['types'] as $type)
@@ -120,9 +120,9 @@
                         <flux:heading class="text-center">
                             Klik Gacha untuk mendapatkan Pokemon!
                         </flux:heading>
-                        <flux:subheading class="text-center">
+                        <flux:text class="text-center">
                             Jangan lupa kerjakan misi harian untuk mendapatkan Wibux!
-                        </flux:subheading>
+                        </flux:text>
                     </div>
                 </div>
             </x-cards.app>
@@ -143,9 +143,9 @@
                         <flux:heading class="text-center">
                             Sedang Memanggil Pokemon ✨
                         </flux:heading>
-                        <flux:subheading class="text-center">
+                        <flux:text class="text-center">
                             Tunggu sebentar ya!
-                        </flux:subheading>
+                        </flux:text>
                     </div>
                 </div>
             </div>
@@ -199,9 +199,9 @@
                                         )->firstWhere('language.name', 'ja-Hrkt');
                                         $speciesName = $species['name'];
                                     @endphp
-                                    <flux:subheading>
+                                    <flux:text>
                                         {{ str()->title($speciesName) }}
-                                    </flux:subheading>
+                                    </flux:text>
                                 </div>
                                 <div class="flex flex-row gap-2">
                                     @foreach ($history['types'] as $type)
@@ -244,9 +244,9 @@
                         <flux:heading>
                             Belum Ada Riwayat Gacha
                         </flux:heading>
-                        <flux:subheading>
+                        <flux:text>
                             Ayo gacha sekarang!
-                        </flux:subheading>
+                        </flux:text>
                     </div>
                 </x-cards.app>
             @endforelse

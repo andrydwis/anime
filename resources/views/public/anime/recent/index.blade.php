@@ -22,13 +22,13 @@
                 >
                     Anime Terbaru
                 </flux:heading>
-                <flux:subheading level="h2">
+                <flux:text>
                     Update terbaru anime season ini
-                </flux:subheading>
+                </flux:text>
             </div>
         </div>
         @if ($animes['data'])
-            <div class="grid grid-cols-2 gap-2 lg:grid-cols-4">
+            <div class="grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-6">
                 @foreach ($animes['data']['animeList'] as $anime)
                     <x-cards.anime :anime="$anime" />
                 @endforeach
@@ -65,9 +65,9 @@
                 <flux:heading>
                     Anime Tidak Tersedia
                 </flux:heading>
-                <flux:subheading>
+                <flux:text>
                     Coba cari ke halaman lain atau coba lagi nanti
-                </flux:subheading>
+                </flux:text>
             </x-cards.app>
         @endif
     </div>

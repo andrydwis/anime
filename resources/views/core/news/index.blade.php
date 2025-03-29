@@ -15,9 +15,9 @@
             >
                 Berita
             </flux:heading>
-            <flux:subheading>
+            <flux:text>
                 Berita terbaru seputar anime, manga, game, dan lainnya
-            </flux:subheading>
+            </flux:text>
         </div>
         <div class="flex flex-row items-center gap-2">
             <div>
@@ -39,9 +39,9 @@
                             <flux:heading>
                                 Scraping Berita
                             </flux:heading>
-                            <flux:subheading>
+                            <flux:text>
                                 Masukkan link berita yang akan di scraping
-                            </flux:subheading>
+                            </flux:text>
                         </div>
 
                         <flux:input
@@ -97,10 +97,14 @@
                     @forelse ($news as $newsData)
                         <x-tables.row>
                             <x-tables.cell>
-                                {{ $newsData?->title }}
+                                <flex:text>
+                                    {{ $newsData?->title }}
+                                </flex:text>
                             </x-tables.cell>
                             <x-tables.cell>
-                                {{ $newsData?->user?->name }}
+                                <flex:text>
+                                    {{ $newsData?->user?->name }}
+                                </flex:text>
                             </x-tables.cell>
                             <x-tables.cell class="text-center">
                                 <livewire:switch-publish-news :news="$newsData" />
@@ -136,11 +140,11 @@
                                                         <flux:heading size="lg">
                                                             Hapus Berita
                                                         </flux:heading>
-                                                        <flux:subheading>
+                                                        <flux:text>
                                                             Apakah kamu yakin
                                                             ingin menghapus berita
                                                             ini?
-                                                        </flux:subheading>
+                                                        </flux:text>
                                                     </div>
 
                                                     <div
@@ -176,9 +180,9 @@
                                 colspan="4"
                                 class="text-center"
                             >
-                                <flux:subheading>
+                                <flux:text>
                                     Tidak ada berita
-                                </flux:subheading>
+                                </flux:text>
                             </x-tables.cell>
                         </x-tables.row>
                     @endforelse

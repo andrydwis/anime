@@ -1,5 +1,5 @@
 <x-layouts.app title="Kebijakan Privasi">
-    <article class="prose prose-headings:text-white text-white">
+    <article class="prose dark:prose-headings:text-white dark:text-white">
         <h1>Kebijakan Privasi</h1>
 
         <section>

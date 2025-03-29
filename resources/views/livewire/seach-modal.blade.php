@@ -12,9 +12,9 @@
                 <flux:heading>
                     Cari Anime
                 </flux:heading>
-                <flux:subheading>
+                <flux:text>
                     Masukkan judul anime yang kamu cari
-                </flux:subheading>
+                </flux:text>
             </div>
 
             <flux:input
@@ -31,12 +31,12 @@
             </flux:input>
 
             <div class="flex h-0 flex-grow flex-col gap-2 overflow-auto rounded-lg">
-                <div class="grid grid-cols-2 gap-2">
-                    @for ($i = 0; $i < 8; $i++)
+                <div class="grid grid-cols-2 gap-2 md:grid-cols-3">
+                    @for ($i = 0; $i < 9; $i++)
                         <x-cards.app
                             wire:loading
                             wire:target="search"
-                            class="aspect-video animate-pulse !bg-zinc-200 dark:!bg-zinc-600"
+                            class="aspect-[3/4] animate-pulse !bg-zinc-200 !p-2 dark:!bg-zinc-600"
                         >
                             <div class="flex flex-col gap-2">
                                 <div
@@ -56,16 +56,18 @@
                         />
                     @empty
                         @if ($search)
-                            <x-cards.app class="col-span-2">
+                            <x-cards.app
+                                wire:loading.remove
+                                wire:target="search"
+                                class="col-span-2 md:col-span-3"
+                            >
                                 <flux:heading>
                                     Anime Tidak Ditemukan
                                 </flux:heading>
-                                <flux:subheading>
-                                    Oops! Anime yang kamu cari tidak ditemukan. Coba cari
-                                    kata
-                                    kunci
-                                    lain.
-                                </flux:subheading>
+                                <flux:text>
+                                    Oops! Anime yang kamu cari tidak ditemukan.
+                                    Coba cari kata kunci lain.
+                                </flux:text>
                             </x-cards.app>
                         @endif
                     @endforelse

@@ -125,7 +125,7 @@
                 position="top"
                 align="end"
             >
-                <flux:profile initials="{{ auth()->user()->initials }}" />
+                <flux:profile avatar:name="{{ auth()?->user()?->name }}" />
                 <flux:menu>
                     @role('admin')
                         <flux:menu.item

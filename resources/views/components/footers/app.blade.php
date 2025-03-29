@@ -11,10 +11,10 @@
                     href="https://trakteer.id/weaboo-my-id"
                 />
             </div>
-            <flux:subheading class="lg:w-1/4">
+            <flux:text class="lg:w-1/4">
                 Weaboo.my.id tidak menyimpan file apa pun di server kami. Kami hanya
                 menyediakan tautan ke media yang dihosting oleh layanan pihak ketiga.
-            </flux:subheading>
+            </flux:text>
             <div class="flex flex-row flex-wrap items-center gap-2">
                 <a href="{{ route('dmca') }}">
                     <flux:badge
@@ -41,9 +41,9 @@
                     </flux:badge>
                 </a>
             </div>
-            <flux:subheading class="lg:w-1/4">
+            <flux:text class="lg:w-1/4">
                 © {{ now()->year }} {{ config('app.name') }}
-            </flux:subheading>
+            </flux:text>
         </div>
     </x-cards.app>
 </footer>

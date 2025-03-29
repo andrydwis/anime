@@ -33,9 +33,9 @@
                 >
                     {{ $playlist?->name }}
                 </flux:heading>
-                <flux:subheading level="h2">
+                <flux:text>
                     Detail playlist {{ $playlist?->name }}
-                </flux:subheading>
+                </flux:text>
             </div>
         </div>
 
@@ -79,9 +79,9 @@
                                     <flux:heading>
                                         Tambah Playlist
                                     </flux:heading>
-                                    <flux:subheading>
+                                    <flux:text>
                                         Buat playlist baru kumpulan anime favoritmu
-                                    </flux:subheading>
+                                    </flux:text>
                                 </div>
 
                                 <flux:input
@@ -147,11 +147,11 @@
                                     <flux:heading size="lg">
                                         Hapus Playlist
                                     </flux:heading>
-                                    <flux:subheading>
+                                    <flux:text>
                                         Apakah kamu yakin
                                         ingin menghapus playlist
                                         ini?
-                                    </flux:subheading>
+                                    </flux:text>
                                 </div>
 
                                 <div class="flex flex-row items-center gap-2">
