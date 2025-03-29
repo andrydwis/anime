@@ -9,9 +9,9 @@
             >
                 Daftar Episode
             </flux:heading>
-            <flux:subheading level="h2">
+            <flux:text>
                 Semua episode Anime {{ str()->title(str()->replace('-', ' ', $animeId)) }}
-            </flux:subheading>
+            </flux:text>
         </div>
     </div>
     <div class="grid grid-cols-3 gap-2 lg:grid-cols-6">

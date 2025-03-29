@@ -45,10 +45,10 @@
         </div>
     </x-forms>
 
-    <flux:subheading class="text-center">
+    <flux:text class="text-center">
         Belum punya akun?
         <flux:link href="{{ route('register') }}">
             Daftar disini
         </flux:link>
-    </flux:subheading>
+    </flux:text>
 </x-layouts.auth>

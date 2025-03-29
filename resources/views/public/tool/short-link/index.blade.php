@@ -19,9 +19,9 @@
                 >
                     Short Link
                 </flux:heading>
-                <flux:subheading level="h2">
+                <flux:text>
                     Buat link yang lebih mudah untuk dishare, dan dapat ditracking
-                </flux:subheading>
+                </flux:text>
             </div>
         </div>
         <livewire:form-short-link />

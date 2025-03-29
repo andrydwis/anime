@@ -1,9 +1,9 @@
 <x-layouts.core title="Dashboard">
     <div class="grid gap-2 lg:grid-cols-3">
         <x-cards.app>
-            <flux:subheading>
+            <flux:text>
                 Total Pengguna {{ config('app.name') }}
-            </flux:subheading>
+            </flux:text>
             <flux:heading
                 size="xl"
                 class="flex flex-row items-center gap-2"
@@ -13,9 +13,9 @@
             </flux:heading>
         </x-cards.app>
         <x-cards.app>
-            <flux:subheading>
+            <flux:text>
                 Total Pengguna Aktif Hari Ini
-            </flux:subheading>
+            </flux:text>
             <flux:heading
                 size="xl"
                 class="flex flex-row items-center gap-2"
@@ -25,9 +25,9 @@
             </flux:heading>
         </x-cards.app>
         <x-cards.app>
-            <flux:subheading>
+            <flux:text>
                 Total Anime Ditonton Hari Ini
-            </flux:subheading>
+            </flux:text>
             <flux:heading
                 size="xl"
                 class="flex flex-row items-center gap-2"

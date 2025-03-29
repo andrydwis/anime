@@ -112,9 +112,9 @@
                 >
                     Tools Lainnya
                 </flux:heading>
-                <flux:subheading level="h2">
+                <flux:text>
                     Kumpulan tools dan fitur gratis lainnya untuk membantu kamu
-                </flux:subheading>
+                </flux:text>
             </div>
         </div>
         <div class="grid gap-2 md:grid-cols-2">
@@ -155,9 +155,9 @@
                 >
                     Anime Terbaru
                 </flux:heading>
-                <flux:subheading level="h2">
+                <flux:text>
                     Update terbaru anime season ini
-                </flux:subheading>
+                </flux:text>
             </div>
             <flux:button
                 icon="eye"
@@ -186,9 +186,9 @@
                     >
                         Event
                     </flux:heading>
-                    <flux:subheading level="h2">
+                    <flux:text>
                         Informasi terbaru event yang akan datang
-                    </flux:subheading>
+                    </flux:text>
                 </div>
                 <flux:button
                     icon="eye"
@@ -218,9 +218,9 @@
                     >
                         Berita Terbaru
                     </flux:heading>
-                    <flux:subheading level="h2">
+                    <flux:text>
                         Berita terbaru seputar anime, manga, game, dan lainnya
-                    </flux:subheading>
+                    </flux:text>
                 </div>
                 <flux:button
                     icon="eye"

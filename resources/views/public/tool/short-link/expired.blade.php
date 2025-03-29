@@ -3,8 +3,8 @@
         <flux:heading>
             Short Link Sudah Kadaluarsa 🙅
         </flux:heading>
-        <flux:subheading>
+        <flux:text>
             Oops! Short link yang kamu akan akses sudah kadaluarsa.
-        </flux:subheading>
+        </flux:text>
     </x-cards.app>
 </x-layouts.auth>

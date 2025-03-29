@@ -19,9 +19,9 @@
                 >
                     Daftar Anime
                 </flux:heading>
-                <flux:subheading level="h2">
+                <flux:text>
                     Semua anime yang tersedia
-                </flux:subheading>
+                </flux:text>
             </div>
         </div>
 
@@ -30,7 +30,6 @@
                 <div class="flex flex-col gap-2">
                     <flux:heading
                         size="xl"
-                        level="h3"
                         class="!font-bold"
                     >
                         Genre
@@ -87,7 +86,6 @@
                 >
                     <flux:heading
                         size="xl"
-                        level="h3"
                         class="!font-bold"
                     >
                         Berdasarkan Abjad
@@ -118,7 +116,7 @@
                                     x-cloak
                                     x-collapse
                                     x-show="activeIndex === {{ $index }}"
-                                    class="list-inside list-disc ms-4"
+                                    class="ms-4 list-inside list-disc"
                                 >
                                     @foreach ($list['animeList'] as $anime)
                                         <li>

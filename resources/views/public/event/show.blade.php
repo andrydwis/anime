@@ -26,9 +26,9 @@
                 >
                     {{ $event?->name }}
                 </flux:heading>
-                <flux:subheading level="h2">
+                <flux:text>
                     Detail event {{ $event?->name }}
-                </flux:subheading>
+                </flux:text>
             </div>
         </div>
 
@@ -42,9 +42,9 @@
                 <x-cards.app>
                     <ol class="flex list-inside flex-col gap-2">
                         <li class="flex flex-row items-center gap-2">
-                            <flux:subheading>
+                            <flux:text>
                                 Tanggal:
-                            </flux:subheading>
+                            </flux:text>
                             @if ($event?->start_date && $event?->end_date)
                                 <flux:badge size="sm">
                                     {{ $event?->start_date?->isoFormat('DD MMM YYYY') }}
@@ -62,9 +62,9 @@
                             @endif
                         </li>
                         <li class="flex flex-row items-center gap-2">
-                            <flux:subheading>
+                            <flux:text>
                                 Daerah:
-                            </flux:subheading>
+                            </flux:text>
                             <flux:badge size="sm">
                                 {{ $event?->province?->name }},
                                 {{ $event?->city?->name }}

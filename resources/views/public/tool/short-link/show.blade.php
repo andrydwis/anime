@@ -22,9 +22,9 @@
                 >
                     Statistik Short Link
                 </flux:heading>
-                <flux:subheading level="h2">
+                <flux:text>
                     Lihat jumlah klik, pengunjung, dan data lainnya dari short link kamu.
-                </flux:subheading>
+                </flux:text>
             </div>
         </div>
         <livewire:stat-short-link :linkData="$link" />

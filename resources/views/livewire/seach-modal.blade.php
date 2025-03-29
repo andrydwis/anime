@@ -12,9 +12,9 @@
                 <flux:heading>
                     Cari Anime
                 </flux:heading>
-                <flux:subheading>
+                <flux:text>
                     Masukkan judul anime yang kamu cari
-                </flux:subheading>
+                </flux:text>
             </div>
 
             <flux:input
@@ -60,12 +60,10 @@
                                 <flux:heading>
                                     Anime Tidak Ditemukan
                                 </flux:heading>
-                                <flux:subheading>
-                                    Oops! Anime yang kamu cari tidak ditemukan. Coba cari
-                                    kata
-                                    kunci
-                                    lain.
-                                </flux:subheading>
+                                <flux:text>
+                                    Oops! Anime yang kamu cari tidak ditemukan.
+                                    Coba cari kata kunci lain.
+                                </flux:text>
                             </x-cards.app>
                         @endif
                     @endforelse

@@ -16,9 +16,9 @@
             >
                 Tambah Event
             </flux:heading>
-            <flux:subheading>
+            <flux:text>
                 Informasi terbaru event yang akan datang
-            </flux:subheading>
+            </flux:text>
         </div>
     </div>
 

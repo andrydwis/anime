@@ -3,8 +3,8 @@
         <flux:heading>
             Halaman Tidak Ditemukan 🙅
         </flux:heading>
-        <flux:subheading>
+        <flux:text>
             Oops! Halaman yang kamu cari tidak ditemukan. Coba cek url yang kamu masukkan.
-        </flux:subheading>
+        </flux:text>
     </x-cards.app>
 </x-layouts.auth>

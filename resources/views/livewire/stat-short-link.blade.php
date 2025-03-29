@@ -102,16 +102,16 @@
                 <flux:heading>
                     Statistik Short Link
                 </flux:heading>
-                <flux:subheading>
+                <flux:text>
                     Jumlah klik, total unique pengunjung, dan data lainnya
-                </flux:subheading>
+                </flux:text>
             </div>
             <div class="grid gap-2 md:grid-cols-2">
                 <x-cards.app>
                     <div class="flex flex-col">
-                        <flux:subheading>
+                        <flux:text>
                             Total Pengunjung Unik
-                        </flux:subheading>
+                        </flux:text>
                         <flux:heading size="xl">
                             {{ $totalUniqueVisitors }} Pengunjung
                         </flux:heading>
@@ -120,9 +120,9 @@
 
                 <x-cards.app>
                     <div class="flex flex-col">
-                        <flux:subheading>
+                        <flux:text>
                             Total Dikunjungi
-                        </flux:subheading>
+                        </flux:text>
                         <flux:heading size="xl">
                             {{ $totalVisits }} Kunjungan
                         </flux:heading>
@@ -132,10 +132,10 @@
                 @foreach ($topCountryCities as $countryCity)
                     <x-cards.app class="flex flex-col">
                         <div class="flex flex-col">
-                            <flux:subheading>
+                            <flux:text>
                                 {{ $countryCity['country_name'] ?? 'Tidak Diketahui' }},
                                 {{ $countryCity['city'] ?? 'Tidak Diketahui' }}
-                            </flux:subheading>
+                            </flux:text>
                             <flux:heading size="xl">
                                 {{ $countryCity['total'] }} Kunjungan
                             </flux:heading>

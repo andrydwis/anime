@@ -22,9 +22,9 @@
                 >
                     Anime Genre: {{ str()->title($genreId) }}
                 </flux:heading>
-                <flux:subheading level="h2">
+                <flux:text>
                     Kumpulan anime dengan genre {{ str()->title($genreId) }}
-                </flux:subheading>
+                </flux:text>
             </div>
         </div>
         @if ($animes['data'])
@@ -65,9 +65,9 @@
                 <flux:heading>
                     Anime Tidak Tersedia
                 </flux:heading>
-                <flux:subheading>
+                <flux:text>
                     Coba cari ke halaman lain atau coba lagi nanti
-                </flux:subheading>
+                </flux:text>
             </x-cards.app>
         @endif
     </div>

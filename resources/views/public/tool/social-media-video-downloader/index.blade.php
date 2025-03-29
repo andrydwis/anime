@@ -19,9 +19,9 @@
                 >
                     Social Media Video Downloader
                 </flux:heading>
-                <flux:subheading level="h2">
+                <flux:text>
                     Download video dari social media dengan mudah
-                </flux:subheading>
+                </flux:text>
             </div>
         </div>
         <livewire:social-media-video-downloader />

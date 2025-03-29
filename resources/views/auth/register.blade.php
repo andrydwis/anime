@@ -60,10 +60,10 @@
         </div>
     </x-forms>
 
-    <flux:subheading class="text-center">
+    <flux:text class="text-center">
         Sudah punya akun?
         <flux:link href="{{ route('login') }}">
             Login
         </flux:link>
-    </flux:subheading>
+    </flux:text>
 </x-layouts.auth>

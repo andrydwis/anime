@@ -1,7 +1,7 @@
 @if ($paginator->hasPages())
     <nav
         class="flex flex-row flex-wrap items-center justify-center gap-2 md:justify-between">
-        <flux:subheading>
+        <flux:text>
             {!! __('Showing') !!}
             @if ($paginator->firstItem())
                 {{ $paginator->firstItem() }}
@@ -13,7 +13,7 @@
             {!! __('of') !!}
             {{ $paginator->total() }}
             {!! __('results') !!}
-        </flux:subheading>
+        </flux:text>
         <div class="flex flex-row items-center gap-2">
             <div class="flex flex-row items-center gap-1">
                 @if ($paginator->onFirstPage())

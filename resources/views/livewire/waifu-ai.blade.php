@@ -29,9 +29,9 @@
                     <flux:heading>
                         Waifu AI
                     </flux:heading>
-                    <flux:subheading>
+                    <flux:text>
                         Tanya apapun tentang anime atau manga
-                    </flux:subheading>
+                    </flux:text>
                 </div>
 
                 <div
@@ -40,12 +40,16 @@
                 >
                     @foreach ($messages as $message)
                         @if ($message['role'] === 'assistant')
-                            <x-cards.app class="!bg-accent w-3/4 !text-white">
-                                {!! str()->markdown($message['content']) !!}
+                            <x-cards.app class="!bg-accent w-3/4 !p-2">
+                                <flex:text color="white">
+                                    {!! str()->markdown($message['content']) !!}
+                                </flex:text>
                             </x-cards.app>
                         @else
-                            <x-cards.app class="max-w-3/4 ml-auto w-max text-right">
-                                {{ $message['content'] }}
+                            <x-cards.app class="max-w-3/4 ml-auto w-max !p-2 text-right">
+                                <flex:text>
+                                    {{ $message['content'] }}
+                                </flex:text>
                             </x-cards.app>
                         @endif
                     @endforeach

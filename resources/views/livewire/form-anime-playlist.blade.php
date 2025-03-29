@@ -19,9 +19,9 @@
                 <flux:heading>
                     Belum ada anime
                 </flux:heading>
-                <flux:subheading>
+                <flux:text>
                     Kamu belum menambahkan anime ke playlist
-                </flux:subheading>
+                </flux:text>
             </x-cards.app>
         @endforelse
     </div>
@@ -46,9 +46,9 @@
                             <flux:heading>
                                 Cari Anime
                             </flux:heading>
-                            <flux:subheading>
+                            <flux:text>
                                 Masukkan judul anime yang kamu cari
-                            </flux:subheading>
+                            </flux:text>
                         </div>
 
                         <flux:input
@@ -154,21 +154,18 @@
                                             @endif
                                         </div>
                                     </div>
+                                                
                                 @empty
                                     @if ($search)
                                         <x-cards.app class="col-span-2">
                                             <flux:heading>
                                                 Anime Tidak Ditemukan
                                             </flux:heading>
-                                            <flux:subheading>
+                                            <flux:text>
                                                 Oops! Anime yang kamu cari tidak
                                                 ditemukan.
-                                                Coba
-                                                cari
-                                                kata
-                                                kunci
-                                                lain.
-                                            </flux:subheading>
+                                                Coba cari kata kunci lain.
+                                            </flux:text>
                                         </x-cards.app>
                                     @endif
                                 @endforelse

@@ -98,9 +98,9 @@
                 <flux:heading>
                     Hasil generate short link akan muncul disini 👇🏻
                 </flux:heading>
-                <flux:subheading>
+                <flux:text>
                     Isi form terlebih dahulu, lalu klik generate.
-                </flux:subheading>
+                </flux:text>
             </div>
         @endif
     </x-cards.app>
@@ -111,9 +111,9 @@
                 <flux:heading>
                     Daftar Short Link Saya
                 </flux:heading>
-                <flux:subheading>
+                <flux:text>
                     Semua short link yang kamu buat
-                </flux:subheading>
+                </flux:text>
             </div>
             @forelse ($shortLinks as $link)
                 <x-cards.app wire:key="link-{{ $link?->id }}">
@@ -173,11 +173,11 @@
                                             <flux:heading size="lg">
                                                 Hapus Short Link
                                             </flux:heading>
-                                            <flux:subheading>
+                                            <flux:text>
                                                 Apakah kamu yakin
                                                 ingin menghapus short link
                                                 ini?
-                                            </flux:subheading>
+                                            </flux:text>
                                         </div>
 
                                         <div class="flex flex-row items-center gap-2">
@@ -216,9 +216,9 @@
                         <flux:heading>
                             Belum ada short link
                         </flux:heading>
-                        <flux:subheading>
+                        <flux:text>
                             Kamu belum membuat short link
-                        </flux:subheading>
+                        </flux:text>
                     </div>
                 </x-cards.app>
             @endforelse

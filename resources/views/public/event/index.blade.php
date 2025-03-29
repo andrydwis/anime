@@ -19,9 +19,9 @@
                 >
                     Event
                 </flux:heading>
-                <flux:subheading level="h2">
+                <flux:text>
                     Informasi terbaru event yang akan datang
-                </flux:subheading>
+                </flux:text>
             </div>
         </div>
         <div class="grid grid-cols-2 gap-2 lg:grid-cols-4">
@@ -32,9 +32,9 @@
                     <flux:heading>
                         Belum ada event
                     </flux:heading>
-                    <flux:subheading>
+                    <flux:text>
                         Coba cari ke halaman lain atau coba lagi nanti
-                    </flux:subheading>
+                    </flux:text>
                 </x-cards.app>
             @endforelse
         </div>

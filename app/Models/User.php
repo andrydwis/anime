@@ -3,13 +3,11 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Str;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
@@ -51,21 +49,6 @@ class User extends Authenticatable
             'password' => 'hashed',
             'last_login_at' => 'datetime',
         ];
-    }
-
-    protected function initials(): Attribute
-    {
-        return Attribute::make(
-            get: function () {
-                $name = $this->name ?? ''; // Pastikan $name diambil dari model
-                $parts = collect(explode(' ', trim($name))) // Hilangkan spasi ekstra
-                    ->map(fn ($part) => Str::substr($part, 0, 1))
-                    ->filter()
-                    ->values(); // Reset indeks numerik
-
-                return $parts->only([0, $parts->count() - 1])->implode('');
-            }
-        );
     }
 
     public function animeWatchlists(): HasMany
